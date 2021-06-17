@@ -872,7 +872,6 @@ var _reactDom = require("react-dom");
 var _app = require("./components/App");
 var _appDefault = parcelHelpers.interopDefault(_app);
 _reactDom.render(/*#__PURE__*/ _reactDefault.default.createElement(_appDefault.default, {
-    someText: "Glucose Trail Crystal Ball",
     __source: {
         fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/index.tsx",
         lineNumber: 5
@@ -21997,20 +21996,53 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-const App = ({ someText  })=>{
-    return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+var _reactRouterDom = require("react-router-dom");
+var _crystalBallApp = require("./crystal-ball-app/CrystalBallApp");
+var _crystalBallAppDefault = parcelHelpers.interopDefault(_crystalBallApp);
+var _landing = require("./landing/Landing");
+var _landingDefault = parcelHelpers.interopDefault(_landing);
+const App = ()=>{
+    return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.BrowserRouter, {
+        __source: {
+            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/App.tsx",
+            lineNumber: 8
+        },
+        __self: undefined
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Switch, {
         __source: {
             fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/App.tsx",
             lineNumber: 9
         },
         __self: undefined
-    }, /*#__PURE__*/ _reactDefault.default.createElement("h1", {
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
+        exact: true,
+        path: "/",
         __source: {
             fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/App.tsx",
             lineNumber: 10
         },
         __self: undefined
-    }, someText)));
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_landingDefault.default, {
+        __source: {
+            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/App.tsx",
+            lineNumber: 11
+        },
+        __self: undefined
+    })), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
+        exact: true,
+        path: "/app",
+        __source: {
+            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/App.tsx",
+            lineNumber: 13
+        },
+        __self: undefined
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_crystalBallAppDefault.default, {
+        __source: {
+            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/App.tsx",
+            lineNumber: 14
+        },
+        __self: undefined
+    })))));
 };
 _c = App;
 exports.default = App;
@@ -22022,6 +22054,5283 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}]},["1j6wU","5x2oD","7a5BI"], "7a5BI", "parcelRequiree01b")
+},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f","react-router-dom":"1PMSK","./landing/Landing":"2O8CH","./crystal-ball-app/CrystalBallApp":"3nOdM"}],"1PMSK":[function(require,module,exports) {
+"use strict";
+module.exports = require("./cjs/react-router-dom.js");
+
+},{"./cjs/react-router-dom.js":"GyxyM"}],"GyxyM":[function(require,module,exports) {
+'use strict';
+function _interopDefault(ex) {
+    return ex && typeof ex === 'object' && 'default' in ex ? ex['default'] : ex;
+}
+var reactRouter = require('react-router');
+var React = _interopDefault(require('react'));
+var history = require('history');
+var PropTypes = _interopDefault(require('prop-types'));
+var warning = _interopDefault(require('tiny-warning'));
+var invariant = _interopDefault(require('tiny-invariant'));
+function _extends() {
+    _extends = Object.assign || function(target) {
+        for(var i = 1; i < arguments.length; i++){
+            var source = arguments[i];
+            for(var key in source)if (Object.prototype.hasOwnProperty.call(source, key)) target[key] = source[key];
+        }
+        return target;
+    };
+    return _extends.apply(this, arguments);
+}
+function _inheritsLoose(subClass, superClass) {
+    subClass.prototype = Object.create(superClass.prototype);
+    subClass.prototype.constructor = subClass;
+    subClass.__proto__ = superClass;
+}
+function _objectWithoutPropertiesLoose(source, excluded) {
+    if (source == null) return {
+    };
+    var target = {
+    };
+    var sourceKeys = Object.keys(source);
+    var key, i;
+    for(i = 0; i < sourceKeys.length; i++){
+        key = sourceKeys[i];
+        if (excluded.indexOf(key) >= 0) continue;
+        target[key] = source[key];
+    }
+    return target;
+}
+/**
+ * The public API for a <Router> that uses HTML5 history.
+ */ var BrowserRouter1 = /*#__PURE__*/ function(_React$Component) {
+    _inheritsLoose(BrowserRouter2, _React$Component);
+    function BrowserRouter2() {
+        var _this;
+        for(var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)args[_key] = arguments[_key];
+        _this = _React$Component.call.apply(_React$Component, [
+            this
+        ].concat(args)) || this;
+        _this.history = history.createBrowserHistory(_this.props);
+        return _this;
+    }
+    var _proto = BrowserRouter2.prototype;
+    _proto.render = function render() {
+        return React.createElement(reactRouter.Router, {
+            history: this.history,
+            children: this.props.children
+        });
+    };
+    return BrowserRouter2;
+}(React.Component);
+BrowserRouter1.propTypes = {
+    basename: PropTypes.string,
+    children: PropTypes.node,
+    forceRefresh: PropTypes.bool,
+    getUserConfirmation: PropTypes.func,
+    keyLength: PropTypes.number
+};
+BrowserRouter1.prototype.componentDidMount = function() {
+    warning(!this.props.history, "<BrowserRouter> ignores the history prop. To use a custom history, use `import { Router }` instead of `import { BrowserRouter as Router }`.");
+};
+/**
+ * The public API for a <Router> that uses window.location.hash.
+ */ var HashRouter1 = /*#__PURE__*/ function(_React$Component) {
+    _inheritsLoose(HashRouter2, _React$Component);
+    function HashRouter2() {
+        var _this;
+        for(var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)args[_key] = arguments[_key];
+        _this = _React$Component.call.apply(_React$Component, [
+            this
+        ].concat(args)) || this;
+        _this.history = history.createHashHistory(_this.props);
+        return _this;
+    }
+    var _proto = HashRouter2.prototype;
+    _proto.render = function render() {
+        return React.createElement(reactRouter.Router, {
+            history: this.history,
+            children: this.props.children
+        });
+    };
+    return HashRouter2;
+}(React.Component);
+HashRouter1.propTypes = {
+    basename: PropTypes.string,
+    children: PropTypes.node,
+    getUserConfirmation: PropTypes.func,
+    hashType: PropTypes.oneOf([
+        "hashbang",
+        "noslash",
+        "slash"
+    ])
+};
+HashRouter1.prototype.componentDidMount = function() {
+    warning(!this.props.history, "<HashRouter> ignores the history prop. To use a custom history, use `import { Router }` instead of `import { HashRouter as Router }`.");
+};
+var resolveToLocation = function resolveToLocation1(to, currentLocation) {
+    return typeof to === "function" ? to(currentLocation) : to;
+};
+var normalizeToLocation = function normalizeToLocation1(to, currentLocation) {
+    return typeof to === "string" ? history.createLocation(to, null, null, currentLocation) : to;
+};
+var forwardRefShim = function forwardRefShim1(C) {
+    return C;
+};
+var forwardRef = React.forwardRef;
+if (typeof forwardRef === "undefined") forwardRef = forwardRefShim;
+function isModifiedEvent(event) {
+    return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
+}
+var LinkAnchor = forwardRef(function(_ref, forwardedRef) {
+    var innerRef = _ref.innerRef, navigate = _ref.navigate, _onClick = _ref.onClick, rest = _objectWithoutPropertiesLoose(_ref, [
+        "innerRef",
+        "navigate",
+        "onClick"
+    ]);
+    var target = rest.target;
+    var props = _extends({
+    }, rest, {
+        onClick: function onClick(event) {
+            try {
+                if (_onClick) _onClick(event);
+            } catch (ex) {
+                event.preventDefault();
+                throw ex;
+            }
+            if (!event.defaultPrevented && event.button === 0 && (!target || target === "_self") && !isModifiedEvent(event)) {
+                event.preventDefault();
+                navigate();
+            }
+        }
+    }); // React 15 compat
+    if (forwardRefShim !== forwardRef) props.ref = forwardedRef || innerRef;
+    else props.ref = innerRef;
+    /* eslint-disable-next-line jsx-a11y/anchor-has-content */ return React.createElement("a", props);
+});
+LinkAnchor.displayName = "LinkAnchor";
+/**
+ * The public API for rendering a history-aware <a>.
+ */ var Link = forwardRef(function(_ref2, forwardedRef) {
+    var _ref2$component = _ref2.component, component = _ref2$component === void 0 ? LinkAnchor : _ref2$component, replace = _ref2.replace, to = _ref2.to, innerRef = _ref2.innerRef, rest = _objectWithoutPropertiesLoose(_ref2, [
+        "component",
+        "replace",
+        "to",
+        "innerRef"
+    ]);
+    return React.createElement(reactRouter.__RouterContext.Consumer, null, function(context) {
+        !context && invariant(false, "You should not use <Link> outside a <Router>");
+        var history1 = context.history;
+        var location = normalizeToLocation(resolveToLocation(to, context.location), context.location);
+        var href = location ? history1.createHref(location) : "";
+        var props = _extends({
+        }, rest, {
+            href: href,
+            navigate: function navigate() {
+                var location1 = resolveToLocation(to, context.location);
+                var method = replace ? history1.replace : history1.push;
+                method(location1);
+            }
+        }); // React 15 compat
+        if (forwardRefShim !== forwardRef) props.ref = forwardedRef || innerRef;
+        else props.innerRef = innerRef;
+        return React.createElement(component, props);
+    });
+});
+var toType = PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.func
+]);
+var refType = PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func,
+    PropTypes.shape({
+        current: PropTypes.any
+    })
+]);
+Link.displayName = "Link";
+Link.propTypes = {
+    innerRef: refType,
+    onClick: PropTypes.func,
+    replace: PropTypes.bool,
+    target: PropTypes.string,
+    to: toType.isRequired
+};
+var forwardRefShim$1 = function forwardRefShim2(C) {
+    return C;
+};
+var forwardRef$1 = React.forwardRef;
+if (typeof forwardRef$1 === "undefined") forwardRef$1 = forwardRefShim$1;
+function joinClassnames() {
+    for(var _len = arguments.length, classnames = new Array(_len), _key = 0; _key < _len; _key++)classnames[_key] = arguments[_key];
+    return classnames.filter(function(i) {
+        return i;
+    }).join(" ");
+}
+/**
+ * A <Link> wrapper that knows if it's "active" or not.
+ */ var NavLink = forwardRef$1(function(_ref, forwardedRef) {
+    var _ref$ariaCurrent = _ref["aria-current"], ariaCurrent = _ref$ariaCurrent === void 0 ? "page" : _ref$ariaCurrent, _ref$activeClassName = _ref.activeClassName, activeClassName = _ref$activeClassName === void 0 ? "active" : _ref$activeClassName, activeStyle = _ref.activeStyle, classNameProp = _ref.className, exact = _ref.exact, isActiveProp = _ref.isActive, locationProp = _ref.location, sensitive = _ref.sensitive, strict = _ref.strict, styleProp = _ref.style, to = _ref.to, innerRef = _ref.innerRef, rest = _objectWithoutPropertiesLoose(_ref, [
+        "aria-current",
+        "activeClassName",
+        "activeStyle",
+        "className",
+        "exact",
+        "isActive",
+        "location",
+        "sensitive",
+        "strict",
+        "style",
+        "to",
+        "innerRef"
+    ]);
+    return React.createElement(reactRouter.__RouterContext.Consumer, null, function(context) {
+        !context && invariant(false, "You should not use <NavLink> outside a <Router>");
+        var currentLocation = locationProp || context.location;
+        var toLocation = normalizeToLocation(resolveToLocation(to, currentLocation), currentLocation);
+        var path = toLocation.pathname; // Regex taken from: https://github.com/pillarjs/path-to-regexp/blob/master/index.js#L202
+        var escapedPath = path && path.replace(/([.+*?=^!:${}()[\]|/\\])/g, "\\$1");
+        var match = escapedPath ? reactRouter.matchPath(currentLocation.pathname, {
+            path: escapedPath,
+            exact: exact,
+            sensitive: sensitive,
+            strict: strict
+        }) : null;
+        var isActive = !!(isActiveProp ? isActiveProp(match, currentLocation) : match);
+        var className = isActive ? joinClassnames(classNameProp, activeClassName) : classNameProp;
+        var style = isActive ? _extends({
+        }, styleProp, {
+        }, activeStyle) : styleProp;
+        var props = _extends({
+            "aria-current": isActive && ariaCurrent || null,
+            className: className,
+            style: style,
+            to: toLocation
+        }, rest); // React 15 compat
+        if (forwardRefShim$1 !== forwardRef$1) props.ref = forwardedRef || innerRef;
+        else props.innerRef = innerRef;
+        return React.createElement(Link, props);
+    });
+});
+NavLink.displayName = "NavLink";
+var ariaCurrentType = PropTypes.oneOf([
+    "page",
+    "step",
+    "location",
+    "date",
+    "time",
+    "true"
+]);
+NavLink.propTypes = _extends({
+}, Link.propTypes, {
+    "aria-current": ariaCurrentType,
+    activeClassName: PropTypes.string,
+    activeStyle: PropTypes.object,
+    className: PropTypes.string,
+    exact: PropTypes.bool,
+    isActive: PropTypes.func,
+    location: PropTypes.object,
+    sensitive: PropTypes.bool,
+    strict: PropTypes.bool,
+    style: PropTypes.object
+});
+Object.defineProperty(exports, 'MemoryRouter', {
+    enumerable: true,
+    get: function() {
+        return reactRouter.MemoryRouter;
+    }
+});
+Object.defineProperty(exports, 'Prompt', {
+    enumerable: true,
+    get: function() {
+        return reactRouter.Prompt;
+    }
+});
+Object.defineProperty(exports, 'Redirect', {
+    enumerable: true,
+    get: function() {
+        return reactRouter.Redirect;
+    }
+});
+Object.defineProperty(exports, 'Route', {
+    enumerable: true,
+    get: function() {
+        return reactRouter.Route;
+    }
+});
+Object.defineProperty(exports, 'Router', {
+    enumerable: true,
+    get: function() {
+        return reactRouter.Router;
+    }
+});
+Object.defineProperty(exports, 'StaticRouter', {
+    enumerable: true,
+    get: function() {
+        return reactRouter.StaticRouter;
+    }
+});
+Object.defineProperty(exports, 'Switch', {
+    enumerable: true,
+    get: function() {
+        return reactRouter.Switch;
+    }
+});
+Object.defineProperty(exports, 'generatePath', {
+    enumerable: true,
+    get: function() {
+        return reactRouter.generatePath;
+    }
+});
+Object.defineProperty(exports, 'matchPath', {
+    enumerable: true,
+    get: function() {
+        return reactRouter.matchPath;
+    }
+});
+Object.defineProperty(exports, 'useHistory', {
+    enumerable: true,
+    get: function() {
+        return reactRouter.useHistory;
+    }
+});
+Object.defineProperty(exports, 'useLocation', {
+    enumerable: true,
+    get: function() {
+        return reactRouter.useLocation;
+    }
+});
+Object.defineProperty(exports, 'useParams', {
+    enumerable: true,
+    get: function() {
+        return reactRouter.useParams;
+    }
+});
+Object.defineProperty(exports, 'useRouteMatch', {
+    enumerable: true,
+    get: function() {
+        return reactRouter.useRouteMatch;
+    }
+});
+Object.defineProperty(exports, 'withRouter', {
+    enumerable: true,
+    get: function() {
+        return reactRouter.withRouter;
+    }
+});
+exports.BrowserRouter = BrowserRouter1;
+exports.HashRouter = HashRouter1;
+exports.Link = Link;
+exports.NavLink = NavLink;
+
+},{"react-router":"3v97x","react":"3b2NM","history":"RV0qD","prop-types":"4dfy5","tiny-warning":"3B527","tiny-invariant":"4v3Kg"}],"3v97x":[function(require,module,exports) {
+"use strict";
+module.exports = require("./cjs/react-router.js");
+
+},{"./cjs/react-router.js":"6hyRN"}],"6hyRN":[function(require,module,exports) {
+'use strict';
+function _interopDefault(ex) {
+    return ex && typeof ex === 'object' && 'default' in ex ? ex['default'] : ex;
+}
+var React = _interopDefault(require('react'));
+var PropTypes = _interopDefault(require('prop-types'));
+var history = require('history');
+var warning = _interopDefault(require('tiny-warning'));
+var createContext = _interopDefault(require('mini-create-react-context'));
+var invariant = _interopDefault(require('tiny-invariant'));
+var pathToRegexp = _interopDefault(require('path-to-regexp'));
+var reactIs = require('react-is');
+var hoistStatics = _interopDefault(require('hoist-non-react-statics'));
+function _extends() {
+    _extends = Object.assign || function(target) {
+        for(var i = 1; i < arguments.length; i++){
+            var source = arguments[i];
+            for(var key in source)if (Object.prototype.hasOwnProperty.call(source, key)) target[key] = source[key];
+        }
+        return target;
+    };
+    return _extends.apply(this, arguments);
+}
+function _inheritsLoose(subClass, superClass) {
+    subClass.prototype = Object.create(superClass.prototype);
+    subClass.prototype.constructor = subClass;
+    subClass.__proto__ = superClass;
+}
+function _objectWithoutPropertiesLoose(source, excluded) {
+    if (source == null) return {
+    };
+    var target = {
+    };
+    var sourceKeys = Object.keys(source);
+    var key, i;
+    for(i = 0; i < sourceKeys.length; i++){
+        key = sourceKeys[i];
+        if (excluded.indexOf(key) >= 0) continue;
+        target[key] = source[key];
+    }
+    return target;
+}
+// TODO: Replace with React.createContext once we can assume React 16+
+var createNamedContext = function createNamedContext1(name) {
+    var context = createContext();
+    context.displayName = name;
+    return context;
+};
+var historyContext = /*#__PURE__*/ createNamedContext("Router-History");
+// TODO: Replace with React.createContext once we can assume React 16+
+var createNamedContext$1 = function createNamedContext2(name) {
+    var context = createContext();
+    context.displayName = name;
+    return context;
+};
+var context = /*#__PURE__*/ createNamedContext$1("Router");
+/**
+ * The public API for putting history on context.
+ */ var Router1 = /*#__PURE__*/ function(_React$Component) {
+    _inheritsLoose(Router2, _React$Component);
+    Router2.computeRootMatch = function computeRootMatch(pathname) {
+        return {
+            path: "/",
+            url: "/",
+            params: {
+            },
+            isExact: pathname === "/"
+        };
+    };
+    function Router2(props) {
+        var _this;
+        _this = _React$Component.call(this, props) || this;
+        _this.state = {
+            location: props.history.location
+        }; // This is a bit of a hack. We have to start listening for location
+        // changes here in the constructor in case there are any <Redirect>s
+        // on the initial render. If there are, they will replace/push when
+        // they mount and since cDM fires in children before parents, we may
+        // get a new location before the <Router> is mounted.
+        _this._isMounted = false;
+        _this._pendingLocation = null;
+        if (!props.staticContext) _this.unlisten = props.history.listen(function(location) {
+            if (_this._isMounted) _this.setState({
+                location: location
+            });
+            else _this._pendingLocation = location;
+        });
+        return _this;
+    }
+    var _proto = Router2.prototype;
+    _proto.componentDidMount = function componentDidMount() {
+        this._isMounted = true;
+        if (this._pendingLocation) this.setState({
+            location: this._pendingLocation
+        });
+    };
+    _proto.componentWillUnmount = function componentWillUnmount() {
+        if (this.unlisten) this.unlisten();
+    };
+    _proto.render = function render() {
+        return React.createElement(context.Provider, {
+            value: {
+                history: this.props.history,
+                location: this.state.location,
+                match: Router2.computeRootMatch(this.state.location.pathname),
+                staticContext: this.props.staticContext
+            }
+        }, React.createElement(historyContext.Provider, {
+            children: this.props.children || null,
+            value: this.props.history
+        }));
+    };
+    return Router2;
+}(React.Component);
+Router1.propTypes = {
+    children: PropTypes.node,
+    history: PropTypes.object.isRequired,
+    staticContext: PropTypes.object
+};
+Router1.prototype.componentDidUpdate = function(prevProps) {
+    warning(prevProps.history === this.props.history, "You cannot change <Router history>");
+};
+/**
+ * The public API for a <Router> that stores location in memory.
+ */ var MemoryRouter1 = /*#__PURE__*/ function(_React$Component) {
+    _inheritsLoose(MemoryRouter2, _React$Component);
+    function MemoryRouter2() {
+        var _this;
+        for(var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)args[_key] = arguments[_key];
+        _this = _React$Component.call.apply(_React$Component, [
+            this
+        ].concat(args)) || this;
+        _this.history = history.createMemoryHistory(_this.props);
+        return _this;
+    }
+    var _proto = MemoryRouter2.prototype;
+    _proto.render = function render() {
+        return React.createElement(Router1, {
+            history: this.history,
+            children: this.props.children
+        });
+    };
+    return MemoryRouter2;
+}(React.Component);
+MemoryRouter1.propTypes = {
+    initialEntries: PropTypes.array,
+    initialIndex: PropTypes.number,
+    getUserConfirmation: PropTypes.func,
+    keyLength: PropTypes.number,
+    children: PropTypes.node
+};
+MemoryRouter1.prototype.componentDidMount = function() {
+    warning(!this.props.history, "<MemoryRouter> ignores the history prop. To use a custom history, use `import { Router }` instead of `import { MemoryRouter as Router }`.");
+};
+var Lifecycle1 = /*#__PURE__*/ function(_React$Component) {
+    _inheritsLoose(Lifecycle2, _React$Component);
+    function Lifecycle2() {
+        return _React$Component.apply(this, arguments) || this;
+    }
+    var _proto = Lifecycle2.prototype;
+    _proto.componentDidMount = function componentDidMount() {
+        if (this.props.onMount) this.props.onMount.call(this, this);
+    };
+    _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+        if (this.props.onUpdate) this.props.onUpdate.call(this, this, prevProps);
+    };
+    _proto.componentWillUnmount = function componentWillUnmount() {
+        if (this.props.onUnmount) this.props.onUnmount.call(this, this);
+    };
+    _proto.render = function render() {
+        return null;
+    };
+    return Lifecycle2;
+}(React.Component);
+/**
+ * The public API for prompting the user before navigating away from a screen.
+ */ function Prompt(_ref) {
+    var message = _ref.message, _ref$when = _ref.when, when = _ref$when === void 0 ? true : _ref$when;
+    return React.createElement(context.Consumer, null, function(context1) {
+        !context1 && invariant(false, "You should not use <Prompt> outside a <Router>");
+        if (!when || context1.staticContext) return null;
+        var method = context1.history.block;
+        return React.createElement(Lifecycle1, {
+            onMount: function onMount(self) {
+                self.release = method(message);
+            },
+            onUpdate: function onUpdate(self, prevProps) {
+                if (prevProps.message !== message) {
+                    self.release();
+                    self.release = method(message);
+                }
+            },
+            onUnmount: function onUnmount(self) {
+                self.release();
+            },
+            message: message
+        });
+    });
+}
+var messageType = PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.string
+]);
+Prompt.propTypes = {
+    when: PropTypes.bool,
+    message: messageType.isRequired
+};
+var cache = {
+};
+var cacheLimit = 10000;
+var cacheCount = 0;
+function compilePath(path) {
+    if (cache[path]) return cache[path];
+    var generator = pathToRegexp.compile(path);
+    if (cacheCount < cacheLimit) {
+        cache[path] = generator;
+        cacheCount++;
+    }
+    return generator;
+}
+/**
+ * Public API for generating a URL pathname from a path and parameters.
+ */ function generatePath(path, params) {
+    if (path === void 0) path = "/";
+    if (params === void 0) params = {
+    };
+    return path === "/" ? path : compilePath(path)(params, {
+        pretty: true
+    });
+}
+/**
+ * The public API for navigating programmatically with a component.
+ */ function Redirect(_ref) {
+    var computedMatch = _ref.computedMatch, to = _ref.to, _ref$push = _ref.push, push = _ref$push === void 0 ? false : _ref$push;
+    return React.createElement(context.Consumer, null, function(context1) {
+        !context1 && invariant(false, "You should not use <Redirect> outside a <Router>");
+        var history$1 = context1.history, staticContext = context1.staticContext;
+        var method = push ? history$1.push : history$1.replace;
+        var location = history.createLocation(computedMatch ? typeof to === "string" ? generatePath(to, computedMatch.params) : _extends({
+        }, to, {
+            pathname: generatePath(to.pathname, computedMatch.params)
+        }) : to); // When rendering in a static context,
+        // set the new location immediately.
+        if (staticContext) {
+            method(location);
+            return null;
+        }
+        return React.createElement(Lifecycle1, {
+            onMount: function onMount() {
+                method(location);
+            },
+            onUpdate: function onUpdate(self, prevProps) {
+                var prevLocation = history.createLocation(prevProps.to);
+                if (!history.locationsAreEqual(prevLocation, _extends({
+                }, location, {
+                    key: prevLocation.key
+                }))) method(location);
+            },
+            to: to
+        });
+    });
+}
+Redirect.propTypes = {
+    push: PropTypes.bool,
+    from: PropTypes.string,
+    to: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.object
+    ]).isRequired
+};
+var cache$1 = {
+};
+var cacheLimit$1 = 10000;
+var cacheCount$1 = 0;
+function compilePath$1(path, options) {
+    var cacheKey = "" + options.end + options.strict + options.sensitive;
+    var pathCache = cache$1[cacheKey] || (cache$1[cacheKey] = {
+    });
+    if (pathCache[path]) return pathCache[path];
+    var keys = [];
+    var regexp = pathToRegexp(path, keys, options);
+    var result = {
+        regexp: regexp,
+        keys: keys
+    };
+    if (cacheCount$1 < cacheLimit$1) {
+        pathCache[path] = result;
+        cacheCount$1++;
+    }
+    return result;
+}
+/**
+ * Public API for matching a URL pathname to a path.
+ */ function matchPath(pathname, options) {
+    if (options === void 0) options = {
+    };
+    if (typeof options === "string" || Array.isArray(options)) options = {
+        path: options
+    };
+    var _options = options, path = _options.path, _options$exact = _options.exact, exact = _options$exact === void 0 ? false : _options$exact, _options$strict = _options.strict, strict = _options$strict === void 0 ? false : _options$strict, _options$sensitive = _options.sensitive, sensitive = _options$sensitive === void 0 ? false : _options$sensitive;
+    var paths = [].concat(path);
+    return paths.reduce(function(matched, path1) {
+        if (!path1 && path1 !== "") return null;
+        if (matched) return matched;
+        var _compilePath = compilePath$1(path1, {
+            end: exact,
+            strict: strict,
+            sensitive: sensitive
+        }), regexp = _compilePath.regexp, keys = _compilePath.keys;
+        var match = regexp.exec(pathname);
+        if (!match) return null;
+        var url = match[0], values = match.slice(1);
+        var isExact = pathname === url;
+        if (exact && !isExact) return null;
+        return {
+            path: path1,
+            // the path used to match
+            url: path1 === "/" && url === "" ? "/" : url,
+            // the matched portion of the URL
+            isExact: isExact,
+            // whether or not we matched exactly
+            params: keys.reduce(function(memo, key, index) {
+                memo[key.name] = values[index];
+                return memo;
+            }, {
+            })
+        };
+    }, null);
+}
+function isEmptyChildren(children) {
+    return React.Children.count(children) === 0;
+}
+function evalChildrenDev(children, props, path) {
+    var value = children(props);
+    warning(value !== undefined, "You returned `undefined` from the `children` function of " + ("<Route" + (path ? " path=\"" + path + "\"" : "") + ">, but you ") + "should have returned a React element or `null`");
+    return value || null;
+}
+/**
+ * The public API for matching a single path and rendering.
+ */ var Route1 = /*#__PURE__*/ function(_React$Component) {
+    _inheritsLoose(Route2, _React$Component);
+    function Route2() {
+        return _React$Component.apply(this, arguments) || this;
+    }
+    var _proto = Route2.prototype;
+    _proto.render = function render() {
+        var _this = this;
+        return React.createElement(context.Consumer, null, function(context$1) {
+            !context$1 && invariant(false, "You should not use <Route> outside a <Router>");
+            var location = _this.props.location || context$1.location;
+            var match = _this.props.computedMatch ? _this.props.computedMatch : _this.props.path ? matchPath(location.pathname, _this.props) : context$1.match;
+            var props = _extends({
+            }, context$1, {
+                location: location,
+                match: match
+            });
+            var _this$props = _this.props, children = _this$props.children, component = _this$props.component, render1 = _this$props.render; // Preact uses an empty array as children by
+            // default, so use null if that's the case.
+            if (Array.isArray(children) && children.length === 0) children = null;
+            return React.createElement(context.Provider, {
+                value: props
+            }, props.match ? children ? typeof children === "function" ? evalChildrenDev(children, props, _this.props.path) : children : component ? React.createElement(component, props) : render1 ? render1(props) : null : typeof children === "function" ? evalChildrenDev(children, props, _this.props.path) : null);
+        });
+    };
+    return Route2;
+}(React.Component);
+Route1.propTypes = {
+    children: PropTypes.oneOfType([
+        PropTypes.func,
+        PropTypes.node
+    ]),
+    component: function component(props, propName) {
+        if (props[propName] && !reactIs.isValidElementType(props[propName])) return new Error("Invalid prop 'component' supplied to 'Route': the prop is not a valid React component");
+    },
+    exact: PropTypes.bool,
+    location: PropTypes.object,
+    path: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.arrayOf(PropTypes.string)
+    ]),
+    render: PropTypes.func,
+    sensitive: PropTypes.bool,
+    strict: PropTypes.bool
+};
+Route1.prototype.componentDidMount = function() {
+    warning(!(this.props.children && !isEmptyChildren(this.props.children) && this.props.component), "You should not use <Route component> and <Route children> in the same route; <Route component> will be ignored");
+    warning(!(this.props.children && !isEmptyChildren(this.props.children) && this.props.render), "You should not use <Route render> and <Route children> in the same route; <Route render> will be ignored");
+    warning(!(this.props.component && this.props.render), "You should not use <Route component> and <Route render> in the same route; <Route render> will be ignored");
+};
+Route1.prototype.componentDidUpdate = function(prevProps) {
+    warning(!(this.props.location && !prevProps.location), '<Route> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.');
+    warning(!(!this.props.location && prevProps.location), '<Route> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.');
+};
+function addLeadingSlash(path) {
+    return path.charAt(0) === "/" ? path : "/" + path;
+}
+function addBasename(basename, location) {
+    if (!basename) return location;
+    return _extends({
+    }, location, {
+        pathname: addLeadingSlash(basename) + location.pathname
+    });
+}
+function stripBasename(basename, location) {
+    if (!basename) return location;
+    var base = addLeadingSlash(basename);
+    if (location.pathname.indexOf(base) !== 0) return location;
+    return _extends({
+    }, location, {
+        pathname: location.pathname.substr(base.length)
+    });
+}
+function createURL(location) {
+    return typeof location === "string" ? location : history.createPath(location);
+}
+function staticHandler(methodName) {
+    return function() {
+        invariant(false, "You cannot %s with <StaticRouter>", methodName);
+    };
+}
+function noop() {
+}
+/**
+ * The public top-level API for a "static" <Router>, so-called because it
+ * can't actually change the current location. Instead, it just records
+ * location changes in a context object. Useful mainly in testing and
+ * server-rendering scenarios.
+ */ var StaticRouter1 = /*#__PURE__*/ function(_React$Component) {
+    _inheritsLoose(StaticRouter2, _React$Component);
+    function StaticRouter2() {
+        var _this;
+        for(var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)args[_key] = arguments[_key];
+        _this = _React$Component.call.apply(_React$Component, [
+            this
+        ].concat(args)) || this;
+        _this.handlePush = function(location) {
+            return _this.navigateTo(location, "PUSH");
+        };
+        _this.handleReplace = function(location) {
+            return _this.navigateTo(location, "REPLACE");
+        };
+        _this.handleListen = function() {
+            return noop;
+        };
+        _this.handleBlock = function() {
+            return noop;
+        };
+        return _this;
+    }
+    var _proto = StaticRouter2.prototype;
+    _proto.navigateTo = function navigateTo(location, action) {
+        var _this$props = this.props, _this$props$basename = _this$props.basename, basename = _this$props$basename === void 0 ? "" : _this$props$basename, _this$props$context = _this$props.context, context1 = _this$props$context === void 0 ? {
+        } : _this$props$context;
+        context1.action = action;
+        context1.location = addBasename(basename, history.createLocation(location));
+        context1.url = createURL(context1.location);
+    };
+    _proto.render = function render() {
+        var _this$props2 = this.props, _this$props2$basename = _this$props2.basename, basename = _this$props2$basename === void 0 ? "" : _this$props2$basename, _this$props2$context = _this$props2.context, context1 = _this$props2$context === void 0 ? {
+        } : _this$props2$context, _this$props2$location = _this$props2.location, location = _this$props2$location === void 0 ? "/" : _this$props2$location, rest = _objectWithoutPropertiesLoose(_this$props2, [
+            "basename",
+            "context",
+            "location"
+        ]);
+        var history$1 = {
+            createHref: function createHref(path) {
+                return addLeadingSlash(basename + createURL(path));
+            },
+            action: "POP",
+            location: stripBasename(basename, history.createLocation(location)),
+            push: this.handlePush,
+            replace: this.handleReplace,
+            go: staticHandler("go"),
+            goBack: staticHandler("goBack"),
+            goForward: staticHandler("goForward"),
+            listen: this.handleListen,
+            block: this.handleBlock
+        };
+        return React.createElement(Router1, _extends({
+        }, rest, {
+            history: history$1,
+            staticContext: context1
+        }));
+    };
+    return StaticRouter2;
+}(React.Component);
+StaticRouter1.propTypes = {
+    basename: PropTypes.string,
+    context: PropTypes.object,
+    location: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.object
+    ])
+};
+StaticRouter1.prototype.componentDidMount = function() {
+    warning(!this.props.history, "<StaticRouter> ignores the history prop. To use a custom history, use `import { Router }` instead of `import { StaticRouter as Router }`.");
+};
+/**
+ * The public API for rendering the first <Route> that matches.
+ */ var Switch1 = /*#__PURE__*/ function(_React$Component) {
+    _inheritsLoose(Switch2, _React$Component);
+    function Switch2() {
+        return _React$Component.apply(this, arguments) || this;
+    }
+    var _proto = Switch2.prototype;
+    _proto.render = function render() {
+        var _this = this;
+        return React.createElement(context.Consumer, null, function(context1) {
+            !context1 && invariant(false, "You should not use <Switch> outside a <Router>");
+            var location = _this.props.location || context1.location;
+            var element, match; // We use React.Children.forEach instead of React.Children.toArray().find()
+            // here because toArray adds keys to all child elements and we do not want
+            // to trigger an unmount/remount for two <Route>s that render the same
+            // component at different URLs.
+            React.Children.forEach(_this.props.children, function(child) {
+                if (match == null && React.isValidElement(child)) {
+                    element = child;
+                    var path = child.props.path || child.props.from;
+                    match = path ? matchPath(location.pathname, _extends({
+                    }, child.props, {
+                        path: path
+                    })) : context1.match;
+                }
+            });
+            return match ? React.cloneElement(element, {
+                location: location,
+                computedMatch: match
+            }) : null;
+        });
+    };
+    return Switch2;
+}(React.Component);
+Switch1.propTypes = {
+    children: PropTypes.node,
+    location: PropTypes.object
+};
+Switch1.prototype.componentDidUpdate = function(prevProps) {
+    warning(!(this.props.location && !prevProps.location), '<Switch> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.');
+    warning(!(!this.props.location && prevProps.location), '<Switch> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.');
+};
+/**
+ * A public higher-order component to access the imperative API
+ */ function withRouter(Component) {
+    var displayName = "withRouter(" + (Component.displayName || Component.name) + ")";
+    var C = function C1(props) {
+        var wrappedComponentRef = props.wrappedComponentRef, remainingProps = _objectWithoutPropertiesLoose(props, [
+            "wrappedComponentRef"
+        ]);
+        return React.createElement(context.Consumer, null, function(context1) {
+            !context1 && invariant(false, "You should not use <" + displayName + " /> outside a <Router>");
+            return React.createElement(Component, _extends({
+            }, remainingProps, context1, {
+                ref: wrappedComponentRef
+            }));
+        });
+    };
+    C.displayName = displayName;
+    C.WrappedComponent = Component;
+    C.propTypes = {
+        wrappedComponentRef: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.func,
+            PropTypes.object
+        ])
+    };
+    return hoistStatics(C, Component);
+}
+var useContext = React.useContext;
+function useHistory() {
+    !(typeof useContext === "function") && invariant(false, "You must use React >= 16.8 in order to use useHistory()");
+    return useContext(historyContext);
+}
+function useLocation() {
+    !(typeof useContext === "function") && invariant(false, "You must use React >= 16.8 in order to use useLocation()");
+    return useContext(context).location;
+}
+function useParams() {
+    !(typeof useContext === "function") && invariant(false, "You must use React >= 16.8 in order to use useParams()");
+    var match = useContext(context).match;
+    return match ? match.params : {
+    };
+}
+function useRouteMatch(path) {
+    !(typeof useContext === "function") && invariant(false, "You must use React >= 16.8 in order to use useRouteMatch()");
+    var location = useLocation();
+    var match = useContext(context).match;
+    return path ? matchPath(location.pathname, path) : match;
+}
+if (typeof window !== "undefined") {
+    var global = window;
+    var key = "__react_router_build__";
+    var buildNames = {
+        cjs: "CommonJS",
+        esm: "ES modules",
+        umd: "UMD"
+    };
+    if (global[key] && global[key] !== "cjs") {
+        var initialBuildName = buildNames[global[key]];
+        var secondaryBuildName = buildNames["cjs"]; // TODO: Add link to article that explains in detail how to avoid
+        // loading 2 different builds.
+        throw new Error("You are loading the " + secondaryBuildName + " build of React Router " + ("on a page that is already running the " + initialBuildName + " ") + "build, so things won't work right.");
+    }
+    global[key] = "cjs";
+}
+exports.MemoryRouter = MemoryRouter1;
+exports.Prompt = Prompt;
+exports.Redirect = Redirect;
+exports.Route = Route1;
+exports.Router = Router1;
+exports.StaticRouter = StaticRouter1;
+exports.Switch = Switch1;
+exports.__HistoryContext = historyContext;
+exports.__RouterContext = context;
+exports.generatePath = generatePath;
+exports.matchPath = matchPath;
+exports.useHistory = useHistory;
+exports.useLocation = useLocation;
+exports.useParams = useParams;
+exports.useRouteMatch = useRouteMatch;
+exports.withRouter = withRouter;
+
+},{"react":"3b2NM","prop-types":"4dfy5","history":"RV0qD","tiny-warning":"3B527","mini-create-react-context":"g8cqP","tiny-invariant":"4v3Kg","path-to-regexp":"5CMSM","react-is":"68QIU","hoist-non-react-statics":"3nUHV"}],"4dfy5":[function(require,module,exports) {
+var ReactIs = require('react-is');
+// By explicitly using `prop-types` you are opting into new development behavior.
+// http://fb.me/prop-types-in-prod
+var throwOnDirectAccess = true;
+module.exports = require('./factoryWithTypeCheckers')(ReactIs.isElement, throwOnDirectAccess);
+
+},{"react-is":"68QIU","./factoryWithTypeCheckers":"1PVBO"}],"68QIU":[function(require,module,exports) {
+'use strict';
+module.exports = require('./cjs/react-is.development.js');
+
+},{"./cjs/react-is.development.js":"2onCQ"}],"2onCQ":[function(require,module,exports) {
+/** @license React v16.13.1
+ * react-is.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */ 'use strict';
+(function() {
+    // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+    // nor polyfill, then a plain number is used for performance.
+    var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+    var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 60103;
+    var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 60106;
+    var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 60107;
+    var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 60108;
+    var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 60114;
+    var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 60109;
+    var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 60110; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
+    // (unstable) APIs that have been removed. Can we remove the symbols?
+    var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 60111;
+    var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 60111;
+    var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 60112;
+    var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 60113;
+    var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 60120;
+    var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 60115;
+    var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 60116;
+    var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 60121;
+    var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 60117;
+    var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 60118;
+    var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 60119;
+    function isValidElementType(type) {
+        return typeof type === 'string' || typeof type === 'function' || type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE || type.$$typeof === REACT_BLOCK_TYPE);
+    }
+    function typeOf(object) {
+        if (typeof object === 'object' && object !== null) {
+            var $$typeof = object.$$typeof;
+            switch($$typeof){
+                case REACT_ELEMENT_TYPE:
+                    var type = object.type;
+                    switch(type){
+                        case REACT_ASYNC_MODE_TYPE:
+                        case REACT_CONCURRENT_MODE_TYPE:
+                        case REACT_FRAGMENT_TYPE:
+                        case REACT_PROFILER_TYPE:
+                        case REACT_STRICT_MODE_TYPE:
+                        case REACT_SUSPENSE_TYPE:
+                            return type;
+                        default:
+                            var $$typeofType = type && type.$$typeof;
+                            switch($$typeofType){
+                                case REACT_CONTEXT_TYPE:
+                                case REACT_FORWARD_REF_TYPE:
+                                case REACT_LAZY_TYPE:
+                                case REACT_MEMO_TYPE:
+                                case REACT_PROVIDER_TYPE:
+                                    return $$typeofType;
+                                default:
+                                    return $$typeof;
+                            }
+                    }
+                case REACT_PORTAL_TYPE:
+                    return $$typeof;
+            }
+        }
+        return undefined;
+    } // AsyncMode is deprecated along with isAsyncMode
+    var AsyncMode = REACT_ASYNC_MODE_TYPE;
+    var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
+    var ContextConsumer = REACT_CONTEXT_TYPE;
+    var ContextProvider = REACT_PROVIDER_TYPE;
+    var Element1 = REACT_ELEMENT_TYPE;
+    var ForwardRef = REACT_FORWARD_REF_TYPE;
+    var Fragment = REACT_FRAGMENT_TYPE;
+    var Lazy = REACT_LAZY_TYPE;
+    var Memo = REACT_MEMO_TYPE;
+    var Portal = REACT_PORTAL_TYPE;
+    var Profiler = REACT_PROFILER_TYPE;
+    var StrictMode = REACT_STRICT_MODE_TYPE;
+    var Suspense = REACT_SUSPENSE_TYPE;
+    var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
+    function isAsyncMode(object) {
+        if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+            hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
+            console['warn']("The ReactIs.isAsyncMode() alias has been deprecated, and will be removed in React 17+. Update your code to use ReactIs.isConcurrentMode() instead. It has the exact same API.");
+        }
+        return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
+    }
+    function isConcurrentMode(object) {
+        return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
+    }
+    function isContextConsumer(object) {
+        return typeOf(object) === REACT_CONTEXT_TYPE;
+    }
+    function isContextProvider(object) {
+        return typeOf(object) === REACT_PROVIDER_TYPE;
+    }
+    function isElement(object) {
+        return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+    }
+    function isForwardRef(object) {
+        return typeOf(object) === REACT_FORWARD_REF_TYPE;
+    }
+    function isFragment(object) {
+        return typeOf(object) === REACT_FRAGMENT_TYPE;
+    }
+    function isLazy(object) {
+        return typeOf(object) === REACT_LAZY_TYPE;
+    }
+    function isMemo(object) {
+        return typeOf(object) === REACT_MEMO_TYPE;
+    }
+    function isPortal(object) {
+        return typeOf(object) === REACT_PORTAL_TYPE;
+    }
+    function isProfiler(object) {
+        return typeOf(object) === REACT_PROFILER_TYPE;
+    }
+    function isStrictMode(object) {
+        return typeOf(object) === REACT_STRICT_MODE_TYPE;
+    }
+    function isSuspense(object) {
+        return typeOf(object) === REACT_SUSPENSE_TYPE;
+    }
+    exports.AsyncMode = AsyncMode;
+    exports.ConcurrentMode = ConcurrentMode;
+    exports.ContextConsumer = ContextConsumer;
+    exports.ContextProvider = ContextProvider;
+    exports.Element = Element1;
+    exports.ForwardRef = ForwardRef;
+    exports.Fragment = Fragment;
+    exports.Lazy = Lazy;
+    exports.Memo = Memo;
+    exports.Portal = Portal;
+    exports.Profiler = Profiler;
+    exports.StrictMode = StrictMode;
+    exports.Suspense = Suspense;
+    exports.isAsyncMode = isAsyncMode;
+    exports.isConcurrentMode = isConcurrentMode;
+    exports.isContextConsumer = isContextConsumer;
+    exports.isContextProvider = isContextProvider;
+    exports.isElement = isElement;
+    exports.isForwardRef = isForwardRef;
+    exports.isFragment = isFragment;
+    exports.isLazy = isLazy;
+    exports.isMemo = isMemo;
+    exports.isPortal = isPortal;
+    exports.isProfiler = isProfiler;
+    exports.isStrictMode = isStrictMode;
+    exports.isSuspense = isSuspense;
+    exports.isValidElementType = isValidElementType;
+    exports.typeOf = typeOf;
+})();
+
+},{}],"1PVBO":[function(require,module,exports) {
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */ 'use strict';
+var ReactIs = require('react-is');
+var assign = require('object-assign');
+var ReactPropTypesSecret = require('./lib/ReactPropTypesSecret');
+var checkPropTypes = require('./checkPropTypes');
+var has = Function.call.bind(Object.prototype.hasOwnProperty);
+var printWarning = function() {
+};
+printWarning = function(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') console.error(message);
+    try {
+        // --- Welcome to debugging React ---
+        // This error was thrown as a convenience so that you can use this stack
+        // to find the callsite that caused this warning to fire.
+        throw new Error(message);
+    } catch (x) {
+    }
+};
+function emptyFunctionThatReturnsNull() {
+    return null;
+}
+module.exports = function(isValidElement, throwOnDirectAccess) {
+    /* global Symbol */ var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+    var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
+    /**
+   * Returns the iterator method function contained on the iterable object.
+   *
+   * Be sure to invoke the function with the iterable as context:
+   *
+   *     var iteratorFn = getIteratorFn(myIterable);
+   *     if (iteratorFn) {
+   *       var iterator = iteratorFn.call(myIterable);
+   *       ...
+   *     }
+   *
+   * @param {?object} maybeIterable
+   * @return {?function}
+   */ function getIteratorFn(maybeIterable) {
+        var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
+        if (typeof iteratorFn === 'function') return iteratorFn;
+    }
+    /**
+   * Collection of methods that allow declaration and validation of props that are
+   * supplied to React components. Example usage:
+   *
+   *   var Props = require('ReactPropTypes');
+   *   var MyArticle = React.createClass({
+   *     propTypes: {
+   *       // An optional string prop named "description".
+   *       description: Props.string,
+   *
+   *       // A required enum prop named "category".
+   *       category: Props.oneOf(['News','Photos']).isRequired,
+   *
+   *       // A prop named "dialog" that requires an instance of Dialog.
+   *       dialog: Props.instanceOf(Dialog).isRequired
+   *     },
+   *     render: function() { ... }
+   *   });
+   *
+   * A more formal specification of how these methods are used:
+   *
+   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
+   *   decl := ReactPropTypes.{type}(.isRequired)?
+   *
+   * Each and every declaration produces a function with the same signature. This
+   * allows the creation of custom validation functions. For example:
+   *
+   *  var MyLink = React.createClass({
+   *    propTypes: {
+   *      // An optional string or URI prop named "href".
+   *      href: function(props, propName, componentName) {
+   *        var propValue = props[propName];
+   *        if (propValue != null && typeof propValue !== 'string' &&
+   *            !(propValue instanceof URI)) {
+   *          return new Error(
+   *            'Expected a string or an URI for ' + propName + ' in ' +
+   *            componentName
+   *          );
+   *        }
+   *      }
+   *    },
+   *    render: function() {...}
+   *  });
+   *
+   * @internal
+   */ var ANONYMOUS = '<<anonymous>>';
+    // Important!
+    // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
+    var ReactPropTypes = {
+        array: createPrimitiveTypeChecker('array'),
+        bool: createPrimitiveTypeChecker('boolean'),
+        func: createPrimitiveTypeChecker('function'),
+        number: createPrimitiveTypeChecker('number'),
+        object: createPrimitiveTypeChecker('object'),
+        string: createPrimitiveTypeChecker('string'),
+        symbol: createPrimitiveTypeChecker('symbol'),
+        any: createAnyTypeChecker(),
+        arrayOf: createArrayOfTypeChecker,
+        element: createElementTypeChecker(),
+        elementType: createElementTypeTypeChecker(),
+        instanceOf: createInstanceTypeChecker,
+        node: createNodeChecker(),
+        objectOf: createObjectOfTypeChecker,
+        oneOf: createEnumTypeChecker,
+        oneOfType: createUnionTypeChecker,
+        shape: createShapeTypeChecker,
+        exact: createStrictShapeTypeChecker
+    };
+    /**
+   * inlined Object.is polyfill to avoid requiring consumers ship their own
+   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+   */ /*eslint-disable no-self-compare*/ function is(x, y) {
+        // SameValue algorithm
+        if (x === y) // Steps 1-5, 7-10
+        // Steps 6.b-6.e: +0 != -0
+        return x !== 0 || 1 / x === 1 / y;
+        else // Step 6.a: NaN == NaN
+        return x !== x && y !== y;
+    }
+    /*eslint-enable no-self-compare*/ /**
+   * We use an Error-like object for backward compatibility as people may call
+   * PropTypes directly and inspect their output. However, we don't use real
+   * Errors anymore. We don't inspect their stack anyway, and creating them
+   * is prohibitively expensive if they are created too often, such as what
+   * happens in oneOfType() for any type before the one that matched.
+   */ function PropTypeError(message) {
+        this.message = message;
+        this.stack = '';
+    }
+    // Make `instanceof Error` still work for returned errors.
+    PropTypeError.prototype = Error.prototype;
+    function createChainableTypeChecker(validate) {
+        var manualPropTypeCallCache = {
+        };
+        var manualPropTypeWarningCount = 0;
+        function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
+            componentName = componentName || ANONYMOUS;
+            propFullName = propFullName || propName;
+            if (secret !== ReactPropTypesSecret) {
+                if (throwOnDirectAccess) {
+                    // New behavior only for users of `prop-types` package
+                    var err = new Error("Calling PropTypes validators directly is not supported by the `prop-types` package. Use `PropTypes.checkPropTypes()` to call them. Read more at http://fb.me/use-check-prop-types");
+                    err.name = 'Invariant Violation';
+                    throw err;
+                } else if (typeof console !== 'undefined') {
+                    // Old behavior for people using React.PropTypes
+                    var cacheKey = componentName + ':' + propName;
+                    if (!manualPropTypeCallCache[cacheKey] && // Avoid spamming the console because they are often not actionable except for lib authors
+                    manualPropTypeWarningCount < 3) {
+                        printWarning("You are manually calling a React.PropTypes validation function for the `" + propFullName + '` prop on `' + componentName + '`. This is deprecated ' + 'and will throw in the standalone `prop-types` package. ' + 'You may be seeing this warning due to a third-party PropTypes ' + 'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.');
+                        manualPropTypeCallCache[cacheKey] = true;
+                        manualPropTypeWarningCount++;
+                    }
+                }
+            }
+            if (props[propName] == null) {
+                if (isRequired) {
+                    if (props[propName] === null) return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
+                    return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
+                }
+                return null;
+            } else return validate(props, propName, componentName, location, propFullName);
+        }
+        var chainedCheckType = checkType.bind(null, false);
+        chainedCheckType.isRequired = checkType.bind(null, true);
+        return chainedCheckType;
+    }
+    function createPrimitiveTypeChecker(expectedType) {
+        function validate(props, propName, componentName, location, propFullName, secret) {
+            var propValue = props[propName];
+            var propType = getPropType(propValue);
+            if (propType !== expectedType) {
+                // `propValue` being instance of, say, date/regexp, pass the 'object'
+                // check, but we can offer a more precise error message here rather than
+                // 'of type `object`'.
+                var preciseType = getPreciseType(propValue);
+                return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'));
+            }
+            return null;
+        }
+        return createChainableTypeChecker(validate);
+    }
+    function createAnyTypeChecker() {
+        return createChainableTypeChecker(emptyFunctionThatReturnsNull);
+    }
+    function createArrayOfTypeChecker(typeChecker) {
+        function validate(props, propName, componentName, location, propFullName) {
+            if (typeof typeChecker !== 'function') return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
+            var propValue = props[propName];
+            if (!Array.isArray(propValue)) {
+                var propType = getPropType(propValue);
+                return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
+            }
+            for(var i = 0; i < propValue.length; i++){
+                var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
+                if (error instanceof Error) return error;
+            }
+            return null;
+        }
+        return createChainableTypeChecker(validate);
+    }
+    function createElementTypeChecker() {
+        function validate(props, propName, componentName, location, propFullName) {
+            var propValue = props[propName];
+            if (!isValidElement(propValue)) {
+                var propType = getPropType(propValue);
+                return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
+            }
+            return null;
+        }
+        return createChainableTypeChecker(validate);
+    }
+    function createElementTypeTypeChecker() {
+        function validate(props, propName, componentName, location, propFullName) {
+            var propValue = props[propName];
+            if (!ReactIs.isValidElementType(propValue)) {
+                var propType = getPropType(propValue);
+                return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement type.'));
+            }
+            return null;
+        }
+        return createChainableTypeChecker(validate);
+    }
+    function createInstanceTypeChecker(expectedClass) {
+        function validate(props, propName, componentName, location, propFullName) {
+            if (!(props[propName] instanceof expectedClass)) {
+                var expectedClassName = expectedClass.name || ANONYMOUS;
+                var actualClassName = getClassName(props[propName]);
+                return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
+            }
+            return null;
+        }
+        return createChainableTypeChecker(validate);
+    }
+    function createEnumTypeChecker(expectedValues) {
+        if (!Array.isArray(expectedValues)) {
+            {
+                if (arguments.length > 1) printWarning('Invalid arguments supplied to oneOf, expected an array, got ' + arguments.length + ' arguments. ' + 'A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z]).');
+                else printWarning('Invalid argument supplied to oneOf, expected an array.');
+            }
+            return emptyFunctionThatReturnsNull;
+        }
+        function validate(props, propName, componentName, location, propFullName) {
+            var propValue = props[propName];
+            for(var i = 0; i < expectedValues.length; i++){
+                if (is(propValue, expectedValues[i])) return null;
+            }
+            var valuesString = JSON.stringify(expectedValues, function replacer(key, value) {
+                var type = getPreciseType(value);
+                if (type === 'symbol') return String(value);
+                return value;
+            });
+            return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + String(propValue) + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
+        }
+        return createChainableTypeChecker(validate);
+    }
+    function createObjectOfTypeChecker(typeChecker) {
+        function validate(props, propName, componentName, location, propFullName) {
+            if (typeof typeChecker !== 'function') return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
+            var propValue = props[propName];
+            var propType = getPropType(propValue);
+            if (propType !== 'object') return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
+            for(var key in propValue)if (has(propValue, key)) {
+                var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+                if (error instanceof Error) return error;
+            }
+            return null;
+        }
+        return createChainableTypeChecker(validate);
+    }
+    function createUnionTypeChecker(arrayOfTypeCheckers) {
+        if (!Array.isArray(arrayOfTypeCheckers)) {
+            printWarning('Invalid argument supplied to oneOfType, expected an instance of array.');
+            return emptyFunctionThatReturnsNull;
+        }
+        for(var i = 0; i < arrayOfTypeCheckers.length; i++){
+            var checker = arrayOfTypeCheckers[i];
+            if (typeof checker !== 'function') {
+                printWarning("Invalid argument supplied to oneOfType. Expected an array of check functions, but received " + getPostfixForTypeWarning(checker) + ' at index ' + i + '.');
+                return emptyFunctionThatReturnsNull;
+            }
+        }
+        function validate(props, propName, componentName, location, propFullName) {
+            for(var i1 = 0; i1 < arrayOfTypeCheckers.length; i1++){
+                var checker = arrayOfTypeCheckers[i1];
+                if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret) == null) return null;
+            }
+            return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`.'));
+        }
+        return createChainableTypeChecker(validate);
+    }
+    function createNodeChecker() {
+        function validate(props, propName, componentName, location, propFullName) {
+            if (!isNode(props[propName])) return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
+            return null;
+        }
+        return createChainableTypeChecker(validate);
+    }
+    function createShapeTypeChecker(shapeTypes) {
+        function validate(props, propName, componentName, location, propFullName) {
+            var propValue = props[propName];
+            var propType = getPropType(propValue);
+            if (propType !== 'object') return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+            for(var key in shapeTypes){
+                var checker = shapeTypes[key];
+                if (!checker) continue;
+                var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+                if (error) return error;
+            }
+            return null;
+        }
+        return createChainableTypeChecker(validate);
+    }
+    function createStrictShapeTypeChecker(shapeTypes) {
+        function validate(props, propName, componentName, location, propFullName) {
+            var propValue = props[propName];
+            var propType = getPropType(propValue);
+            if (propType !== 'object') return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+            // We need to check all keys in case some are required but missing from
+            // props.
+            var allKeys = assign({
+            }, props[propName], shapeTypes);
+            for(var key in allKeys){
+                var checker = shapeTypes[key];
+                if (!checker) return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' + '\nBad object: ' + JSON.stringify(props[propName], null, '  ') + '\nValid keys: ' + JSON.stringify(Object.keys(shapeTypes), null, '  '));
+                var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+                if (error) return error;
+            }
+            return null;
+        }
+        return createChainableTypeChecker(validate);
+    }
+    function isNode(propValue) {
+        switch(typeof propValue){
+            case 'number':
+            case 'string':
+            case 'undefined':
+                return true;
+            case 'boolean':
+                return !propValue;
+            case 'object':
+                if (Array.isArray(propValue)) return propValue.every(isNode);
+                if (propValue === null || isValidElement(propValue)) return true;
+                var iteratorFn = getIteratorFn(propValue);
+                if (iteratorFn) {
+                    var iterator = iteratorFn.call(propValue);
+                    var step;
+                    if (iteratorFn !== propValue.entries) while(!(step = iterator.next()).done){
+                        if (!isNode(step.value)) return false;
+                    }
+                    else // Iterator will provide entry [k,v] tuples rather than values.
+                    while(!(step = iterator.next()).done){
+                        var entry = step.value;
+                        if (entry) {
+                            if (!isNode(entry[1])) return false;
+                        }
+                    }
+                } else return false;
+                return true;
+            default:
+                return false;
+        }
+    }
+    function isSymbol(propType, propValue) {
+        // Native Symbol.
+        if (propType === 'symbol') return true;
+        // falsy value can't be a Symbol
+        if (!propValue) return false;
+        // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
+        if (propValue['@@toStringTag'] === 'Symbol') return true;
+        // Fallback for non-spec compliant Symbols which are polyfilled.
+        if (typeof Symbol === 'function' && propValue instanceof Symbol) return true;
+        return false;
+    }
+    // Equivalent of `typeof` but with special handling for array and regexp.
+    function getPropType(propValue) {
+        var propType = typeof propValue;
+        if (Array.isArray(propValue)) return 'array';
+        if (propValue instanceof RegExp) // Old webkits (at least until Android 4.0) return 'function' rather than
+        // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
+        // passes PropTypes.object.
+        return 'object';
+        if (isSymbol(propType, propValue)) return 'symbol';
+        return propType;
+    }
+    // This handles more types than `getPropType`. Only used for error messages.
+    // See `createPrimitiveTypeChecker`.
+    function getPreciseType(propValue) {
+        if (typeof propValue === 'undefined' || propValue === null) return '' + propValue;
+        var propType = getPropType(propValue);
+        if (propType === 'object') {
+            if (propValue instanceof Date) return 'date';
+            else if (propValue instanceof RegExp) return 'regexp';
+        }
+        return propType;
+    }
+    // Returns a string that is postfixed to a warning about an invalid type.
+    // For example, "undefined" or "of type array"
+    function getPostfixForTypeWarning(value) {
+        var type = getPreciseType(value);
+        switch(type){
+            case 'array':
+            case 'object':
+                return 'an ' + type;
+            case 'boolean':
+            case 'date':
+            case 'regexp':
+                return 'a ' + type;
+            default:
+                return type;
+        }
+    }
+    // Returns class name of the object, if any.
+    function getClassName(propValue) {
+        if (!propValue.constructor || !propValue.constructor.name) return ANONYMOUS;
+        return propValue.constructor.name;
+    }
+    ReactPropTypes.checkPropTypes = checkPropTypes;
+    ReactPropTypes.resetWarningCache = checkPropTypes.resetWarningCache;
+    ReactPropTypes.PropTypes = ReactPropTypes;
+    return ReactPropTypes;
+};
+
+},{"react-is":"68QIU","object-assign":"3eM6x","./lib/ReactPropTypesSecret":"3OVnw","./checkPropTypes":"R8SC7"}],"3OVnw":[function(require,module,exports) {
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */ 'use strict';
+var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+module.exports = ReactPropTypesSecret;
+
+},{}],"R8SC7":[function(require,module,exports) {
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */ 'use strict';
+var printWarning = function() {
+};
+var ReactPropTypesSecret = require('./lib/ReactPropTypesSecret');
+var loggedTypeFailures = {
+};
+var has = Function.call.bind(Object.prototype.hasOwnProperty);
+printWarning = function(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') console.error(message);
+    try {
+        // --- Welcome to debugging React ---
+        // This error was thrown as a convenience so that you can use this stack
+        // to find the callsite that caused this warning to fire.
+        throw new Error(message);
+    } catch (x) {
+    }
+};
+/**
+ * Assert that the values match with the type specs.
+ * Error messages are memorized and will only be shown once.
+ *
+ * @param {object} typeSpecs Map of name to a ReactPropType
+ * @param {object} values Runtime values that need to be type-checked
+ * @param {string} location e.g. "prop", "context", "child context"
+ * @param {string} componentName Name of the component for error messages.
+ * @param {?Function} getStack Returns the component stack.
+ * @private
+ */ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
+    for(var typeSpecName in typeSpecs)if (has(typeSpecs, typeSpecName)) {
+        var error;
+        // Prop type validation may throw. In case they do, we don't want to
+        // fail the render phase where it didn't fail before. So we log it.
+        // After these have been cleaned up, we'll let them throw.
+        try {
+            // This is intentionally an invariant that gets caught. It's the same
+            // behavior as without this statement except with a better message.
+            if (typeof typeSpecs[typeSpecName] !== 'function') {
+                var err = Error((componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' + 'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.');
+                err.name = 'Invariant Violation';
+                throw err;
+            }
+            error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
+        } catch (ex) {
+            error = ex;
+        }
+        if (error && !(error instanceof Error)) printWarning((componentName || 'React class') + ': type specification of ' + location + ' `' + typeSpecName + '` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a ' + typeof error + '. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).');
+        if (error instanceof Error && !(error.message in loggedTypeFailures)) {
+            // Only monitor this failure once because there tends to be a lot of the
+            // same error.
+            loggedTypeFailures[error.message] = true;
+            var stack = getStack ? getStack() : '';
+            printWarning('Failed ' + location + ' type: ' + error.message + (stack != null ? stack : ''));
+        }
+    }
+}
+/**
+ * Resets warning cache when testing.
+ *
+ * @private
+ */ checkPropTypes.resetWarningCache = function() {
+    loggedTypeFailures = {
+    };
+};
+module.exports = checkPropTypes;
+
+},{"./lib/ReactPropTypesSecret":"3OVnw"}],"RV0qD":[function(require,module,exports) {
+'use strict';
+module.exports = require('./cjs/history.js');
+
+},{"./cjs/history.js":"4vZxn"}],"4vZxn":[function(require,module,exports) {
+'use strict';
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+function _interopDefault(ex) {
+    return ex && typeof ex === 'object' && 'default' in ex ? ex['default'] : ex;
+}
+var resolvePathname = _interopDefault(require('resolve-pathname'));
+var valueEqual = _interopDefault(require('value-equal'));
+var warning = _interopDefault(require('tiny-warning'));
+var invariant = _interopDefault(require('tiny-invariant'));
+function _extends() {
+    _extends = Object.assign || function(target) {
+        for(var i = 1; i < arguments.length; i++){
+            var source = arguments[i];
+            for(var key in source)if (Object.prototype.hasOwnProperty.call(source, key)) target[key] = source[key];
+        }
+        return target;
+    };
+    return _extends.apply(this, arguments);
+}
+function addLeadingSlash(path) {
+    return path.charAt(0) === '/' ? path : '/' + path;
+}
+function stripLeadingSlash(path) {
+    return path.charAt(0) === '/' ? path.substr(1) : path;
+}
+function hasBasename(path, prefix) {
+    return path.toLowerCase().indexOf(prefix.toLowerCase()) === 0 && '/?#'.indexOf(path.charAt(prefix.length)) !== -1;
+}
+function stripBasename(path, prefix) {
+    return hasBasename(path, prefix) ? path.substr(prefix.length) : path;
+}
+function stripTrailingSlash(path) {
+    return path.charAt(path.length - 1) === '/' ? path.slice(0, -1) : path;
+}
+function parsePath(path) {
+    var pathname = path || '/';
+    var search = '';
+    var hash = '';
+    var hashIndex = pathname.indexOf('#');
+    if (hashIndex !== -1) {
+        hash = pathname.substr(hashIndex);
+        pathname = pathname.substr(0, hashIndex);
+    }
+    var searchIndex = pathname.indexOf('?');
+    if (searchIndex !== -1) {
+        search = pathname.substr(searchIndex);
+        pathname = pathname.substr(0, searchIndex);
+    }
+    return {
+        pathname: pathname,
+        search: search === '?' ? '' : search,
+        hash: hash === '#' ? '' : hash
+    };
+}
+function createPath(location) {
+    var pathname = location.pathname, search = location.search, hash = location.hash;
+    var path = pathname || '/';
+    if (search && search !== '?') path += search.charAt(0) === '?' ? search : "?" + search;
+    if (hash && hash !== '#') path += hash.charAt(0) === '#' ? hash : "#" + hash;
+    return path;
+}
+function createLocation(path, state, key, currentLocation) {
+    var location;
+    if (typeof path === 'string') {
+        // Two-arg form: push(path, state)
+        location = parsePath(path);
+        location.state = state;
+    } else {
+        // One-arg form: push(location)
+        location = _extends({
+        }, path);
+        if (location.pathname === undefined) location.pathname = '';
+        if (location.search) {
+            if (location.search.charAt(0) !== '?') location.search = '?' + location.search;
+        } else location.search = '';
+        if (location.hash) {
+            if (location.hash.charAt(0) !== '#') location.hash = '#' + location.hash;
+        } else location.hash = '';
+        if (state !== undefined && location.state === undefined) location.state = state;
+    }
+    try {
+        location.pathname = decodeURI(location.pathname);
+    } catch (e) {
+        if (e instanceof URIError) throw new URIError('Pathname "' + location.pathname + '" could not be decoded. ' + 'This is likely caused by an invalid percent-encoding.');
+        else throw e;
+    }
+    if (key) location.key = key;
+    if (currentLocation) {
+        // Resolve incomplete/relative pathname relative to current location.
+        if (!location.pathname) location.pathname = currentLocation.pathname;
+        else if (location.pathname.charAt(0) !== '/') location.pathname = resolvePathname(location.pathname, currentLocation.pathname);
+    } else // When there is no prior location and pathname is empty, set it to /
+    if (!location.pathname) location.pathname = '/';
+    return location;
+}
+function locationsAreEqual(a, b) {
+    return a.pathname === b.pathname && a.search === b.search && a.hash === b.hash && a.key === b.key && valueEqual(a.state, b.state);
+}
+function createTransitionManager() {
+    var prompt = null;
+    function setPrompt(nextPrompt) {
+        warning(prompt == null, 'A history supports only one prompt at a time');
+        prompt = nextPrompt;
+        return function() {
+            if (prompt === nextPrompt) prompt = null;
+        };
+    }
+    function confirmTransitionTo(location, action, getUserConfirmation, callback) {
+        // TODO: If another transition starts while we're still confirming
+        // the previous one, we may end up in a weird state. Figure out the
+        // best way to handle this.
+        if (prompt != null) {
+            var result = typeof prompt === 'function' ? prompt(location, action) : prompt;
+            if (typeof result === 'string') {
+                if (typeof getUserConfirmation === 'function') getUserConfirmation(result, callback);
+                else {
+                    warning(false, 'A history needs a getUserConfirmation function in order to use a prompt message');
+                    callback(true);
+                }
+            } else // Return false from a transition hook to cancel the transition.
+            callback(result !== false);
+        } else callback(true);
+    }
+    var listeners = [];
+    function appendListener(fn) {
+        var isActive = true;
+        function listener() {
+            if (isActive) fn.apply(void 0, arguments);
+        }
+        listeners.push(listener);
+        return function() {
+            isActive = false;
+            listeners = listeners.filter(function(item) {
+                return item !== listener;
+            });
+        };
+    }
+    function notifyListeners() {
+        for(var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)args[_key] = arguments[_key];
+        listeners.forEach(function(listener) {
+            return listener.apply(void 0, args);
+        });
+    }
+    return {
+        setPrompt: setPrompt,
+        confirmTransitionTo: confirmTransitionTo,
+        appendListener: appendListener,
+        notifyListeners: notifyListeners
+    };
+}
+var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+function getConfirmation(message, callback) {
+    callback(window.confirm(message)); // eslint-disable-line no-alert
+}
+/**
+ * Returns true if the HTML5 history API is supported. Taken from Modernizr.
+ *
+ * https://github.com/Modernizr/Modernizr/blob/master/LICENSE
+ * https://github.com/Modernizr/Modernizr/blob/master/feature-detects/history.js
+ * changed to avoid false negatives for Windows Phones: https://github.com/reactjs/react-router/issues/586
+ */ function supportsHistory() {
+    var ua = window.navigator.userAgent;
+    if ((ua.indexOf('Android 2.') !== -1 || ua.indexOf('Android 4.0') !== -1) && ua.indexOf('Mobile Safari') !== -1 && ua.indexOf('Chrome') === -1 && ua.indexOf('Windows Phone') === -1) return false;
+    return window.history && 'pushState' in window.history;
+}
+/**
+ * Returns true if browser fires popstate on hash change.
+ * IE10 and IE11 do not.
+ */ function supportsPopStateOnHashChange() {
+    return window.navigator.userAgent.indexOf('Trident') === -1;
+}
+/**
+ * Returns false if using go(n) with hash history causes a full page reload.
+ */ function supportsGoWithoutReloadUsingHash() {
+    return window.navigator.userAgent.indexOf('Firefox') === -1;
+}
+/**
+ * Returns true if a given popstate event is an extraneous WebKit event.
+ * Accounts for the fact that Chrome on iOS fires real popstate events
+ * containing undefined state when pressing the back button.
+ */ function isExtraneousPopstateEvent(event) {
+    return event.state === undefined && navigator.userAgent.indexOf('CriOS') === -1;
+}
+var PopStateEvent1 = 'popstate';
+var HashChangeEvent1 = 'hashchange';
+function getHistoryState() {
+    try {
+        return window.history.state || {
+        };
+    } catch (e) {
+        // IE 11 sometimes throws when accessing window.history.state
+        // See https://github.com/ReactTraining/history/pull/289
+        return {
+        };
+    }
+}
+/**
+ * Creates a history object that uses the HTML5 history API including
+ * pushState, replaceState, and the popstate event.
+ */ function createBrowserHistory(props) {
+    if (props === void 0) props = {
+    };
+    !canUseDOM && invariant(false, 'Browser history needs a DOM');
+    var globalHistory = window.history;
+    var canUseHistory = supportsHistory();
+    var needsHashChangeListener = !supportsPopStateOnHashChange();
+    var _props = props, _props$forceRefresh = _props.forceRefresh, forceRefresh = _props$forceRefresh === void 0 ? false : _props$forceRefresh, _props$getUserConfirm = _props.getUserConfirmation, getUserConfirmation = _props$getUserConfirm === void 0 ? getConfirmation : _props$getUserConfirm, _props$keyLength = _props.keyLength, keyLength = _props$keyLength === void 0 ? 6 : _props$keyLength;
+    var basename = props.basename ? stripTrailingSlash(addLeadingSlash(props.basename)) : '';
+    function getDOMLocation(historyState) {
+        var _ref = historyState || {
+        }, key = _ref.key, state = _ref.state;
+        var _window$location = window.location, pathname = _window$location.pathname, search = _window$location.search, hash = _window$location.hash;
+        var path = pathname + search + hash;
+        warning(!basename || hasBasename(path, basename), "You are attempting to use a basename on a page whose URL path does not begin with the basename. Expected path \"" + path + '" to begin with "' + basename + '".');
+        if (basename) path = stripBasename(path, basename);
+        return createLocation(path, state, key);
+    }
+    function createKey() {
+        return Math.random().toString(36).substr(2, keyLength);
+    }
+    var transitionManager = createTransitionManager();
+    function setState(nextState) {
+        _extends(history, nextState);
+        history.length = globalHistory.length;
+        transitionManager.notifyListeners(history.location, history.action);
+    }
+    function handlePopState(event) {
+        // Ignore extraneous popstate events in WebKit.
+        if (isExtraneousPopstateEvent(event)) return;
+        handlePop(getDOMLocation(event.state));
+    }
+    function handleHashChange() {
+        handlePop(getDOMLocation(getHistoryState()));
+    }
+    var forceNextPop = false;
+    function handlePop(location) {
+        if (forceNextPop) {
+            forceNextPop = false;
+            setState();
+        } else {
+            var action = 'POP';
+            transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function(ok) {
+                if (ok) setState({
+                    action: action,
+                    location: location
+                });
+                else revertPop(location);
+            });
+        }
+    }
+    function revertPop(fromLocation) {
+        var toLocation = history.location; // TODO: We could probably make this more reliable by
+        // keeping a list of keys we've seen in sessionStorage.
+        // Instead, we just default to 0 for keys we don't know.
+        var toIndex = allKeys.indexOf(toLocation.key);
+        if (toIndex === -1) toIndex = 0;
+        var fromIndex = allKeys.indexOf(fromLocation.key);
+        if (fromIndex === -1) fromIndex = 0;
+        var delta = toIndex - fromIndex;
+        if (delta) {
+            forceNextPop = true;
+            go(delta);
+        }
+    }
+    var initialLocation = getDOMLocation(getHistoryState());
+    var allKeys = [
+        initialLocation.key
+    ]; // Public interface
+    function createHref(location) {
+        return basename + createPath(location);
+    }
+    function push(path, state) {
+        warning(!(typeof path === 'object' && path.state !== undefined && state !== undefined), "You should avoid providing a 2nd state argument to push when the 1st argument is a location-like object that already has state; it is ignored");
+        var action = 'PUSH';
+        var location = createLocation(path, state, createKey(), history.location);
+        transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function(ok) {
+            if (!ok) return;
+            var href = createHref(location);
+            var key = location.key, state1 = location.state;
+            if (canUseHistory) {
+                globalHistory.pushState({
+                    key: key,
+                    state: state1
+                }, null, href);
+                if (forceRefresh) window.location.href = href;
+                else {
+                    var prevIndex = allKeys.indexOf(history.location.key);
+                    var nextKeys = allKeys.slice(0, prevIndex + 1);
+                    nextKeys.push(location.key);
+                    allKeys = nextKeys;
+                    setState({
+                        action: action,
+                        location: location
+                    });
+                }
+            } else {
+                warning(state1 === undefined, 'Browser history cannot push state in browsers that do not support HTML5 history');
+                window.location.href = href;
+            }
+        });
+    }
+    function replace(path, state) {
+        warning(!(typeof path === 'object' && path.state !== undefined && state !== undefined), "You should avoid providing a 2nd state argument to replace when the 1st argument is a location-like object that already has state; it is ignored");
+        var action = 'REPLACE';
+        var location = createLocation(path, state, createKey(), history.location);
+        transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function(ok) {
+            if (!ok) return;
+            var href = createHref(location);
+            var key = location.key, state1 = location.state;
+            if (canUseHistory) {
+                globalHistory.replaceState({
+                    key: key,
+                    state: state1
+                }, null, href);
+                if (forceRefresh) window.location.replace(href);
+                else {
+                    var prevIndex = allKeys.indexOf(history.location.key);
+                    if (prevIndex !== -1) allKeys[prevIndex] = location.key;
+                    setState({
+                        action: action,
+                        location: location
+                    });
+                }
+            } else {
+                warning(state1 === undefined, 'Browser history cannot replace state in browsers that do not support HTML5 history');
+                window.location.replace(href);
+            }
+        });
+    }
+    function go(n) {
+        globalHistory.go(n);
+    }
+    function goBack() {
+        go(-1);
+    }
+    function goForward() {
+        go(1);
+    }
+    var listenerCount = 0;
+    function checkDOMListeners(delta) {
+        listenerCount += delta;
+        if (listenerCount === 1 && delta === 1) {
+            window.addEventListener(PopStateEvent1, handlePopState);
+            if (needsHashChangeListener) window.addEventListener(HashChangeEvent1, handleHashChange);
+        } else if (listenerCount === 0) {
+            window.removeEventListener(PopStateEvent1, handlePopState);
+            if (needsHashChangeListener) window.removeEventListener(HashChangeEvent1, handleHashChange);
+        }
+    }
+    var isBlocked = false;
+    function block(prompt) {
+        if (prompt === void 0) prompt = false;
+        var unblock = transitionManager.setPrompt(prompt);
+        if (!isBlocked) {
+            checkDOMListeners(1);
+            isBlocked = true;
+        }
+        return function() {
+            if (isBlocked) {
+                isBlocked = false;
+                checkDOMListeners(-1);
+            }
+            return unblock();
+        };
+    }
+    function listen(listener) {
+        var unlisten = transitionManager.appendListener(listener);
+        checkDOMListeners(1);
+        return function() {
+            checkDOMListeners(-1);
+            unlisten();
+        };
+    }
+    var history = {
+        length: globalHistory.length,
+        action: 'POP',
+        location: initialLocation,
+        createHref: createHref,
+        push: push,
+        replace: replace,
+        go: go,
+        goBack: goBack,
+        goForward: goForward,
+        block: block,
+        listen: listen
+    };
+    return history;
+}
+var HashChangeEvent$1 = 'hashchange';
+var HashPathCoders = {
+    hashbang: {
+        encodePath: function encodePath(path) {
+            return path.charAt(0) === '!' ? path : '!/' + stripLeadingSlash(path);
+        },
+        decodePath: function decodePath(path) {
+            return path.charAt(0) === '!' ? path.substr(1) : path;
+        }
+    },
+    noslash: {
+        encodePath: stripLeadingSlash,
+        decodePath: addLeadingSlash
+    },
+    slash: {
+        encodePath: addLeadingSlash,
+        decodePath: addLeadingSlash
+    }
+};
+function stripHash(url) {
+    var hashIndex = url.indexOf('#');
+    return hashIndex === -1 ? url : url.slice(0, hashIndex);
+}
+function getHashPath() {
+    // We can't use window.location.hash here because it's not
+    // consistent across browsers - Firefox will pre-decode it!
+    var href = window.location.href;
+    var hashIndex = href.indexOf('#');
+    return hashIndex === -1 ? '' : href.substring(hashIndex + 1);
+}
+function pushHashPath(path) {
+    window.location.hash = path;
+}
+function replaceHashPath(path) {
+    window.location.replace(stripHash(window.location.href) + '#' + path);
+}
+function createHashHistory(props) {
+    if (props === void 0) props = {
+    };
+    !canUseDOM && invariant(false, 'Hash history needs a DOM');
+    var globalHistory = window.history;
+    var canGoWithoutReload = supportsGoWithoutReloadUsingHash();
+    var _props = props, _props$getUserConfirm = _props.getUserConfirmation, getUserConfirmation = _props$getUserConfirm === void 0 ? getConfirmation : _props$getUserConfirm, _props$hashType = _props.hashType, hashType = _props$hashType === void 0 ? 'slash' : _props$hashType;
+    var basename = props.basename ? stripTrailingSlash(addLeadingSlash(props.basename)) : '';
+    var _HashPathCoders$hashT = HashPathCoders[hashType], encodePath = _HashPathCoders$hashT.encodePath, decodePath = _HashPathCoders$hashT.decodePath;
+    function getDOMLocation() {
+        var path = decodePath(getHashPath());
+        warning(!basename || hasBasename(path, basename), "You are attempting to use a basename on a page whose URL path does not begin with the basename. Expected path \"" + path + '" to begin with "' + basename + '".');
+        if (basename) path = stripBasename(path, basename);
+        return createLocation(path);
+    }
+    var transitionManager = createTransitionManager();
+    function setState(nextState) {
+        _extends(history, nextState);
+        history.length = globalHistory.length;
+        transitionManager.notifyListeners(history.location, history.action);
+    }
+    var forceNextPop = false;
+    var ignorePath = null;
+    function locationsAreEqual$$1(a, b) {
+        return a.pathname === b.pathname && a.search === b.search && a.hash === b.hash;
+    }
+    function handleHashChange() {
+        var path = getHashPath();
+        var encodedPath = encodePath(path);
+        if (path !== encodedPath) // Ensure we always have a properly-encoded hash.
+        replaceHashPath(encodedPath);
+        else {
+            var location = getDOMLocation();
+            var prevLocation = history.location;
+            if (!forceNextPop && locationsAreEqual$$1(prevLocation, location)) return; // A hashchange doesn't always == location change.
+            if (ignorePath === createPath(location)) return; // Ignore this change; we already setState in push/replace.
+            ignorePath = null;
+            handlePop(location);
+        }
+    }
+    function handlePop(location) {
+        if (forceNextPop) {
+            forceNextPop = false;
+            setState();
+        } else {
+            var action = 'POP';
+            transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function(ok) {
+                if (ok) setState({
+                    action: action,
+                    location: location
+                });
+                else revertPop(location);
+            });
+        }
+    }
+    function revertPop(fromLocation) {
+        var toLocation = history.location; // TODO: We could probably make this more reliable by
+        // keeping a list of paths we've seen in sessionStorage.
+        // Instead, we just default to 0 for paths we don't know.
+        var toIndex = allPaths.lastIndexOf(createPath(toLocation));
+        if (toIndex === -1) toIndex = 0;
+        var fromIndex = allPaths.lastIndexOf(createPath(fromLocation));
+        if (fromIndex === -1) fromIndex = 0;
+        var delta = toIndex - fromIndex;
+        if (delta) {
+            forceNextPop = true;
+            go(delta);
+        }
+    } // Ensure the hash is encoded properly before doing anything else.
+    var path = getHashPath();
+    var encodedPath = encodePath(path);
+    if (path !== encodedPath) replaceHashPath(encodedPath);
+    var initialLocation = getDOMLocation();
+    var allPaths = [
+        createPath(initialLocation)
+    ]; // Public interface
+    function createHref(location) {
+        var baseTag = document.querySelector('base');
+        var href = '';
+        if (baseTag && baseTag.getAttribute('href')) href = stripHash(window.location.href);
+        return href + '#' + encodePath(basename + createPath(location));
+    }
+    function push(path1, state) {
+        warning(state === undefined, 'Hash history cannot push state; it is ignored');
+        var action = 'PUSH';
+        var location = createLocation(path1, undefined, undefined, history.location);
+        transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function(ok) {
+            if (!ok) return;
+            var path2 = createPath(location);
+            var encodedPath1 = encodePath(basename + path2);
+            var hashChanged = getHashPath() !== encodedPath1;
+            if (hashChanged) {
+                // We cannot tell if a hashchange was caused by a PUSH, so we'd
+                // rather setState here and ignore the hashchange. The caveat here
+                // is that other hash histories in the page will consider it a POP.
+                ignorePath = path2;
+                pushHashPath(encodedPath1);
+                var prevIndex = allPaths.lastIndexOf(createPath(history.location));
+                var nextPaths = allPaths.slice(0, prevIndex + 1);
+                nextPaths.push(path2);
+                allPaths = nextPaths;
+                setState({
+                    action: action,
+                    location: location
+                });
+            } else {
+                warning(false, 'Hash history cannot PUSH the same path; a new entry will not be added to the history stack');
+                setState();
+            }
+        });
+    }
+    function replace(path1, state) {
+        warning(state === undefined, 'Hash history cannot replace state; it is ignored');
+        var action = 'REPLACE';
+        var location = createLocation(path1, undefined, undefined, history.location);
+        transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function(ok) {
+            if (!ok) return;
+            var path2 = createPath(location);
+            var encodedPath1 = encodePath(basename + path2);
+            var hashChanged = getHashPath() !== encodedPath1;
+            if (hashChanged) {
+                // We cannot tell if a hashchange was caused by a REPLACE, so we'd
+                // rather setState here and ignore the hashchange. The caveat here
+                // is that other hash histories in the page will consider it a POP.
+                ignorePath = path2;
+                replaceHashPath(encodedPath1);
+            }
+            var prevIndex = allPaths.indexOf(createPath(history.location));
+            if (prevIndex !== -1) allPaths[prevIndex] = path2;
+            setState({
+                action: action,
+                location: location
+            });
+        });
+    }
+    function go(n) {
+        warning(canGoWithoutReload, 'Hash history go(n) causes a full page reload in this browser');
+        globalHistory.go(n);
+    }
+    function goBack() {
+        go(-1);
+    }
+    function goForward() {
+        go(1);
+    }
+    var listenerCount = 0;
+    function checkDOMListeners(delta) {
+        listenerCount += delta;
+        if (listenerCount === 1 && delta === 1) window.addEventListener(HashChangeEvent$1, handleHashChange);
+        else if (listenerCount === 0) window.removeEventListener(HashChangeEvent$1, handleHashChange);
+    }
+    var isBlocked = false;
+    function block(prompt) {
+        if (prompt === void 0) prompt = false;
+        var unblock = transitionManager.setPrompt(prompt);
+        if (!isBlocked) {
+            checkDOMListeners(1);
+            isBlocked = true;
+        }
+        return function() {
+            if (isBlocked) {
+                isBlocked = false;
+                checkDOMListeners(-1);
+            }
+            return unblock();
+        };
+    }
+    function listen(listener) {
+        var unlisten = transitionManager.appendListener(listener);
+        checkDOMListeners(1);
+        return function() {
+            checkDOMListeners(-1);
+            unlisten();
+        };
+    }
+    var history = {
+        length: globalHistory.length,
+        action: 'POP',
+        location: initialLocation,
+        createHref: createHref,
+        push: push,
+        replace: replace,
+        go: go,
+        goBack: goBack,
+        goForward: goForward,
+        block: block,
+        listen: listen
+    };
+    return history;
+}
+function clamp(n, lowerBound, upperBound) {
+    return Math.min(Math.max(n, lowerBound), upperBound);
+}
+/**
+ * Creates a history object that stores locations in memory.
+ */ function createMemoryHistory(props) {
+    if (props === void 0) props = {
+    };
+    var _props = props, getUserConfirmation = _props.getUserConfirmation, _props$initialEntries = _props.initialEntries, initialEntries = _props$initialEntries === void 0 ? [
+        '/'
+    ] : _props$initialEntries, _props$initialIndex = _props.initialIndex, initialIndex = _props$initialIndex === void 0 ? 0 : _props$initialIndex, _props$keyLength = _props.keyLength, keyLength = _props$keyLength === void 0 ? 6 : _props$keyLength;
+    var transitionManager = createTransitionManager();
+    function setState(nextState) {
+        _extends(history, nextState);
+        history.length = history.entries.length;
+        transitionManager.notifyListeners(history.location, history.action);
+    }
+    function createKey() {
+        return Math.random().toString(36).substr(2, keyLength);
+    }
+    var index = clamp(initialIndex, 0, initialEntries.length - 1);
+    var entries = initialEntries.map(function(entry) {
+        return typeof entry === 'string' ? createLocation(entry, undefined, createKey()) : createLocation(entry, undefined, entry.key || createKey());
+    }); // Public interface
+    var createHref = createPath;
+    function push(path, state) {
+        warning(!(typeof path === 'object' && path.state !== undefined && state !== undefined), "You should avoid providing a 2nd state argument to push when the 1st argument is a location-like object that already has state; it is ignored");
+        var action = 'PUSH';
+        var location = createLocation(path, state, createKey(), history.location);
+        transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function(ok) {
+            if (!ok) return;
+            var prevIndex = history.index;
+            var nextIndex = prevIndex + 1;
+            var nextEntries = history.entries.slice(0);
+            if (nextEntries.length > nextIndex) nextEntries.splice(nextIndex, nextEntries.length - nextIndex, location);
+            else nextEntries.push(location);
+            setState({
+                action: action,
+                location: location,
+                index: nextIndex,
+                entries: nextEntries
+            });
+        });
+    }
+    function replace(path, state) {
+        warning(!(typeof path === 'object' && path.state !== undefined && state !== undefined), "You should avoid providing a 2nd state argument to replace when the 1st argument is a location-like object that already has state; it is ignored");
+        var action = 'REPLACE';
+        var location = createLocation(path, state, createKey(), history.location);
+        transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function(ok) {
+            if (!ok) return;
+            history.entries[history.index] = location;
+            setState({
+                action: action,
+                location: location
+            });
+        });
+    }
+    function go(n) {
+        var nextIndex = clamp(history.index + n, 0, history.entries.length - 1);
+        var action = 'POP';
+        var location = history.entries[nextIndex];
+        transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function(ok) {
+            if (ok) setState({
+                action: action,
+                location: location,
+                index: nextIndex
+            });
+            else // Mimic the behavior of DOM histories by
+            // causing a render after a cancelled POP.
+            setState();
+        });
+    }
+    function goBack() {
+        go(-1);
+    }
+    function goForward() {
+        go(1);
+    }
+    function canGo(n) {
+        var nextIndex = history.index + n;
+        return nextIndex >= 0 && nextIndex < history.entries.length;
+    }
+    function block(prompt) {
+        if (prompt === void 0) prompt = false;
+        return transitionManager.setPrompt(prompt);
+    }
+    function listen(listener) {
+        return transitionManager.appendListener(listener);
+    }
+    var history = {
+        length: entries.length,
+        action: 'POP',
+        location: entries[index],
+        index: index,
+        entries: entries,
+        createHref: createHref,
+        push: push,
+        replace: replace,
+        go: go,
+        goBack: goBack,
+        goForward: goForward,
+        canGo: canGo,
+        block: block,
+        listen: listen
+    };
+    return history;
+}
+exports.createBrowserHistory = createBrowserHistory;
+exports.createHashHistory = createHashHistory;
+exports.createMemoryHistory = createMemoryHistory;
+exports.createLocation = createLocation;
+exports.locationsAreEqual = locationsAreEqual;
+exports.parsePath = parsePath;
+exports.createPath = createPath;
+
+},{"resolve-pathname":"6t3oq","value-equal":"231GI","tiny-warning":"3B527","tiny-invariant":"4v3Kg"}],"6t3oq":[function(require,module,exports) {
+'use strict';
+module.exports = require('./cjs/resolve-pathname.js');
+
+},{"./cjs/resolve-pathname.js":"PP9FI"}],"PP9FI":[function(require,module,exports) {
+'use strict';
+function isAbsolute(pathname) {
+    return pathname.charAt(0) === '/';
+}
+// About 1.5x faster than the two-arg version of Array#splice()
+function spliceOne(list, index) {
+    for(var i = index, k = i + 1, n = list.length; k < n; i += 1, k += 1)list[i] = list[k];
+    list.pop();
+}
+// This implementation is based heavily on node's url.parse
+function resolvePathname(to, from) {
+    if (from === undefined) from = '';
+    var toParts = to && to.split('/') || [];
+    var fromParts = from && from.split('/') || [];
+    var isToAbs = to && isAbsolute(to);
+    var isFromAbs = from && isAbsolute(from);
+    var mustEndAbs = isToAbs || isFromAbs;
+    if (to && isAbsolute(to)) // to is absolute
+    fromParts = toParts;
+    else if (toParts.length) {
+        // to is relative, drop the filename
+        fromParts.pop();
+        fromParts = fromParts.concat(toParts);
+    }
+    if (!fromParts.length) return '/';
+    var hasTrailingSlash;
+    if (fromParts.length) {
+        var last = fromParts[fromParts.length - 1];
+        hasTrailingSlash = last === '.' || last === '..' || last === '';
+    } else hasTrailingSlash = false;
+    var up = 0;
+    for(var i = fromParts.length; i >= 0; i--){
+        var part = fromParts[i];
+        if (part === '.') spliceOne(fromParts, i);
+        else if (part === '..') {
+            spliceOne(fromParts, i);
+            up++;
+        } else if (up) {
+            spliceOne(fromParts, i);
+            up--;
+        }
+    }
+    if (!mustEndAbs) for(; up--;)fromParts.unshift('..');
+    if (mustEndAbs && fromParts[0] !== '' && (!fromParts[0] || !isAbsolute(fromParts[0]))) fromParts.unshift('');
+    var result = fromParts.join('/');
+    if (hasTrailingSlash && result.substr(-1) !== '/') result += '/';
+    return result;
+}
+module.exports = resolvePathname;
+
+},{}],"231GI":[function(require,module,exports) {
+'use strict';
+module.exports = require('./cjs/value-equal.js');
+
+},{"./cjs/value-equal.js":"6bQJP"}],"6bQJP":[function(require,module,exports) {
+'use strict';
+function valueOf(obj) {
+    return obj.valueOf ? obj.valueOf() : Object.prototype.valueOf.call(obj);
+}
+function valueEqual(a, b) {
+    // Test for strict equality first.
+    if (a === b) return true;
+    // Otherwise, if either of them == null they are not equal.
+    if (a == null || b == null) return false;
+    if (Array.isArray(a)) return Array.isArray(b) && a.length === b.length && a.every(function(item, index) {
+        return valueEqual(item, b[index]);
+    });
+    if (typeof a === 'object' || typeof b === 'object') {
+        var aValue = valueOf(a);
+        var bValue = valueOf(b);
+        if (aValue !== a || bValue !== b) return valueEqual(aValue, bValue);
+        return Object.keys(Object.assign({
+        }, a, b)).every(function(key) {
+            return valueEqual(a[key], b[key]);
+        });
+    }
+    return false;
+}
+module.exports = valueEqual;
+
+},{}],"3B527":[function(require,module,exports) {
+'use strict';
+var isProduction = false;
+function warning(condition, message) {
+    if (!isProduction) {
+        if (condition) return;
+        var text = "Warning: " + message;
+        if (typeof console !== 'undefined') console.warn(text);
+        try {
+            throw Error(text);
+        } catch (x) {
+        }
+    }
+}
+module.exports = warning;
+
+},{}],"4v3Kg":[function(require,module,exports) {
+'use strict';
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var isProduction = false;
+var prefix = 'Invariant failed';
+function invariant(condition, message) {
+    if (condition) return;
+    if (isProduction) throw new Error(prefix);
+    throw new Error(prefix + ": " + (message || ''));
+}
+exports.default = invariant;
+
+},{}],"g8cqP":[function(require,module,exports) {
+var global = arguments[3];
+'use strict';
+var React = require('react'), _inheritsLoose = require('@babel/runtime/helpers/inheritsLoose'), PropTypes = require('prop-types'), warning = require('tiny-warning');
+function _interopDefaultLegacy(e) {
+    return e && typeof e === 'object' && 'default' in e ? e : {
+        'default': e
+    };
+}
+var React__default = /*#__PURE__*/ _interopDefaultLegacy(React);
+var _inheritsLoose__default = /*#__PURE__*/ _interopDefaultLegacy(_inheritsLoose);
+var PropTypes__default = /*#__PURE__*/ _interopDefaultLegacy(PropTypes);
+var warning__default = /*#__PURE__*/ _interopDefaultLegacy(warning);
+var MAX_SIGNED_31_BIT_INT = 1073741823;
+var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : {
+};
+function getUniqueId() {
+    var key = '__global_unique_id__';
+    return commonjsGlobal[key] = (commonjsGlobal[key] || 0) + 1;
+}
+function objectIs(x, y) {
+    if (x === y) return x !== 0 || 1 / x === 1 / y;
+    else return x !== x && y !== y;
+}
+function createEventEmitter(value) {
+    var handlers = [];
+    return {
+        on: function on(handler) {
+            handlers.push(handler);
+        },
+        off: function off(handler) {
+            handlers = handlers.filter(function(h) {
+                return h !== handler;
+            });
+        },
+        get: function get() {
+            return value;
+        },
+        set: function set(newValue, changedBits) {
+            value = newValue;
+            handlers.forEach(function(handler) {
+                return handler(value, changedBits);
+            });
+        }
+    };
+}
+function onlyChild(children) {
+    return Array.isArray(children) ? children[0] : children;
+}
+function createReactContext(defaultValue, calculateChangedBits) {
+    var _Provider$childContex, _Consumer$contextType;
+    var contextProp = '__create-react-context-' + getUniqueId() + '__';
+    var Provider1 = /*#__PURE__*/ function(_Component) {
+        _inheritsLoose__default['default'](Provider2, _Component);
+        function Provider2() {
+            var _this;
+            _this = _Component.apply(this, arguments) || this;
+            _this.emitter = createEventEmitter(_this.props.value);
+            return _this;
+        }
+        var _proto = Provider2.prototype;
+        _proto.getChildContext = function getChildContext() {
+            var _ref;
+            return _ref = {
+            }, _ref[contextProp] = this.emitter, _ref;
+        };
+        _proto.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+            if (this.props.value !== nextProps.value) {
+                var oldValue = this.props.value;
+                var newValue = nextProps.value;
+                var changedBits;
+                if (objectIs(oldValue, newValue)) changedBits = 0;
+                else {
+                    changedBits = typeof calculateChangedBits === 'function' ? calculateChangedBits(oldValue, newValue) : MAX_SIGNED_31_BIT_INT;
+                    warning__default['default']((changedBits & MAX_SIGNED_31_BIT_INT) === changedBits, "calculateChangedBits: Expected the return value to be a 31-bit integer. Instead received: " + changedBits);
+                    changedBits |= 0;
+                    if (changedBits !== 0) this.emitter.set(nextProps.value, changedBits);
+                }
+            }
+        };
+        _proto.render = function render() {
+            return this.props.children;
+        };
+        return Provider2;
+    }(React.Component);
+    Provider1.childContextTypes = (_Provider$childContex = {
+    }, _Provider$childContex[contextProp] = PropTypes__default['default'].object.isRequired, _Provider$childContex);
+    var Consumer1 = /*#__PURE__*/ function(_Component2) {
+        _inheritsLoose__default['default'](Consumer2, _Component2);
+        function Consumer2() {
+            var _this2;
+            _this2 = _Component2.apply(this, arguments) || this;
+            _this2.state = {
+                value: _this2.getValue()
+            };
+            _this2.onUpdate = function(newValue, changedBits) {
+                var observedBits = _this2.observedBits | 0;
+                if ((observedBits & changedBits) !== 0) _this2.setState({
+                    value: _this2.getValue()
+                });
+            };
+            return _this2;
+        }
+        var _proto2 = Consumer2.prototype;
+        _proto2.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+            var observedBits = nextProps.observedBits;
+            this.observedBits = observedBits === undefined || observedBits === null ? MAX_SIGNED_31_BIT_INT : observedBits;
+        };
+        _proto2.componentDidMount = function componentDidMount() {
+            if (this.context[contextProp]) this.context[contextProp].on(this.onUpdate);
+            var observedBits = this.props.observedBits;
+            this.observedBits = observedBits === undefined || observedBits === null ? MAX_SIGNED_31_BIT_INT : observedBits;
+        };
+        _proto2.componentWillUnmount = function componentWillUnmount() {
+            if (this.context[contextProp]) this.context[contextProp].off(this.onUpdate);
+        };
+        _proto2.getValue = function getValue() {
+            if (this.context[contextProp]) return this.context[contextProp].get();
+            else return defaultValue;
+        };
+        _proto2.render = function render() {
+            return onlyChild(this.props.children)(this.state.value);
+        };
+        return Consumer2;
+    }(React.Component);
+    Consumer1.contextTypes = (_Consumer$contextType = {
+    }, _Consumer$contextType[contextProp] = PropTypes__default['default'].object, _Consumer$contextType);
+    return {
+        Provider: Provider1,
+        Consumer: Consumer1
+    };
+}
+var index = React__default['default'].createContext || createReactContext;
+module.exports = index;
+
+},{"react":"3b2NM","@babel/runtime/helpers/inheritsLoose":"01QUt","prop-types":"4dfy5","tiny-warning":"3B527"}],"01QUt":[function(require,module,exports) {
+var setPrototypeOf = require("./setPrototypeOf.js");
+function _inheritsLoose(subClass, superClass) {
+    subClass.prototype = Object.create(superClass.prototype);
+    subClass.prototype.constructor = subClass;
+    setPrototypeOf(subClass, superClass);
+}
+module.exports = _inheritsLoose;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+},{"./setPrototypeOf.js":"37Yld"}],"37Yld":[function(require,module,exports) {
+function _setPrototypeOf(o, p) {
+    module.exports = _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf1(o1, p1) {
+        o1.__proto__ = p1;
+        return o1;
+    };
+    module.exports["default"] = module.exports, module.exports.__esModule = true;
+    return _setPrototypeOf(o, p);
+}
+module.exports = _setPrototypeOf;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+},{}],"5CMSM":[function(require,module,exports) {
+var isarray = require('isarray');
+/**
+ * Expose `pathToRegexp`.
+ */ module.exports = pathToRegexp;
+module.exports.parse = parse;
+module.exports.compile = compile;
+module.exports.tokensToFunction = tokensToFunction;
+module.exports.tokensToRegExp = tokensToRegExp;
+/**
+ * The main path matching regexp utility.
+ *
+ * @type {RegExp}
+ */ var PATH_REGEXP = new RegExp([
+    // Match escaped characters that would otherwise appear in future matches.
+    // This allows the user to escape special characters that won't transform.
+    '(\\\\.)',
+    // Match Express-style parameters and un-named parameters with a prefix
+    // and optional suffixes. Matches appear as:
+    //
+    // "/:test(\\d+)?" => ["/", "test", "\d+", undefined, "?", undefined]
+    // "/route(\\d+)"  => [undefined, undefined, undefined, "\d+", undefined, undefined]
+    // "/*"            => ["/", undefined, undefined, undefined, undefined, "*"]
+    '([\\/.])?(?:(?:\\:(\\w+)(?:\\(((?:\\\\.|[^\\\\()])+)\\))?|\\(((?:\\\\.|[^\\\\()])+)\\))([+*?])?|(\\*))'
+].join('|'), 'g');
+/**
+ * Parse a string for the raw tokens.
+ *
+ * @param  {string}  str
+ * @param  {Object=} options
+ * @return {!Array}
+ */ function parse(str, options) {
+    var tokens = [];
+    var key = 0;
+    var index = 0;
+    var path = '';
+    var defaultDelimiter = options && options.delimiter || '/';
+    var res;
+    while((res = PATH_REGEXP.exec(str)) != null){
+        var m = res[0];
+        var escaped = res[1];
+        var offset = res.index;
+        path += str.slice(index, offset);
+        index = offset + m.length;
+        // Ignore already escaped sequences.
+        if (escaped) {
+            path += escaped[1];
+            continue;
+        }
+        var next = str[index];
+        var prefix = res[2];
+        var name = res[3];
+        var capture = res[4];
+        var group = res[5];
+        var modifier = res[6];
+        var asterisk = res[7];
+        // Push the current path onto the tokens.
+        if (path) {
+            tokens.push(path);
+            path = '';
+        }
+        var partial = prefix != null && next != null && next !== prefix;
+        var repeat = modifier === '+' || modifier === '*';
+        var optional = modifier === '?' || modifier === '*';
+        var delimiter = res[2] || defaultDelimiter;
+        var pattern = capture || group;
+        tokens.push({
+            name: name || key++,
+            prefix: prefix || '',
+            delimiter: delimiter,
+            optional: optional,
+            repeat: repeat,
+            partial: partial,
+            asterisk: !!asterisk,
+            pattern: pattern ? escapeGroup(pattern) : asterisk ? '.*' : '[^' + escapeString(delimiter) + ']+?'
+        });
+    }
+    // Match any characters still remaining.
+    if (index < str.length) path += str.substr(index);
+    // If the path exists, push it onto the end.
+    if (path) tokens.push(path);
+    return tokens;
+}
+/**
+ * Compile a string to a template function for the path.
+ *
+ * @param  {string}             str
+ * @param  {Object=}            options
+ * @return {!function(Object=, Object=)}
+ */ function compile(str, options) {
+    return tokensToFunction(parse(str, options), options);
+}
+/**
+ * Prettier encoding of URI path segments.
+ *
+ * @param  {string}
+ * @return {string}
+ */ function encodeURIComponentPretty(str) {
+    return encodeURI(str).replace(/[\/?#]/g, function(c) {
+        return '%' + c.charCodeAt(0).toString(16).toUpperCase();
+    });
+}
+/**
+ * Encode the asterisk parameter. Similar to `pretty`, but allows slashes.
+ *
+ * @param  {string}
+ * @return {string}
+ */ function encodeAsterisk(str) {
+    return encodeURI(str).replace(/[?#]/g, function(c) {
+        return '%' + c.charCodeAt(0).toString(16).toUpperCase();
+    });
+}
+/**
+ * Expose a method for transforming tokens into the path function.
+ */ function tokensToFunction(tokens, options) {
+    // Compile all the tokens into regexps.
+    var matches = new Array(tokens.length);
+    // Compile all the patterns before compilation.
+    for(var i = 0; i < tokens.length; i++)if (typeof tokens[i] === 'object') matches[i] = new RegExp('^(?:' + tokens[i].pattern + ')$', flags(options));
+    return function(obj, opts) {
+        var path = '';
+        var data = obj || {
+        };
+        var options1 = opts || {
+        };
+        var encode = options1.pretty ? encodeURIComponentPretty : encodeURIComponent;
+        for(var i1 = 0; i1 < tokens.length; i1++){
+            var token = tokens[i1];
+            if (typeof token === 'string') {
+                path += token;
+                continue;
+            }
+            var value = data[token.name];
+            var segment;
+            if (value == null) {
+                if (token.optional) {
+                    // Prepend partial segment prefixes.
+                    if (token.partial) path += token.prefix;
+                    continue;
+                } else throw new TypeError('Expected "' + token.name + '" to be defined');
+            }
+            if (isarray(value)) {
+                if (!token.repeat) throw new TypeError('Expected "' + token.name + '" to not repeat, but received `' + JSON.stringify(value) + '`');
+                if (value.length === 0) {
+                    if (token.optional) continue;
+                    else throw new TypeError('Expected "' + token.name + '" to not be empty');
+                }
+                for(var j = 0; j < value.length; j++){
+                    segment = encode(value[j]);
+                    if (!matches[i1].test(segment)) throw new TypeError('Expected all "' + token.name + '" to match "' + token.pattern + '", but received `' + JSON.stringify(segment) + '`');
+                    path += (j === 0 ? token.prefix : token.delimiter) + segment;
+                }
+                continue;
+            }
+            segment = token.asterisk ? encodeAsterisk(value) : encode(value);
+            if (!matches[i1].test(segment)) throw new TypeError('Expected "' + token.name + '" to match "' + token.pattern + '", but received "' + segment + '"');
+            path += token.prefix + segment;
+        }
+        return path;
+    };
+}
+/**
+ * Escape a regular expression string.
+ *
+ * @param  {string} str
+ * @return {string}
+ */ function escapeString(str) {
+    return str.replace(/([.+*?=^!:${}()[\]|\/\\])/g, '\\$1');
+}
+/**
+ * Escape the capturing group by escaping special characters and meaning.
+ *
+ * @param  {string} group
+ * @return {string}
+ */ function escapeGroup(group) {
+    return group.replace(/([=!:$\/()])/g, '\\$1');
+}
+/**
+ * Attach the keys as a property of the regexp.
+ *
+ * @param  {!RegExp} re
+ * @param  {Array}   keys
+ * @return {!RegExp}
+ */ function attachKeys(re, keys) {
+    re.keys = keys;
+    return re;
+}
+/**
+ * Get the flags for a regexp from the options.
+ *
+ * @param  {Object} options
+ * @return {string}
+ */ function flags(options) {
+    return options && options.sensitive ? '' : 'i';
+}
+/**
+ * Pull out keys from a regexp.
+ *
+ * @param  {!RegExp} path
+ * @param  {!Array}  keys
+ * @return {!RegExp}
+ */ function regexpToRegexp(path, keys) {
+    // Use a negative lookahead to match only capturing groups.
+    var groups = path.source.match(/\((?!\?)/g);
+    if (groups) for(var i = 0; i < groups.length; i++)keys.push({
+        name: i,
+        prefix: null,
+        delimiter: null,
+        optional: false,
+        repeat: false,
+        partial: false,
+        asterisk: false,
+        pattern: null
+    });
+    return attachKeys(path, keys);
+}
+/**
+ * Transform an array into a regexp.
+ *
+ * @param  {!Array}  path
+ * @param  {Array}   keys
+ * @param  {!Object} options
+ * @return {!RegExp}
+ */ function arrayToRegexp(path, keys, options) {
+    var parts = [];
+    for(var i = 0; i < path.length; i++)parts.push(pathToRegexp(path[i], keys, options).source);
+    var regexp = new RegExp('(?:' + parts.join('|') + ')', flags(options));
+    return attachKeys(regexp, keys);
+}
+/**
+ * Create a path regexp from string input.
+ *
+ * @param  {string}  path
+ * @param  {!Array}  keys
+ * @param  {!Object} options
+ * @return {!RegExp}
+ */ function stringToRegexp(path, keys, options) {
+    return tokensToRegExp(parse(path, options), keys, options);
+}
+/**
+ * Expose a function for taking tokens and returning a RegExp.
+ *
+ * @param  {!Array}          tokens
+ * @param  {(Array|Object)=} keys
+ * @param  {Object=}         options
+ * @return {!RegExp}
+ */ function tokensToRegExp(tokens, keys, options) {
+    if (!isarray(keys)) {
+        options = keys || options;
+        keys = [];
+    }
+    options = options || {
+    };
+    var strict = options.strict;
+    var end = options.end !== false;
+    var route = '';
+    // Iterate over the tokens and create our regexp string.
+    for(var i = 0; i < tokens.length; i++){
+        var token = tokens[i];
+        if (typeof token === 'string') route += escapeString(token);
+        else {
+            var prefix = escapeString(token.prefix);
+            var capture = '(?:' + token.pattern + ')';
+            keys.push(token);
+            if (token.repeat) capture += '(?:' + prefix + capture + ')*';
+            if (token.optional) {
+                if (!token.partial) capture = '(?:' + prefix + '(' + capture + '))?';
+                else capture = prefix + '(' + capture + ')?';
+            } else capture = prefix + '(' + capture + ')';
+            route += capture;
+        }
+    }
+    var delimiter = escapeString(options.delimiter || '/');
+    var endsWithDelimiter = route.slice(-delimiter.length) === delimiter;
+    // In non-strict mode we allow a slash at the end of match. If the path to
+    // match already ends with a slash, we remove it for consistency. The slash
+    // is valid at the end of a path match, not in the middle. This is important
+    // in non-ending mode, where "/test/" shouldn't match "/test//route".
+    if (!strict) route = (endsWithDelimiter ? route.slice(0, -delimiter.length) : route) + '(?:' + delimiter + '(?=$))?';
+    if (end) route += '$';
+    else // In non-ending mode, we need the capturing groups to match as much as
+    // possible by using a positive lookahead to the end or next path segment.
+    route += strict && endsWithDelimiter ? '' : '(?=' + delimiter + '|$)';
+    return attachKeys(new RegExp('^' + route, flags(options)), keys);
+}
+/**
+ * Normalize the given path string, returning a regular expression.
+ *
+ * An empty array can be passed in for the keys, which will hold the
+ * placeholder key descriptions. For example, using `/user/:id`, `keys` will
+ * contain `[{ name: 'id', delimiter: '/', optional: false, repeat: false }]`.
+ *
+ * @param  {(string|RegExp|Array)} path
+ * @param  {(Array|Object)=}       keys
+ * @param  {Object=}               options
+ * @return {!RegExp}
+ */ function pathToRegexp(path, keys, options) {
+    if (!isarray(keys)) {
+        options = keys || options;
+        keys = [];
+    }
+    options = options || {
+    };
+    if (path instanceof RegExp) return regexpToRegexp(path, keys);
+    if (isarray(path)) return arrayToRegexp(path, keys, options);
+    return stringToRegexp(path, keys, options);
+}
+
+},{"isarray":"5JxtJ"}],"5JxtJ":[function(require,module,exports) {
+module.exports = Array.isArray || function(arr) {
+    return Object.prototype.toString.call(arr) == '[object Array]';
+};
+
+},{}],"3nUHV":[function(require,module,exports) {
+'use strict';
+var reactIs = require('react-is');
+/**
+ * Copyright 2015, Yahoo! Inc.
+ * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
+ */ var REACT_STATICS = {
+    childContextTypes: true,
+    contextType: true,
+    contextTypes: true,
+    defaultProps: true,
+    displayName: true,
+    getDefaultProps: true,
+    getDerivedStateFromError: true,
+    getDerivedStateFromProps: true,
+    mixins: true,
+    propTypes: true,
+    type: true
+};
+var KNOWN_STATICS = {
+    name: true,
+    length: true,
+    prototype: true,
+    caller: true,
+    callee: true,
+    arguments: true,
+    arity: true
+};
+var FORWARD_REF_STATICS = {
+    '$$typeof': true,
+    render: true,
+    defaultProps: true,
+    displayName: true,
+    propTypes: true
+};
+var MEMO_STATICS = {
+    '$$typeof': true,
+    compare: true,
+    defaultProps: true,
+    displayName: true,
+    propTypes: true,
+    type: true
+};
+var TYPE_STATICS = {
+};
+TYPE_STATICS[reactIs.ForwardRef] = FORWARD_REF_STATICS;
+TYPE_STATICS[reactIs.Memo] = MEMO_STATICS;
+function getStatics(component) {
+    // React v16.11 and below
+    if (reactIs.isMemo(component)) return MEMO_STATICS;
+     // React v16.12 and above
+    return TYPE_STATICS[component['$$typeof']] || REACT_STATICS;
+}
+var defineProperty = Object.defineProperty;
+var getOwnPropertyNames = Object.getOwnPropertyNames;
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+var getPrototypeOf = Object.getPrototypeOf;
+var objectPrototype = Object.prototype;
+function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
+    if (typeof sourceComponent !== 'string') {
+        // don't hoist over string (html) components
+        if (objectPrototype) {
+            var inheritedComponent = getPrototypeOf(sourceComponent);
+            if (inheritedComponent && inheritedComponent !== objectPrototype) hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
+        }
+        var keys = getOwnPropertyNames(sourceComponent);
+        if (getOwnPropertySymbols) keys = keys.concat(getOwnPropertySymbols(sourceComponent));
+        var targetStatics = getStatics(targetComponent);
+        var sourceStatics = getStatics(sourceComponent);
+        for(var i = 0; i < keys.length; ++i){
+            var key = keys[i];
+            if (!KNOWN_STATICS[key] && !(blacklist && blacklist[key]) && !(sourceStatics && sourceStatics[key]) && !(targetStatics && targetStatics[key])) {
+                var descriptor = getOwnPropertyDescriptor(sourceComponent, key);
+                try {
+                    // Avoid failures from read-only properties
+                    defineProperty(targetComponent, key, descriptor);
+                } catch (e) {
+                }
+            }
+        }
+    }
+    return targetComponent;
+}
+module.exports = hoistNonReactStatics;
+
+},{"react-is":"68QIU"}],"2O8CH":[function(require,module,exports) {
+var helpers = require("../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _styled = require("@emotion/styled");
+var _styledDefault = parcelHelpers.interopDefault(_styled);
+const Container = _styledDefault.default("div")`\n  color: green;\n`;
+_c = Container;
+const Landing = ()=>{
+    return(/*#__PURE__*/ _reactDefault.default.createElement(Container, {
+        __source: {
+            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/landing/Landing.tsx",
+            lineNumber: 10
+        },
+        __self: undefined
+    }, /*#__PURE__*/ _reactDefault.default.createElement("h1", {
+        __source: {
+            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/landing/Landing.tsx",
+            lineNumber: 11
+        },
+        __self: undefined
+    }, "Glucose Trail Crystal Ball")));
+};
+_c1 = Landing;
+exports.default = Landing;
+var _c, _c1;
+$RefreshReg$(_c, "Container");
+$RefreshReg$(_c1, "Landing");
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"3b2NM","@emotion/styled":"6c82b","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"6c82b":[function(require,module,exports) {
+'use strict';
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+require('@babel/runtime/helpers/extends');
+require('react');
+require('@emotion/is-prop-valid');
+var base_dist_emotionStyledBase = require('../base/dist/emotion-styled-base.browser.cjs.js');
+require('@emotion/react');
+require('@emotion/utils');
+require('@emotion/serialize');
+var tags = [
+    'a',
+    'abbr',
+    'address',
+    'area',
+    'article',
+    'aside',
+    'audio',
+    'b',
+    'base',
+    'bdi',
+    'bdo',
+    'big',
+    'blockquote',
+    'body',
+    'br',
+    'button',
+    'canvas',
+    'caption',
+    'cite',
+    'code',
+    'col',
+    'colgroup',
+    'data',
+    'datalist',
+    'dd',
+    'del',
+    'details',
+    'dfn',
+    'dialog',
+    'div',
+    'dl',
+    'dt',
+    'em',
+    'embed',
+    'fieldset',
+    'figcaption',
+    'figure',
+    'footer',
+    'form',
+    'h1',
+    'h2',
+    'h3',
+    'h4',
+    'h5',
+    'h6',
+    'head',
+    'header',
+    'hgroup',
+    'hr',
+    'html',
+    'i',
+    'iframe',
+    'img',
+    'input',
+    'ins',
+    'kbd',
+    'keygen',
+    'label',
+    'legend',
+    'li',
+    'link',
+    'main',
+    'map',
+    'mark',
+    'marquee',
+    'menu',
+    'menuitem',
+    'meta',
+    'meter',
+    'nav',
+    'noscript',
+    'object',
+    'ol',
+    'optgroup',
+    'option',
+    'output',
+    'p',
+    'param',
+    'picture',
+    'pre',
+    'progress',
+    'q',
+    'rp',
+    'rt',
+    'ruby',
+    's',
+    'samp',
+    'script',
+    'section',
+    'select',
+    'small',
+    'source',
+    'span',
+    'strong',
+    'style',
+    'sub',
+    'summary',
+    'sup',
+    'table',
+    'tbody',
+    'td',
+    'textarea',
+    'tfoot',
+    'th',
+    'thead',
+    'time',
+    'title',
+    'tr',
+    'track',
+    'u',
+    'ul',
+    'var',
+    'video',
+    'wbr',
+    'circle',
+    'clipPath',
+    'defs',
+    'ellipse',
+    'foreignObject',
+    'g',
+    'image',
+    'line',
+    'linearGradient',
+    'mask',
+    'path',
+    'pattern',
+    'polygon',
+    'polyline',
+    'radialGradient',
+    'rect',
+    'stop',
+    'svg',
+    'text',
+    'tspan'
+];
+var newStyled = base_dist_emotionStyledBase['default'].bind();
+tags.forEach(function(tagName) {
+    // $FlowFixMe: we can ignore this because its exposed type is defined by the CreateStyled type
+    newStyled[tagName] = newStyled(tagName);
+});
+exports.default = newStyled;
+
+},{"@babel/runtime/helpers/extends":"3krLJ","react":"3b2NM","@emotion/is-prop-valid":"6j1FK","../base/dist/emotion-styled-base.browser.cjs.js":"50wvE","@emotion/react":"3DTbq","@emotion/utils":"3bU6u","@emotion/serialize":"7L4kg"}],"3krLJ":[function(require,module,exports) {
+function _extends() {
+    module.exports = _extends = Object.assign || function(target) {
+        for(var i = 1; i < arguments.length; i++){
+            var source = arguments[i];
+            for(var key in source)if (Object.prototype.hasOwnProperty.call(source, key)) target[key] = source[key];
+        }
+        return target;
+    };
+    module.exports["default"] = module.exports, module.exports.__esModule = true;
+    return _extends.apply(this, arguments);
+}
+module.exports = _extends;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+},{}],"6j1FK":[function(require,module,exports) {
+'use strict';
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+var memoize = require('@emotion/memoize');
+function _interopDefault(e) {
+    return e && e.__esModule ? e : {
+        'default': e
+    };
+}
+var memoize__default = /*#__PURE__*/ _interopDefault(memoize);
+var reactPropsRegex = /^((children|dangerouslySetInnerHTML|key|ref|autoFocus|defaultValue|defaultChecked|innerHTML|suppressContentEditableWarning|suppressHydrationWarning|valueLink|accept|acceptCharset|accessKey|action|allow|allowUserMedia|allowPaymentRequest|allowFullScreen|allowTransparency|alt|async|autoComplete|autoPlay|capture|cellPadding|cellSpacing|challenge|charSet|checked|cite|classID|className|cols|colSpan|content|contentEditable|contextMenu|controls|controlsList|coords|crossOrigin|data|dateTime|decoding|default|defer|dir|disabled|disablePictureInPicture|download|draggable|encType|form|formAction|formEncType|formMethod|formNoValidate|formTarget|frameBorder|headers|height|hidden|high|href|hrefLang|htmlFor|httpEquiv|id|inputMode|integrity|is|keyParams|keyType|kind|label|lang|list|loading|loop|low|marginHeight|marginWidth|max|maxLength|media|mediaGroup|method|min|minLength|multiple|muted|name|nonce|noValidate|open|optimum|pattern|placeholder|playsInline|poster|preload|profile|radioGroup|readOnly|referrerPolicy|rel|required|reversed|role|rows|rowSpan|sandbox|scope|scoped|scrolling|seamless|selected|shape|size|sizes|slot|span|spellCheck|src|srcDoc|srcLang|srcSet|start|step|style|summary|tabIndex|target|title|translate|type|useMap|value|width|wmode|wrap|about|datatype|inlist|prefix|property|resource|typeof|vocab|autoCapitalize|autoCorrect|autoSave|color|fallback|inert|itemProp|itemScope|itemType|itemID|itemRef|on|option|results|security|unselectable|accentHeight|accumulate|additive|alignmentBaseline|allowReorder|alphabetic|amplitude|arabicForm|ascent|attributeName|attributeType|autoReverse|azimuth|baseFrequency|baselineShift|baseProfile|bbox|begin|bias|by|calcMode|capHeight|clip|clipPathUnits|clipPath|clipRule|colorInterpolation|colorInterpolationFilters|colorProfile|colorRendering|contentScriptType|contentStyleType|cursor|cx|cy|d|decelerate|descent|diffuseConstant|direction|display|divisor|dominantBaseline|dur|dx|dy|edgeMode|elevation|enableBackground|end|exponent|externalResourcesRequired|fill|fillOpacity|fillRule|filter|filterRes|filterUnits|floodColor|floodOpacity|focusable|fontFamily|fontSize|fontSizeAdjust|fontStretch|fontStyle|fontVariant|fontWeight|format|from|fr|fx|fy|g1|g2|glyphName|glyphOrientationHorizontal|glyphOrientationVertical|glyphRef|gradientTransform|gradientUnits|hanging|horizAdvX|horizOriginX|ideographic|imageRendering|in|in2|intercept|k|k1|k2|k3|k4|kernelMatrix|kernelUnitLength|kerning|keyPoints|keySplines|keyTimes|lengthAdjust|letterSpacing|lightingColor|limitingConeAngle|local|markerEnd|markerMid|markerStart|markerHeight|markerUnits|markerWidth|mask|maskContentUnits|maskUnits|mathematical|mode|numOctaves|offset|opacity|operator|order|orient|orientation|origin|overflow|overlinePosition|overlineThickness|panose1|paintOrder|pathLength|patternContentUnits|patternTransform|patternUnits|pointerEvents|points|pointsAtX|pointsAtY|pointsAtZ|preserveAlpha|preserveAspectRatio|primitiveUnits|r|radius|refX|refY|renderingIntent|repeatCount|repeatDur|requiredExtensions|requiredFeatures|restart|result|rotate|rx|ry|scale|seed|shapeRendering|slope|spacing|specularConstant|specularExponent|speed|spreadMethod|startOffset|stdDeviation|stemh|stemv|stitchTiles|stopColor|stopOpacity|strikethroughPosition|strikethroughThickness|string|stroke|strokeDasharray|strokeDashoffset|strokeLinecap|strokeLinejoin|strokeMiterlimit|strokeOpacity|strokeWidth|surfaceScale|systemLanguage|tableValues|targetX|targetY|textAnchor|textDecoration|textRendering|textLength|to|transform|u1|u2|underlinePosition|underlineThickness|unicode|unicodeBidi|unicodeRange|unitsPerEm|vAlphabetic|vHanging|vIdeographic|vMathematical|values|vectorEffect|version|vertAdvY|vertOriginX|vertOriginY|viewBox|viewTarget|visibility|widths|wordSpacing|writingMode|x|xHeight|x1|x2|xChannelSelector|xlinkActuate|xlinkArcrole|xlinkHref|xlinkRole|xlinkShow|xlinkTitle|xlinkType|xmlBase|xmlns|xmlnsXlink|xmlLang|xmlSpace|y|y1|y2|yChannelSelector|z|zoomAndPan|for|class|autofocus)|(([Dd][Aa][Tt][Aa]|[Aa][Rr][Ii][Aa]|x)-.*))$/; // https://esbench.com/bench/5bfee68a4cd7e6009ef61d23
+var isPropValid = /* #__PURE__ */ memoize__default['default'](function(prop) {
+    return reactPropsRegex.test(prop) || prop.charCodeAt(0) === 111 && prop.charCodeAt(1) === 110 && prop.charCodeAt(2) < 91;
+});
+exports.default = isPropValid;
+
+},{"@emotion/memoize":"46jWj"}],"46jWj":[function(require,module,exports) {
+'use strict';
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+function memoize(fn) {
+    var cache = Object.create(null);
+    return function(arg) {
+        if (cache[arg] === undefined) cache[arg] = fn(arg);
+        return cache[arg];
+    };
+}
+exports.default = memoize;
+
+},{}],"50wvE":[function(require,module,exports) {
+'use strict';
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+var _extends = require('@babel/runtime/helpers/extends');
+var React = require('react');
+var isPropValid = require('@emotion/is-prop-valid');
+var react = require('@emotion/react');
+var utils = require('@emotion/utils');
+var serialize = require('@emotion/serialize');
+function _interopDefault(e) {
+    return e && e.__esModule ? e : {
+        'default': e
+    };
+}
+var _extends__default = /*#__PURE__*/ _interopDefault(_extends);
+var isPropValid__default = /*#__PURE__*/ _interopDefault(isPropValid);
+var testOmitPropsOnStringTag = isPropValid__default['default'];
+var testOmitPropsOnComponent = function testOmitPropsOnComponent1(key) {
+    return key !== 'theme';
+};
+var getDefaultShouldForwardProp = function getDefaultShouldForwardProp1(tag) {
+    return typeof tag === 'string' && // for "a" so this is checking that
+    // it's a lowercase character
+    tag.charCodeAt(0) > 96 ? testOmitPropsOnStringTag : testOmitPropsOnComponent;
+};
+var composeShouldForwardProps = function composeShouldForwardProps1(tag, options, isReal) {
+    var shouldForwardProp;
+    if (options) {
+        var optionsShouldForwardProp = options.shouldForwardProp;
+        shouldForwardProp = tag.__emotion_forwardProp && optionsShouldForwardProp ? function(propName) {
+            return tag.__emotion_forwardProp(propName) && optionsShouldForwardProp(propName);
+        } : optionsShouldForwardProp;
+    }
+    if (typeof shouldForwardProp !== 'function' && isReal) shouldForwardProp = tag.__emotion_forwardProp;
+    return shouldForwardProp;
+};
+var ILLEGAL_ESCAPE_SEQUENCE_ERROR = "You have illegal escape sequence in your template literal, most likely inside content's property value.\nBecause you write your CSS inside a JavaScript string you actually have to do double escaping, so for example \"content: '\\00d7';\" should become \"content: '\\\\00d7';\".\nYou can read more about this here:\nhttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#ES2018_revision_of_illegal_escape_sequences";
+var createStyled = function createStyled1(tag, options) {
+    if (tag === undefined) throw new Error('You are trying to create a styled element with an undefined component.\nYou may have forgotten to import it.');
+    var isReal = tag.__emotion_real === tag;
+    var baseTag = isReal && tag.__emotion_base || tag;
+    var identifierName;
+    var targetClassName;
+    if (options !== undefined) {
+        identifierName = options.label;
+        targetClassName = options.target;
+    }
+    var shouldForwardProp = composeShouldForwardProps(tag, options, isReal);
+    var defaultShouldForwardProp = shouldForwardProp || getDefaultShouldForwardProp(baseTag);
+    var shouldUseAs = !defaultShouldForwardProp('as');
+    return function() {
+        var args = arguments;
+        var styles = isReal && tag.__emotion_styles !== undefined ? tag.__emotion_styles.slice(0) : [];
+        if (identifierName !== undefined) styles.push("label:" + identifierName + ";");
+        if (args[0] == null || args[0].raw === undefined) styles.push.apply(styles, args);
+        else {
+            if (args[0][0] === undefined) console.error(ILLEGAL_ESCAPE_SEQUENCE_ERROR);
+            styles.push(args[0][0]);
+            var len = args.length;
+            var i = 1;
+            for(; i < len; i++){
+                if (args[0][i] === undefined) console.error(ILLEGAL_ESCAPE_SEQUENCE_ERROR);
+                styles.push(args[i], args[0][i]);
+            }
+        } // $FlowFixMe: we need to cast StatelessFunctionalComponent to our PrivateStyledComponent class
+        var Styled = react.withEmotionCache(function(props, cache, ref) {
+            var finalTag = shouldUseAs && props.as || baseTag;
+            var className = '';
+            var classInterpolations = [];
+            var mergedProps = props;
+            if (props.theme == null) {
+                mergedProps = {
+                };
+                for(var key in props)mergedProps[key] = props[key];
+                mergedProps.theme = React.useContext(react.ThemeContext);
+            }
+            if (typeof props.className === 'string') className = utils.getRegisteredStyles(cache.registered, classInterpolations, props.className);
+            else if (props.className != null) className = props.className + " ";
+            var serialized = serialize.serializeStyles(styles.concat(classInterpolations), cache.registered, mergedProps);
+            var rules = utils.insertStyles(cache, serialized, typeof finalTag === 'string');
+            className += cache.key + "-" + serialized.name;
+            if (targetClassName !== undefined) className += " " + targetClassName;
+            var finalShouldForwardProp = shouldUseAs && shouldForwardProp === undefined ? getDefaultShouldForwardProp(finalTag) : defaultShouldForwardProp;
+            var newProps = {
+            };
+            for(var _key in props){
+                if (shouldUseAs && _key === 'as') continue;
+                if (finalShouldForwardProp(_key)) newProps[_key] = props[_key];
+            }
+            newProps.className = className;
+            newProps.ref = ref;
+            var ele = /*#__PURE__*/ React.createElement(finalTag, newProps);
+            return ele;
+        });
+        Styled.displayName = identifierName !== undefined ? identifierName : "Styled(" + (typeof baseTag === 'string' ? baseTag : baseTag.displayName || baseTag.name || 'Component') + ")";
+        Styled.defaultProps = tag.defaultProps;
+        Styled.__emotion_real = Styled;
+        Styled.__emotion_base = baseTag;
+        Styled.__emotion_styles = styles;
+        Styled.__emotion_forwardProp = shouldForwardProp;
+        Object.defineProperty(Styled, 'toString', {
+            value: function value() {
+                if (targetClassName === undefined && true) return 'NO_COMPONENT_SELECTOR';
+                 // $FlowFixMe: coerce undefined to string
+                return "." + targetClassName;
+            }
+        });
+        Styled.withComponent = function(nextTag, nextOptions) {
+            return createStyled1(nextTag, _extends__default['default']({
+            }, options, nextOptions, {
+                shouldForwardProp: composeShouldForwardProps(Styled, nextOptions, true)
+            })).apply(void 0, styles);
+        };
+        return Styled;
+    };
+};
+exports.default = createStyled;
+
+},{"@babel/runtime/helpers/extends":"3krLJ","react":"3b2NM","@emotion/is-prop-valid":"6j1FK","@emotion/react":"3DTbq","@emotion/utils":"3bU6u","@emotion/serialize":"7L4kg"}],"3DTbq":[function(require,module,exports) {
+var global = arguments[3];
+'use strict';
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+var React = require('react');
+require('@emotion/cache');
+var emotionElement = require('./emotion-element-e91afc55.browser.cjs.js');
+require('@babel/runtime/helpers/extends');
+require('@emotion/weak-memoize');
+require('hoist-non-react-statics');
+require('../isolated-hoist-non-react-statics-do-not-use-this-in-your-code/dist/emotion-react-isolated-hoist-non-react-statics-do-not-use-this-in-your-code.browser.cjs.js');
+var utils = require('@emotion/utils');
+var serialize = require('@emotion/serialize');
+var sheet = require('@emotion/sheet');
+var pkg = {
+    name: "@emotion/react",
+    version: "11.4.0",
+    main: "dist/emotion-react.cjs.js",
+    module: "dist/emotion-react.esm.js",
+    browser: {
+        "./dist/emotion-react.cjs.js": "./dist/emotion-react.browser.cjs.js",
+        "./dist/emotion-react.esm.js": "./dist/emotion-react.browser.esm.js"
+    },
+    types: "types/index.d.ts",
+    files: [
+        "src",
+        "dist",
+        "jsx-runtime",
+        "jsx-dev-runtime",
+        "isolated-hoist-non-react-statics-do-not-use-this-in-your-code",
+        "types/*.d.ts",
+        "macro.js",
+        "macro.d.ts",
+        "macro.js.flow"
+    ],
+    sideEffects: false,
+    author: "mitchellhamilton <mitchell@mitchellhamilton.me>",
+    license: "MIT",
+    scripts: {
+        "test:typescript": "dtslint types"
+    },
+    dependencies: {
+        "@babel/runtime": "^7.13.10",
+        "@emotion/cache": "^11.4.0",
+        "@emotion/serialize": "^1.0.2",
+        "@emotion/sheet": "^1.0.1",
+        "@emotion/utils": "^1.0.0",
+        "@emotion/weak-memoize": "^0.2.5",
+        "hoist-non-react-statics": "^3.3.1"
+    },
+    peerDependencies: {
+        "@babel/core": "^7.0.0",
+        react: ">=16.8.0"
+    },
+    peerDependenciesMeta: {
+        "@babel/core": {
+            optional: true
+        },
+        "@types/react": {
+            optional: true
+        }
+    },
+    devDependencies: {
+        "@babel/core": "^7.13.10",
+        "@emotion/css": "11.1.3",
+        "@emotion/css-prettifier": "1.0.0",
+        "@emotion/server": "11.4.0",
+        "@emotion/styled": "11.3.0",
+        "@types/react": "^16.9.11",
+        dtslint: "^0.3.0",
+        "html-tag-names": "^1.1.2",
+        react: "16.14.0",
+        "svg-tag-names": "^1.1.1"
+    },
+    repository: "https://github.com/emotion-js/emotion/tree/main/packages/react",
+    publishConfig: {
+        access: "public"
+    },
+    "umd:main": "dist/emotion-react.umd.min.js",
+    preconstruct: {
+        entrypoints: [
+            "./index.js",
+            "./jsx-runtime.js",
+            "./jsx-dev-runtime.js",
+            "./isolated-hoist-non-react-statics-do-not-use-this-in-your-code.js"
+        ],
+        umdName: "emotionReact"
+    }
+};
+var jsx = function jsx1(type, props) {
+    var args = arguments;
+    if (props == null || !emotionElement.hasOwnProperty.call(props, 'css')) // $FlowFixMe
+    return React.createElement.apply(undefined, args);
+    var argsLength = args.length;
+    var createElementArgArray = new Array(argsLength);
+    createElementArgArray[0] = emotionElement.Emotion;
+    createElementArgArray[1] = emotionElement.createEmotionProps(type, props);
+    for(var i = 2; i < argsLength; i++)createElementArgArray[i] = args[i];
+     // $FlowFixMe
+    return React.createElement.apply(null, createElementArgArray);
+};
+var warnedAboutCssPropForGlobal = false; // maintain place over rerenders.
+// initial render from browser, insertBefore context.sheet.tags[0] or if a style hasn't been inserted there yet, appendChild
+// initial client-side render from SSR, use place of hydrating tag
+var Global = /* #__PURE__ */ emotionElement.withEmotionCache(function(props, cache) {
+    if (!warnedAboutCssPropForGlobal && // probably using the custom createElement which
+    // means it will be turned into a className prop
+    // $FlowFixMe I don't really want to add it to the type since it shouldn't be used
+    (props.className || props.css)) {
+        console.error("It looks like you're using the css prop on Global, did you mean to use the styles prop instead?");
+        warnedAboutCssPropForGlobal = true;
+    }
+    var styles = props.styles;
+    var serialized = serialize.serializeStyles([
+        styles
+    ], undefined, typeof styles === 'function' || Array.isArray(styles) ? React.useContext(emotionElement.ThemeContext) : undefined);
+    // but it is based on a constant that will never change at runtime
+    // it's effectively like having two implementations and switching them out
+    // so it's not actually breaking anything
+    var sheetRef = React.useRef();
+    React.useLayoutEffect(function() {
+        var key = cache.key + "-global";
+        var sheet$1 = new sheet.StyleSheet({
+            key: key,
+            nonce: cache.sheet.nonce,
+            container: cache.sheet.container,
+            speedy: cache.sheet.isSpeedy
+        });
+        var rehydrating = false; // $FlowFixMe
+        var node = document.querySelector("style[data-emotion=\"" + key + " " + serialized.name + "\"]");
+        if (cache.sheet.tags.length) sheet$1.before = cache.sheet.tags[0];
+        if (node !== null) {
+            rehydrating = true; // clear the hash so this node won't be recognizable as rehydratable by other <Global/>s
+            node.setAttribute('data-emotion', key);
+            sheet$1.hydrate([
+                node
+            ]);
+        }
+        sheetRef.current = [
+            sheet$1,
+            rehydrating
+        ];
+        return function() {
+            sheet$1.flush();
+        };
+    }, [
+        cache
+    ]);
+    React.useLayoutEffect(function() {
+        var sheetRefCurrent = sheetRef.current;
+        var sheet1 = sheetRefCurrent[0], rehydrating = sheetRefCurrent[1];
+        if (rehydrating) {
+            sheetRefCurrent[1] = false;
+            return;
+        }
+        if (serialized.next !== undefined) // insert keyframes
+        utils.insertStyles(cache, serialized.next, true);
+        if (sheet1.tags.length) {
+            // if this doesn't exist then it will be null so the style element will be appended
+            var element = sheet1.tags[sheet1.tags.length - 1].nextElementSibling;
+            sheet1.before = element;
+            sheet1.flush();
+        }
+        cache.insert("", serialized, sheet1, false);
+    }, [
+        cache,
+        serialized.name
+    ]);
+    return null;
+});
+Global.displayName = 'EmotionGlobal';
+function css() {
+    for(var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)args[_key] = arguments[_key];
+    return serialize.serializeStyles(args);
+}
+var keyframes = function keyframes1() {
+    var insertable = css.apply(void 0, arguments);
+    var name = "animation-" + insertable.name; // $FlowFixMe
+    return {
+        name: name,
+        styles: "@keyframes " + name + "{" + insertable.styles + "}",
+        anim: 1,
+        toString: function toString() {
+            return "_EMO_" + this.name + "_" + this.styles + "_EMO_";
+        }
+    };
+};
+var classnames = function classnames1(args) {
+    var len = args.length;
+    var i = 0;
+    var cls = '';
+    for(; i < len; i++){
+        var arg = args[i];
+        if (arg == null) continue;
+        var toAdd = void 0;
+        switch(typeof arg){
+            case 'boolean':
+                break;
+            case 'object':
+                if (Array.isArray(arg)) toAdd = classnames1(arg);
+                else {
+                    if (arg.styles !== undefined && arg.name !== undefined) console.error("You have passed styles created with `css` from `@emotion/react` package to the `cx`.\n`cx` is meant to compose class names (strings) so you should convert those styles to a class name by passing them to the `css` received from <ClassNames/> component.");
+                    toAdd = '';
+                    for(var k in arg)if (arg[k] && k) {
+                        toAdd && (toAdd += ' ');
+                        toAdd += k;
+                    }
+                }
+                break;
+            default:
+                toAdd = arg;
+        }
+        if (toAdd) {
+            cls && (cls += ' ');
+            cls += toAdd;
+        }
+    }
+    return cls;
+};
+function merge(registered, css1, className) {
+    var registeredStyles = [];
+    var rawClassName = utils.getRegisteredStyles(registered, registeredStyles, className);
+    if (registeredStyles.length < 2) return className;
+    return rawClassName + css1(registeredStyles);
+}
+var ClassNames = /* #__PURE__ */ emotionElement.withEmotionCache(function(props, cache) {
+    var hasRendered = false;
+    var css1 = function css2() {
+        if (hasRendered && true) throw new Error('css can only be used during render');
+        for(var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)args[_key] = arguments[_key];
+        var serialized = serialize.serializeStyles(args, cache.registered);
+        utils.insertStyles(cache, serialized, false);
+        return cache.key + "-" + serialized.name;
+    };
+    var cx = function cx1() {
+        if (hasRendered && true) throw new Error('cx can only be used during render');
+        for(var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++)args[_key2] = arguments[_key2];
+        return merge(cache.registered, css1, classnames(args));
+    };
+    var content = {
+        css: css1,
+        cx: cx,
+        theme: React.useContext(emotionElement.ThemeContext)
+    };
+    var ele = props.children(content);
+    hasRendered = true;
+    return ele;
+});
+ClassNames.displayName = 'EmotionClassNames';
+var isBrowser = true; // #1727 for some reason Jest evaluates modules twice if some consuming module gets mocked with jest.mock
+var isJest = typeof jest !== 'undefined';
+if (isBrowser && !isJest) {
+    var globalContext = isBrowser ? window : global;
+    var globalKey = "__EMOTION_REACT_" + pkg.version.split('.')[0] + "__";
+    if (globalContext[globalKey]) console.warn("You are loading @emotion/react when it is already loaded. Running multiple instances may cause problems. This can happen if multiple versions are used, or if multiple builds of the same version are used.");
+    globalContext[globalKey] = true;
+}
+exports.CacheProvider = emotionElement.CacheProvider;
+exports.ThemeContext = emotionElement.ThemeContext;
+exports.ThemeProvider = emotionElement.ThemeProvider;
+exports.useTheme = emotionElement.useTheme;
+exports.withEmotionCache = emotionElement.withEmotionCache;
+exports.withTheme = emotionElement.withTheme;
+exports.ClassNames = ClassNames;
+exports.Global = Global;
+exports.createElement = jsx;
+exports.css = css;
+exports.jsx = jsx;
+exports.keyframes = keyframes;
+
+},{"react":"3b2NM","@emotion/cache":"3b56H","./emotion-element-e91afc55.browser.cjs.js":"4hiCn","@babel/runtime/helpers/extends":"3krLJ","@emotion/weak-memoize":"6wqWu","hoist-non-react-statics":"3nUHV","../isolated-hoist-non-react-statics-do-not-use-this-in-your-code/dist/emotion-react-isolated-hoist-non-react-statics-do-not-use-this-in-your-code.browser.cjs.js":"FgFXJ","@emotion/utils":"3bU6u","@emotion/serialize":"7L4kg","@emotion/sheet":"5ZDao"}],"3b56H":[function(require,module,exports) {
+'use strict';
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+var sheet = require('@emotion/sheet');
+var stylis = require('stylis');
+require('@emotion/weak-memoize');
+require('@emotion/memoize');
+var last = function last1(arr) {
+    return arr.length ? arr[arr.length - 1] : null;
+};
+var toRules = function toRules1(parsed, points) {
+    // pretend we've started with a comma
+    var index = -1;
+    var character = 44;
+    do switch(stylis.token(character)){
+        case 0:
+            // &\f
+            if (character === 38 && stylis.peek() === 12) // this is not 100% correct, we don't account for literal sequences here - like for example quoted strings
+            // stylis inserts \f after & to know when & where it should replace this sequence with the context selector
+            // and when it should just concatenate the outer and inner selectors
+            // it's very unlikely for this sequence to actually appear in a different context, so we just leverage this fact here
+            points[index] = 1;
+            parsed[index] += stylis.identifier(stylis.position - 1);
+            break;
+        case 2:
+            parsed[index] += stylis.delimit(character);
+            break;
+        case 4:
+            // comma
+            if (character === 44) {
+                // colon
+                parsed[++index] = stylis.peek() === 58 ? '&\f' : '';
+                points[index] = parsed[index].length;
+                break;
+            }
+        // fallthrough
+        default:
+            parsed[index] += stylis.from(character);
+    }
+    while (character = stylis.next())
+    return parsed;
+};
+var getRules = function getRules1(value, points) {
+    return stylis.dealloc(toRules(stylis.alloc(value), points));
+}; // WeakSet would be more appropriate, but only WeakMap is supported in IE11
+var fixedElements = /* #__PURE__ */ new WeakMap();
+var compat = function compat1(element) {
+    if (element.type !== 'rule' || !element.parent || !element.length) return;
+    var value = element.value, parent = element.parent;
+    var isImplicitRule = element.column === parent.column && element.line === parent.line;
+    while(parent.type !== 'rule'){
+        parent = parent.parent;
+        if (!parent) return;
+    } // short-circuit for the simplest case
+    if (element.props.length === 1 && value.charCodeAt(0) !== 58 && !fixedElements.get(parent)) return;
+     // if this is an implicitly inserted rule (the one eagerly inserted at the each new nested level)
+    // then the props has already been manipulated beforehand as they that array is shared between it and its "rule parent"
+    if (isImplicitRule) return;
+    fixedElements.set(element, true);
+    var points = [];
+    var rules = getRules(value, points);
+    var parentRules = parent.props;
+    for(var i = 0, k = 0; i < rules.length; i++)for(var j = 0; j < parentRules.length; j++, k++)element.props[k] = points[i] ? rules[i].replace(/&\f/g, parentRules[j]) : parentRules[j] + " " + rules[i];
+};
+var removeLabel = function removeLabel1(element) {
+    if (element.type === 'decl') {
+        var value = element.value;
+        if (value.charCodeAt(0) === 108 && value.charCodeAt(2) === 98) {
+            // this ignores label
+            element["return"] = '';
+            element.value = '';
+        }
+    }
+};
+var ignoreFlag = 'emotion-disable-server-rendering-unsafe-selector-warning-please-do-not-use-this-the-warning-exists-for-a-reason';
+var isIgnoringComment = function isIgnoringComment1(element) {
+    return !!element && element.type === 'comm' && element.children.indexOf(ignoreFlag) > -1;
+};
+var createUnsafeSelectorsAlarm = function createUnsafeSelectorsAlarm1(cache) {
+    return function(element, index, children) {
+        if (element.type !== 'rule') return;
+        var unsafePseudoClasses = element.value.match(/(:first|:nth|:nth-last)-child/g);
+        if (unsafePseudoClasses && cache.compat !== true) {
+            var prevElement = index > 0 ? children[index - 1] : null;
+            if (prevElement && isIgnoringComment(last(prevElement.children))) return;
+            unsafePseudoClasses.forEach(function(unsafePseudoClass) {
+                console.error("The pseudo class \"" + unsafePseudoClass + "\" is potentially unsafe when doing server-side rendering. Try changing it to \"" + unsafePseudoClass.split('-child')[0] + "-of-type\".");
+            });
+        }
+    };
+};
+var isImportRule = function isImportRule1(element) {
+    return element.type.charCodeAt(1) === 105 && element.type.charCodeAt(0) === 64;
+};
+var isPrependedWithRegularRules = function isPrependedWithRegularRules1(index, children) {
+    for(var i = index - 1; i >= 0; i--){
+        if (!isImportRule(children[i])) return true;
+    }
+    return false;
+}; // use this to remove incorrect elements from further processing
+// so they don't get handed to the `sheet` (or anything else)
+// as that could potentially lead to additional logs which in turn could be overhelming to the user
+var nullifyElement = function nullifyElement1(element) {
+    element.type = '';
+    element.value = '';
+    element["return"] = '';
+    element.children = '';
+    element.props = '';
+};
+var incorrectImportAlarm = function incorrectImportAlarm1(element, index, children) {
+    if (!isImportRule(element)) return;
+    if (element.parent) {
+        console.error("`@import` rules can't be nested inside other rules. Please move it to the top level and put it before regular rules. Keep in mind that they can only be used within global styles.");
+        nullifyElement(element);
+    } else if (isPrependedWithRegularRules(index, children)) {
+        console.error("`@import` rules can't be after other rules. Please put your `@import` rules before your other rules.");
+        nullifyElement(element);
+    }
+};
+var defaultStylisPlugins = [
+    stylis.prefixer
+];
+var createCache = function createCache1(options) {
+    var key = options.key;
+    if (!key) throw new Error("You have to configure `key` for your cache. Please make sure it's unique (and not equal to 'css') as it's used for linking styles to your cache.\nIf multiple caches share the same key they might \"fight\" for each other's style elements.");
+    if (key === 'css') {
+        var ssrStyles = document.querySelectorAll("style[data-emotion]:not([data-s])"); // get SSRed styles out of the way of React's hydration
+        // document.head is a safe place to move them to(though note document.head is not necessarily the last place they will be)
+        // note this very very intentionally targets all style elements regardless of the key to ensure
+        // that creating a cache works inside of render of a React component
+        Array.prototype.forEach.call(ssrStyles, function(node) {
+            // we want to only move elements which have a space in the data-emotion attribute value
+            // because that indicates that it is an Emotion 11 server-side rendered style elements
+            // while we will already ignore Emotion 11 client-side inserted styles because of the :not([data-s]) part in the selector
+            // Emotion 10 client-side inserted styles did not have data-s (but importantly did not have a space in their data-emotion attributes)
+            // so checking for the space ensures that loading Emotion 11 after Emotion 10 has inserted some styles
+            // will not result in the Emotion 10 styles being destroyed
+            var dataEmotionAttribute = node.getAttribute('data-emotion');
+            if (dataEmotionAttribute.indexOf(' ') === -1) return;
+            document.head.appendChild(node);
+            node.setAttribute('data-s', '');
+        });
+    }
+    var stylisPlugins = options.stylisPlugins || defaultStylisPlugins;
+    // $FlowFixMe
+    if (/[^a-z-]/.test(key)) throw new Error("Emotion key must only contain lower case alphabetical characters and - but \"" + key + "\" was passed");
+    var inserted = {
+    }; // $FlowFixMe
+    var container;
+    var nodesToHydrate = [];
+    container = options.container || document.head;
+    Array.prototype.forEach.call(// means that the style elements we're looking at are only Emotion 11 server-rendered style elements
+    document.querySelectorAll("style[data-emotion^=\"" + key + " \"]"), function(node) {
+        var attrib = node.getAttribute("data-emotion").split(' '); // $FlowFixMe
+        for(var i = 1; i < attrib.length; i++)inserted[attrib[i]] = true;
+        nodesToHydrate.push(node);
+    });
+    var _insert;
+    var omnipresentPlugins = [
+        compat,
+        removeLabel
+    ];
+    omnipresentPlugins.push(createUnsafeSelectorsAlarm({
+        get compat () {
+            return cache.compat;
+        }
+    }), incorrectImportAlarm);
+    var currentSheet;
+    var finalizingPlugins = [
+        stylis.stringify,
+        function(element) {
+            if (!element.root) {
+                if (element["return"]) currentSheet.insert(element["return"]);
+                else if (element.value && element.type !== stylis.COMMENT) // insert empty rule in non-production environments
+                // so @emotion/jest can grab `key` from the (JS)DOM for caches without any rules inserted yet
+                currentSheet.insert(element.value + "{}");
+            }
+        }
+    ];
+    var serializer = stylis.middleware(omnipresentPlugins.concat(stylisPlugins, finalizingPlugins));
+    var stylis$1 = function stylis$11(styles) {
+        return stylis.serialize(stylis.compile(styles), serializer);
+    };
+    _insert = function insert(selector, serialized, sheet1, shouldCache) {
+        currentSheet = sheet1;
+        if (serialized.map !== undefined) currentSheet = {
+            insert: function insert1(rule) {
+                sheet1.insert(rule + serialized.map);
+            }
+        };
+        stylis$1(selector ? selector + "{" + serialized.styles + "}" : serialized.styles);
+        if (shouldCache) cache.inserted[serialized.name] = true;
+    };
+    var cache = {
+        key: key,
+        sheet: new sheet.StyleSheet({
+            key: key,
+            container: container,
+            nonce: options.nonce,
+            speedy: options.speedy,
+            prepend: options.prepend
+        }),
+        nonce: options.nonce,
+        inserted: inserted,
+        registered: {
+        },
+        insert: _insert
+    };
+    cache.sheet.hydrate(nodesToHydrate);
+    return cache;
+};
+exports.default = createCache;
+
+},{"@emotion/sheet":"5ZDao","stylis":"53ogk","@emotion/weak-memoize":"6wqWu","@emotion/memoize":"46jWj"}],"5ZDao":[function(require,module,exports) {
+'use strict';
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+/*
+
+Based off glamor's StyleSheet, thanks Sunil ❤️
+
+high performance StyleSheet for css-in-js systems
+
+- uses multiple style tags behind the scenes for millions of rules
+- uses `insertRule` for appending in production for *much* faster performance
+
+// usage
+
+import { StyleSheet } from '@emotion/sheet'
+
+let styleSheet = new StyleSheet({ key: '', container: document.head })
+
+styleSheet.insert('#box { border: 1px solid red; }')
+- appends a css rule into the stylesheet
+
+styleSheet.flush()
+- empties the stylesheet of all its contents
+
+*/ // $FlowFixMe
+function sheetForTag(tag) {
+    if (tag.sheet) // $FlowFixMe
+    return tag.sheet;
+     // this weirdness brought to you by firefox
+    /* istanbul ignore next */ for(var i = 0; i < document.styleSheets.length; i++){
+        if (document.styleSheets[i].ownerNode === tag) // $FlowFixMe
+        return document.styleSheets[i];
+    }
+}
+function createStyleElement(options) {
+    var tag = document.createElement('style');
+    tag.setAttribute('data-emotion', options.key);
+    if (options.nonce !== undefined) tag.setAttribute('nonce', options.nonce);
+    tag.appendChild(document.createTextNode(''));
+    tag.setAttribute('data-s', '');
+    return tag;
+}
+var StyleSheet1 = /*#__PURE__*/ function() {
+    function StyleSheet2(options) {
+        var _this = this;
+        this._insertTag = function(tag) {
+            var before;
+            if (_this.tags.length === 0) before = _this.prepend ? _this.container.firstChild : _this.before;
+            else before = _this.tags[_this.tags.length - 1].nextSibling;
+            _this.container.insertBefore(tag, before);
+            _this.tags.push(tag);
+        };
+        this.isSpeedy = options.speedy === undefined ? false : options.speedy;
+        this.tags = [];
+        this.ctr = 0;
+        this.nonce = options.nonce; // key is the value of the data-emotion attribute, it's used to identify different sheets
+        this.key = options.key;
+        this.container = options.container;
+        this.prepend = options.prepend;
+        this.before = null;
+    }
+    var _proto = StyleSheet2.prototype;
+    _proto.hydrate = function hydrate(nodes) {
+        nodes.forEach(this._insertTag);
+    };
+    _proto.insert = function insert(rule) {
+        // the max length is how many rules we have per style tag, it's 65000 in speedy mode
+        // it's 1 in dev because we insert source maps that map a single rule to a location
+        // and you can only have one source map per style tag
+        if (this.ctr % (this.isSpeedy ? 65000 : 1) === 0) this._insertTag(createStyleElement(this));
+        var tag = this.tags[this.tags.length - 1];
+        var isImportRule = rule.charCodeAt(0) === 64 && rule.charCodeAt(1) === 105;
+        if (isImportRule && this._alreadyInsertedOrderInsensitiveRule) // this would only cause problem in speedy mode
+        // but we don't want enabling speedy to affect the observable behavior
+        // so we report this error at all times
+        console.error("You're attempting to insert the following rule:\n" + rule + '\n\n`@import` rules must be before all other types of rules in a stylesheet but other rules have already been inserted. Please ensure that `@import` rules are before all other rules.');
+        this._alreadyInsertedOrderInsensitiveRule = this._alreadyInsertedOrderInsensitiveRule || !isImportRule;
+        if (this.isSpeedy) {
+            var sheet = sheetForTag(tag);
+            try {
+                // this is the ultrafast version, works across browsers
+                // the big drawback is that the css won't be editable in devtools
+                sheet.insertRule(rule, sheet.cssRules.length);
+            } catch (e) {
+                if (!/:(-moz-placeholder|-ms-input-placeholder|-moz-read-write|-moz-read-only){/.test(rule)) console.error("There was a problem inserting the following rule: \"" + rule + "\"", e);
+            }
+        } else tag.appendChild(document.createTextNode(rule));
+        this.ctr++;
+    };
+    _proto.flush = function flush() {
+        // $FlowFixMe
+        this.tags.forEach(function(tag) {
+            return tag.parentNode.removeChild(tag);
+        });
+        this.tags = [];
+        this.ctr = 0;
+        this._alreadyInsertedOrderInsensitiveRule = false;
+    };
+    return StyleSheet2;
+}();
+exports.StyleSheet = StyleSheet1;
+
+},{}],"53ogk":[function(require,module,exports) {
+(function(e, r) {
+    typeof exports === "object" && typeof module !== "undefined" ? r(exports) : typeof define === "function" && define.amd ? define([
+        "exports"
+    ], r) : (e = e || self, r(e.stylis = {
+    }));
+})(this, function(e) {
+    "use strict";
+    var r = "-ms-";
+    var a = "-moz-";
+    var c = "-webkit-";
+    var t = "comm";
+    var n = "rule";
+    var s = "decl";
+    var i = "@page";
+    var u = "@media";
+    var o = "@import";
+    var f = "@charset";
+    var l = "@viewport";
+    var h = "@supports";
+    var p = "@document";
+    var v = "@namespace";
+    var b = "@keyframes";
+    var m = "@font-face";
+    var w = "@counter-style";
+    var d = "@font-feature-values";
+    var $ = Math.abs;
+    var k = String.fromCharCode;
+    function g(e1, r1) {
+        return (((r1 << 2 ^ A(e1, 0)) << 2 ^ A(e1, 1)) << 2 ^ A(e1, 2)) << 2 ^ A(e1, 3);
+    }
+    function x(e1) {
+        return e1.trim();
+    }
+    function E(e1, r1) {
+        return (e1 = r1.exec(e1)) ? e1[0] : e1;
+    }
+    function y(e1, r1, a1) {
+        return e1.replace(r1, a1);
+    }
+    function T(e1, r1) {
+        return e1.indexOf(r1);
+    }
+    function A(e1, r1) {
+        return e1.charCodeAt(r1) | 0;
+    }
+    function O(e1, r1, a1) {
+        return e1.slice(r1, a1);
+    }
+    function M(e1) {
+        return e1.length;
+    }
+    function C(e1) {
+        return e1.length;
+    }
+    function S(e1, r1) {
+        return r1.push(e1), e1;
+    }
+    function R(e1, r1) {
+        return e1.map(r1).join("");
+    }
+    e.line = 1;
+    e.column = 1;
+    e.length = 0;
+    e.position = 0;
+    e.character = 0;
+    e.characters = "";
+    function z(r1, a1, c1, t1, n1, s1, i1) {
+        return {
+            value: r1,
+            root: a1,
+            parent: c1,
+            type: t1,
+            props: n1,
+            children: s1,
+            line: e.line,
+            column: e.column,
+            length: i1,
+            return: ""
+        };
+    }
+    function N(e1, r1, a1) {
+        return z(e1, r1.root, r1.parent, a1, r1.props, r1.children, 0);
+    }
+    function P() {
+        return e.character;
+    }
+    function U() {
+        e.character = e.position > 0 ? A(e.characters, --e.position) : 0;
+        if (e.column--, e.character === 10) e.column = 1, e.line--;
+        return e.character;
+    }
+    function _() {
+        e.character = e.position < e.length ? A(e.characters, e.position++) : 0;
+        if (e.column++, e.character === 10) e.column = 1, e.line++;
+        return e.character;
+    }
+    function j() {
+        return A(e.characters, e.position);
+    }
+    function F() {
+        return e.position;
+    }
+    function I(r1, a1) {
+        return O(e.characters, r1, a1);
+    }
+    function L(e1) {
+        switch(e1){
+            case 0:
+            case 9:
+            case 10:
+            case 13:
+            case 32:
+                return 5;
+            case 33:
+            case 43:
+            case 44:
+            case 47:
+            case 62:
+            case 64:
+            case 126:
+            case 59:
+            case 123:
+            case 125:
+                return 4;
+            case 58:
+                return 3;
+            case 34:
+            case 39:
+            case 40:
+            case 91:
+                return 2;
+            case 41:
+            case 93:
+                return 1;
+        }
+        return 0;
+    }
+    function D(r1) {
+        return e.line = e.column = 1, e.length = M(e.characters = r1), e.position = 0, [];
+    }
+    function K(r1) {
+        return e.characters = "", r1;
+    }
+    function V(r1) {
+        return x(I(e.position - 1, H(r1 === 91 ? r1 + 2 : r1 === 40 ? r1 + 1 : r1)));
+    }
+    function W(e1) {
+        return K(B(D(e1)));
+    }
+    function Y(r1) {
+        while(e.character = j())if (e.character < 33) _();
+        else break;
+        return L(r1) > 2 || L(e.character) > 3 ? "" : " ";
+    }
+    function B(r1) {
+        while(_())switch(L(e.character)){
+            case 0:
+                S(q(e.position - 1), r1);
+                break;
+            case 2:
+                S(V(e.character), r1);
+                break;
+            default:
+                S(k(e.character), r1);
+        }
+        return r1;
+    }
+    function G(r1, a1) {
+        while((--a1) && _())if (e.character < 48 || e.character > 102 || e.character > 57 && e.character < 65 || e.character > 70 && e.character < 97) break;
+        return I(r1, F() + (a1 < 6 && j() == 32 && _() == 32));
+    }
+    function H(r1) {
+        while(_())switch(e.character){
+            case r1:
+                return e.position;
+            case 34:
+            case 39:
+                return H(r1 === 34 || r1 === 39 ? r1 : e.character);
+            case 40:
+                if (r1 === 41) H(r1);
+                break;
+            case 92:
+                _();
+                break;
+        }
+        return e.position;
+    }
+    function Z(r1, a1) {
+        while(_())if (r1 + e.character === 57) break;
+        else if (r1 + e.character === 84 && j() === 47) break;
+        return "/*" + I(a1, e.position - 1) + "*" + k(r1 === 47 ? r1 : _());
+    }
+    function q(r1) {
+        while(!L(j()))_();
+        return I(r1, e.position);
+    }
+    function J(e1) {
+        return K(Q("", null, null, null, [
+            ""
+        ], e1 = D(e1), 0, [
+            0
+        ], e1));
+    }
+    function Q(e1, r1, a1, c1, t1, n1, s1, i1, u1) {
+        var o1 = 0;
+        var f1 = 0;
+        var l1 = s1;
+        var h1 = 0;
+        var p1 = 0;
+        var v1 = 0;
+        var b1 = 1;
+        var m1 = 1;
+        var w1 = 1;
+        var d1 = 0;
+        var $1 = "";
+        var g1 = t1;
+        var x1 = n1;
+        var E1 = c1;
+        var T1 = $1;
+        while(m1)switch(v1 = d1, d1 = _()){
+            case 34:
+            case 39:
+            case 91:
+            case 40:
+                T1 += V(d1);
+                break;
+            case 9:
+            case 10:
+            case 13:
+            case 32:
+                T1 += Y(v1);
+                break;
+            case 92:
+                T1 += G(F() - 1, 7);
+                continue;
+            case 47:
+                switch(j()){
+                    case 42:
+                    case 47:
+                        S(ee(Z(_(), F()), r1, a1), u1);
+                        break;
+                    default:
+                        T1 += "/";
+                }
+                break;
+            case 123 * b1:
+                i1[o1++] = M(T1) * w1;
+            case 125 * b1:
+            case 59:
+            case 0:
+                switch(d1){
+                    case 0:
+                    case 125:
+                        m1 = 0;
+                    case 59 + f1:
+                        if (p1 > 0 && M(T1) - l1) S(p1 > 32 ? re(T1 + ";", c1, a1, l1 - 1) : re(y(T1, " ", "") + ";", c1, a1, l1 - 2), u1);
+                        break;
+                    case 59:
+                        T1 += ";";
+                    default:
+                        S(E1 = X(T1, r1, a1, o1, f1, t1, i1, $1, g1 = [], x1 = [], l1), n1);
+                        if (d1 === 123) {
+                            if (f1 === 0) Q(T1, r1, E1, E1, g1, n1, l1, i1, x1);
+                            else switch(h1){
+                                case 100:
+                                case 109:
+                                case 115:
+                                    Q(e1, E1, E1, c1 && S(X(e1, E1, E1, 0, 0, t1, i1, $1, t1, g1 = [], l1), x1), t1, x1, l1, i1, c1 ? g1 : x1);
+                                    break;
+                                default:
+                                    Q(T1, E1, E1, E1, [
+                                        ""
+                                    ], x1, l1, i1, x1);
+                            }
+                        }
+                }
+                o1 = f1 = p1 = 0, b1 = w1 = 1, $1 = T1 = "", l1 = s1;
+                break;
+            case 58:
+                l1 = 1 + M(T1), p1 = v1;
+            default:
+                if (b1 < 1) {
+                    if (d1 == 123) --b1;
+                    else if (d1 == 125 && (b1++) == 0 && U() == 125) continue;
+                }
+                switch(T1 += k(d1), d1 * b1){
+                    case 38:
+                        w1 = f1 > 0 ? 1 : (T1 += "\f", -1);
+                        break;
+                    case 44:
+                        i1[o1++] = (M(T1) - 1) * w1, w1 = 1;
+                        break;
+                    case 64:
+                        if (j() === 45) T1 += V(_());
+                        h1 = j(), f1 = M($1 = T1 += q(F())), d1++;
+                        break;
+                    case 45:
+                        if (v1 === 45 && M(T1) == 2) b1 = 0;
+                }
+        }
+        return n1;
+    }
+    function X(e1, r1, a1, c1, t1, s1, i1, u1, o1, f1, l1) {
+        var h1 = t1 - 1;
+        var p1 = t1 === 0 ? s1 : [
+            ""
+        ];
+        var v1 = C(p1);
+        for(var b1 = 0, m1 = 0, w1 = 0; b1 < c1; ++b1)for(var d1 = 0, k1 = O(e1, h1 + 1, h1 = $(m1 = i1[b1])), g1 = e1; d1 < v1; ++d1)if (g1 = x(m1 > 0 ? p1[d1] + " " + k1 : y(k1, /&\f/g, p1[d1]))) o1[w1++] = g1;
+        return z(e1, r1, a1, t1 === 0 ? n : u1, o1, f1, l1);
+    }
+    function ee(e1, r1, a1) {
+        return z(e1, r1, a1, t, k(P()), O(e1, 2, -2), 0);
+    }
+    function re(e1, r1, a1, c1) {
+        return z(e1, r1, a1, s, O(e1, 0, c1), O(e1, c1 + 1, -1), c1);
+    }
+    function ae(e1, t1) {
+        switch(g(e1, t1)){
+            case 5103:
+                return c + "print-" + e1 + e1;
+            case 5737:
+            case 4201:
+            case 3177:
+            case 3433:
+            case 1641:
+            case 4457:
+            case 2921:
+            case 5572:
+            case 6356:
+            case 5844:
+            case 3191:
+            case 6645:
+            case 3005:
+            case 6391:
+            case 5879:
+            case 5623:
+            case 6135:
+            case 4599:
+            case 4855:
+            case 4215:
+            case 6389:
+            case 5109:
+            case 5365:
+            case 5621:
+            case 3829:
+                return c + e1 + e1;
+            case 5349:
+            case 4246:
+            case 4810:
+            case 6968:
+            case 2756:
+                return c + e1 + a + e1 + r + e1 + e1;
+            case 6828:
+            case 4268:
+                return c + e1 + r + e1 + e1;
+            case 6165:
+                return c + e1 + r + "flex-" + e1 + e1;
+            case 5187:
+                return c + e1 + y(e1, /(\w+).+(:[^]+)/, c + "box-$1$2" + r + "flex-$1$2") + e1;
+            case 5443:
+                return c + e1 + r + "flex-item-" + y(e1, /flex-|-self/, "") + e1;
+            case 4675:
+                return c + e1 + r + "flex-line-pack" + y(e1, /align-content|flex-|-self/, "") + e1;
+            case 5548:
+                return c + e1 + r + y(e1, "shrink", "negative") + e1;
+            case 5292:
+                return c + e1 + r + y(e1, "basis", "preferred-size") + e1;
+            case 6060:
+                return c + "box-" + y(e1, "-grow", "") + c + e1 + r + y(e1, "grow", "positive") + e1;
+            case 4554:
+                return c + y(e1, /([^-])(transform)/g, "$1" + c + "$2") + e1;
+            case 6187:
+                return y(y(y(e1, /(zoom-|grab)/, c + "$1"), /(image-set)/, c + "$1"), e1, "") + e1;
+            case 5495:
+            case 3959:
+                return y(e1, /(image-set\([^]*)/, c + "$1" + "$`$1");
+            case 4968:
+                return y(y(e1, /(.+:)(flex-)?(.*)/, c + "box-pack:$3" + r + "flex-pack:$3"), /s.+-b[^;]+/, "justify") + c + e1 + e1;
+            case 4095:
+            case 3583:
+            case 4068:
+            case 2532:
+                return y(e1, /(.+)-inline(.+)/, c + "$1$2") + e1;
+            case 8116:
+            case 7059:
+            case 5753:
+            case 5535:
+            case 5445:
+            case 5701:
+            case 4933:
+            case 4677:
+            case 5533:
+            case 5789:
+            case 5021:
+            case 4765:
+                if (M(e1) - 1 - t1 > 6) switch(A(e1, t1 + 1)){
+                    case 109:
+                        if (A(e1, t1 + 4) !== 45) break;
+                    case 102:
+                        return y(e1, /(.+:)(.+)-([^]+)/, "$1" + c + "$2-$3" + "$1" + a + (A(e1, t1 + 3) == 108 ? "$3" : "$2-$3")) + e1;
+                    case 115:
+                        return ~T(e1, "stretch") ? ae(y(e1, "stretch", "fill-available"), t1) + e1 : e1;
+                }
+                break;
+            case 4949:
+                if (A(e1, t1 + 1) !== 115) break;
+            case 6444:
+                switch(A(e1, M(e1) - 3 - (~T(e1, "!important") && 10))){
+                    case 107:
+                        return y(e1, ":", ":" + c) + e1;
+                    case 101:
+                        return y(e1, /(.+:)([^;!]+)(;|!.+)?/, "$1" + c + (A(e1, 14) === 45 ? "inline-" : "") + "box$3" + "$1" + c + "$2$3" + "$1" + r + "$2box$3") + e1;
+                }
+                break;
+            case 5936:
+                switch(A(e1, t1 + 11)){
+                    case 114:
+                        return c + e1 + r + y(e1, /[svh]\w+-[tblr]{2}/, "tb") + e1;
+                    case 108:
+                        return c + e1 + r + y(e1, /[svh]\w+-[tblr]{2}/, "tb-rl") + e1;
+                    case 45:
+                        return c + e1 + r + y(e1, /[svh]\w+-[tblr]{2}/, "lr") + e1;
+                }
+                return c + e1 + r + e1 + e1;
+        }
+        return e1;
+    }
+    function ce(e1, r1) {
+        var a1 = "";
+        var c1 = C(e1);
+        for(var t1 = 0; t1 < c1; t1++)a1 += r1(e1[t1], t1, e1, r1) || "";
+        return a1;
+    }
+    function te(e1, r1, a1, c1) {
+        switch(e1.type){
+            case o:
+            case s:
+                return e1.return = e1.return || e1.value;
+            case t:
+                return "";
+            case n:
+                e1.value = e1.props.join(",");
+        }
+        return M(a1 = ce(e1.children, c1)) ? e1.return = e1.value + "{" + a1 + "}" : "";
+    }
+    function ne(e1) {
+        var r1 = C(e1);
+        return function(a1, c1, t1, n1) {
+            var s1 = "";
+            for(var i1 = 0; i1 < r1; i1++)s1 += e1[i1](a1, c1, t1, n1) || "";
+            return s1;
+        };
+    }
+    function se(e1) {
+        return function(r1) {
+            if (!r1.root) {
+                if (r1 = r1.return) e1(r1);
+            }
+        };
+    }
+    function ie(e1, t1, i1, u1) {
+        if (!e1.return) switch(e1.type){
+            case s:
+                e1.return = ae(e1.value, e1.length);
+                break;
+            case b:
+                return ce([
+                    N(y(e1.value, "@", "@" + c), e1, "")
+                ], u1);
+            case n:
+                if (e1.length) return R(e1.props, function(t2) {
+                    switch(E(t2, /(::plac\w+|:read-\w+)/)){
+                        case ":read-only":
+                        case ":read-write":
+                            return ce([
+                                N(y(t2, /:(read-\w+)/, ":" + a + "$1"), e1, "")
+                            ], u1);
+                        case "::placeholder":
+                            return ce([
+                                N(y(t2, /:(plac\w+)/, ":" + c + "input-$1"), e1, ""),
+                                N(y(t2, /:(plac\w+)/, ":" + a + "$1"), e1, ""),
+                                N(y(t2, /:(plac\w+)/, r + "input-$1"), e1, "")
+                            ], u1);
+                    }
+                    return "";
+                });
+        }
+    }
+    function ue(e1) {
+        switch(e1.type){
+            case n:
+                e1.props = e1.props.map(function(r1) {
+                    return R(W(r1), function(r2, a1, c1) {
+                        switch(A(r2, 0)){
+                            case 12:
+                                return O(r2, 1, M(r2));
+                            case 0:
+                            case 40:
+                            case 43:
+                            case 62:
+                            case 126:
+                                return r2;
+                            case 58:
+                                if (c1[++a1] === "global") c1[a1] = "", c1[++a1] = "\f" + O(c1[a1], a1 = 1, -1);
+                            case 32:
+                                return a1 === 1 ? "" : r2;
+                            default:
+                                switch(a1){
+                                    case 0:
+                                        e1 = r2;
+                                        return C(c1) > 1 ? "" : r2;
+                                    case a1 = C(c1) - 1:
+                                    case 2:
+                                        return a1 === 2 ? r2 + e1 + e1 : r2 + e1;
+                                    default:
+                                        return r2;
+                                }
+                        }
+                    });
+                });
+        }
+    }
+    e.CHARSET = f;
+    e.COMMENT = t;
+    e.COUNTER_STYLE = w;
+    e.DECLARATION = s;
+    e.DOCUMENT = p;
+    e.FONT_FACE = m;
+    e.FONT_FEATURE_VALUES = d;
+    e.IMPORT = o;
+    e.KEYFRAMES = b;
+    e.MEDIA = u;
+    e.MOZ = a;
+    e.MS = r;
+    e.NAMESPACE = v;
+    e.PAGE = i;
+    e.RULESET = n;
+    e.SUPPORTS = h;
+    e.VIEWPORT = l;
+    e.WEBKIT = c;
+    e.abs = $;
+    e.alloc = D;
+    e.append = S;
+    e.caret = F;
+    e.char = P;
+    e.charat = A;
+    e.combine = R;
+    e.comment = ee;
+    e.commenter = Z;
+    e.compile = J;
+    e.copy = N;
+    e.dealloc = K;
+    e.declaration = re;
+    e.delimit = V;
+    e.delimiter = H;
+    e.escaping = G;
+    e.from = k;
+    e.hash = g;
+    e.identifier = q;
+    e.indexof = T;
+    e.match = E;
+    e.middleware = ne;
+    e.namespace = ue;
+    e.next = _;
+    e.node = z;
+    e.parse = Q;
+    e.peek = j;
+    e.prefix = ae;
+    e.prefixer = ie;
+    e.prev = U;
+    e.replace = y;
+    e.ruleset = X;
+    e.rulesheet = se;
+    e.serialize = ce;
+    e.sizeof = C;
+    e.slice = I;
+    e.stringify = te;
+    e.strlen = M;
+    e.substr = O;
+    e.token = L;
+    e.tokenize = W;
+    e.tokenizer = B;
+    e.trim = x;
+    e.whitespace = Y;
+    Object.defineProperty(e, "__esModule", {
+        value: true
+    });
+});
+
+},{}],"6wqWu":[function(require,module,exports) {
+'use strict';
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+var weakMemoize = function weakMemoize1(func) {
+    // $FlowFixMe flow doesn't include all non-primitive types as allowed for weakmaps
+    var cache = new WeakMap();
+    return function(arg) {
+        if (cache.has(arg)) // $FlowFixMe
+        return cache.get(arg);
+        var ret = func(arg);
+        cache.set(arg, ret);
+        return ret;
+    };
+};
+exports.default = weakMemoize;
+
+},{}],"4hiCn":[function(require,module,exports) {
+'use strict';
+var React = require('react');
+var createCache = require('@emotion/cache');
+var _extends = require('@babel/runtime/helpers/extends');
+var weakMemoize = require('@emotion/weak-memoize');
+var isolatedHoistNonReactStaticsDoNotUseThisInYourCode_dist_emotionReactIsolatedHoistNonReactStaticsDoNotUseThisInYourCode = require('../isolated-hoist-non-react-statics-do-not-use-this-in-your-code/dist/emotion-react-isolated-hoist-non-react-statics-do-not-use-this-in-your-code.browser.cjs.js');
+var utils = require('@emotion/utils');
+var serialize = require('@emotion/serialize');
+function _interopDefault(e) {
+    return e && e.__esModule ? e : {
+        'default': e
+    };
+}
+var createCache__default = /*#__PURE__*/ _interopDefault(createCache);
+var _extends__default = /*#__PURE__*/ _interopDefault(_extends);
+var weakMemoize__default = /*#__PURE__*/ _interopDefault(weakMemoize);
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var EmotionCacheContext = /* #__PURE__ */ React.createContext(// because this module is primarily intended for the browser and node
+// but it's also required in react native and similar environments sometimes
+// and we could have a special build just for that
+// but this is much easier and the native packages
+// might use a different theme context in the future anyway
+typeof HTMLElement !== 'undefined' ? /* #__PURE__ */ createCache__default['default']({
+    key: 'css'
+}) : null);
+var CacheProvider = EmotionCacheContext.Provider;
+var withEmotionCache = function withEmotionCache1(func) {
+    // $FlowFixMe
+    return(/*#__PURE__*/ React.forwardRef(function(props, ref) {
+        // the cache will never be null in the browser
+        var cache = React.useContext(EmotionCacheContext);
+        return func(props, cache, ref);
+    }));
+};
+var ThemeContext = /* #__PURE__ */ React.createContext({
+});
+var useTheme = function useTheme1() {
+    return React.useContext(ThemeContext);
+};
+var getTheme = function getTheme1(outerTheme, theme) {
+    if (typeof theme === 'function') {
+        var mergedTheme = theme(outerTheme);
+        if (mergedTheme == null || typeof mergedTheme !== 'object' || Array.isArray(mergedTheme)) throw new Error('[ThemeProvider] Please return an object from your theme function, i.e. theme={() => ({})}!');
+        return mergedTheme;
+    }
+    if (theme == null || typeof theme !== 'object' || Array.isArray(theme)) throw new Error('[ThemeProvider] Please make your theme prop a plain object');
+    return _extends__default['default']({
+    }, outerTheme, theme);
+};
+var createCacheWithTheme = /* #__PURE__ */ weakMemoize__default['default'](function(outerTheme) {
+    return weakMemoize__default['default'](function(theme) {
+        return getTheme(outerTheme, theme);
+    });
+});
+var ThemeProvider = function ThemeProvider1(props) {
+    var theme = React.useContext(ThemeContext);
+    if (props.theme !== theme) theme = createCacheWithTheme(theme)(props.theme);
+    return(/*#__PURE__*/ React.createElement(ThemeContext.Provider, {
+        value: theme
+    }, props.children));
+};
+function withTheme(Component) {
+    var componentName = Component.displayName || Component.name || 'Component';
+    var render = function render1(props, ref) {
+        var theme = React.useContext(ThemeContext);
+        return(/*#__PURE__*/ React.createElement(Component, _extends__default['default']({
+            theme: theme,
+            ref: ref
+        }, props)));
+    }; // $FlowFixMe
+    var WithTheme = /*#__PURE__*/ React.forwardRef(render);
+    WithTheme.displayName = "WithTheme(" + componentName + ")";
+    return isolatedHoistNonReactStaticsDoNotUseThisInYourCode_dist_emotionReactIsolatedHoistNonReactStaticsDoNotUseThisInYourCode['default'](WithTheme, Component);
+}
+// thus we only need to replace what is a valid character for JS, but not for CSS
+var sanitizeIdentifier = function sanitizeIdentifier1(identifier) {
+    return identifier.replace(/\$/g, '-');
+};
+var typePropName = '__EMOTION_TYPE_PLEASE_DO_NOT_USE__';
+var labelPropName = '__EMOTION_LABEL_PLEASE_DO_NOT_USE__';
+var createEmotionProps = function createEmotionProps1(type, props) {
+    if (typeof props.css === 'string' && props.css.indexOf(':') !== -1) throw new Error("Strings are not allowed as css prop values, please wrap it in a css template literal from '@emotion/react' like this: css`" + props.css + "`");
+    var newProps = {
+    };
+    for(var key in props)if (hasOwnProperty.call(props, key)) newProps[key] = props[key];
+    newProps[typePropName] = type;
+    var error = new Error();
+    if (error.stack) {
+        // chrome
+        var match = error.stack.match(/at (?:Object\.|Module\.|)(?:jsx|createEmotionProps).*\n\s+at (?:Object\.|)([A-Z][A-Za-z0-9$]+) /);
+        if (!match) // safari and firefox
+        match = error.stack.match(/.*\n([A-Z][A-Za-z0-9$]+)@/);
+        if (match) newProps[labelPropName] = sanitizeIdentifier(match[1]);
+    }
+    return newProps;
+};
+var Emotion = /* #__PURE__ */ withEmotionCache(function(props, cache, ref) {
+    var cssProp = props.css; // so that using `css` from `emotion` and passing the result to the css prop works
+    // not passing the registered cache to serializeStyles because it would
+    // make certain babel optimisations not possible
+    if (typeof cssProp === 'string' && cache.registered[cssProp] !== undefined) cssProp = cache.registered[cssProp];
+    var type = props[typePropName];
+    var registeredStyles = [
+        cssProp
+    ];
+    var className = '';
+    if (typeof props.className === 'string') className = utils.getRegisteredStyles(cache.registered, registeredStyles, props.className);
+    else if (props.className != null) className = props.className + " ";
+    var serialized = serialize.serializeStyles(registeredStyles, undefined, typeof cssProp === 'function' || Array.isArray(cssProp) ? React.useContext(ThemeContext) : undefined);
+    if (serialized.name.indexOf('-') === -1) {
+        var labelFromStack = props[labelPropName];
+        if (labelFromStack) serialized = serialize.serializeStyles([
+            serialized,
+            'label:' + labelFromStack + ';'
+        ]);
+    }
+    var rules = utils.insertStyles(cache, serialized, typeof type === 'string');
+    className += cache.key + "-" + serialized.name;
+    var newProps = {
+    };
+    for(var key in props)if (hasOwnProperty.call(props, key) && key !== 'css' && key !== typePropName && key !== labelPropName) newProps[key] = props[key];
+    newProps.ref = ref;
+    newProps.className = className;
+    var ele = /*#__PURE__*/ React.createElement(type, newProps);
+    return ele;
+});
+Emotion.displayName = 'EmotionCssPropInternal';
+exports.CacheProvider = CacheProvider;
+exports.Emotion = Emotion;
+exports.ThemeContext = ThemeContext;
+exports.ThemeProvider = ThemeProvider;
+exports.createEmotionProps = createEmotionProps;
+exports.hasOwnProperty = hasOwnProperty;
+exports.useTheme = useTheme;
+exports.withEmotionCache = withEmotionCache;
+exports.withTheme = withTheme;
+
+},{"react":"3b2NM","@emotion/cache":"3b56H","@babel/runtime/helpers/extends":"3krLJ","@emotion/weak-memoize":"6wqWu","../isolated-hoist-non-react-statics-do-not-use-this-in-your-code/dist/emotion-react-isolated-hoist-non-react-statics-do-not-use-this-in-your-code.browser.cjs.js":"FgFXJ","@emotion/utils":"3bU6u","@emotion/serialize":"7L4kg"}],"FgFXJ":[function(require,module,exports) {
+'use strict';
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+var hoistNonReactStatics$1 = require('hoist-non-react-statics');
+function _interopDefault(e) {
+    return e && e.__esModule ? e : {
+        'default': e
+    };
+}
+var hoistNonReactStatics__default = /*#__PURE__*/ _interopDefault(hoistNonReactStatics$1);
+// this file isolates this package that is not tree-shakeable
+// and if this module doesn't actually contain any logic of its own
+// then Rollup just use 'hoist-non-react-statics' directly in other chunks
+var hoistNonReactStatics = function(targetComponent, sourceComponent) {
+    return hoistNonReactStatics__default['default'](targetComponent, sourceComponent);
+};
+exports.default = hoistNonReactStatics;
+
+},{"hoist-non-react-statics":"3nUHV"}],"3bU6u":[function(require,module,exports) {
+'use strict';
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+var isBrowser = true;
+function getRegisteredStyles(registered, registeredStyles, classNames) {
+    var rawClassName = '';
+    classNames.split(' ').forEach(function(className) {
+        if (registered[className] !== undefined) registeredStyles.push(registered[className] + ";");
+        else rawClassName += className + " ";
+    });
+    return rawClassName;
+}
+var insertStyles = function insertStyles1(cache, serialized, isStringTag) {
+    var className = cache.key + "-" + serialized.name;
+    if (// class name could be used further down
+    // the tree but if it's a string tag, we know it won't
+    // so we don't have to add it to registered cache.
+    // this improves memory usage since we can avoid storing the whole style string
+    (isStringTag === false || // in node since emotion-server relies on whether a style is in
+    // the registered cache to know whether a style is global or not
+    // also, note that this check will be dead code eliminated in the browser
+    isBrowser === false) && cache.registered[className] === undefined) cache.registered[className] = serialized.styles;
+    if (cache.inserted[serialized.name] === undefined) {
+        var current = serialized;
+        do {
+            var maybeStyles = cache.insert(serialized === current ? "." + className : '', current, cache.sheet, true);
+            current = current.next;
+        }while (current !== undefined)
+    }
+};
+exports.getRegisteredStyles = getRegisteredStyles;
+exports.insertStyles = insertStyles;
+
+},{}],"7L4kg":[function(require,module,exports) {
+'use strict';
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+var hashString = require('@emotion/hash');
+var unitless = require('@emotion/unitless');
+var memoize = require('@emotion/memoize');
+function _interopDefault(e) {
+    return e && e.__esModule ? e : {
+        'default': e
+    };
+}
+var hashString__default = /*#__PURE__*/ _interopDefault(hashString);
+var unitless__default = /*#__PURE__*/ _interopDefault(unitless);
+var memoize__default = /*#__PURE__*/ _interopDefault(memoize);
+var ILLEGAL_ESCAPE_SEQUENCE_ERROR = "You have illegal escape sequence in your template literal, most likely inside content's property value.\nBecause you write your CSS inside a JavaScript string you actually have to do double escaping, so for example \"content: '\\00d7';\" should become \"content: '\\\\00d7';\".\nYou can read more about this here:\nhttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#ES2018_revision_of_illegal_escape_sequences";
+var UNDEFINED_AS_OBJECT_KEY_ERROR = "You have passed in falsy value as style object's key (can happen when in example you pass unexported component as computed key).";
+var hyphenateRegex = /[A-Z]|^ms/g;
+var animationRegex = /_EMO_([^_]+?)_([^]*?)_EMO_/g;
+var isCustomProperty = function isCustomProperty1(property) {
+    return property.charCodeAt(1) === 45;
+};
+var isProcessableValue = function isProcessableValue1(value) {
+    return value != null && typeof value !== 'boolean';
+};
+var processStyleName = /* #__PURE__ */ memoize__default['default'](function(styleName) {
+    return isCustomProperty(styleName) ? styleName : styleName.replace(hyphenateRegex, '-$&').toLowerCase();
+});
+var processStyleValue = function processStyleValue1(key, value) {
+    switch(key){
+        case 'animation':
+        case 'animationName':
+            if (typeof value === 'string') return value.replace(animationRegex, function(match, p1, p2) {
+                cursor = {
+                    name: p1,
+                    styles: p2,
+                    next: cursor
+                };
+                return p1;
+            });
+    }
+    if (unitless__default['default'][key] !== 1 && !isCustomProperty(key) && typeof value === 'number' && value !== 0) return value + 'px';
+    return value;
+};
+var contentValuePattern = /(attr|counters?|url|(((repeating-)?(linear|radial))|conic)-gradient)\(|(no-)?(open|close)-quote/;
+var contentValues = [
+    'normal',
+    'none',
+    'initial',
+    'inherit',
+    'unset'
+];
+var oldProcessStyleValue = processStyleValue;
+var msPattern = /^-ms-/;
+var hyphenPattern = /-(.)/g;
+var hyphenatedCache = {
+};
+processStyleValue = function processStyleValue2(key, value) {
+    if (key === 'content') {
+        if (typeof value !== 'string' || contentValues.indexOf(value) === -1 && !contentValuePattern.test(value) && (value.charAt(0) !== value.charAt(value.length - 1) || value.charAt(0) !== '"' && value.charAt(0) !== "'")) throw new Error("You seem to be using a value for 'content' without quotes, try replacing it with `content: '\"" + value + "\"'`");
+    }
+    var processed = oldProcessStyleValue(key, value);
+    if (processed !== '' && !isCustomProperty(key) && key.indexOf('-') !== -1 && hyphenatedCache[key] === undefined) {
+        hyphenatedCache[key] = true;
+        console.error("Using kebab-case for css properties in objects is not supported. Did you mean " + key.replace(msPattern, 'ms-').replace(hyphenPattern, function(str, _char) {
+            return _char.toUpperCase();
+        }) + "?");
+    }
+    return processed;
+};
+function handleInterpolation(mergedProps, registered, interpolation) {
+    if (interpolation == null) return '';
+    if (interpolation.__emotion_styles !== undefined) {
+        if (interpolation.toString() === 'NO_COMPONENT_SELECTOR') throw new Error('Component selectors can only be used in conjunction with @emotion/babel-plugin.');
+        return interpolation;
+    }
+    switch(typeof interpolation){
+        case 'boolean':
+            return '';
+        case 'object':
+            if (interpolation.anim === 1) {
+                cursor = {
+                    name: interpolation.name,
+                    styles: interpolation.styles,
+                    next: cursor
+                };
+                return interpolation.name;
+            }
+            if (interpolation.styles !== undefined) {
+                var next = interpolation.next;
+                if (next !== undefined) // not the most efficient thing ever but this is a pretty rare case
+                // and there will be very few iterations of this generally
+                while(next !== undefined){
+                    cursor = {
+                        name: next.name,
+                        styles: next.styles,
+                        next: cursor
+                    };
+                    next = next.next;
+                }
+                var styles = interpolation.styles + ";";
+                if (interpolation.map !== undefined) styles += interpolation.map;
+                return styles;
+            }
+            return createStringFromObject(mergedProps, registered, interpolation);
+        case 'function':
+            if (mergedProps !== undefined) {
+                var previousCursor = cursor;
+                var result = interpolation(mergedProps);
+                cursor = previousCursor;
+                return handleInterpolation(mergedProps, registered, result);
+            } else console.error("Functions that are interpolated in css calls will be stringified.\nIf you want to have a css call based on props, create a function that returns a css call like this\nlet dynamicStyle = (props) => css`color: ${props.color}`\nIt can be called directly with props or interpolated in a styled call like this\nlet SomeComponent = styled('div')`${dynamicStyle}`");
+            break;
+        case 'string':
+            var matched = [];
+            var replaced = interpolation.replace(animationRegex, function(match, p1, p2) {
+                var fakeVarName = "animation" + matched.length;
+                matched.push("const " + fakeVarName + " = keyframes`" + p2.replace(/^@keyframes animation-\w+/, '') + "`");
+                return "${" + fakeVarName + "}";
+            });
+            if (matched.length) console.error("`keyframes` output got interpolated into plain string, please wrap it with `css`.\n\nInstead of doing this:\n\n" + [].concat(matched, [
+                "`" + replaced + "`"
+            ]).join('\n') + '\n\nYou should wrap it with `css` like this:\n\n' + ("css`" + replaced + "`"));
+            break;
+    } // finalize string values (regular strings and functions interpolated into css calls)
+    if (registered == null) return interpolation;
+    var cached = registered[interpolation];
+    return cached !== undefined ? cached : interpolation;
+}
+function createStringFromObject(mergedProps, registered, obj) {
+    var string = '';
+    if (Array.isArray(obj)) for(var i = 0; i < obj.length; i++)string += handleInterpolation(mergedProps, registered, obj[i]) + ";";
+    else for(var _key in obj){
+        var value = obj[_key];
+        if (typeof value !== 'object') {
+            if (registered != null && registered[value] !== undefined) string += _key + "{" + registered[value] + "}";
+            else if (isProcessableValue(value)) string += processStyleName(_key) + ":" + processStyleValue(_key, value) + ";";
+        } else {
+            if (_key === 'NO_COMPONENT_SELECTOR' && true) throw new Error('Component selectors can only be used in conjunction with @emotion/babel-plugin.');
+            if (Array.isArray(value) && typeof value[0] === 'string' && (registered == null || registered[value[0]] === undefined)) {
+                for(var _i = 0; _i < value.length; _i++)if (isProcessableValue(value[_i])) string += processStyleName(_key) + ":" + processStyleValue(_key, value[_i]) + ";";
+            } else {
+                var interpolated = handleInterpolation(mergedProps, registered, value);
+                switch(_key){
+                    case 'animation':
+                    case 'animationName':
+                        string += processStyleName(_key) + ":" + interpolated + ";";
+                        break;
+                    default:
+                        if (_key === 'undefined') console.error(UNDEFINED_AS_OBJECT_KEY_ERROR);
+                        string += _key + "{" + interpolated + "}";
+                }
+            }
+        }
+    }
+    return string;
+}
+var labelPattern = /label:\s*([^\s;\n{]+)\s*(;|$)/g;
+var sourceMapPattern;
+sourceMapPattern = /\/\*#\ssourceMappingURL=data:application\/json;\S+\s+\*\//g;
+// keyframes are stored on the SerializedStyles object as a linked list
+var cursor;
+var serializeStyles = function serializeStyles1(args, registered, mergedProps) {
+    if (args.length === 1 && typeof args[0] === 'object' && args[0] !== null && args[0].styles !== undefined) return args[0];
+    var stringMode = true;
+    var styles = '';
+    cursor = undefined;
+    var strings = args[0];
+    if (strings == null || strings.raw === undefined) {
+        stringMode = false;
+        styles += handleInterpolation(mergedProps, registered, strings);
+    } else {
+        if (strings[0] === undefined) console.error(ILLEGAL_ESCAPE_SEQUENCE_ERROR);
+        styles += strings[0];
+    } // we start at 1 since we've already handled the first arg
+    for(var i = 1; i < args.length; i++){
+        styles += handleInterpolation(mergedProps, registered, args[i]);
+        if (stringMode) {
+            if (strings[i] === undefined) console.error(ILLEGAL_ESCAPE_SEQUENCE_ERROR);
+            styles += strings[i];
+        }
+    }
+    var sourceMap;
+    styles = styles.replace(sourceMapPattern, function(match) {
+        sourceMap = match;
+        return '';
+    });
+    labelPattern.lastIndex = 0;
+    var identifierName = '';
+    var match; // https://esbench.com/bench/5b809c2cf2949800a0f61fb5
+    while((match = labelPattern.exec(styles)) !== null)identifierName += '-' + match[1];
+    var name = hashString__default['default'](styles) + identifierName;
+    // $FlowFixMe SerializedStyles type doesn't have toString property (and we don't want to add it)
+    return {
+        name: name,
+        styles: styles,
+        map: sourceMap,
+        next: cursor,
+        toString: function toString() {
+            return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop).";
+        }
+    };
+};
+exports.serializeStyles = serializeStyles;
+
+},{"@emotion/hash":"7pg6e","@emotion/unitless":"7v4NZ","@emotion/memoize":"46jWj"}],"7pg6e":[function(require,module,exports) {
+'use strict';
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+/* eslint-disable */ // Inspired by https://github.com/garycourt/murmurhash-js
+// Ported from https://github.com/aappleby/smhasher/blob/61a0530f28277f2e850bfc39600ce61d02b518de/src/MurmurHash2.cpp#L37-L86
+function murmur2(str) {
+    // 'm' and 'r' are mixing constants generated offline.
+    // They're not really 'magic', they just happen to work well.
+    // const m = 0x5bd1e995;
+    // const r = 24;
+    // Initialize the hash
+    var h = 0; // Mix 4 bytes at a time into the hash
+    var k, i = 0, len = str.length;
+    for(; len >= 4; ++i, len -= 4){
+        k = str.charCodeAt(i) & 255 | (str.charCodeAt(++i) & 255) << 8 | (str.charCodeAt(++i) & 255) << 16 | (str.charCodeAt(++i) & 255) << 24;
+        k = /* Math.imul(k, m): */ (k & 65535) * 1540483477 + ((k >>> 16) * 59797 << 16);
+        k ^= /* k >>> r: */ k >>> 24;
+        h = /* Math.imul(k, m): */ (k & 65535) * 1540483477 + ((k >>> 16) * 59797 << 16) ^ /* Math.imul(h, m): */ (h & 65535) * 1540483477 + ((h >>> 16) * 59797 << 16);
+    } // Handle the last few bytes of the input array
+    switch(len){
+        case 3:
+            h ^= (str.charCodeAt(i + 2) & 255) << 16;
+        case 2:
+            h ^= (str.charCodeAt(i + 1) & 255) << 8;
+        case 1:
+            h ^= str.charCodeAt(i) & 255;
+            h = /* Math.imul(h, m): */ (h & 65535) * 1540483477 + ((h >>> 16) * 59797 << 16);
+    } // Do a few final mixes of the hash to ensure the last few
+    // bytes are well-incorporated.
+    h ^= h >>> 13;
+    h = /* Math.imul(h, m): */ (h & 65535) * 1540483477 + ((h >>> 16) * 59797 << 16);
+    return ((h ^ h >>> 15) >>> 0).toString(36);
+}
+exports.default = murmur2;
+
+},{}],"7v4NZ":[function(require,module,exports) {
+'use strict';
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+var unitlessKeys = {
+    animationIterationCount: 1,
+    borderImageOutset: 1,
+    borderImageSlice: 1,
+    borderImageWidth: 1,
+    boxFlex: 1,
+    boxFlexGroup: 1,
+    boxOrdinalGroup: 1,
+    columnCount: 1,
+    columns: 1,
+    flex: 1,
+    flexGrow: 1,
+    flexPositive: 1,
+    flexShrink: 1,
+    flexNegative: 1,
+    flexOrder: 1,
+    gridRow: 1,
+    gridRowEnd: 1,
+    gridRowSpan: 1,
+    gridRowStart: 1,
+    gridColumn: 1,
+    gridColumnEnd: 1,
+    gridColumnSpan: 1,
+    gridColumnStart: 1,
+    msGridRow: 1,
+    msGridRowSpan: 1,
+    msGridColumn: 1,
+    msGridColumnSpan: 1,
+    fontWeight: 1,
+    lineHeight: 1,
+    opacity: 1,
+    order: 1,
+    orphans: 1,
+    tabSize: 1,
+    widows: 1,
+    zIndex: 1,
+    zoom: 1,
+    WebkitLineClamp: 1,
+    // SVG-related properties
+    fillOpacity: 1,
+    floodOpacity: 1,
+    stopOpacity: 1,
+    strokeDasharray: 1,
+    strokeDashoffset: 1,
+    strokeMiterlimit: 1,
+    strokeOpacity: 1,
+    strokeWidth: 1
+};
+exports.default = unitlessKeys;
+
+},{}],"3nOdM":[function(require,module,exports) {
+var helpers = require("../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _patientPicker = require("./PatientPicker/PatientPicker");
+var _patientPickerDefault = parcelHelpers.interopDefault(_patientPicker);
+var _calculations = require("./Calculations/Calculations");
+var _calculationsDefault = parcelHelpers.interopDefault(_calculations);
+var _routineBuilder = require("./RoutineBuilder/RoutineBuilder");
+var _routineBuilderDefault = parcelHelpers.interopDefault(_routineBuilder);
+const CrystalBallApp = ()=>{
+    return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+        __source: {
+            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/crystal-ball-app/CrystalBallApp.tsx",
+            lineNumber: 8
+        },
+        __self: undefined
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_patientPickerDefault.default, {
+        __source: {
+            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/crystal-ball-app/CrystalBallApp.tsx",
+            lineNumber: 9
+        },
+        __self: undefined
+    }), /*#__PURE__*/ _reactDefault.default.createElement(_routineBuilderDefault.default, {
+        __source: {
+            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/crystal-ball-app/CrystalBallApp.tsx",
+            lineNumber: 10
+        },
+        __self: undefined
+    }), /*#__PURE__*/ _reactDefault.default.createElement(_calculationsDefault.default, {
+        __source: {
+            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/crystal-ball-app/CrystalBallApp.tsx",
+            lineNumber: 11
+        },
+        __self: undefined
+    })));
+};
+_c = CrystalBallApp;
+exports.default = CrystalBallApp;
+var _c;
+$RefreshReg$(_c, "CrystalBallApp");
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f","./PatientPicker/PatientPicker":"a8ehU","./Calculations/Calculations":"GPv3g","./RoutineBuilder/RoutineBuilder":"65KY7"}],"a8ehU":[function(require,module,exports) {
+var helpers = require("../../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+const PatientPicker = ()=>{
+    return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+        __source: {
+            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/crystal-ball-app/PatientPicker/PatientPicker.tsx",
+            lineNumber: 4
+        },
+        __self: undefined
+    }, "Patient Picker Component"));
+};
+_c = PatientPicker;
+exports.default = PatientPicker;
+var _c;
+$RefreshReg$(_c, "PatientPicker");
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"GPv3g":[function(require,module,exports) {
+var helpers = require("../../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+const Calculations = ()=>{
+    return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+        __source: {
+            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/crystal-ball-app/Calculations/Calculations.tsx",
+            lineNumber: 4
+        },
+        __self: undefined
+    }, "Component that shows calculations"));
+};
+_c = Calculations;
+exports.default = Calculations;
+var _c;
+$RefreshReg$(_c, "Calculations");
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"65KY7":[function(require,module,exports) {
+var helpers = require("../../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+const RoutineBuilder = ()=>{
+    return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+        __source: {
+            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/crystal-ball-app/RoutineBuilder/RoutineBuilder.tsx",
+            lineNumber: 4
+        },
+        __self: undefined
+    }, "Routine Builder Component"));
+};
+_c = RoutineBuilder;
+exports.default = RoutineBuilder;
+var _c;
+$RefreshReg$(_c, "RoutineBuilder");
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}]},["1j6wU","5x2oD","7a5BI"], "7a5BI", "parcelRequiree01b")
 
 //# sourceMappingURL=index.01a295fb.js.map

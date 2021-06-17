@@ -1,14 +1,20 @@
 import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import CrystalBallApp from "./crystal-ball-app/CrystalBallApp";
+import Landing from "./landing/Landing";
 
-type Props = {
-  someText: string;
-};
-
-const App = ({ someText }: Props) => {
+const App = () => {
   return (
-    <div>
-      <h1>{someText}</h1>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          <Landing />
+        </Route>
+        <Route exact path="/app">
+          <CrystalBallApp />
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
 };
 
