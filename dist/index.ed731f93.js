@@ -618,12 +618,12 @@ module.exports = require('./cjs/react-refresh-runtime.development.js');
     exports.setSignature = setSignature;
 })();
 
-},{}],"5x2oD":[function(require,module,exports) {
+},{}],"425bw":[function(require,module,exports) {
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d751713988987e9331980363e24189ce";
-module.bundle.HMR_BUNDLE_ID = "3b5e110b03cfd3392ce0616b01a295fb"; // @flow
+module.bundle.HMR_BUNDLE_ID = "b5ccbe5b544ee99c46ef8e94ed731f93"; // @flow
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE */ /*::
 import type {
   HMRAsset,
@@ -858,7 +858,7 @@ function hmrAcceptRun(bundle/*: ParcelRequire */ , id/*: string */ ) {
     acceptedAssets[id] = true;
 }
 
-},{}],"7a5BI":[function(require,module,exports) {
+},{}],"5mCR7":[function(require,module,exports) {
 var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -871,20 +871,14 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactDom = require("react-dom");
 var _app = require("./components/App");
 var _appDefault = parcelHelpers.interopDefault(_app);
-_reactDom.render(/*#__PURE__*/ _reactDefault.default.createElement(_appDefault.default, {
-    __source: {
-        fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/index.tsx",
-        lineNumber: 5
-    },
-    __self: undefined
-}), document.getElementById("app"));
+_reactDom.render(/*#__PURE__*/ _reactDefault.default.createElement(_appDefault.default, null), document.getElementById("app")); //# sourceMappingURL=index.js.map
 
   helpers.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","react-dom":"2sg1U","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f","./components/App":"6fp1e"}],"3b2NM":[function(require,module,exports) {
+},{"react":"3b2NM","react-dom":"2sg1U","./components/App":"2caCt","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"3b2NM":[function(require,module,exports) {
 'use strict';
 module.exports = require('./cjs/react.development.js');
 
@@ -21833,159 +21827,7 @@ module.exports = require('./cjs/scheduler-tracing.development.js');
     exports.unstable_wrap = unstable_wrap;
 })();
 
-},{}],"367CR":[function(require,module,exports) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, '__esModule', {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === 'default' || key === '__esModule') return;
-        // Skip duplicate re-exports when they have the same value.
-        if (key in dest && dest[key] === source[key]) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"4Jj4f":[function(require,module,exports) {
-"use strict";
-var Refresh = require('react-refresh/runtime');
-function debounce(func, delay) {
-    var args;
-    var timeout = undefined;
-    return function(args1) {
-        clearTimeout(timeout);
-        timeout = setTimeout(function() {
-            timeout = undefined;
-            func.call(null, args1);
-        }, delay);
-    };
-}
-var enqueueUpdate = debounce(function() {
-    Refresh.performReactRefresh();
-}, 30); // Everthing below is either adapted or copied from
-// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
-// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
-module.exports.prelude = function(module) {
-    window.$RefreshReg$ = function(type, id) {
-        Refresh.register(type, module.id + ' ' + id);
-    };
-    window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
-};
-module.exports.postlude = function(module) {
-    if (isReactRefreshBoundary(module.exports)) {
-        registerExportsForReactRefresh(module);
-        if (module.hot) {
-            module.hot.dispose(function(data) {
-                if (Refresh.hasUnrecoverableErrors()) window.location.reload();
-                data.prevExports = module.exports;
-            });
-            module.hot.accept(function(getParents) {
-                var prevExports = module.hot.data.prevExports;
-                var nextExports = module.exports; // Since we just executed the code for it, it's possible
-                // that the new exports make it ineligible for being a boundary.
-                var isNoLongerABoundary = !isReactRefreshBoundary(nextExports); // It can also become ineligible if its exports are incompatible
-                // with the previous exports.
-                // For example, if you add/remove/change exports, we'll want
-                // to re-execute the importing modules, and force those components
-                // to re-render. Similarly, if you convert a class component
-                // to a function, we want to invalidate the boundary.
-                var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
-                if (isNoLongerABoundary || didInvalidate) {
-                    // We'll be conservative. The only case in which we won't do a full
-                    // reload is if all parent modules are also refresh boundaries.
-                    // In that case we'll add them to the current queue.
-                    var parents = getParents();
-                    if (parents.length === 0) {
-                        // Looks like we bubbled to the root. Can't recover from that.
-                        window.location.reload();
-                        return;
-                    }
-                    return parents;
-                }
-                enqueueUpdate();
-            });
-        }
-    }
-};
-function isReactRefreshBoundary(exports) {
-    if (Refresh.isLikelyComponentType(exports)) return true;
-    if (exports == null || typeof exports !== 'object') // Exit if we can't iterate over exports.
-    return false;
-    var hasExports = false;
-    var areAllExportsComponents = true;
-    let isESM = '__esModule' in exports;
-    for(var key in exports){
-        hasExports = true;
-        if (key === '__esModule') continue;
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) // Don't invoke getters for CJS as they may have side effects.
-        return false;
-        var exportValue = exports[key];
-        if (!Refresh.isLikelyComponentType(exportValue)) areAllExportsComponents = false;
-    }
-    return hasExports && areAllExportsComponents;
-}
-function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
-    var prevSignature = getRefreshBoundarySignature(prevExports);
-    var nextSignature = getRefreshBoundarySignature(nextExports);
-    if (prevSignature.length !== nextSignature.length) return true;
-    for(var i = 0; i < nextSignature.length; i++){
-        if (prevSignature[i] !== nextSignature[i]) return true;
-    }
-    return false;
-} // When this signature changes, it's unsafe to stop at this refresh boundary.
-function getRefreshBoundarySignature(exports) {
-    var signature = [];
-    signature.push(Refresh.getFamilyByType(exports));
-    if (exports == null || typeof exports !== 'object') // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return signature;
-    let isESM = '__esModule' in exports;
-    for(var key in exports){
-        if (key === '__esModule') continue;
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) continue;
-        var exportValue = exports[key];
-        signature.push(key);
-        signature.push(Refresh.getFamilyByType(exportValue));
-    }
-    return signature;
-}
-function registerExportsForReactRefresh(module) {
-    var exports = module.exports, id = module.id;
-    Refresh.register(exports, id + ' %exports%');
-    if (exports == null || typeof exports !== 'object') // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return;
-    let isESM = '__esModule' in exports;
-    for(var key in exports){
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) continue;
-        var exportValue = exports[key];
-        Refresh.register(exportValue, id + ' %exports% ' + key);
-    }
-}
-
-},{"react-refresh/runtime":"592mh"}],"6fp1e":[function(require,module,exports) {
+},{}],"2caCt":[function(require,module,exports) {
 var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -22001,51 +21843,17 @@ var _crystalBallApp = require("./crystal-ball-app/CrystalBallApp");
 var _crystalBallAppDefault = parcelHelpers.interopDefault(_crystalBallApp);
 var _landing = require("./landing/Landing");
 var _landingDefault = parcelHelpers.interopDefault(_landing);
-const App = ()=>{
-    return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.BrowserRouter, {
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/App.tsx",
-            lineNumber: 8
-        },
-        __self: undefined
-    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Switch, {
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/App.tsx",
-            lineNumber: 9
-        },
-        __self: undefined
-    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
+var App = function() {
+    return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
         exact: true,
-        path: "/",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/App.tsx",
-            lineNumber: 10
-        },
-        __self: undefined
-    }, /*#__PURE__*/ _reactDefault.default.createElement(_landingDefault.default, {
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/App.tsx",
-            lineNumber: 11
-        },
-        __self: undefined
-    })), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
+        path: "/"
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_landingDefault.default, null)), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
         exact: true,
-        path: "/app",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/App.tsx",
-            lineNumber: 13
-        },
-        __self: undefined
-    }, /*#__PURE__*/ _reactDefault.default.createElement(_crystalBallAppDefault.default, {
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/App.tsx",
-            lineNumber: 14
-        },
-        __self: undefined
-    })))));
+        path: "/app"
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_crystalBallAppDefault.default, null)))));
 };
 _c = App;
-exports.default = App;
+exports.default = App; //# sourceMappingURL=App.js.map
 var _c;
 $RefreshReg$(_c, "App");
 
@@ -22054,7 +21862,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f","react-router-dom":"1PMSK","./crystal-ball-app/CrystalBallApp":"3nOdM","./landing/Landing":"2O8CH"}],"1PMSK":[function(require,module,exports) {
+},{"react":"3b2NM","react-router-dom":"1PMSK","./crystal-ball-app/CrystalBallApp":"7qD41","./landing/Landing":"6xMzt","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"1PMSK":[function(require,module,exports) {
 "use strict";
 module.exports = require("./cjs/react-router-dom.js");
 
@@ -25133,7 +24941,7 @@ function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
 }
 module.exports = hoistNonReactStatics;
 
-},{"react-is":"68QIU"}],"3nOdM":[function(require,module,exports) {
+},{"react-is":"68QIU"}],"7qD41":[function(require,module,exports) {
 var helpers = require("../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -25150,35 +24958,19 @@ var _calculator = require("./Calculator/Calculator");
 var _calculatorDefault = parcelHelpers.interopDefault(_calculator);
 var _routineBuilder = require("./RoutineBuilder/RoutineBuilder");
 var _routineBuilderDefault = parcelHelpers.interopDefault(_routineBuilder);
-const CrystalBallApp = ()=>{
+var CrystalBallApp = function() {
     return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/crystal-ball-app/CrystalBallApp.tsx",
-            lineNumber: 10
-        },
-        __self: undefined
-    }, /*#__PURE__*/ _reactDefault.default.createElement(_patientPickerDefault.default, {
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/crystal-ball-app/CrystalBallApp.tsx",
-            lineNumber: 11
-        },
-        __self: undefined
-    }), /*#__PURE__*/ _reactDefault.default.createElement(_routineBuilderDefault.default, {
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/crystal-ball-app/CrystalBallApp.tsx",
-            lineNumber: 12
-        },
-        __self: undefined
-    }), /*#__PURE__*/ _reactDefault.default.createElement(_calculatorDefault.default, {
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/crystal-ball-app/CrystalBallApp.tsx",
-            lineNumber: 13
-        },
-        __self: undefined
-    })));
+        className: "container"
+    }, /*#__PURE__*/ _reactDefault.default.createElement("h1", {
+        className: "title"
+    }, "The Crystal Ball"), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+        className: "box"
+    }, "SOmething"), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+        className: "columns"
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_patientPickerDefault.default, null), /*#__PURE__*/ _reactDefault.default.createElement(_routineBuilderDefault.default, null), /*#__PURE__*/ _reactDefault.default.createElement(_calculatorDefault.default, null))));
 };
 _c = CrystalBallApp;
-exports.default = CrystalBallApp;
+exports.default = CrystalBallApp; //# sourceMappingURL=CrystalBallApp.js.map
 var _c;
 $RefreshReg$(_c, "CrystalBallApp");
 
@@ -25187,7 +24979,7 @@ $RefreshReg$(_c, "CrystalBallApp");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","./PatientPicker/PatientPicker":"a8ehU","./RoutineBuilder/RoutineBuilder":"65KY7","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f","./Calculator/Calculator":"1qBbf"}],"a8ehU":[function(require,module,exports) {
+},{"react":"3b2NM","./PatientPicker/PatientPicker":"3VNqA","./Calculator/Calculator":"oIljD","./RoutineBuilder/RoutineBuilder":"7q1Wq","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"3VNqA":[function(require,module,exports) {
 var helpers = require("../../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -25198,17 +24990,13 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-const PatientPicker = ()=>{
+var PatientPicker = function() {
     return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/crystal-ball-app/PatientPicker/PatientPicker.tsx",
-            lineNumber: 4
-        },
-        __self: undefined
+        className: "column"
     }, "Patient Picker Component"));
 };
 _c = PatientPicker;
-exports.default = PatientPicker;
+exports.default = PatientPicker; //# sourceMappingURL=PatientPicker.js.map
 var _c;
 $RefreshReg$(_c, "PatientPicker");
 
@@ -25217,37 +25005,159 @@ $RefreshReg$(_c, "PatientPicker");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"65KY7":[function(require,module,exports) {
-var helpers = require("../../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-helpers.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-const RoutineBuilder = ()=>{
-    return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/crystal-ball-app/RoutineBuilder/RoutineBuilder.tsx",
-            lineNumber: 4
-        },
-        __self: undefined
-    }, "Routine Builder Component"));
+},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"367CR":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
 };
-_c = RoutineBuilder;
-exports.default = RoutineBuilder;
-var _c;
-$RefreshReg$(_c, "RoutineBuilder");
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, '__esModule', {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule') return;
+        // Skip duplicate re-exports when they have the same value.
+        if (key in dest && dest[key] === source[key]) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
 
-  helpers.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
+},{}],"4Jj4f":[function(require,module,exports) {
+"use strict";
+var Refresh = require('react-refresh/runtime');
+function debounce(func, delay) {
+    var args;
+    var timeout = undefined;
+    return function(args1) {
+        clearTimeout(timeout);
+        timeout = setTimeout(function() {
+            timeout = undefined;
+            func.call(null, args1);
+        }, delay);
+    };
 }
-},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"1qBbf":[function(require,module,exports) {
+var enqueueUpdate = debounce(function() {
+    Refresh.performReactRefresh();
+}, 30); // Everthing below is either adapted or copied from
+// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
+// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
+module.exports.prelude = function(module) {
+    window.$RefreshReg$ = function(type, id) {
+        Refresh.register(type, module.id + ' ' + id);
+    };
+    window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
+};
+module.exports.postlude = function(module) {
+    if (isReactRefreshBoundary(module.exports)) {
+        registerExportsForReactRefresh(module);
+        if (module.hot) {
+            module.hot.dispose(function(data) {
+                if (Refresh.hasUnrecoverableErrors()) window.location.reload();
+                data.prevExports = module.exports;
+            });
+            module.hot.accept(function(getParents) {
+                var prevExports = module.hot.data.prevExports;
+                var nextExports = module.exports; // Since we just executed the code for it, it's possible
+                // that the new exports make it ineligible for being a boundary.
+                var isNoLongerABoundary = !isReactRefreshBoundary(nextExports); // It can also become ineligible if its exports are incompatible
+                // with the previous exports.
+                // For example, if you add/remove/change exports, we'll want
+                // to re-execute the importing modules, and force those components
+                // to re-render. Similarly, if you convert a class component
+                // to a function, we want to invalidate the boundary.
+                var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
+                if (isNoLongerABoundary || didInvalidate) {
+                    // We'll be conservative. The only case in which we won't do a full
+                    // reload is if all parent modules are also refresh boundaries.
+                    // In that case we'll add them to the current queue.
+                    var parents = getParents();
+                    if (parents.length === 0) {
+                        // Looks like we bubbled to the root. Can't recover from that.
+                        window.location.reload();
+                        return;
+                    }
+                    return parents;
+                }
+                enqueueUpdate();
+            });
+        }
+    }
+};
+function isReactRefreshBoundary(exports) {
+    if (Refresh.isLikelyComponentType(exports)) return true;
+    if (exports == null || typeof exports !== 'object') // Exit if we can't iterate over exports.
+    return false;
+    var hasExports = false;
+    var areAllExportsComponents = true;
+    let isESM = '__esModule' in exports;
+    for(var key in exports){
+        hasExports = true;
+        if (key === '__esModule') continue;
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) // Don't invoke getters for CJS as they may have side effects.
+        return false;
+        var exportValue = exports[key];
+        if (!Refresh.isLikelyComponentType(exportValue)) areAllExportsComponents = false;
+    }
+    return hasExports && areAllExportsComponents;
+}
+function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
+    var prevSignature = getRefreshBoundarySignature(prevExports);
+    var nextSignature = getRefreshBoundarySignature(nextExports);
+    if (prevSignature.length !== nextSignature.length) return true;
+    for(var i = 0; i < nextSignature.length; i++){
+        if (prevSignature[i] !== nextSignature[i]) return true;
+    }
+    return false;
+} // When this signature changes, it's unsafe to stop at this refresh boundary.
+function getRefreshBoundarySignature(exports) {
+    var signature = [];
+    signature.push(Refresh.getFamilyByType(exports));
+    if (exports == null || typeof exports !== 'object') // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return signature;
+    let isESM = '__esModule' in exports;
+    for(var key in exports){
+        if (key === '__esModule') continue;
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) continue;
+        var exportValue = exports[key];
+        signature.push(key);
+        signature.push(Refresh.getFamilyByType(exportValue));
+    }
+    return signature;
+}
+function registerExportsForReactRefresh(module) {
+    var exports = module.exports, id = module.id;
+    Refresh.register(exports, id + ' %exports%');
+    if (exports == null || typeof exports !== 'object') // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return;
+    let isESM = '__esModule' in exports;
+    for(var key in exports){
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) continue;
+        var exportValue = exports[key];
+        Refresh.register(exportValue, id + ' %exports% ' + key);
+    }
+}
+
+},{"react-refresh/runtime":"592mh"}],"oIljD":[function(require,module,exports) {
 var helpers = require("../../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -25258,17 +25168,13 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-const Calculator = ()=>{
+var Calculator = function() {
     return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/crystal-ball-app/Calculator/Calculator.tsx",
-            lineNumber: 4
-        },
-        __self: undefined
+        className: "column"
     }, "Calculator Component"));
 };
 _c = Calculator;
-exports.default = Calculator;
+exports.default = Calculator; //# sourceMappingURL=Calculator.js.map
 var _c;
 $RefreshReg$(_c, "Calculator");
 
@@ -25277,7 +25183,33 @@ $RefreshReg$(_c, "Calculator");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"2O8CH":[function(require,module,exports) {
+},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"7q1Wq":[function(require,module,exports) {
+var helpers = require("../../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var RoutineBuilder = function() {
+    return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+        className: "column"
+    }, "Routine Builder Component"));
+};
+_c = RoutineBuilder;
+exports.default = RoutineBuilder; //# sourceMappingURL=RoutineBuilder.js.map
+var _c;
+$RefreshReg$(_c, "RoutineBuilder");
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"6xMzt":[function(require,module,exports) {
 var helpers = require("../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -25290,32 +25222,28 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _styled = require("@emotion/styled");
 var _styledDefault = parcelHelpers.interopDefault(_styled);
-var _landingSvg = require("../../images/landing.svg");
-const Container = _styledDefault.default("div")`\n  color: green;\n`;
+//import {SVGReactComponent as LandingImg} from "../../images/landing.svg";
+var _landingImg = require("../image-components/LandingImg");
+var _landingImgDefault = parcelHelpers.interopDefault(_landingImg);
+var __makeTemplateObject = undefined && undefined.__makeTemplateObject || function(cooked, raw) {
+    if (Object.defineProperty) Object.defineProperty(cooked, "raw", {
+        value: raw
+    });
+    else cooked.raw = raw;
+    return cooked;
+};
+var Container = _styledDefault.default("div")(templateObject_1 || (templateObject_1 = __makeTemplateObject([
+    "\n  color: green;\n"
+], [
+    "\n  color: green;\n"
+])));
 _c = Container;
-const Landing = ()=>{
-    return(/*#__PURE__*/ _reactDefault.default.createElement(Container, {
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/landing/Landing.tsx",
-            lineNumber: 11
-        },
-        __self: undefined
-    }, /*#__PURE__*/ _reactDefault.default.createElement("h1", {
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/landing/Landing.tsx",
-            lineNumber: 12
-        },
-        __self: undefined
-    }, "Glucose Trail Crystal Ball"), /*#__PURE__*/ _reactDefault.default.createElement(_landingSvg.SVGReactComponent, {
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/components/landing/Landing.tsx",
-            lineNumber: 13
-        },
-        __self: undefined
-    })));
+var Landing = function() {
+    return(/*#__PURE__*/ _reactDefault.default.createElement(Container, null, /*#__PURE__*/ _reactDefault.default.createElement("h1", null, "Glucose Trail Crystal Ball"), /*#__PURE__*/ _reactDefault.default.createElement(_landingImgDefault.default, null)));
 };
 _c1 = Landing;
 exports.default = Landing;
+var templateObject_1; //# sourceMappingURL=Landing.js.map
 var _c, _c1;
 $RefreshReg$(_c, "Container");
 $RefreshReg$(_c1, "Landing");
@@ -25325,7 +25253,7 @@ $RefreshReg$(_c1, "Landing");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","@emotion/styled":"6c82b","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f","../../images/landing.svg":"1ijeD"}],"6c82b":[function(require,module,exports) {
+},{"react":"3b2NM","@emotion/styled":"6c82b","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f","../image-components/LandingImg":"3SNc4"}],"6c82b":[function(require,module,exports) {
 'use strict';
 Object.defineProperty(exports, '__esModule', {
     value: true
@@ -27338,8 +27266,8 @@ var unitlessKeys = {
 };
 exports.default = unitlessKeys;
 
-},{}],"1ijeD":[function(require,module,exports) {
-var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{}],"3SNc4":[function(require,module,exports) {
+var helpers = require("../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
 helpers.prelude(module);
@@ -27349,4811 +27277,2946 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-function SvgLanding(props) {
+var LandingImg = function() {
     return(/*#__PURE__*/ _reactDefault.default.createElement("svg", {
-        height: "997",
         width: "1050",
+        height: "997",
+        viewBox: "0 0 1050 997",
         fill: "none",
-        xmlns: "http://www.w3.org/2000/svg",
-        ...props,
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 3
-        },
-        __self: this
+        xmlns: "http://www.w3.org/2000/svg"
     }, /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M233.3 351.2c.2.5.4.9.6 1.3H95.8c-1.4-1.2-4.7-4.5-4.6-9 .1-4.2 3.2-7.1 4.6-8.3h138.1l-.3.6c-1 2.1-2 4.9-2 8.3.1 2.8.8 5.2 1.7 7.1z",
-        fill: "#fff",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 4
-        },
-        __self: this
+        d: "M233.3 351.2C233.5 351.7 233.7 352.1 233.9 352.5H95.8C94.4 351.3 91.1 348 91.2 343.5C91.3 339.3 94.4 336.4 95.8 335.2H233.9C233.8 335.4 233.7 335.6 233.6 335.8C232.6 337.9 231.6 340.7 231.6 344.1C231.7 346.9 232.4 349.3 233.3 351.2Z",
+        fill: "white"
     }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M238.5 352.1c0 .5-.8 1-1.7 1H95.3c-.6 0-1.1-.2-1.4-.4-1.9-1.6-5.1-5-4.9-9.5.1-4 2.8-7 4.9-8.9.3-.3.9-.4 1.4-.4h140.9c.9 0 1.7.4 1.7 1 0 .5-.8 1-1.7 1H96.3c-1.8 1.7-3.8 4.2-3.9 7.4-.1 3.6 2.2 6.4 3.9 8h140.5c.9-.1 1.7.3 1.7.8z",
-        fill: "#EBDEDE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 5
-        },
-        __self: this
+        d: "M238.5 352.1C238.5 352.6 237.7 353.1 236.8 353.1H95.3C94.7 353.1 94.2 352.9 93.9 352.7C92 351.1 88.8 347.7 89 343.2C89.1 339.2 91.8 336.2 93.9 334.3C94.2 334 94.8 333.9 95.3 333.9H236.2C237.1 333.9 237.9 334.3 237.9 334.9C237.9 335.4 237.1 335.9 236.2 335.9H96.3C94.5 337.6 92.5 340.1 92.4 343.3C92.3 346.9 94.6 349.7 96.3 351.3H236.8C237.7 351.2 238.5 351.6 238.5 352.1Z",
+        fill: "#EBDEDE"
     }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M226.5 339H99.8c-.3 0-.6-.2-.6-.4s.3-.4.6-.4h126.7c.3 0 .6.2.6.4s-.2.4-.6.4zM226.5 340.3H99.8c-.3 0-.6-.2-.6-.4s.3-.4.6-.4h126.7c.3 0 .6.2.6.4s-.2.4-.6.4zM226.5 341.6H99.8c-.3 0-.6-.2-.6-.4s.3-.4.6-.4h126.7c.3 0 .6.2.6.4s-.2.4-.6.4zM226.5 342.9H99.8c-.3 0-.6-.2-.6-.4s.3-.4.6-.4h126.7c.3 0 .6.2.6.4s-.2.4-.6.4zM226.5 344.1H99.8c-.3 0-.6-.2-.6-.4s.3-.4.6-.4h126.7c.3 0 .6.2.6.4 0 .3-.2.4-.6.4zM226.5 345.4H99.8c-.3 0-.6-.2-.6-.4s.3-.4.6-.4h126.7c.3 0 .6.2.6.4s-.2.4-.6.4zM226.5 346.7H99.8c-.3 0-.6-.2-.6-.4s.3-.4.6-.4h126.7c.3 0 .6.2.6.4s-.2.4-.6.4zM226.5 348H99.8c-.3 0-.6-.2-.6-.4s.3-.4.6-.4h126.7c.3 0 .6.2.6.4s-.2.4-.6.4zM226.5 349.3H99.8c-.3 0-.6-.2-.6-.4s.3-.4.6-.4h126.7c.3 0 .6.2.6.4s-.2.4-.6.4z",
-        fill: "#BDD3DE",
-        opacity: ".18",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 6
-        },
-        __self: this
+        opacity: "0.18",
+        d: "M226.5 339H99.8C99.5 339 99.2 338.8 99.2 338.6C99.2 338.4 99.5 338.2 99.8 338.2H226.5C226.8 338.2 227.1 338.4 227.1 338.6C227.1 338.8 226.9 339 226.5 339Z",
+        fill: "#BDD3DE"
     }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M193.4 331.9c.1.5.3.9.4 1.3H95.2c-1-1.2-3.4-4.5-3.3-9 .1-4.2 2.3-7.1 3.3-8.3h98.6c-.1.2-.2.4-.2.6-.7 2.1-1.4 4.9-1.4 8.3.1 2.8.6 5.2 1.2 7.1z",
-        fill: "#fff",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 7
-        },
-        __self: this
+        opacity: "0.18",
+        d: "M226.5 340.3H99.8C99.5 340.3 99.2 340.1 99.2 339.9C99.2 339.7 99.5 339.5 99.8 339.5H226.5C226.8 339.5 227.1 339.7 227.1 339.9C227.1 340.1 226.9 340.3 226.5 340.3Z",
+        fill: "#BDD3DE"
     }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M197.1 332.8c0 .5-.5 1-1.2 1h-101c-.4 0-.8-.2-1-.4-1.4-1.6-3.6-5-3.5-9.5.1-4 2-7 3.5-8.9.2-.3.6-.4 1-.4h100.6c.7 0 1.2.4 1.2 1 0 .5-.5 1-1.2 1H95.6c-1.3 1.7-2.7 4.2-2.8 7.4-.1 3.6 1.6 6.4 2.8 8h100.3c.7-.1 1.2.3 1.2.8z",
-        fill: "#EEEDEE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 8
-        },
-        __self: this
+        opacity: "0.18",
+        d: "M226.5 341.6H99.8C99.5 341.6 99.2 341.4 99.2 341.2C99.2 341 99.5 340.8 99.8 340.8H226.5C226.8 340.8 227.1 341 227.1 341.2C227.1 341.4 226.9 341.6 226.5 341.6Z",
+        fill: "#BDD3DE"
     }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M188.6 319.7H98.1c-.2 0-.4-.2-.4-.4s.2-.4.4-.4h90.5c.2 0 .4.2.4.4s-.2.4-.4.4zM188.6 321H98.1c-.2 0-.4-.2-.4-.4s.2-.4.4-.4h90.5c.2 0 .4.2.4.4s-.2.4-.4.4zM188.6 322.3H98.1c-.2 0-.4-.2-.4-.4s.2-.4.4-.4h90.5c.2 0 .4.2.4.4s-.2.4-.4.4zM188.6 323.6H98.1c-.2 0-.4-.2-.4-.4s.2-.4.4-.4h90.5c.2 0 .4.2.4.4s-.2.4-.4.4zM188.6 324.8H98.1c-.2 0-.4-.2-.4-.4s.2-.4.4-.4h90.5c.2 0 .4.2.4.4 0 .3-.2.4-.4.4zM188.6 326.1H98.1c-.2 0-.4-.2-.4-.4s.2-.4.4-.4h90.5c.2 0 .4.2.4.4s-.2.4-.4.4zM188.6 327.4H98.1c-.2 0-.4-.2-.4-.4s.2-.4.4-.4h90.5c.2 0 .4.2.4.4s-.2.4-.4.4zM188.6 328.7H98.1c-.2 0-.4-.2-.4-.4s.2-.4.4-.4h90.5c.2 0 .4.2.4.4s-.2.4-.4.4zM188.6 330H98.1c-.2 0-.4-.2-.4-.4s.2-.4.4-.4h90.5c.2 0 .4.2.4.4s-.2.4-.4.4z",
-        fill: "#BDD3DE",
-        opacity: ".18",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 9
-        },
-        __self: this
+        opacity: "0.18",
+        d: "M226.5 342.9H99.8C99.5 342.9 99.2 342.7 99.2 342.5C99.2 342.3 99.5 342.1 99.8 342.1H226.5C226.8 342.1 227.1 342.3 227.1 342.5C227.1 342.7 226.9 342.9 226.5 342.9Z",
+        fill: "#BDD3DE"
     }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M1049.7 760.3v-.5c0-6.6-5-12-11.1-12H11.1c-6.1 0-11.1 5.4-11.1 12v.5h1049.7zM753.7 24.2H1001v355.6H753.7z",
-        fill: "#EEEDEE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 10
-        },
-        __self: this
+        opacity: "0.18",
+        d: "M226.5 344.1H99.8C99.5 344.1 99.2 343.9 99.2 343.7C99.2 343.5 99.5 343.3 99.8 343.3H226.5C226.8 343.3 227.1 343.5 227.1 343.7C227.1 344 226.9 344.1 226.5 344.1Z",
+        fill: "#BDD3DE"
     }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M753.7 24.2H1001v355.6H753.7z",
-        fill: "#BDD3DE",
-        opacity: ".42",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 11
-        },
-        __self: this
+        opacity: "0.18",
+        d: "M226.5 345.4H99.8C99.5 345.4 99.2 345.2 99.2 345C99.2 344.8 99.5 344.6 99.8 344.6H226.5C226.8 344.6 227.1 344.8 227.1 345C227.1 345.2 226.9 345.4 226.5 345.4Z",
+        fill: "#BDD3DE"
     }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M736.1 404.5h282c1.6 0 3-1.4 3-3V3.3c0-1.7-1.3-3-3-3h-282c-1.7 0-3 1.3-3 3v398.2c0 1.7 1.3 3 3 3zm279-6h-276V6.3h276v392.2z",
-        fill: "#EEEDEE",
+        opacity: "0.18",
+        d: "M226.5 346.7H99.8C99.5 346.7 99.2 346.5 99.2 346.3C99.2 346.1 99.5 345.9 99.8 345.9H226.5C226.8 345.9 227.1 346.1 227.1 346.3C227.1 346.5 226.9 346.7 226.5 346.7Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.18",
+        d: "M226.5 348H99.8C99.5 348 99.2 347.8 99.2 347.6C99.2 347.4 99.5 347.2 99.8 347.2H226.5C226.8 347.2 227.1 347.4 227.1 347.6C227.1 347.8 226.9 348 226.5 348Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.18",
+        d: "M226.5 349.3H99.8C99.5 349.3 99.2 349.1 99.2 348.9C99.2 348.7 99.5 348.5 99.8 348.5H226.5C226.8 348.5 227.1 348.7 227.1 348.9C227.1 349.1 226.9 349.3 226.5 349.3Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M193.4 331.9C193.5 332.4 193.7 332.8 193.8 333.2H95.2C94.2 332 91.8 328.7 91.9 324.2C92 320 94.2 317.1 95.2 315.9H193.8C193.7 316.1 193.6 316.3 193.6 316.5C192.9 318.6 192.2 321.4 192.2 324.8C192.3 327.6 192.8 330 193.4 331.9Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M197.1 332.8C197.1 333.3 196.6 333.8 195.9 333.8H94.9C94.5 333.8 94.1 333.6 93.9 333.4C92.5 331.8 90.3 328.4 90.4 323.9C90.5 319.9 92.4 316.9 93.9 315C94.1 314.7 94.5 314.6 94.9 314.6H195.5C196.2 314.6 196.7 315 196.7 315.6C196.7 316.1 196.2 316.6 195.5 316.6H95.6C94.3 318.3 92.9 320.8 92.8 324C92.7 327.6 94.4 330.4 95.6 332H195.9C196.6 331.9 197.1 332.3 197.1 332.8Z",
+        fill: "#EEEDEE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.18",
+        d: "M188.6 319.7H98.1C97.9 319.7 97.7 319.5 97.7 319.3C97.7 319.1 97.9 318.9 98.1 318.9H188.6C188.8 318.9 189 319.1 189 319.3C189 319.5 188.8 319.7 188.6 319.7Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.18",
+        d: "M188.6 321H98.1C97.9 321 97.7 320.8 97.7 320.6C97.7 320.4 97.9 320.2 98.1 320.2H188.6C188.8 320.2 189 320.4 189 320.6C189 320.8 188.8 321 188.6 321Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.18",
+        d: "M188.6 322.3H98.1C97.9 322.3 97.7 322.1 97.7 321.9C97.7 321.7 97.9 321.5 98.1 321.5H188.6C188.8 321.5 189 321.7 189 321.9C189 322.1 188.8 322.3 188.6 322.3Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.18",
+        d: "M188.6 323.6H98.1C97.9 323.6 97.7 323.4 97.7 323.2C97.7 323 97.9 322.8 98.1 322.8H188.6C188.8 322.8 189 323 189 323.2C189 323.4 188.8 323.6 188.6 323.6Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.18",
+        d: "M188.6 324.8H98.1C97.9 324.8 97.7 324.6 97.7 324.4C97.7 324.2 97.9 324 98.1 324H188.6C188.8 324 189 324.2 189 324.4C189 324.7 188.8 324.8 188.6 324.8Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.18",
+        d: "M188.6 326.1H98.1C97.9 326.1 97.7 325.9 97.7 325.7C97.7 325.5 97.9 325.3 98.1 325.3H188.6C188.8 325.3 189 325.5 189 325.7C189 325.9 188.8 326.1 188.6 326.1Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.18",
+        d: "M188.6 327.4H98.1C97.9 327.4 97.7 327.2 97.7 327C97.7 326.8 97.9 326.6 98.1 326.6H188.6C188.8 326.6 189 326.8 189 327C189 327.2 188.8 327.4 188.6 327.4Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.18",
+        d: "M188.6 328.7H98.1C97.9 328.7 97.7 328.5 97.7 328.3C97.7 328.1 97.9 327.9 98.1 327.9H188.6C188.8 327.9 189 328.1 189 328.3C189 328.5 188.8 328.7 188.6 328.7Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.18",
+        d: "M188.6 330H98.1C97.9 330 97.7 329.8 97.7 329.6C97.7 329.4 97.9 329.2 98.1 329.2H188.6C188.8 329.2 189 329.4 189 329.6C189 329.8 188.8 330 188.6 330Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M1049.7 760.3V759.8C1049.7 753.2 1044.7 747.8 1038.6 747.8H11.1C5 747.8 0 753.2 0 759.8V760.3H1049.7Z",
+        fill: "#EEEDEE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("rect", {
+        x: "753.7",
+        y: "24.2002",
+        width: "247.3",
+        height: "355.6",
+        fill: "#EEEDEE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("rect", {
+        opacity: "0.42",
+        x: "753.7",
+        y: "24.2002",
+        width: "247.3",
+        height: "355.6",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
         fillRule: "evenodd",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 12
-        },
-        __self: this
+        clipRule: "evenodd",
+        d: "M736.1 404.5H1018.1C1019.7 404.5 1021.1 403.1 1021.1 401.5V3.2998C1021.1 1.5998 1019.8 0.299805 1018.1 0.299805H736.1C734.4 0.299805 733.1 1.5998 733.1 3.2998V401.5C733.1 403.2 734.4 404.5 736.1 404.5ZM1015.1 398.5H739.1V6.2998H1015.1V398.5Z",
+        fill: "#EEEDEE"
     }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M736.1 404.5h282c1.6 0 3-1.4 3-3V3.3c0-1.7-1.3-3-3-3h-282c-1.7 0-3 1.3-3 3v398.2c0 1.7 1.3 3 3 3zm279-6h-276V6.3h276v392.2z",
-        fill: "#EEEDEE",
+        opacity: "0.42",
         fillRule: "evenodd",
-        opacity: ".42",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 13
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M777.1 48.2h200v103.9h-200z",
-        fill: "#BDD3DE",
-        opacity: ".42",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 14
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M849.3 232.4l19.6-21.4v21.4h-19.6zM977 93.6v58.5h-53.8L977 93.6zM907.6 169.1H977v181.7h-54.2V232.4h-36.9v-39.8l21.7-23.5zM777.1 254.2h36.8l45.2 42.9H823v53.7l-45.9-.8v-95.8z",
-        fill: "#BDD3DE",
-        opacity: ".42",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 15
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M794.4 111.2H891s-4.4-22.6-18.9-17.6c-14.6 5-31.6 13.8-38.9 8.5-7.3-5.4-21.6-13.2-38.8 9.1zM866.8 79.7h48.3c-6.7-7.8-11.7-9.2-15.1-8.8-4.5.6-7.2 4.4-13.8 4.2-3-.1-3.5-.9-6.2-1-5.1-.2-9.6 2.5-13.2 5.6z",
-        fill: "#fff",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 16
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M661.8 210.3v10.5c0 1.9-1.1 3.6-2.8 4.4-.3.2-.6.3-.9.3-.4.1-.8.2-1.2.2H74.2c-2.7 0-4.9-2.2-4.9-4.9v-10.5c0-2.7 2.2-4.9 4.9-4.9h582.6c2.8 0 5 2.2 5 4.9z",
-        fill: "#EEEDEE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 17
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M91.6 225.8h-1.2c-5.1-7.1-10.4-16-12.9-20.4h1.2c3.8 6.6 8.7 14.4 12.9 20.4zM95.8 209.1c2.1 4.3 4.9 10.3 6.1 16.6h-1c-1.2-6.2-3.9-12-6-16.2-.8-1.7-1.5-3.1-1.9-4.2h1.1c.5 1.2 1.2 2.6 1.7 3.8zM112.3 225.8h-1.1c-1.3-3.3-2.5-7.9-3.5-13.4-.5-3-1.5-5.3-2.8-7h1.2c1.1 1.6 2 3.8 2.6 6.8 1.2 6.3 2.4 10.7 3.6 13.6z",
-        fill: "#BDD3DE",
-        opacity: ".42",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 18
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M113.5 219.1c1.3 2.3 2.5 4.6 3.2 6.7h-1.1c-.7-1.9-1.9-4-3-6.2-2.6-4.8-5.2-9.8-4.3-14.2h1v.1c-1 4 1.6 8.8 4.2 13.6zM119.1 225.8H118c-1.3-3.3-3.2-8.8-5.9-18l-.7-2.3h1l.6 2.1c2.9 9.4 4.8 15 6.1 18.2z",
-        fill: "#BDD3DE",
-        opacity: ".42",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 19
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M118.8 215.7c-1.1 4.7.3 6.3 1.6 7.9.5.7 1.1 1.3 1.5 2.2h-1.1c-.3-.5-.7-1-1.1-1.5-1.4-1.7-3-3.6-1.8-8.8.8-3.4 2.5-7.2 4.6-10.1h1.2c-2.2 2.8-4 6.7-4.9 10.3zM129.5 217c-.4 3 .9 6.2 2.8 8.7h-1.2c-1.8-2.6-3-5.8-2.6-8.9.6-4.2 2.5-6.2 3.9-7.8 1.3-1.4 2-2.2 1.3-3.8h1.1c.7 2-.3 3.1-1.6 4.4-1.4 1.7-3.1 3.6-3.7 7.4z",
-        fill: "#BDD3DE",
-        opacity: ".42",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 20
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M141.2 225.8h-1.1c-.9-1.4-2.2-2.3-3.6-3-2.5-1.5-5.2-3-2.5-8.4 1.5-3.1 3.5-6.2 5.6-8.9h1.3c-2.2 2.7-4.4 6.1-6 9.4-2.2 4.6-.4 5.6 2.1 7.1 1.5.7 3.3 1.8 4.2 3.8zM162.6 225.8h-1.1c-1.1-2.4-2.4-6.1-4.1-10.9-1.1-3.3-2.3-6.7-3.4-9.5h1.1c1.1 2.7 2.2 6 3.3 9.2 1.3 3.7 2.8 8.4 4.2 11.2zM170.7 205.4c-.9 3.2-1.7 7.4-2.3 10.9-.7 3.7-1.3 7.1-2 9.4h-1c.7-2.3 1.4-5.9 2.1-9.6.8-4.3 1.6-8 2.3-10.8h.9v.1zM174.6 205.4c-.4 2.5-1.1 5.7-2.1 9.6-.9 3.8-2 8.2-2.2 10.8h-1c.1-2.4 1-6.2 2.2-11.1.8-3.1 1.6-6.6 2-9.3h1.1zM176.3 205.4h1c-.1 1.1-.3 2.3-.4 3.5-.9 7.2-1.7 13.3-3 16.9h-1.1c1.5-3.9 2.4-11.8 3-17 .3-1.3.4-2.4.5-3.4zM180.5 225.8h-1c-.2-2.3-.2-5.6-.2-9.8 0-3.6.1-7.4-.2-10.6h1c.2 3.1.2 6.9.2 10.6 0 3.3-.1 7.2.2 9.8zM188.2 205.4h1c-.7 2.4-1.2 5.6-1.7 8.8-.7 4.2-1.4 8.5-2.6 11.6h-1.1c1.2-2.9 1.9-7.4 2.6-11.7.6-3.3 1.1-6.3 1.8-8.7zM199 225.8h-1c-.2-1.9-.3-4.3-.3-6.8 0-4.8-.1-10-1.6-13.6h1.1c1.4 3.8 1.5 8.9 1.5 13.6.1 2.5.1 4.9.3 6.8zM207.1 212.7c.6 4.6 1.2 9.5.1 13.1h-1.1c1.2-3.4.5-8.4 0-13-.3-2.7-.7-5.3-.6-7.4h1c0 2.1.3 4.6.6 7.3zM239.1 225.8h-1.3c-1.8-2-3.7-4.3-5.7-6.7-4-4.8-8.3-10-12.6-13.7h1.5c4.1 3.7 8.2 8.6 11.9 13.1 2.1 2.6 4.2 5.1 6.2 7.3zM252.7 225.8h-1c.9-4.7-1.1-9.9-2.8-14.6-.8-2.1-1.5-4-1.9-5.8h1c.4 1.6 1.1 3.4 1.8 5.4 1.7 4.6 3.7 10 2.9 15z",
-        fill: "#BDD3DE",
-        opacity: ".42",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 21
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M356.012 218.124l.088.076.217.193c1.868 1.667 4.194 3.742 4.483 7.207h-1c-.2-3.2-2.3-5.1-4.3-6.8l-.308-.269c-1.468-1.276-2.692-2.341-2.692-3.931 0-1.2.7-2.4 2.2-3.9 1.152-1.08 2.356-2.368 3.65-3.751l.001-.001c.502-.537 1.018-1.089 1.549-1.648h1.4c-.1.1-.2.225-.3.35-.1.125-.2.25-.3.35-1.8 2-3.7 4-5.3 5.5-1.3 1.3-1.9 2.3-1.9 3.2 0 1.272 1.15 2.257 2.512 3.424zM382.6 225.8c2.5-5 7.7-13.3 13.6-20.4h1.2c-5.9 7-11.2 15.3-13.7 20.4h-1.1zm-10-20.4h-1c-.8 7.7.9 15.3 3.3 20.4h1.1c-2.3-4.9-4.3-12.6-3.4-20.4zm48.1 0c-2 1.2-5.2 1.5-8.6 1.8l-.101.009c-4.369.397-8.913.81-10.699 3.291-.9 1.3-1.1 2.9-.6 5 .7 3.1 1.1 6.699 1.5 10.299v.001h-1c-.4-3.6-.8-7.1-1.5-10.1-.5-2.5-.3-4.3.8-5.8 2.1-2.8 6.9-3.3 11.5-3.7 2.2-.2 4.3-.4 6-.8h2.7zm7.1 0c-3 4.9-5.9 10.5-8.6 16.3-.699 1.497-1.298 2.795-1.897 4.093l-.003.007h1.1c.386-.773.731-1.545 1.088-2.344v-.001c.197-.442.398-.892.612-1.355 3.2-6.9 6.1-12.4 8.7-16.7h-1zm1.5 20.4c4.3-5.2 10.5-12.8 14.2-20.4h1.1c-3.5 7.5-9.6 15.1-14 20.4h-1.3zm20.6-20.4c-.377.513-.777 1.05-1.2 1.619-.814 1.092-1.714 2.3-2.7 3.681-3.6 5-7.8 10.7-11.5 15.1h1.3c3.484-4.049 7.146-9.074 10.484-13.655l.616-.845c1.4-2 2.9-4.1 4.3-5.9h-1.3zm-3.2 14.9c2.7-4.8 5.9-10.5 7.7-14.9h1.1c-1.505 3.985-4.266 8.911-6.892 13.597v.001l-.008.014-.031.055c-.326.582-.65 1.16-.969 1.733-.45.8-.925 1.65-1.4 2.5-.475.85-.95 1.7-1.4 2.5h-1.1c.517-.969 1.117-2.062 1.8-3.308.375-.684.775-1.413 1.2-2.192zm18.3-14.9c-1.908 2.317-3.817 4.867-5.757 7.459a488.513 488.513 0 01-2.743 3.641c-2.5 3.4-4.9 6.6-7.1 9.3h1.3c1.855-2.297 3.789-4.906 5.8-7.621l.001-.001.533-.72.266-.358c2.9-4 6-8.1 9-11.7H465zm171.5 20.4c1.5-6.2 3.6-14.2 5.8-20.4h1c-1.8 5.1-3.8 12.1-5.8 20.4h-1zm-26.3-20.1c0-.05-.025-.1-.05-.15-.025-.05-.05-.1-.05-.15H609c.1.3.2.5.3.699v.001c2.2 4.9 6 12.8 10.1 19.7h1.2c-3.2-5.3-6.7-12.1-10.4-20.1zm42.1-.3h1c2.3 7.4 4.6 15.6 5.8 19.9l-.9.3-.404-1.453-.001-.001c-1.27-4.568-3.342-12.019-5.495-18.746zm-51.9 17.5l-.1-.153c-2.974-4.56-6.265-9.604-3.1-14.647.5-.9 1-1.8 1.4-2.8h-1.1c-.3.8-.7 1.5-1.2 2.2-3.477 5.563.053 11.027 3.138 15.804l.062.096c.25.4.5.775.75 1.15.25.375.5.75.75 1.15h1.2c-.272-.49-.603-.979-.945-1.484v-.001a28.938 28.938 0 01-.855-1.315zm-12.9-17.5h1c1.1 7.2 4.7 15 8.1 20.4h-1.3c-3.4-5.6-6.7-13.5-7.8-20.4zm-9.6 0c-2.503 3.538-5.378 8.193-8.625 13.452l-.022.036-.08.128-.009.015-.029.048-1.435 2.321-.001.002c-.9 1.499-1.799 2.999-2.699 4.398h1.2c.699-1.199 1.499-2.498 2.298-3.797l.002-.003.707-1.156c2.904-4.747 6.561-10.728 9.793-15.344h-1.1v-.1zm-30.7 0c.3 1.1.6 2.3.9 3.5l.357 1.381c1.314 5.085 2.803 10.847 4.543 15.519h-1.1c-1.6-4.4-3.1-10.2-4.7-16.6-.321-1.043-.578-2.086-.821-3.078l-.001-.001-.178-.721h1zm-11.3 0c-1.2 1.7-2.5 3.7-3.9 5.9-3.3 5.1-7 10.7-10.4 14.5h1.3c3.002-3.355 6.003-7.879 8.868-12.196v-.001l.001-.001.001-.001v-.001l1.13-1.7c1.4-2.2 2.9-4.5 4.3-6.4h-1.3v-.1zm-34.9-.1c1.1 2.6 2.2 5.6 3.2 8.8l.336 1.009c1.29 3.885 2.6 7.83 4.164 10.591h-1.1c-1.7-3.1-3.1-7.3-4.4-11.3-1-3.2-2.1-6.5-3.3-9.1h1.1zm-8.5 12.6c-1.8-4.3-3.7-8.6-5.5-12.5h-1c1.583 3.333 3.167 7.014 4.75 10.695.317.736.633 1.472.95 2.205.642 1.498 1.256 2.911 1.825 4.222l.003.005c.493 1.137.954 2.198 1.372 3.173h1.1c-1.2-2.6-2.4-5.3-3.5-7.8zm5.416-6.745c.308 1.004.613 1.997.884 2.945.378 1.306.78 2.648 1.185 4v.002c.774 2.582 1.559 5.205 2.215 7.698h-1c-.9-3.6-2.1-7.6-3.3-11.4l-.267-.899c-.979-3.29-1.782-5.99-2.333-8.101h1c.397 1.786 1.013 3.791 1.616 5.754v.001zM342.2 205.4c0 .05-.025.075-.05.1-.025.025-.05.05-.05.1l-.886 1.518-.003.004c-3.642 6.245-8.04 13.783-12.011 18.678h1.3c3.739-4.719 7.796-11.657 11.251-17.568h.001v-.001c.426-.728.842-1.44 1.248-2.131.05-.1.125-.225.2-.35.075-.125.15-.25.2-.35h-1.2zm4.2 0h1c-.5 6.8 1.2 14.8 3.5 20.4h-1c-2.4-5.7-4-13.5-3.5-20.4zm-17.3 0c-1.6 2.7-3.5 6.3-5.8 10.8-1.8 3.5-3.6 6.9-5.1 9.6h1.2c.893-1.547 1.821-3.307 2.805-5.174.67-1.27 1.366-2.59 2.095-3.926 1.8-3.5 4.1-7.8 6.1-11.3h-1.3zm-1.786 15.777c2.492-4.959 5.502-10.949 6.686-15.777v-.1h1c-1.3 5.4-4.8 12.4-7.5 17.7-.5.9-1 1.8-1.4 2.7H325c.5-.9 1-1.9 1.6-3.1l.712-1.42.002-.003zM301.1 217.2l-.224-.272c-4.118-5.001-8.036-9.76-11.376-11.528h-4.6c-3.137 2.058-1.469 6.039.293 10.245l.107.255c1.4 3.2 2.9 6.7 2.7 9.9h1c.192-3.262-1.273-6.709-2.629-9.897l-.171-.403c-2.2-5-3.4-8.2-.1-9.7 3.2-1.4 8.8 5.4 14.2 12l.396.478c2.257 2.728 4.42 5.343 6.404 7.422h1.4c-1.894-1.894-3.923-4.33-6.033-6.862v-.001c-.452-.543-.908-1.09-1.367-1.637zm-28.797-10.503c.151.407.314.844.497 1.303 1.8 4.7 4.9 12.7 8.1 17.8h-1.2c-2.6-4.4-5.2-10.9-7.8-17.4-.228-.627-.489-1.255-.726-1.826-.179-.431-.345-.83-.474-1.174h1.1c.162.379.325.816.503 1.297zM267.9 205.4c-.6 2.3-1.2 6-1.9 11.4a273.324 273.324 0 00-.446 3.107c-.314 2.254-.61 4.38-.954 5.893h1c.374-1.645.692-3.905 1.038-6.363.116-.828.236-1.68.362-2.537.5-3.7 1.2-8.8 1.9-11.5h-1zm-8.9 0h1c1 8.2 2.3 16.6 3.4 20.4h-1c-1.4-4.7-2.6-13.8-3.4-20.4z",
-        fill: "#BDD3DE",
-        fillRule: "evenodd",
-        opacity: ".42",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 22
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M233.3 225.8h-1.7c-5-3.8-12.8-10.1-15-14.6-1.9-3.6-4.2-4.6-5.2-4.1-.9.4-1 1.9-.2 3.7 1.7 4.1.3 11.1-.7 15h-1c1-3.7 2.5-10.7.9-14.6-1.2-2.9-.4-4.5.7-5 1.7-.8 4.4.6 6.5 4.6 2.3 4.5 11 11.4 15.7 15zM159.9 225.8h-1.2c-2.2-3.4-7.9-12.8-8.5-17.2-.2-1.3-.7-2.2-1.5-2.5-1.8-.7-4.8 1.1-6.9 2.8-2.1 1.7-4.2 5-4 7.8.1 1.2.6 2.1 1.6 2.7 3 1.8 4.2 4.9 4.7 6.4H143c-.5-1.5-1.7-4.1-4.1-5.6-1.2-.8-2-2-2.1-3.5-.2-3 2.1-6.7 4.3-8.6.7-.6 2.5-2 4.5-2.8h3.9c.9.5 1.4 1.6 1.7 3.1.7 4.4 7 14.6 8.7 17.4zM372.2 225.8h-1c-1.4-3.9-4.7-13.3-6.1-16.7-.4-.9-.9-.9-1.1-.9-1.1 0-2.5 1.5-3.4 3.3-.4 1-1.2 3.4.4 5.1 2.4 2.6 3.1 6.5 3.2 9.1h-1c-.2-2.5-.8-6.2-3-8.5-1.4-1.5-1.6-3.8-.5-6.2.8-1.9 2.6-3.9 4.3-3.9.5 0 1.4.2 2 1.5 1.5 3.6 4.9 13.5 6.2 17.2zM490.3 225.8h-1.2c-2.2-3.4-7.4-11.1-10.5-14.6-.3-.3-.7-.5-1.3-.5-4.6 0-14.9 10.8-18.8 15.1h-1.3c3.3-3.7 14.8-16 20.2-16.1.8 0 1.5.3 2 .8 3.2 3.8 8.9 12.3 10.9 15.3z",
-        fill: "#BDD3DE",
-        opacity: ".42",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 23
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M482.5 225.8h-1.2c-.9-1.3-2.2-2.8-3.9-4.3-2.5-2.2-7.9 1.5-11.1 4.3h-1.5c2.6-2.5 9.6-8.3 13.2-5.1 2.1 1.8 3.6 3.6 4.5 5.1zM635.7 205.4c-.9 3.8-2.9 10-6.9 15.3-.9 1.2-1.9 1.8-3 1.8-.2 0-.4 0-.6-.1-2.4-.5-4.8-4.2-7.2-11-.8-2.2-1.4-4.4-1.9-6.2h1c1.8 6.3 5 15.5 8.3 16.2.9.2 1.7-.3 2.5-1.4 3.9-5.2 5.8-11 6.7-14.8h1.1v.2z",
-        fill: "#BDD3DE",
-        opacity: ".42",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 24
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M630 205.4c-.7 1.5-1.9 3.8-3.7 6.7-.6.9-1.2 1.4-1.8 1.4h-.3c-1.7-.4-2.6-5-2.9-8h1c.4 3.5 1.3 6.9 2.2 7.1.2.1.6-.3 1-.9 1.6-2.6 2.8-4.7 3.4-6.2h1.1v-.1z",
-        fill: "#BDD3DE",
-        opacity: ".42",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 25
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M661.8 357.6v10.5c0 2.7-2.2 4.9-4.9 4.9H74.2c-2.7 0-4.9-2.2-4.9-4.9v-10.5c0-1.9 1.1-3.6 2.7-4.4.3-.2.6-.3.9-.4.4-.1.9-.2 1.3-.2h582.6c2.8 0 5 2.2 5 5z",
-        fill: "#EEEDEE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 26
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M492 360c0 2.9-2.9 5.6-5.4 6.1-2.1.5-3.9-.5-5.2-1.1-.8-.4-1.5-.8-1.8-.6-.3.2-1 1.4 1.5 8.6H480c-2.5-7.2-1.9-8.9-1-9.4.8-.5 1.7 0 2.8.5 1.2.6 2.7 1.5 4.5 1.1 2.1-.5 4.6-2.8 4.6-5.2 0-2.6-3.3-4.8-6.2-6.7-.4-.2-.8-.5-1.1-.7h1.8c3.2 2 6.6 4.3 6.6 7.4zM504.7 373h-2c-3-1.8-5.3-4.1-6-7.2-.3-1.7 0-2.7.4-3.6.3-1 .7-1.8.4-3.6-.3-2-1.3-4.1-2.7-5.9h1.2c1.3 1.8 2.2 3.8 2.5 5.8.3 2-.1 3.1-.5 4-.3.9-.6 1.7-.3 3.1.6 3.2 3.5 5.7 7 7.4zM528.4 354.1c1 2.6 2.3 5.9 2.3 9.9 0 3-.7 6.3-2 9h-1.2c1.4-2.6 2.2-6 2.1-9 0-3.9-1.3-7-2.2-9.6-.2-.6-.5-1.2-.7-1.8h1c.3.5.5.9.7 1.5zM536.8 370c-.2 1.1-.5 2.1-.6 3h-1c.1-1 .3-2 .6-3.2.6-2.5 1.3-5.7.9-9.4-.3-2.7-1-5.6-2.2-7.8h1.1c1.1 2.3 1.8 5.1 2.1 7.6.4 4-.3 7.2-.9 9.8zM547.2 352.6c-1.2 2.9-1.9 7.4-2.6 11.7-.5 3.2-1 6.3-1.7 8.6h-1c.7-2.4 1.2-5.6 1.7-8.8.7-4.2 1.4-8.5 2.6-11.6h1v.1zM550.4 373h-1.1c-.2-.4-.5-.8-.7-1.2-.4-.7-.8-1.3-1-1.8-2.2-4.6-.2-11.5 1.1-16 .1-.4.3-.9.4-1.4h1c-.1.5-.3 1-.5 1.6-1.3 4.4-3.2 11-1.2 15.3.2.5.6 1 1 1.8.3.5.6 1.1 1 1.7zM553 359c-1.7 5.1-1.4 10.2-.8 14h-1c-.6-3.9-1-9.2.8-14.4.8-2.3 1.9-4.4 3.2-6h1.3c-1.3 1.5-2.6 3.7-3.5 6.4zM561.1 352.6c-.2.9-.6 2.1-1.1 3.4-.6 1.8-1.3 3.9-1.9 6.2-1.1 4.4-1.7 8.1-1.7 10.7h-1c0-3.5 1-7.9 1.8-11 .6-2.4 1.3-4.5 1.9-6.3.4-1 .7-2.2 1-3.1h1v.1zM564.7 352.6h1c-.7 2.3-1.3 5.9-2 9.6-.8 4.4-1.5 8-2.3 10.8h-1c.9-3.3 1.7-7.7 2.3-11 .7-3.6 1.3-7 2-9.4zM575.4 373h-1.3c-.9-1.1-1.8-2.4-2.5-3.6-3.3-5.5-4-12-4.4-15.8 0-.3-.1-.6-.1-1h1c0 .3.1.5.1.8.4 4 1.1 10.1 4.3 15.4.8 1.5 1.8 2.9 2.9 4.2zM597 364.1c-1.4 2.9-3.4 6.1-5.6 8.9h-1.3c2.2-2.7 4.3-6 6-9.4 2.2-4.6.4-5.6-2.1-7.1-1.5-.9-3.3-1.9-4.2-3.9h1.1c.9 1.4 2.2 2.3 3.6 3 2.6 1.5 5.2 3.1 2.5 8.5z",
-        fill: "#BDD3DE",
-        opacity: ".42",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 27
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M602.5 361.5c-.6 4.2-2.5 6.2-3.9 7.7-1.3 1.4-2 2.2-1.3 3.8h-1.1c-.7-2 .3-3.1 1.6-4.5 1.4-1.5 3.1-3.3 3.7-7.2.4-3-.9-6.2-2.8-8.7h1.2c1.8 2.7 3.1 5.8 2.6 8.9zM610.8 365c.1.8.2 1.1.1 2.1-.3 2-1.2 4.1-2.4 5.9h-1.2c1.4-1.8 2.3-4 2.6-6.1.1-.8.1-1-.1-1.7-.1-.9-.4-2.4-.6-6.1-.1-2.2-.1-3.5-.1-4.5s0-1.5-.1-2h1c.1.5.1 1.1.1 2 0 1 0 2.3.1 4.4.2 3.7.5 5.2.6 6zM619.7 373h-1c-2.6-9-5.1-16.2-6.8-20.4h1.1c2.6 6 5.6 16.2 6.7 20.2v.2zM620.9 368.4c.5 1.6.8 3.1 1 4.6h-1c-.2-1.3-.5-2.8-.9-4.3-.8-2.9-1.8-5-2.8-7-1.3-2.7-2.5-5.2-3-9.1h1c.4 3.6 1.5 5.9 2.9 8.6.9 2.1 2 4.3 2.8 7.2zM626.2 373H625c-1.2-1.8-2.1-4-2.6-6.8-1.2-6.6-2.5-10.8-3.6-13.6h1.1c1.3 3.3 2.5 7.9 3.5 13.4.5 3 1.4 5.3 2.8 7zM656 361.5c-.6.8-1.3 1.6-1.9 2.7-1.2 2.4-1.2 5.3 0 8.8h-1c-1.1-3.6-1-6.7.2-9.2.6-1.2 1.4-2.1 2-2.9.8-.9 1.2-1.5 1-1.9-.2-.5-1.4-.6-3.3-.6-1.1 0-2.5-.1-4.2-.3-3-.3-5.3-.9-7-1.3-2.5-.6-3.9-1-5.1 0-1.1.9-1.7 2.6-1.4 3.7.4 1.2 1.6 1.6 3.1 2.1s3.3 1.1 4.2 2.7c1.1 2.1.5 5.2-1.2 7.8h-1.2c1.9-2.4 2.5-5.5 1.6-7.3-.7-1.3-2.2-1.8-3.6-2.2-1.6-.5-3.3-1-3.8-2.8-.5-1.6.2-3.6 1.7-4.8 1.6-1.3 3.3-.8 6-.2 1.8.4 4 1 6.9 1.3 1.6.2 3 .2 4.2.3 2.3.1 3.7.1 4.2 1.3.2.9-.6 1.8-1.4 2.8zM78.8 373h-1.1c-2.5-7.5-4.6-15-5.8-19.8.3-.2.6-.3.9-.4 1.3 4.9 3.5 12.5 6 20.2zM93.5 352.6h1c-1.5 6.2-3.6 14.2-5.8 20.4h-1.1c1.9-5 3.9-12.1 5.9-20.4zM122.1 373H121c0-.1-.1-.2-.1-.3-3.7-8.1-7.2-14.9-10.4-20.1h1.2c4.1 6.8 7.9 14.8 10.1 19.7 0 .2.1.5.3.7zM131.5 354.9c3.2 4.8 6.8 10.3 3.2 15.9-.4.7-.8 1.5-1.2 2.2h-1.1c.4-.9.8-1.9 1.4-2.8 3.2-5-.2-10.2-3.2-14.8-.6-1-1.3-1.9-1.8-2.8h1.2c.5.8 1 1.5 1.5 2.3zM143.6 373h-1c-1.2-7.2-4.7-15-8-20.4h1.3c3.3 5.6 6.6 13.5 7.7 20.4zM164.8 352.6h1.2c-.8 1.4-1.7 2.8-2.7 4.4-3.8 6.3-7.3 11.9-10.2 16h-1.2c3.5-5 7.6-11.7 10.5-16.5.8-1.4 1.6-2.7 2.4-3.9zM187.1 367.6c-.7 1.8-1.4 3.6-1.6 5.4h-1c.2-2.1.9-4 1.7-5.8.9-2.4 1.9-4.8 1.7-7.7-.1-2.5-1-4.9-2.3-6.9h1.2c1.2 2.1 2 4.4 2.1 6.9.2 3.1-.8 5.6-1.8 8.1zM205.8 352.6h1.7c-8.4 5.8-12.3 12.5-12.4 12.6-1.6 2.8-2.7 5.4-3.6 7.8h-1.1c1-2.4 2.1-5.3 3.8-8.2.1-.1 3.8-6.4 11.6-12.2zM225 373h-2.8c-2.1-.9-3.5-1.6-4.8-3.4-3-4.4-1.6-10.3-.5-15 .2-.7.3-1.3.5-2h1c-.2.7-.3 1.4-.5 2.2-1.1 4.5-2.5 10.2.3 14.2 1.3 1.9 2.9 2.5 5.7 3.6.4.2.7.3 1.1.4zM227.7 364.8c1.2 3.3 3 6 4.6 8.2H231c-1.5-2.1-3.2-4.8-4.3-7.8-1.1-3.1-1.1-6.8-.5-12.5h1c-.5 5.5-.5 9.2.5 12.1zM244.6 373h-1c-.7-2.2-1.1-4.4-1.5-6.4-.2-.8-.3-1.6-.5-2.4-.9-4.3-2.4-8.2-4-11.6h1.1c1.7 3.5 3.1 7.4 3.9 11.4.2.8.3 1.6.5 2.4.3 2.1.7 4.4 1.5 6.6zM281.6 352.6c-2.2 2.7-4.6 5.9-7.1 9.3-2.8 3.8-5.7 7.7-8.5 11.1h-1.3c3-3.6 6-7.7 9-11.7 2.3-3.1 4.5-6.1 6.6-8.7h1.3zM287.3 352.6c-.8 1.5-1.8 3.3-3 5.5-2.7 4.8-5.9 10.5-7.7 14.9h-1.1c1.7-4.5 4.9-10.2 7.9-15.4.9-1.6 1.9-3.4 2.8-5h1.1zM296.6 352.6c-3.8 4.4-7.9 10.1-11.6 15.1-1.5 2.1-2.8 3.8-3.9 5.3h-1.2c1.4-1.8 2.9-3.9 4.3-5.9 3.5-4.8 7.4-10.2 11.1-14.5h1.3zM301.2 362.2c.5.9.9 1.8.6 3.4-.5 2.7-2.5 4.1-4.9 5.7-.8.5-1.7 1.1-2.5 1.8h-1.6c1.3-1.1 2.5-1.9 3.6-2.6 2.4-1.6 4.1-2.7 4.5-5 .2-1.2-.1-1.9-.6-2.8-.4-.9-1-2-1-3.8-.1-2.3.6-4.4 1.6-6.2h1.1c-1 1.8-1.8 3.9-1.7 6.2 0 1.6.5 2.4.9 3.3zM310.9 365.2c-4.7 2-8.5 4.9-11.7 7.8h-1.4c3.4-3.3 7.6-6.5 12.7-8.8 1.4-.6 2.4-1 3.3-1.3 1.7-.6 2.8-1 4.2-2.2 2.5-2.2 4-5.1 4.8-8.1h1c-.9 3.3-2.4 6.4-5.2 8.8-1.6 1.4-2.9 1.9-4.6 2.5-.7.3-1.8.7-3.1 1.3zM330.5 368.5c-2.1 2.9-6.9 3.3-11.5 3.7-2.2.2-4.3.4-6 .8h-2.7c2-1.2 5.3-1.5 8.6-1.8 4.4-.4 9-.8 10.8-3.3.9-1.2 1.1-2.8.6-5-.6-2.9-1.2-6.6-1.8-10.3h1c.6 3.6 1.2 7.3 1.8 10.1.6 2.4.3 4.3-.8 5.8zM341.6 369.6c-.3 1.2-.7 2.3-1.3 3.4h-1.1c.6-1.1 1.1-2.4 1.4-3.6.8-3.1 1-6.9-.8-8.3-.5-.4-.9-.4-1.4-.5-.5-.1-1.1-.2-1.8-.5-2.2-1.2-3.7-4.3-3.8-7.3h1c.2 2.7 1.4 5.4 3.3 6.4.5.3 1 .4 1.5.4.6.1 1.2.2 1.9.7 2.6 2.1 1.5 7.7 1.1 9.3zM359.2 373h-1c-.5-7.3-1.5-10.2-2.2-10.3-.6-.1-1.6 2.2-2.2 3.6-1.1 2.5-2.2 5-3.7 4.8-.5 0-1-.4-1.5-1-1.6-2-2.8-7.1-2.1-12.2.3-2.3 1-4 1.7-5.4h1.1c-.7 1.4-1.5 3.2-1.8 5.6-.7 4.7.4 9.6 1.9 11.4.3.4.6.6.8.6.9.1 2-2.4 2.7-4.2 1.1-2.5 1.9-4.4 3.2-4.2 1.6.3 2.6 4.1 3.1 11.3zM379.7 367.5c.6 1 1.2 2 1.1 3.3-.1.8-.3 1.5-.6 2.3h-1.1c.4-.8.6-1.6.7-2.4.1-.9-.4-1.7-1-2.6-.7-1.2-1.6-2.6-1.3-4.5.2-1.5.9-2.5 1.4-3.2.5-.7.8-1.1.6-1.5-.3-.9-1.7-1.1-3.3-1.4-2.1-.3-4.5-.8-5.6-2.7-.4-.6-.5-1.3-.6-2h1c0 .5.2 1.1.4 1.5.9 1.6 3 1.9 4.9 2.2 1.9.3 3.6.6 4.1 2 .3.9-.2 1.6-.7 2.4-.5.7-1.1 1.5-1.3 2.8-.1 1.5.6 2.7 1.3 3.8zM388.1 369.3c-.7 1.1-1.5 2.3-2.3 3.7h-1.1c.9-1.7 1.8-3.1 2.6-4.3 1.5-2.2 2.4-3.7 1.9-5.2-.1-.2-.1-.2-.3-.4-.3-.3-.8-.8-1.8-2-1.8-2.2-2.8-4-3.6-5.2l-.4-.6c-.5-.8-1-1.7-1.6-2.6h1.2c.4.7.9 1.4 1.3 2.1l.4.6c.8 1.3 1.8 3 3.6 5.2.9 1.2 1.4 1.6 1.7 1.9.3.3.4.4.5.8.6 1.9-.5 3.6-2.1 6zM401.9 352.6c-4.2 5.2-9.1 13.7-12.9 20.2 0 .1-.1.2-.1.2h-1.1c.1-.2.3-.5.4-.7 3.6-6.3 8.3-14.3 12.5-19.7h1.2zM406 352.6c-.5.9-1 1.9-1.6 3.1-2.6 5.2-6.1 12-7.4 17.2h-1c1.3-5.4 4.8-12.4 7.6-17.7.5-.9.9-1.8 1.4-2.7h1v.1zM422.6 360.4c-.2 3.4-5.6 6.1-9 6.9-1.9.5-3 .4-4 .3-.8-.1-1.5-.2-2.7.2-2.7.8-4.6 3-6 5.3h-1.2c1.5-2.6 3.7-5.3 6.9-6.3 1.3-.4 2.2-.3 3-.2.9.1 1.9.2 3.6-.2 3.3-.8 8.1-3.2 8.2-6 .1-2-2.3-3.8-4.5-5.3-1.1-.8-2.1-1.5-2.8-2.3h1.4c.6.5 1.3 1 2 1.5 2.5 1.6 5.2 3.5 5.1 6.1zM432.7 373h-2.6c-.4-.2-.7-.3-1-.5-3.2-1.8-5.2-4-5.2-5.9 0-1.8 1.5-2.7 2.9-3.7s2.9-1.9 3.1-3.7c.2-1.9-1.1-4.4-3.5-6.5h1.4c1.9 1.9 3.3 4.3 3 6.7-.2 2.2-2 3.4-3.5 4.4-1.3.9-2.5 1.6-2.4 2.8 0 1.5 1.8 3.5 4.7 5.1.9.5 2 .9 3.1 1.3zM447.4 371.6c-.2.5-.6.9-1.4 1.4h-2c.3-.1.5-.3.8-.4 1.1-.7 1.6-1 1.7-1.3.3-1-1.1-2-2.8-3.3-2.3-1.7-5.1-3.9-5.7-7.3-.4-2.4.3-5.2 2.2-8.1h1.2c-2 2.9-2.8 5.6-2.4 7.9.5 3 3.2 5 5.3 6.7 1.9 1.5 3.6 2.8 3.1 4.4zM460.4 373h-1.1c-.3-.8-.7-1.7-1-2.6-1.9-4.7-5-12.7-8-17.8h1.2c2.6 4.4 5.2 10.8 7.8 17.4.4 1.1.8 2.2 1.1 3zM465.5 352.6h1c-.5 2.2-1 5.7-1.4 9-.7 5.4-1.3 9.1-1.9 11.4h-1c.7-2.7 1.4-7.8 1.9-11.5.4-3.4.9-6.6 1.4-8.9zM472.1 373h-1c-1-8.2-2.3-16.6-3.4-20.4h1c1.4 4.7 2.6 13.8 3.4 20.4zM520.7 367.2c1.2 2.9.4 4.5-.7 5-.3.1-.6.2-1 .2-1.6 0-3.8-1.5-5.5-4.8-2.3-4.5-11-11.5-15.8-15h1.7c4.9 3.8 12.7 10.1 15 14.6 1.9 3.6 4.2 4.6 5.2 4.2.9-.4 1-1.9.2-3.7-1.7-4.1-.3-11.1.7-15h1c-.9 3.7-2.4 10.6-.8 14.5zM589.8 370.3c-.7.6-2.6 2-4.5 2.8h-3.9c-.9-.5-1.4-1.6-1.6-3.1-.6-4.4-6.9-14.5-8.7-17.3h1.2c2.2 3.4 7.9 12.8 8.5 17.2.2 1.4.7 2.2 1.5 2.5 1.8.7 4.8-1.1 6.9-2.8 2.1-1.7 4.2-5 4-7.8-.1-1.2-.6-2.1-1.6-2.7-2.9-1.8-4.2-4.9-4.7-6.4h1.1c.5 1.5 1.7 4.1 4.1 5.6 1.2.8 2 2 2.1 3.5.1 2.9-2.2 6.6-4.4 8.5zM371.3 367.3c-.8 2-2.6 3.9-4.3 3.9-.5 0-1.4-.2-2-1.5-1.5-3.5-5-13.4-6.2-17.1h1.1c1.4 3.9 4.6 13.3 6.1 16.7.4.9.9.9 1.1.9 1.1 0 2.5-1.5 3.4-3.3.4-1 1.2-3.4-.3-5.1-2.4-2.6-3.1-6.5-3.2-9.1h1c.2 2.5.8 6.2 3 8.5 1.2 1.4 1.4 3.7.3 6.1zM274 352.6c-3.4 3.7-14.9 16-20.2 16.1-.8 0-1.5-.3-2-.8-3.4-3.8-9-12.2-11-15.2h1.2c2.2 3.4 7.4 11.1 10.6 14.6.3.3.8.5 1.3.5 4.6 0 14.9-10.8 18.8-15.1h1.3v-.1z",
-        fill: "#BDD3DE",
-        opacity: ".42",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 28
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M266.3 352.6c-2.1 1.9-6.9 6-10.6 6-1 0-1.9-.3-2.6-.9-2.1-1.8-3.5-3.7-4.5-5.1h1.2c.9 1.3 2.2 2.8 3.9 4.3 2.5 2.2 7.9-1.5 11.1-4.3h1.5zM114.9 373h-1c-1.8-6.3-5-15.5-8.3-16.2-.8-.2-1.7.3-2.5 1.4-3.9 5.2-5.8 11-6.7 14.8h-1c.9-3.8 2.9-10 6.9-15.3 1.1-1.5 2.3-2.1 3.5-1.8 2.3.5 4.8 4.2 7.2 11 .7 2.2 1.4 4.4 1.9 6.1z",
-        fill: "#BDD3DE",
-        opacity: ".42",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 29
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M109.8 373h-1c-.4-3.5-1.3-6.9-2.1-7.1-.2-.1-.6.3-1 .9-1.6 2.6-2.8 4.7-3.5 6.2h-1.1c.7-1.5 1.9-3.8 3.7-6.7.7-1.1 1.4-1.5 2.1-1.3 1.7.4 2.6 5 2.9 8z",
-        fill: "#BDD3DE",
-        opacity: ".42",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 30
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M333.7 169.2c-1.2-12-14.6-14.2-21-30.8-4.7-12.2-2.4-24.4 0-32.5h-24.4c2.4 8.1 4.7 20.3 0 32.5-6.3 16.6-19.8 18.8-21 30.8-1.1 10.9 8.3 27.2 24.1 31.9v4.8h18.1v-4.8c15.8-4.7 25.2-20.9 24.2-31.9z",
-        fill: "#EEEDEE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 31
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M383.4 67.6h-3.9V58H360v9.6h-4c-6.6 0-12 5.4-12 12v113.5c0 6.6 5.4 12 12 12h27.4c6.6 0 12-5.4 12-12V79.6c0-6.6-5.4-12-12-12zM145 32.6h105.4v173.1H145z",
-        fill: "#EBDEDE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 32
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M151.5 40h92.3v158.2h-92.3z",
-        fill: "#fff",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 33
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M224 119.2c12.5 15 8 39.7-9.9 54.7-18 15-43.1 15-55.6.1 21.8-18.3 43.7-36.6 65.5-54.8z",
-        fill: "#BDD3DE",
-        opacity: ".42",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 34
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M173.4 104.2c-13.5-6.3-19.1-23.2-12.5-37.5 6.7-14.3 23.3-20.8 36.8-14.5-8.1 17.3-16.2 34.6-24.3 52z",
-        fill: "#EEEDEE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 35
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M173.6 142.7c-3.1 0-6.5-.4-10.2-1.2-.8-.2-1.3-1-1.2-1.8.2-.8 1-1.3 1.8-1.2 10.3 2.1 17.6 1.2 21.7-2.8 3.4-3.3 3.4-7.7 3.3-12.8-.1-5.4-.1-11.6 4.3-17.4 3.8-5 8.4-6.6 12.9-8.2 4.3-1.5 8.4-3 11.3-7.6 2.7-4.5 3.4-10.3 1.8-17.4-.2-.8.3-1.6 1.2-1.8.8-.2 1.6.3 1.8 1.2 1.7 7.9.9 14.4-2.2 19.6-3.4 5.5-8.2 7.2-12.8 8.8-4.3 1.5-8.3 2.9-11.5 7.2-3.8 5-3.7 10.3-3.7 15.5.1 5.3.1 10.7-4.2 14.9-3.3 3.4-8.1 5-14.3 5z",
-        fill: "#EBDEDE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 36
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M207.1 53.9c0 3.1 2.5 5.6 5.6 5.6 3.1 0 5.6-2.6 5.6-5.6 0-3.1-2.5-5.6-5.6-5.6-3.1 0-5.6 2.5-5.6 5.6zm3 0c0-1.4 1.2-2.6 2.6-2.6 1.4 0 2.6 1.1 2.6 2.6 0 1.4-1.2 2.6-2.6 2.6-1.4 0-2.6-1.2-2.6-2.6z",
-        fill: "#EBDEDE",
-        fillRule: "evenodd",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 37
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M534.7 74.6h-.2c-.2-.1-.2-.3-.1-.5 1-1.8.8-2.3.7-2.4-.1-.1-.2-.1-.3-.2-.2-.1-.6-.3-.7-.7-.1-.4-.1-.8.2-1.3.1-.2.3-.2.5-.1s.2.3.1.5c-.2.3-.2.5-.2.6 0 .1.1.2.3.3.2.1.4.2.5.4.5.6.3 1.6-.6 3.2 0 .2-.1.2-.2.2z",
-        fill: "#EBDEDE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 38
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M537.7 147.9h-6.9V72.8c.3 0 .8 0 1.2.2.7.4.8 1.1 1.2 1.1.6 0 .7-1.1 1.5-1.2.5-.1.7.5 1.4.6.6.1 1.2-.3 1.5-.6.1 24.9.1 49.9.1 75z",
-        fill: "#EEEDEE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 39
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M537.7 147.9h-6.9V72.8c.3 0 .8 0 1.2.2.7.4.8 1.1 1.2 1.1.6 0 .7-1.1 1.5-1.2.5-.1.7.5 1.4.6.6.1 1.2-.3 1.5-.6.1 24.9.1 49.9.1 75z",
-        fill: "#BDD3DE",
-        opacity: ".42",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 40
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M539.5 131c.9-.5 1.5-1.5 1.5-2.6 0-1.7-1.4-3-3-3h-7.3c-1.7 0-3 1.4-3 3 0 1.1.6 2 1.5 2.6l-11.3 74.2h33L539.5 131z",
-        fill: "#EEEDEE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 41
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M572.2 90c-.2 0-.3-.1-.4-.3-.1-.7-.2-1.4-.2-2.1 0-.6.1-.9.2-1.2.1-.4.3-.6.5-.7.1-.1.2-.2.2-.3.1-.3 0-.7-.2-1.2-.1-.2 0-.4.1-.5.2-.1.4 0 .5.1.4.7.5 1.3.3 1.8-.1.3-.3.4-.4.6-.1.1-.2.3-.3.5-.1.1-.1.3-.1.9 0 .7.1 1.3.2 2 0 .2-.1.4-.4.4z",
-        fill: "#EBDEDE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 42
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M575.4 152.5h-5.9v-64c0-.5.4-.9.8-1 .3-.1.7 0 1 .2.3.4 0 .9.3 1.1.3.2.9 0 1.3-.2.6-.4.8-.9 1-.8.2 0 .2.3.4.5.3.3.7.3 1.1.2v64z",
-        fill: "#EEEDEE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 43
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M575.4 152.5h-5.9v-64c0-.5.4-.9.8-1 .3-.1.7 0 1 .2.3.4 0 .9.3 1.1.3.2.9 0 1.3-.2.6-.4.8-.9 1-.8.2 0 .2.3.4.5.3.3.7.3 1.1.2v64z",
-        fill: "#BDD3DE",
-        opacity: ".42",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 44
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M576.7 144.5c.7-.4 1.2-1.2 1.2-2.1 0-1.4-1.1-2.5-2.5-2.5h-5.9c-1.4 0-2.5 1.1-2.5 2.5 0 .9.5 1.7 1.2 2.1l-9.2 60.6h27l-9.3-60.6z",
-        fill: "#EEEDEE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 45
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M602.7 81.6c-.2 0-.3-.1-.4-.3-.1-.5-.1-1 0-1.5.1-.4.3-.6.4-.8.1-.2.2-.4.3-.7.1-.4 0-.7 0-1.1-.1-.5-.2-.9-.4-1.3-.1-.2 0-.4.2-.5.2-.1.4 0 .5.2.2.5.4 1 .4 1.5.1.5.1.9 0 1.4-.1.4-.3.7-.4.9-.1.2-.2.3-.3.6-.1.3-.1.7 0 1.1.1.2 0 .4-.3.5z",
-        fill: "#EBDEDE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 46
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M605.9 144.1H600v-64c.4-.9.7-1 .8-1 .4.1.4 1.1.7 1.1.3 0 .2-1.5.7-1.7.3-.1.5.5 1.2.7.4.1.6-.1.9.2.3.2.3.5.4.5.1 0 .1-.4.2-.5.1 0 .3.1.8.7.2 21.3.2 42.6.2 64z",
-        fill: "#EEEDEE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 47
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M605.9 144.1H600v-64c.4-.9.7-1 .8-1 .4.1.4 1.1.7 1.1.3 0 .2-1.5.7-1.7.3-.1.5.5 1.2.7.4.1.6-.1.9.2.3.2.3.5.4.5.1 0 .1-.4.2-.5.1 0 .3.1.8.7.2 21.3.2 42.6.2 64z",
-        fill: "#BDD3DE",
-        opacity: ".42",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 48
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M607.2 144.5c.7-.4 1.2-1.2 1.2-2.1 0-1.4-1.1-2.5-2.5-2.5H600c-1.4 0-2.5 1.1-2.5 2.5 0 .9.5 1.7 1.2 2.1l-9.2 60.6h27l-9.3-60.6z",
-        fill: "#EEEDEE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 49
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M368.1 297c0 .9 0 1.7-.1 2.6-.5 11.2-4.4 21.6-10.6 30.1-1.1 1.6-2.4 3.1-3.7 4.5-7.5 8.2-17.4 14.2-28.6 16.8-2.3.5-4.7.9-7.1 1.2-1.8.2-3.6.3-5.5.3-19.7 0-37-10.3-46.9-25.8-.9-1.5-1.8-3-2.6-4.5-3.9-7.6-6-16.1-6-25.2 0-23.5 14.6-43.6 35.3-51.7 1.6-.6 3.3-1.2 5-1.7 4.8-1.4 9.9-2.1 15.2-2.1 11.8 0 22.7 3.7 31.7 9.9 2 1.4 3.8 2.9 5.6 4.5 10.6 9.6 17.4 23.3 18.1 38.5.2.9.2 1.8.2 2.6z",
-        fill: "#EBDEDE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 50
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M274.7 353.6c-.2 0-.4-.1-.6-.2-.3-.3-.5-.7-.3-1.1l10.2-26.5c.2-.5.8-.8 1.3-.6.5.2.8.8.6 1.3l-9.1 23.7c7-4.2 19-9.6 34.4-9.3 13.8.3 24.7 5 31.8 9.4l-6.6-23.9c-.1-.5.2-1.1.7-1.2.5-.1 1.1.2 1.2.7l7.3 26.5c.1.4 0 .8-.4 1.1-.3.2-.8.3-1.1 0-6.8-4.6-18.1-10.2-33-10.5-17-.4-29.8 6.5-35.8 10.6-.2-.1-.4 0-.6 0z",
-        fill: "#BDD3DE",
-        opacity: ".42",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 51
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M299.5 274l-9.2 7c-1 .8-2.5.6-3.2-.4l-.3-.4c-.8-1-.6-2.5.4-3.2l9.2-7c1-.8 2.5-.6 3.2.4l.3.4c.8.9.6 2.4-.4 3.2zM297.2 332l-9.2 7c-1 .8-2.5.6-3.2-.4l-.3-.4c-.8-1-.6-2.5.4-3.2l9.2-7c1-.8 2.5-.6 3.2.4l.3.4c.8.9.6 2.4-.4 3.2zM267.4 324.2c0 .8-.3 1.5-1 2l-.6.5c-.9-1.5-1.8-3-2.6-4.5l.1-.1c1.1-.8 2.7-.6 3.6.5.3.5.5 1 .5 1.6zM296 254.8h-.2c-1.3 0-2.4-1-2.6-2.3l-.7-7.2c1.6-.6 3.3-1.2 5-1.7l.8 8.3c.1 1.5-.9 2.8-2.3 2.9zM333.9 300.6l-9.3-6.8c-1-.8-1.2-2.2-.5-3.2l.3-.4c.8-1 2.2-1.2 3.2-.5l9.3 6.8c1 .8 1.2 2.2.5 3.2l-.3.4c-.7 1.1-2.1 1.3-3.2.5zM325.1 351.1c-2.3.5-4.7.9-7.1 1.2l-1.3-.9c-1.1-.8-1.4-2.4-.5-3.6.5-.7 1.3-1 2.1-1 .5 0 1.1.2 1.5.5l5.3 3.8zM331 275.1l-9.3-6.8c-1-.8-1.2-2.2-.5-3.2l.3-.4c.8-1 2.2-1.2 3.2-.5l9.3 6.8c1 .8 1.2 2.2.5 3.2l-.3.4c-.7 1-2.1 1.2-3.2.5zM368.1 297c0 .9 0 1.7-.1 2.6l-5.2.5c-1.4.1-2.7-.9-2.8-2.3v-.3c0-1.3 1-2.4 2.3-2.5l5.7-.6c.1.9.1 1.8.1 2.6zM349.9 255.9l-4.3.4c-1.4.1-2.7-.9-2.8-2.3v-.3c0-1 .6-1.9 1.5-2.3 2 1.4 3.8 2.9 5.6 4.5zM328.8 328l-11.5 1.1c-1.3.1-2.4-.8-2.5-2.1l-.1-.5c-.1-1.3.8-2.4 2.1-2.5l11.5-1.1c1.3-.1 2.4.8 2.5 2.1l.1.5c0 1.2-.9 2.4-2.1 2.5zM299.4 308.2l-4.3-10.7c-.5-1.2.1-2.5 1.3-3l.5-.2c1.2-.5 2.5.1 3 1.3l4.3 10.7c.5 1.2-.1 2.5-1.3 3l-.5.2c-1.2.4-2.5-.2-3-1.3zM357.4 329.7c-1.1 1.6-2.4 3.1-3.7 4.5l-2.7-6.8c-.5-1.3.1-2.8 1.4-3.3.3-.1.6-.2 1-.2 1 0 2 .6 2.4 1.6l1.6 4.2zM273.4 297.1l-11.5 1.1c-1.3.1-2.4-.8-2.5-2.1l-.1-.5c-.1-1.3.8-2.4 2.1-2.5l11.5-1.1c1.3-.1 2.4.8 2.5 2.1l.1.5c.1 1.3-.9 2.4-2.1 2.5z",
-        fill: "#fff",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 52
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M431.2 327.4c-.613-4.983-2.543-9.899-4.279-14.32-2.514-6.401-4.62-11.763-1.721-14.78l.1-3.8s-5.1-.9-6.3 6.4c-.432 2.59.107 5.878.648 9.181.963 5.88 1.934 11.806-2.548 13.919v-6.5c0-7.9-5.2-14.6-12.3-17 .3-.2.4-.6.4-.9 0-.7-.6-1.3-1.3-1.3h-6.3c2.8-3.9 3-7.9 1.2-9.8-.8-.9-2.1-1.4-3.6-1.4-1.9-.1-3.9.7-5.2 1.9-1.3 1.3-2.1 3.1-2 5.1 0 1.5.4 2.9 1.2 4.2h-5.1c-.7 0-1.3.6-1.3 1.3 0 .4.2.7.4.9-3.9 1.3-7.2 4-9.4 7.4-1.1-1.5-3.6-4.3-7.3-4.4-3-.1-5.6 1.7-6.9 3.2-7.602 8.985 8.677 35.514 10.92 39.17l.08.13c.07.14.188.23.287.307.043.033.083.063.113.093v6.1h46.2V339s15.4.6 14-11.6zm-69.4-18.7c.9-1.1 2.7-2.2 4.5-2.2 2.8.1 4.8 2.8 5.3 3.7.2.2.4.4.6.5-.9 2.1-1.4 4.4-1.4 6.8v23.3c-5.4-9.3-13.7-26.6-9-32.1zm29.6-18.3c-.9.9-1.4 2.2-1.4 3.7s.6 3 1.6 4.2h3.5c3.1-3.5 3.5-7.1 2.3-8.4-.4-.5-1.2-.8-2.2-.8-1.4-.1-2.9.4-3.8 1.3z",
-        fill: "#EEEDEE",
-        fillRule: "evenodd",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 53
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M449.3 257.9H608V353H449.3z",
-        fill: "#EBDEDE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 54
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M494.7 257.9v55.4c-18.5 0-33.7-15.2-33.7-33.7 0-8.2 3-15.8 8-21.7h25.7zM477.9 334.8c-1.5 6.1-2.9 12.2-4.4 18.2h-24.2v-12c7.8-6.1 18.3-8.7 28.6-6.2zM608 344.3v8.7h-8.7c2.3-3.4 5.3-6.4 8.7-8.7zM557.2 353h-31.7c-3.6-3.6-6.5-8-8.2-13.2-5.9-17.5 3.7-36.8 21.2-42.6 6.2 18.6 12.5 37.2 18.7 55.8zM608 257.9v9.8c-7.8 14.5-15.6 29.1-23.3 43.6-16.3-8.7-22.5-29.3-13.8-45.6 1.6-2.9 3.5-5.5 5.8-7.8H608z",
-        fill: "#BDD3DE",
-        opacity: ".42",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 55
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M258.3 512.2c-.2-.299-.5-.599-.7-.799v-.001c-.4-.333-.8-.533-1.052-.659-.126-.063-.215-.107-.248-.141-.757-.283-1.559-1.529-2.468-2.944-1.014-1.575-2.162-3.36-3.532-4.256-1.691-1.127-3.644-.836-5.362-.581-1.635.243-3.058.454-3.838-.619-.585-.797-.406-1.765-.246-2.632.141-.762.267-1.446-.154-1.868-.657-.562-1.731.063-3.234.937-1.701.989-3.952 2.298-6.766 2.563-2.687.254-4.756-.546-6.418-1.188-1.616-.625-2.846-1.1-3.882-.312-2.1 1.6-.9 6.5-.6 7.4 1.9 7.4 8.9 11.6 12.5 13.4-.5.7-.974 1.4-1.449 2.099l-.001.001c-.475.7-.95 1.4-1.45 2.1-1.8 2.5-3.6 4.9-5.5 7.3-.9 1.2-1.9 2.4-2.9 3.6l-.7.9-.7.8c-.5.5-1 1-1.5 1.4-.308.308-.653.54-.989.766h-.001c-.21.141-.418.281-.61.434-.6.4-1.2.7-1.8 1-1.2.6-2.5 1.1-3.8 1.5-2.7.8-5.5 1.2-8.4 1.4-2.517.174-5.09.159-7.728.144-3.441-.019-6.993-.04-10.672.356-1.6.2-3.3.5-5 1-1.7.5-3.4 1.3-4.9 2.4-3.1 2.2-5 6.1-5.7 9.2-1.3 5.1-5 9.7-9.4 13.4-4.5 3.7-9.6 6.9-14.9 9.6-1.291.684-2.639 1.309-3.958 1.921-.418.194-.833.387-1.242.579 1.117-1.754 2.29-3.481 3.475-5.225 1.043-1.535 2.095-3.083 3.125-4.675 4.1-6 8.3-12.2 12.1-18.7 1.9-3.3 3.7-6.7 5.2-10.2 1.6-3.6 2.9-7.2 3.9-11.1 1-3.8 1.6-7.8 1.8-11.8.2-4-.2-8-.9-11.9-.4-2-.9-3.9-1.5-5.7l-.178-.542v-.001h-.001c-.243-.748-.5-1.534-.821-2.257l-1-2.6-4-10.2-8-20.4-.938-2.362h-.001c-2.989-7.528-6.002-15.115-9.261-22.538 5.5-6.8 10.8-11.3 14.9-14.2 2.206-1.584 4.213-2.864 5.963-3.98 4.435-2.83 7.222-4.608 7.437-7.62.2-4.2-4.8-8.8-9.7-10-2.489-.647-3.937-.129-5.503.43-1.581.565-3.283 1.173-6.297.67-1.901-.342-3.527-.987-5.087-1.607-2.544-1.01-4.914-1.95-8.013-1.393-1.3.3-1.9.6-2.1.9-1.156 1.079-1.124 2.989-1.095 4.776.048 2.849.09 5.384-4.705 3.724-2.233-.779-3.414-1.962-4.426-2.976-.937-.938-1.728-1.731-3.074-1.924-3.772-.58-7.544 4.639-8.511 5.978l-.089.122c-1.459 2.092-1.854 3.592-2.208 4.937-.374 1.422-.702 2.671-2.192 4.263-1.593 1.69-3.185 2.331-4.575 2.89-1.491.6-2.749 1.107-3.525 2.71-1.1 2.3-.6 5.4.7 7.5 2.4 3.7 7.3 4.3 22.2 5.2 3.249.204 6.317.381 9.165.545l.003.001c2.762.159 5.318.307 7.632.454v.001c.6 1.5 1.2 3 1.7 4.499 2.6 6.8 4.9 13.7 7.2 20.6 2.2 6.9 4.4 13.9 6.3 20.9.5 1.75.975 3.499 1.45 5.249v.001c.475 1.75.95 3.5 1.45 5.25l.7 2.6v.001c.2.8.4 1.6.5 2.499l.068.383c.276 1.559.54 3.045.632 4.617.3 3.3.1 6.6-.3 9.9-.5 3.3-1.3 6.4-2.4 9.6-2.2 6.3-5.4 12.4-9.1 18.3-1.3 2.1-2.7 4.2-4.2 6.3-.25-.05-.525-.125-.8-.2-.275-.075-.55-.15-.8-.2-1.8-.5-3.6-1.1-5.4-1.7-.9-.3-1.8-.6-2.7-1l-.7-.3-.6-.3c-.2-.1-.375-.2-.55-.3-.175-.1-.35-.2-.55-.3-1.4-.8-2.5-2-3.5-3.3-.9-1.3-1.7-2.8-2.5-4.5-.479-1.022-.928-2.096-1.389-3.198-.98-2.346-2.014-4.82-3.511-7.202.2-3 0-6.1-.9-9.2-.5-1.7-1.4-3.5-3-4.8-.6-.4-.9-.8-1-1.3-.2-.5-.1-1.2.1-1.9.273-1.022.684-2.044 1.109-3.097v-.001c.199-.492.4-.992.591-1.502.1-.1.1-.3.1-.4 1.6-1 3.6-2.2 6-3.3 3.506-1.53 6.548-2.183 8.754-2.657 2.262-.485 3.645-.782 3.746-1.643.087-.65-.747-.981-2.152-1.538-1.835-.728-4.645-1.842-7.648-4.562-.055-.046-.14-.12-.251-.216l-.001-.001c-1.094-.954-4.715-4.11-7.348-4.383-.7-.1-1 0-1.1.1-.684.381-.935 1.295-1.17 2.152-.382 1.396-.722 2.636-2.83 1.148-1.37-.948-1.913-1.958-2.28-2.64-.677-1.259-.752-1.398-4.32 2.04-1.1 1.1-2.3 1.8-3.3 2.2v-.3c-.2-1.1-1.5-4.5-4.2-5.3-.9-.3-1.5-.3-2.6 0-2.927.732-5.6-.057-8.11-.797-1.948-.575-3.798-1.121-5.59-.903-1.924.235-1.888 1.879-1.856 3.371.037 1.689.07 3.185-2.744 2.229-1.862-.632-2.81-1.585-3.449-2.226-1.178-1.184-1.297-1.304-4.151 3.626-1.887 3.303-4.344 4.6-6.29 5.628-2.593 1.369-4.28 2.26-2.51 6.772 2.4 6.3 16.3 4.9 21.8 4.1 1.7 1.9 3.4 3.7 5.3 5.5 2.8 2.7 5.8 5.2 9.2 7.2 1.7 1 3.5 1.9 5.4 2.5 1.9.6 4 .9 6.1.8 1.8-.2 3.4.2 4.6 1.1 1.2.9 2 2.4 2.6 4.1.502 1.274.929 2.606 1.367 3.976h.001c.698 2.18 1.426 4.452 2.532 6.724.9 1.8 2 3.7 3.4 5.3 1.4 1.6 3.3 3 5.3 3.8.5.2 1 .4 1.5.5l.8.2.7.1 2.8.6 5.6 1.3.7.2a480.778 480.778 0 01-3.746 5.254l-.002.003c-.912 1.269-1.832 2.547-2.752 3.843-.566.809-1.14 1.618-1.715 2.429-1.557 2.196-3.124 4.407-4.585 6.671-2.1 3.1-4.1 6.3-6 9.8-1.9 3.4-3.6 7.1-4.9 11-1.3 4-2.1 8.3-2 12.8.1 4.5 1.2 9 3 13 .9 2 2 3.8 3.2 5.6.177.237.355.482.535.731.428.593.872 1.206 1.365 1.769.389.52.863 1.081 1.257 1.548l.001.001c.213.252.402.476.542.651 4.1 4.9 7.2 10.8 9.4 17.2 2.1 6.4 3.4 13.2 4 20.2 1.2 14 .3 28.301-1.7 42.6-1 7.1-2.3 14.2-3.8 21.3l-.376 1.65c-.677 2.974-1.365 5.998-2.124 8.95v.001c-.9 3.5-1.8 7-2.8 10.499-.2.7.2 1.5.9 1.8.8.3 1.6 0 2-.8 2.8-6.8 5.2-13.7 7.4-20.7 1.1-3.5 2.1-7 3.1-10.6l.386-1.541c.77-3.065 1.529-6.088 2.214-9.259 1.6-7.2 2.8-14.5 3.7-21.9.8-7.4 1.2-14.9.9-22.5-.033-.5-.056-1-.078-1.5-.044-1-.089-2-.222-3l6.6-1.6c.8-.2 1.6-.375 2.4-.55.8-.175 1.6-.35 2.4-.55l2.4-.5.6-.1.7-.2c.288-.057.542-.148.783-.233a5.52 5.52 0 01.517-.167c1-.4 2-1 2.9-1.6 1.2.5 2.4.9 3.6 1.3l2 .7 1 .3c.2.1.4.1.6.1l.6.1c.27.068.586.044.886.022.144-.011.284-.022.414-.022.133-.033.278-.055.422-.077.289-.045.578-.089.778-.223.8-.3 1.5-.6 2.1-1 .697-.428 1.308-.915 1.894-1.382.507-.404.996-.793 1.506-1.118.6-.4 1.1-.6 1.6-.6.475-.079.825.155 1.198.405.098.066.198.133.302.195 1.2 1 2.8 1.4 4.3 1.5 2.1.2 4.2-.1 6.3-.5.3 1.1.7 2.601 1 4.4.102.742.165 1.405.221 1.99.162 1.701.26 2.738 1.079 3.11 1 .5 2.6-.1 2.9-.5.3-.3.4-.5.6-1 .339-1.298 1.219-2.15 2.048-2.952.639-.619 1.247-1.207 1.552-1.948.329-.797-.312-1.133-.898-1.44-.664-.347-1.257-.657-.302-1.56.487-.432.945-.572 1.325-.689.324-.099.591-.181.775-.411.31-.371.121-.819-.21-1.605v-.001a15.57 15.57 0 01-.69-1.894 13.852 13.852 0 01-.466-2.141c-.122-.801-.195-1.28-.734-1.759-.2-.2-.9-.9-1.8-.8-.901.121-1.37 1.035-2.055 2.376-.456.89-1.007 1.967-1.845 3.124-.197.237-.379.474-.551.698-.265.345-.507.66-.749.902-2.4.8-4.9 1.4-7.3 1.2-1.3-.1-2.6-.4-3.6-1.2-.108-.071-.215-.156-.328-.244a3.973 3.973 0 00-.672-.456l-.6-.2c-.2-.1-.4-.1-.6-.1-.9 0-1.7.2-2.4.5-.898.385-1.713.893-2.472 1.366-.426.265-.833.519-1.228.734-1.2.6-2.3 1-3.4.7l-.4-.1c-.05 0-.125-.025-.2-.05a.773.773 0 00-.2-.05l-1-.4-1.9-.8a24.08 24.08 0 01-1.527-.654l-.002-.001c-.267-.121-.525-.239-.771-.345 1-1.2 1.9-2.6 2.5-4 .994-2.054 1.637-4.153 2.249-6.15.311-1.016.614-2.005.951-2.95.5-1.4 1.2-2.6 2.1-3.4 1-.8 2.2-1.1 3.7-.9 3.6.2 7-1.1 9.9-2.8 2.9-1.7 5.4-3.9 7.8-6.1 1.8-1.7 3.5-3.5 5.1-5.4 1.2-.4 2.6-.7 4.2-.9 2.856-.28 5.273.14 7.181.472 2.166.377 3.674.639 4.419-.372.8-1.1.5-3.7-.1-5.2-.068-.136-.09-.179-.097-.225-.003-.021-.003-.043-.003-.075-.514-.913-1.419-1.077-2.399-1.254-.736-.133-1.515-.274-2.201-.746-1.15-.718-1.588-1.895-2.029-3.081-.48-1.29-.964-2.589-2.371-3.319-.6-.3-.9-.3-1-.3-.741.079-1.269.796-1.757 1.458-.761 1.034-1.423 1.933-2.643.042-.679-1.018-.782-1.812-.87-2.49-.067-.522-.126-.975-.43-1.41-.597-.681-1.484-.564-5.138-.081-.633.083-1.35.178-2.162.281l-.432.048c-3.267.362-4.417.489-5.568 1.352-1.462-.812-2.396-2.093-3.279-3.304-.747-1.025-1.458-1.999-2.421-2.596-1.084-.659-1.701.191-2.26.96-.628.864-1.182 1.627-2.24.04-.548-.822-.646-1.584-.721-2.171-.061-.483-.108-.848-.379-1.029-.374-.233-.835.101-1.517.595-.776.563-1.839 1.333-3.383 1.705-.767.162-1.355.177-1.869.19-.759.019-1.356.034-2.131.51-1 .6-1.6 1.7-1.8 2.2-.8 2.3 2.5 6 8 9.4l-.6.9c-.4.6-.8 1.2-1.1 2-.7 1.6-.4 3.3 0 4.7.195.681.46 1.338.716 1.972.27.669.53 1.312.684 1.928.2.6.2 1.2.1 1.6-.082.413-.301.621-.599.906-.064.06-.131.124-.201.194-1.4 1.1-2.1 2.6-2.6 4.1-.8 2.5-.9 5.1-.9 7.6 0 0 0 .1-.1.1-1.441 2.276-2.422 4.609-3.335 6.781-.291.692-.575 1.367-.865 2.019-.6 1.4-1.3 2.6-2 3.7-.8 1.1-1.7 2.1-2.8 2.8-.3.2-.6.4-.9.5l-.5.2-.6.2-.51.195c-.599.231-1.164.449-1.79.605-1.5.5-3.1 1-4.6 1.4-2.1.6-4.2 1.1-6.3 1.4-.5-5.2-1.4-10.4-2.9-15.6-2.2-7.5-5.5-14.9-10.6-21.4l-.346-.443v-.001a44.718 44.718 0 01-1.254-1.656c-.36-.431-.668-.915-.962-1.376v-.001c-.114-.179-.226-.355-.338-.523-.8-1.3-1.5-2.6-2.1-3.9-1.1-2.7-1.7-5.4-1.6-8.2 0-2.8.6-5.7 1.6-8.7 1-2.9 2.4-5.9 4.1-8.9.5-.9 1-1.8 1.5-2.6.5-.2 1.1-.4 1.6-.5 2.9-1 5.8-2.1 8.7-3.4 5.7-2.5 11.3-5.5 16.3-9.5 2.5-2 4.9-4.2 6.9-6.8 2-2.6 3.8-5.6 4.7-9l.6-1.9.4-.8.2-.4.2-.4c.6-1 1.4-1.8 2.3-2.5 1.8-1.3 4.4-2 7.2-2.4 2.825-.353 5.803-.426 8.881-.502 3.025-.074 6.147-.151 9.319-.498 3.2-.3 6.4-.9 9.5-2.1 3.1-1.2 6.1-3.1 8.3-5.5.6-.6 1.1-1.2 1.6-1.9l.7-1 .6-1 2.5-3.8 5.1-7.6 3.3-4.9c12.6 2.1 22.3 1.2 23.8-2.4 1.4-1.2 1.5-5.3.7-6.4zm-142.5 14.9c-2-1.2-4.4-1.4-6.4-1.1-3.4.3-7-.9-10.2-2.8-3.2-1.9-6-4.3-8.7-7-1.3-1.3-2.6-2.7-3.8-4.2l-.3-.3c4.9-2.4 9-5 11.9-7.5 1.03.619 2.487 1.096 4.302 1.69l.001.001c.826.27 1.727.565 2.697.909 2.2.8 5.4 2 9.2 3.7-.164.452-.362.903-.565 1.368-.294.668-.599 1.366-.835 2.132-.3.9-.5 1.9-.3 3s1 2.1 1.8 2.7c1 .8 1.6 2.2 2 3.6.4 1.6.6 3.2.6 4.9-.2-.3-.8-.699-1.4-1.099v-.001zm61.6 104c-.9.7-1.4 1.9-1.7 3.1-.3 1.2-.5 2.4-.4 3.7.4-.3.8-.6 1.2-.8 1.8-1 3.9-1.2 5.6-.9 2.8.3 5.9-.7 8.5-2.3 2.7-1.6 5.1-3.6 7.3-5.9 1.2-1.1 2.2-2.3 3.2-3.5.05-.1.125-.175.2-.25.075-.075.15-.15.2-.25-2-3-4.1-5-5.9-6.4-1.1-.8-2.2-1.6-3.2-2.2-2.1 1.6-7.4 1.8-13.8.5-.3.4-.5.7-.7 1.1l-.5.9c-.2.3-.3.5-.4.8-.4 1.1-.1 2.4.3 3.6.178.579.415 1.137.659 1.711.304.716.619 1.457.841 2.289.3.7.4 1.7.2 2.6 0 .2-.1.5-.2.7-.05.1-.125.2-.2.3-.075.1-.15.2-.2.3l-.5.5-.5.4z",
-        fill: "#EBDEDE",
-        fillRule: "evenodd",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 56
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M86.6 686c5.6 40.3 11.1 80.7 16.7 121h77.5c5.6-40.3 11.1-80.7 16.7-121H86.6zM1006.6 490c-21 11.3-45.4 29.1-48.5 54.1-1.7 13.8 4.7 16.2 5.3 33.9.8 24.3-10.6 38-18.5 53.8 5.1-20.8 10.2-25.6 11.3-43 2.1-34.1-16.1-38.6-12-65.1 4.2-27.5 25.2-31.5 29.7-60.7 2.8-17.9-2.4-33.7-7.2-44.2-33.4 20.5-49.7 45.4-56.8 58.4-40 72.6-5.9 155.4 17.1 181.7 3.6 4.1 24.4 6.3 24.1 5.7-8.1-14.4 59.8-66.1 68.9-115.1 2.3-12.7 2.1-32.4-13.4-59.5z",
-        fill: "#EEEDEE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 57
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M962.8 681.3l12.4-30.9h-72.8l12.4 30.9c-20.9 9.2-35.5 30.1-35.5 54.5s14.7 45.3 35.7 54.5v14.6h47.7v-14.6c21-9.2 35.7-30.2 35.7-54.5-.1-24.3-14.7-45.2-35.6-54.5z",
-        fill: "#EBDEDE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 58
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M377.3 622.9l-14.5 114.8-24.4 193c-.1.7-.7 1.2-1.4 1.2h-.2c-.8-.1-1.3-.8-1.2-1.6L360.3 735l14.2-112.5c.1-.8.8-1.3 1.6-1.2.8.1 1.3.9 1.2 1.6zM919.1 938.2c0 .8-.6 1.4-1.4 1.5h-.1c-.7 0-1.4-.6-1.4-1.4l-10-227.1-3.7-82.9c0-.8.6-1.4 1.4-1.5.8-.1 1.4.6 1.5 1.4l3.6 81 10.1 229z",
-        fill: "#BDD3DE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 59
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M377.3 622.9l-14.5 114.8c-.9-.9-1.7-1.8-2.5-2.7l14.2-112.5c.1-.8.8-1.3 1.6-1.2.8.1 1.3.9 1.2 1.6z",
-        fill: "url(#paint0_linear)",
-        opacity: ".35",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 60
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M909.1 709.2c-.9.7-1.8 1.4-2.7 2l-3.7-82.9c0-.8.6-1.4 1.4-1.5.8-.1 1.4.6 1.5 1.4l3.5 81z",
-        fill: "url(#paint1_linear)",
-        opacity: ".35",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 61
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M508.5 925.9c0 .8-.6 1.4-1.4 1.5h-.1c-.7 0-1.4-.6-1.4-1.4L499 775.6 492 616c0-.8.6-1.4 1.4-1.5.8-.1 1.4.6 1.5 1.4l7 159.6 6.6 150.4z",
-        fill: "#BDD3DE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 62
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M494.1 630c0 6.5-3 12.5-8.2 17.8-5.9 5.9-14.5 10.7-24.9 13.8-.3.1-.6.2-1 .3-4.8 1.4-10 2.4-15.4 3-.4 0-.8.1-1.3.1-3.3.3-6.8.5-10.3.5-1.3 0-2.6 0-3.8-.1h-1c-10.5-.5-20.3-2.5-28.7-5.7-.3-.1-.6-.2-.9-.4-3.7-1.5-7.1-3.2-10.1-5.1-.4-.2-.7-.4-1-.7-8.6-5.6-14.1-12.8-15.2-20.8-.1-.9-.2-1.9-.2-2.8 0-1 .1-2 .2-3 1.2-8.1 7-15.4 15.8-21 .3-.2.6-.3.8-.5 5.8-3.5 12.8-6.3 20.6-8.2.4-.1.7-.2 1.1-.3 4.1-.9 8.4-1.6 12.9-2 .3 0 .7-.1 1-.1 2.8-.2 5.7-.3 8.6-.3h2.5c1.4 0 2.9.1 4.3.2.3 0 .7.1 1 .1 30.1 2.3 53.2 17.2 53.2 35.2z",
-        fill: "#5A142A",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 63
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M907.6 636.6c0 2.6-.5 5.1-1.4 7.5-.6 1.8-1.5 3.4-2.6 5.1-2.9 4.4-7.2 8.3-12.5 11.6-.3.2-.6.3-.9.5-5.9 3.5-13 6.3-20.9 8.1-.4.1-.7.2-1.1.2-4.1.9-8.3 1.6-12.8 1.9-.3 0-.7 0-1 .1-2.6.2-5.2.3-7.8.3h-3.2c-1.4 0-2.7-.1-4.1-.2-.3 0-.7-.1-1-.1-5.2-.4-10.1-1.2-14.8-2.3-11.6-2.8-21.4-7.5-28.1-13.6-1-.9-1.9-1.8-2.8-2.8-4.5-4.9-7-10.5-7-16.5 0-13.9 13.8-26 33.9-31.8.3-.1.6-.2 1-.3 4.6-1.3 9.6-2.2 14.8-2.8.4 0 .8-.1 1.2-.1 3.3-.3 6.7-.5 10.2-.5 1.5 0 3 0 4.5.1h1c10.5.5 20.2 2.6 28.5 5.8.3.1.6.2.9.4 3.7 1.5 7.1 3.2 10.1 5.1.3.2.7.5 1 .7 8.2 5.5 13.6 12.4 14.8 20 0 1.5.1 2.5.1 3.6z",
-        fill: "#5A142A",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 64
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M772.3 938.5h-.1c-.8-.1-1.4-.8-1.4-1.6l23.7-309.4c.1-.8.8-1.4 1.6-1.4.8.1 1.4.8 1.4 1.6l-23.7 309.4c-.1.9-.7 1.4-1.5 1.4z",
-        fill: "#BDD3DE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 65
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M485.9 647.8c-22.1 13.4-41.9 16.7-52.8 17.7-32.1 0-58.4-14.4-60.8-32.7-.1-.9-.2-1.9-.2-2.8 0-1 .1-2 .2-3 2.1 3.8 5.1 8 9.2 12 2.7 2.6 11.1 10 29.3 14.2 30.8 7.1 61.8-1.2 75.1-5.4z",
-        fill: "url(#paint2_linear)",
-        opacity: ".19",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 66
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M907.6 636.6c0 2.6-.5 5.1-1.4 7.5-.6 1.8-1.5 3.4-2.6 5.1-2.9 4.4-7.2 8.3-12.5 11.6-.3.2-.6.3-.9.5-5.9 3.5-13 6.3-20.9 8.1-.4.1-.7.2-1.1.2-4.1.9-8.3 1.6-12.8 1.9-.3 0-.7 0-1 .1-2.6.2-5.2.3-7.8.3h-3.2c-1.4 0-2.7-.1-4.1-.2-.3 0-.7-.1-1-.1-5.2-.4-10.1-1.2-14.8-2.3-8.5-3-18-7.5-28.1-14.3-.1-.1-.2-.2-.4-.2.1 0 .2.1.4.1 8.3 3 23 7.5 40.2 8.8.4 0 .7.1 1.1.1 1.8.1 3.6.2 5.4.2h1c3.7 0 7.4-.1 11.2-.4.3 0 .7 0 1-.1 4.8-.5 9.7-1.3 14.6-2.6.4-.1.7-.2 1-.3 6.7-1.8 12-4.1 16.1-6.4.3-.2.6-.3.9-.5 6.2-3.6 9.6-7.1 11.2-8.8 1.5-1.6 2.9-3.3 4.1-5 1-1.3 1.9-2.7 2.7-4 .5-.9 1-1.8 1.5-2.6.1 1.2.2 2.2.2 3.3z",
-        fill: "url(#paint3_linear)",
-        opacity: ".19",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 67
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M494.9 615.9l7 159.6c-1 0-1.9.1-2.8.1l-7-159.6c0-.8.6-1.4 1.4-1.5.7 0 1.3.7 1.4 1.4z",
-        fill: "#BDD3DE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 68
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M570.4 735.8c-1.5 3.7-2.9 7.3-4.4 10.9-5.2 12.5-10.4 23.8-15.6 34.2-1.9 3.9-3.9 7.6-5.7 11.2-2 3.8-3.9 7.4-5.9 10.8-1.8 3.3-3.7 6.4-5.4 9.5-2.4 4-4.7 7.8-6.9 11.4-1 1.6-1.9 3-2.8 4.5-.8 1.2-26.2 41.4-41.4 90.3-2.1 6.9-6.4 21.9.9 32.4 2.4 3.4 5.1 5.8 7.3 7.3 1.6 1.1 3 1.8 3.9 2.2.6.3.9.4.9.4 7.3 2.6 14.9.6 16 3.8.4 1.1-.2 2.3-.5 2.8-3.1 6-16.7 9.6-28 5.8-8.9-3.1-7-7.6-26-26.1-7.9-7.7-11.4-10.1-11.3-14.7.1-5.1 4.4-7.2 10.4-15.2.7-.9 1.4-2 2.2-3.1 1.3-2 4.2-9.5 7.5-19 .2-.5.3-.9.5-1.4 3-8.6 6.2-18.5 9.1-27.5 2.5-7.9 4.7-15 6-19.6.2-.5.3-1.1.5-1.7 1.7-6.3 3.2-12.2 4.7-17.7 1.5-5.8 2.9-11.1 4.3-16.2 3-10.9 5.8-20.3 9.2-28.5 4.9-12 11.1-21.6 20.6-30.3 9.2-8.4 18.5-13.3 25.1-16 8.1-.2 16.4-.3 24.8-.5z",
-        fill: "#E6A67F",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 69
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M612.5 726.8c-8.2 20.3-16.7 40.7-25.4 61.4-1.2 3-2.5 5.9-3.7 8.8-.4 1-.8 2-1.3 3-1.7 3.9-3.3 7.8-5 11.6-2.5 5.7-4.9 11.4-7.4 17.1 0 0-1.5 3.2-3.9 8.8-5.3 12.3-14.9 36.3-22.3 64.9-1.7 6.6-3.3 13.5-4.7 20.5-1.4 7-4.1 22.4 3.8 32.1 2.5 3.1 5.2 5.1 7.5 6.4.1 0 .1.1.2.1s.1.1.2.1c2.6 1.5 4.6 2 4.6 2 7.1 1.8 14.2-1 15.5 2.1.5 1.1 0 2.3-.2 2.9-2.4 6.3-15 11.3-25.9 8.7-8.7-2.1-7.4-6.9-27-23.2-8.1-6.8-11.8-8.8-12.1-13.4-.3-5.1 3.5-7.7 8.4-16.2.6-1 1.2-2.1 1.8-3.3 1.3-2.5 3.9-13.3 6.7-25.9 3.7-16.9 7.7-37 9-45.3.4-2.5.8-5 1.2-7.4.9-5.6 1.7-10.9 2.4-15.9.4-2.8.8-5.4 1.2-8.1.1-.5.2-.9.2-1.4.5-3.2 1-6.3 1.6-9.3.3-1.7.6-3.3.9-5 .8-4 1.6-7.9 2.5-11.5 3.7-14.9 8.8-26.7 18.1-37.7 2.2-2.6 4.4-4.9 6.6-6.9 5.8-5.4 11.4-9.1 15.7-11.6 3.4.1 7.5-.2 11.8-1.5 7.9-2.4 13.7-7.1 17.9-11.9.4 1.5.8 3.2 1.1 5z",
-        fill: "#E6A67F",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 70
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M583.3 796.9c-2.1 3.8-4.4 8.7-6.3 14.6-2.5 5.7-4.9 11.4-7.4 17.1 0 0-15.5 32.1-26.2 73.6-1.7 6.6-3.3 13.5-4.7 20.5-1.4 7-4.1 22.4 3.8 32.1 2.5 3.1 5.2 5.1 7.5 6.4.1 0 .1.1.2.1s.1.1.2.1c-3-.3-6.8-1.1-10.3-3.6-5.5-3.9-7.3-9.7-8.2-12.4-5.7-18.5 2.3-53 9.5-87 1.6-7.6 4.7-22.7 9.5-43.5 1.2-5.1 2.2-9.4 2.8-12.3 1.3-.3 2.5-.6 3.8-.9 8.6-1.5 17.2-3.2 25.8-4.8z",
-        fill: "url(#paint4_linear)",
-        opacity: ".1",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 71
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M550.4 780.9c-5.9 11.8-11.6 22.3-17 31.4-3.4 5.8-6.7 11.1-9.7 15.8-.8 1.2-26.2 41.4-41.4 90.3-2.1 6.9-6.4 21.9.9 32.4 2.4 3.4 5.1 5.8 7.3 7.3-1.2.5-2.5.8-3.9.6-7.6-.9-11.2-14.5-12.3-18.9-4.9-18.8 1.8-35.1 7.6-53 21.3-66 21.7-74.7 35-87 12-11.1 25.1-16.3 33.5-18.9z",
-        fill: "url(#paint5_linear)",
-        opacity: ".1",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 72
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M472.4 890.7c-1.9 2.1-4 3.4-4 3.4-1 .5-1.9.9-2.9 1.1.2-.5.3-.9.5-1.4 3-8.6 6.2-18.5 9.1-27.5 2-5.5 3.7-11.4 6-19.6.2-.5.3-1.1.5-1.7 1.7-6.3 3.2-12.2 4.7-17.7 1.2 18.5.1 47.5-13.9 63.4z",
-        fill: "url(#paint6_linear)",
-        opacity: ".19",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 73
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M524.1 892.8c-.6.9-1.3 1.7-1.9 2.4 3.7-16.9 7.7-37 9-45.3.4-2.5.8-5 1.2-7.4 1.7 16.9 1 36.9-8.3 50.3z",
-        fill: "url(#paint7_linear)",
-        opacity: ".19",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 74
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M510.8 967.5c-3.1 6-16.7 9.6-28 5.8-8.9-3.1-7-7.6-26-26.1-7.9-7.7-11.4-10.1-11.3-14.7.1-3.1 1.7-5.1 4.2-7.9 1.7-1.9 3.8-4.1 6.1-7.3 5.6 13.5 22.3 50.2 34.6 41 2.7 1.9 4.8 2.6 4.8 2.6 4.6 1.6 9.3 1.4 12.4 1.9 1.9.3 3.2.7 3.6 1.9.5 1.1-.1 2.3-.4 2.8zM570.7 966.5c.1.8-.2 1.7-.4 2.1-2.4 6.3-15 11.3-25.9 8.7-8.7-2.1-7.4-6.9-27-23.2-8.1-6.8-11.8-8.8-12.1-13.4-.2-3.1 1.2-5.3 3.3-8.4 1.4-2 3.2-4.4 5.1-7.8 6.5 12.8 25.8 47.5 36.5 37.1 2.7 1.6 4.7 2.1 4.7 2.1 7.1 1.8 14.2-1 15.5 2.1.2.2.3.4.3.7z",
-        fill: "#336859",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 75
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M510.8 967.5c-3.1 6-16.7 9.6-28 5.8-8.9-3.1-7-7.6-26-26.1-7.9-7.7-11.4-10.1-11.3-14.7.1-3.1 1.7-5.1 4.2-7.9 6.4 11.1 26.2 44.5 34.9 43.7 6.4-.6 16.1-3.7 23-5.5 1.9.3 3.2.7 3.6 1.9.5 1.1-.1 2.3-.4 2.8zM570.7 966.5c.1.8-.2 1.7-.4 2.1-2.4 6.3-15 11.3-25.9 8.7-8.7-2.1-7.4-6.9-27-23.2-8.1-6.8-11.8-8.8-12.1-13.4-.2-3.1 1.2-5.3 3.3-8.4 5.8 7.7 30 39 37.5 39 6.2-.2 18.4-3.2 24.6-4.8z",
-        fill: "#0D2A28",
-        opacity: ".36",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 76
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M582 799.9c-1.7 3.9-3.3 7.8-5 11.6-2.5 5.7-4.9 11.4-7.4 17.1 0 0-1.5 3.2-3.9 8.8-7.4-2.6-18.7-6.6-30.9-10.8.4-2.8.8-5.4 1.2-8.1.1-.5.2-.9.2-1.4.5-3.2 1-6.3 1.6-9.3.3-1.7.6-3.3.9-5-1.8 3.3-3.7 6.4-5.4 9.5-2.4 4-4.7 7.8-6.9 11.4-13.2-4.6-26.4-9.2-36-12.5 3-10.9 5.8-20.3 9.2-28.5l41.6 8.7 3.4.7 37.4 7.8z",
-        fill: "#002544",
-        opacity: ".14",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 77
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M484.7 441.3c-4.1 19.4-8.6 40.1-16.5 65.4-.6 2-1.3 4.1-2 6.2-1.9 5.8-4 11.9-6.2 18.2-10.6 29.3-21.6 53.1-30.2 70.1l-80.4-23.7c.5-29.1 3.8-71.3 17-120.2 4.9-17.9 12.1-44.8 22.2-69.8.7-1.7 1.4-3.3 2.1-5 13.1-31.1 30.6-58 53.3-59.6 19.2-1.3 37.3 15.9 45.4 30.3 3.9 6.9 9.6 20.4-4.7 88.1z",
-        fill: "#19233D",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 78
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M468.2 506.7c-.6 2-1.3 4.1-2 6.2-1.9 5.8-4 11.9-6.2 18.2-10.6 29.3-21.6 53.1-30.2 70.1l-80.4-23.7c.5-29.1 3.8-71.3 17-120.2 4.9-17.9 12.1-44.8 22.2-69.8.7-1.7 1.4-3.3 2.1-5l77.5 124.2z",
-        fill: "url(#paint8_linear)",
-        opacity: ".35",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 79
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M508 464.1l-8 31.3c0 .1-.1.2-.1.2-3.1 8.3-6.1 18.7-7.9 30.9-.1 1-.3 2-.4 3-.7 5.9-1.1 11.6-1.2 17v3.7c.1 8.4.9 15.9 1.9 22.5.5 3.1 1.1 6 1.6 8.6v.2l-.1.1c-.8.9-3.1 3.4-6.8 6.2-1.3 1-2.8 2.1-4.5 3.2-7.4 4.8-18.2 9.5-31.5 8.8-12.6-.6-22.3-5.8-28.1-9.9-2.5-1.8-4.4-3.4-5.4-4.4.5-1.9 1-3.7 1.4-5.4h-.1c.8-3.3 1.5-6.4 2-9.4.6-3.6 1.1-7 1.3-10.1l.3-4.5V555c.1-1.5.1-2.9 0-4.3-.1-7.9-1.2-13.9-2.3-18.3-1.8-7.2-6.4-20.5-11-32.8 0-.1-.1-.2-.1-.3-.1-.3-.2-.6-.4-1-2.3-5.6-3.9-10.1-4.9-13-3.4-9.8-7.2-20.2-6.5-21.1 3.2-2.4 6.1-4.5 8.7-6.3h.1c1.3-.9 2.5-1.7 3.7-2.4 2.8-1.8 5.6-3.5 7.9-4.9.9-.5 1.7-1 2.4-1.5.7-.4 1.4-.8 2-1.2 2.2-1.3 7.6-5.2 11.9-9.2l.7-.7c2.1-2 3.9-4 4.8-5.6 3.2-5.6 4.5-11.4 4.8-16.9.2-2.8.1-5.5-.2-8.1-.7-6.8-2.6-12.4-3.7-15.4 9.9 1.3 19.9 2.6 29.8 3.9-.3 3.7-.4 7.8-.2 12.1.2 3.8.6 7.8 1.4 11.8.8 3.9 1.9 7.9 3.5 11.9 0 .1.1.2.1.2.8 2 1.7 4 2.8 5.9.4.7.8 1.5 1.3 2.2.2.3.3.6.5.9l2.1 3c3.1 4.2 6 6.3 9.4 8.3.2.1.5.3.7.4.6.4 1.2.7 1.8 1.1.3.2.5.3.8.5 4 2 8.2 4.7 13.7 9.9z",
-        fill: "#E6A67F",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 80
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M475.2 431.7c-3.8-.3-8.8-1.2-14-3.5-8.8-3.8-14.1-9.5-16.6-12.6.2-2.8.1-5.5-.2-8.1l26 .6c-.3 2.5-.4 6.8 1.4 11.8.7 3.9 1.8 7.9 3.4 11.8z",
-        fill: "#002544",
-        opacity: ".13",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 81
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M507.8 464.1l-8 31.3c0 .1-.1.2-.1.2-3.1 8.3-6.1 18.7-7.9 30.9L432.6 516l45.3-78.2c1.2 2.1 2.5 4.1 3.9 6.1 3.1 4.2 6 6.3 9.4 8.3.2.1.5.3.7.4.6.4 1.2.7 1.8 1.1.3.2.5.3.8.5 3.6 2 7.9 4.7 13.3 9.9z",
-        fill: "url(#paint9_linear)",
-        opacity: ".25",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 82
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M479.8 440.9c-2.7 3.3-8.2 8.5-16.4 10.2-.4-.2-.9-.4-1.4-.4-.8 0-1.5.3-2 .9-.4 0-.8.1-1.2.1h-.8c-9.5 0-18.4-5-23.7-13l.7-.7c5.3 8.1 14.4 13 23.8 12.7 10.7-.3 17.6-7 20.6-10.7 0 .3.2.6.4.9z",
-        fill: "#fff",
-        opacity: ".64",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 83
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M463.4 451.1c-.4-.2-.9-.4-1.4-.4-.8 0-1.5.3-2 .9-.5.5-.8 1.2-.8 2 0 1.6 1.3 2.8 2.8 2.8 1.5 0 2.8-1.3 2.8-2.8 0-1.1-.6-2-1.4-2.5z",
-        fill: "#fff",
-        opacity: ".64",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 84
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M483.7 359c-3.1.6-11 1.8-19.9-1.9-12-5.1-16.8-15.6-17.8-18-.1 0-.2.1-.2.1-1.7 7.5-3.2 15.3-4.6 23.5-2.2 13-3.7 25.3-4.7 36.9 5.2 7.4 12 12.6 18.7 15.4 1.9.8 11.8 3.8 19 .6 12-5.2 18.2-28.6 9.5-56.6z",
-        fill: "#E6A67F",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 85
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M471.4 371.3c1 3 2.7 6.7 5.7 10.4 2.3 2.8 4.2 4.2 3.8 5.7-.3 1.3-2.5 2.5-9.5 2.8v-18.9z",
-        fill: "#C5856E",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 86
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M469.8 400.8c-1.5 0-3.4-.3-5.3-1.1-4.4-2-6.2-5.8-6.7-7.3-.1-.3 0-.7.4-.8.3-.1.7 0 .8.4.4 1.1 2 4.7 6.1 6.6 3.5 1.6 6.9.9 8.1.6.3-.1.7.1.7.4.1.3-.1.7-.4.7-.7.2-2 .5-3.7.5zM461.1 358.4c-1.8.5-3.7.9-5.5 1.4-2.1.5-4.3 1.1-6.4 1.6.6-.7 2.6-2.8 6-3.5 2.7-.5 4.9.1 5.9.5zM487.1 364.2c-1.8-.4-3.7-.9-5.5-1.3-2.1-.5-4.3-1-6.4-1.6.9-.3 3.6-1.2 6.9-.3 2.7.8 4.3 2.4 5 3.2z",
-        fill: "#000",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 87
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M613.4 726.8c-8.2 20.3-16.7 40.7-25.4 61.4-3.3 7.9-6.7 15.7-10 23.4-5.6 2.6-12 4.7-19.1 6-7.8 1.4-15.1 1.6-21.8 1-23.6-2.1-40.2-13.9-43.6-16.4-.4-52.4-15.9-84.2-30.8-103.9-9.8-13-21.1-22.9-31.2-32-16.2-14.4-29.5-26.7-29.4-46 .1-16.3 9.3-28.2 13.6-32.8.8-.9 1.5-1.6 1.8-1.9 25.7-24.7 72.2-7.2 76-5.8 10 3.8 19.4 9.4 77.9 76.9 27.4 31.6 31 36.9 34.6 45.2 2.9 6.5 4.9 13.1 6.4 19.5.4 1.9.7 3.6 1 5.4z",
-        fill: "#8677A7",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 88
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M497.1 698.6c4.4 9.3 10.8 23.6 17.8 41.6 10.6 27.4 13.9 41 22.7 42.6 8.5 1.5 16.9-9.2 20.8-14.2C573 750 588.2 710 566.9 691c-15.5-13.8-46.2-12.6-69.8 7.6z",
-        fill: "url(#paint10_linear)",
-        opacity: ".42",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 89
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M493.8 581.5c0 .1 0 .2.1.3-.9 1-4.5 4.9-10.3 8.8-.2.2-.4.3-.7.5-2.4 1.6-5.1 3.1-8.1 4.5-1.3.6-2.6 1.1-4 1.6-5.7 2-12.3 3.3-19.8 3-1.3-.1-2.6-.2-3.8-.4-1-.1-1.9-.3-2.9-.4-4.4-.8-8.4-2.2-11.9-3.7l-1.8-.9c-5.7-2.8-9.8-6-12.1-8-.5-.4-.8-.7-1.1-1v-.1c0-.1.1-.1.1-.2.3-1.1.6-2.1.9-3.1.2-.8.4-1.6.6-2.3 1.8-7.2 2.8-13.7 3.3-19.5l.3-4.5V555c.1-1.5.1-2.9 0-4.3-.1-7.7-1.2-13.6-2.3-17.9v-.2-.2c-.1-.3-.2-.6-.3-1-.1-.2-.1-.5-.2-.8-.1-.4-.2-.7-.3-1.1 0-.2-.1-.3-.1-.5-.1-.2-.1-.5-.2-.7-.1-.3-.2-.7-.3-1 0-.1 0-.1-.1-.2-.1-.4-.2-.8-.4-1.2-.1-.3-.2-.6-.3-1-.4-1.2-.8-2.3-1.2-3.6 0-.1 0-.1-.1-.2-.2-.5-.3-1-.5-1.4 0-.1 0-.1-.1-.2l-.2-.5v-.1c-.6-1.6-1.1-3.3-1.7-5.1-.3-.8-.5-1.5-.8-2.3-1.3-3.9-2.8-7.8-4.2-11.7l.1-.1c1.3-1 2.5-1.9 3.8-2.8.6-.5 1.2-.9 1.9-1.3s1.2-.9 1.9-1.3c.2-.2.5-.3.7-.5.3-.2.5-.4.8-.5.8-.5 1.5-1 2.2-1.5.4-.3.9-.6 1.3-.8.2-.1.3-.2.5-.3.5-.3 1.1-.7 1.6-1 .6-.4 1.2-.7 1.7-1 1-.6 2-1.1 3-1.6.4-.2.9-.5 1.3-.7.1 0 .1-.1.2-.1h.1c.2-.1.3-.2.5-.2.5-.2.9-.5 1.4-.7.1-.1.2-.1.4-.2.3-.2.7-.3 1-.5.3-.2.7-.3 1-.5.7-.3 1.3-.6 2-.9.6-.3 1.3-.5 1.9-.8.3-.1.6-.2.8-.3.4-.1.7-.3 1.1-.4.4-.2.9-.3 1.3-.5.5-.2 1-.3 1.5-.5.2-.1.5-.2.7-.2.2-.1.5-.1.7-.2.6-.2 1.2-.3 1.7-.5.6-.2 1.2-.3 1.7-.5.3-.1.7-.2 1-.2.6-.2 1.2-.3 1.9-.4.3-.1.7-.1 1-.2.4-.1.7-.1 1.1-.2.2 0 .5-.1.7-.1.2 0 .5-.1.7-.1.2 0 .5-.1.7-.1.2 0 .5-.1.7-.1.5-.1.9-.1 1.4-.2.5 0 .9-.1 1.3-.1h1.3c3.8-.2 7.4 0 10.7.6.4.1.8.1 1.1.2.3.1.7.1 1 .2h.2c.3.1.6.1.9.2.4.1.8.2 1.1.3h.2c.4.1.8.2 1.1.3.4.1.9.3 1.3.4l.9.3c.2.1.4.1.5.2h.1c.2.1.3.1.5.2s.4.1.5.2l1.5.6c.5.2 1 .5 1.5.7.2.1.5.2.7.4.2.1.5.2.7.4.2.1.4.2.7.4.4.2.9.5 1.3.8.2.1.4.3.6.4.1.1.2.1.3.2.5.3 1 .6 1.5 1 .2.2.5.3.7.5.9.6 1.7 1.3 2.5 1.9.3.3.6.5.9.8.3.3.6.5.9.8l.8.8c.1.1.3.2.4.4l.4.4.7.7c.2.2.4.5.6.7l.3.3.3.3.3.3c.2.2.3.4.5.6.2.2.3.4.5.6l.3.3c.3.4.6.8.8 1.1l.1.1c-3.3 9-6.6 20.5-8.3 34.1-.7 5.8-1.1 11.4-1.2 16.7v3.7c0 1.5 0 2.9.1 4.3v.2c0 .7.1 1.5.1 2.2 0 .7.1 1.5.1 2.2.1 2.1.3 4.2.5 6.2.1.7.2 1.4.2 2 .1.6.1 1.2.2 1.8.1.5.2 1.1.2 1.6.1.5.2 1.1.2 1.6.2 1.1.3 2.1.5 3.1l.3 1.5c.1.4.1.8.2 1.1.1.5.2 1.1.3 1.6 0 .1 0 .2.1.3.1.4.2.8.2 1.2.3-.4.3-.3.3-.2z",
-        fill: "#8677A7",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 90
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M530 610.6c-.4.5-1.1.8-1.8.8-1.3 0-2.4-1-2.4-2.2 0-.8.5-1.5 1.1-1.9 1 1.1 2.1 2.2 3.1 3.3z",
-        fill: "#87AEB4",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 91
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M544.8 817.4c0 .5-.2 1-.6 1.4-1.2 0-2.5 0-3.7-.1-.3-.4-.5-.8-.5-1.3 0-1.2 1.1-2.2 2.4-2.2 1.3 0 2.4 1 2.4 2.2z",
-        fill: "#004E5A",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 92
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M571.9 657.6c-.1 1.1-1.1 2-2.4 2-1.3 0-2.4-1-2.4-2.2 0-1.2 1.1-2.2 2.4-2.2h.2l1.5 1.8c.3.1.5.3.7.6z",
-        fill: "#004E5A",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 93
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M570.1 814.6c-.8.3-1.6.5-2.4.8.4-.5 1.1-.8 1.8-.8h.6z",
-        fill: "#004E5A",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 94
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M585.5 794.1c-.3.8-.7 1.6-1 2.3-.4.2-.8.4-1.3.4-1.3 0-2.4-1-2.4-2.2 0-1.2 1.1-2.2 2.4-2.2 1.1 0 2 .8 2.3 1.7z",
-        fill: "#87AEB4",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 95
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M599 762c-.5 1.3-1.1 2.6-1.6 3.9-1.3 0-2.3-1-2.3-2.2 0-1.2 1.1-2.2 2.4-2.2.5-.1 1.1.1 1.5.5z",
-        fill: "#004E5A",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 96
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M611.3 717.1h-.3c-1.3 0-2.4-1-2.4-2.2 0-.9.6-1.7 1.4-2 .5 1.4.9 2.8 1.3 4.2z",
-        fill: "#87AEB4",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 97
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M613.2 727.4c-.4.9-.8 1.9-1.1 2.8-.3.2-.7.2-1.1.2-1.3 0-2.4-1-2.4-2.2 0-1.2 1.1-2.2 2.4-2.2 1 0 1.8.6 2.2 1.4zM407.1 606.7c0 1.2-1.1 2.2-2.4 2.2-.4 0-.7-.1-1-.2.4-1.5.9-2.8 1.4-4.2 1.1.2 2 1.1 2 2.2z",
-        fill: "#004E5A",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 98
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M407.1 633.3c0 1.1-.9 2-2 2.2-.6-1.3-1.1-2.7-1.5-4.1.3-.2.7-.3 1.1-.3 1.3 0 2.4 1 2.4 2.2zM420.7 491.7c-.1 1.1-1.1 2.1-2.4 2.1-.2 0-.4 0-.7-.1.3-.2.5-.4.8-.5.8-.6 1.5-1.1 2.3-1.5z",
-        fill: "#004E5A",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 99
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M420.7 531.4c0 .5-.1.9-.4 1.2v-.2c-.1-.3-.2-.6-.3-1-.1-.2-.1-.5-.2-.8-.1-.4-.2-.7-.3-1.1.7.3 1.2 1.1 1.2 1.9zM420.7 584.6c0 1.1-.9 2-2.1 2.2h-.3c-.5 0-1.1-.2-1.5-.5l.6-.6c0-.1.1-.1.1-.2.3-1.1.6-2.1.9-3.1 1.3 0 2.3 1 2.3 2.2z",
-        fill: "#87AEB4",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 100
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M448.3 479.1c-.4.8-1.2 1.3-2.2 1.3-.5 0-.9-.1-1.3-.4.6-.2 1.2-.3 1.7-.5.6-.1 1.2-.2 1.8-.4z",
-        fill: "#87AEB4",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 101
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M475.2 478.8c-.4.6-1.1 1-2 1-1.2 0-2.2-.9-2.4-2 .4.1.8.1 1.1.2.3.1.7.1 1 .2h.2c.3.1.6.1.9.2.5.2.8.3 1.2.4z",
-        fill: "#87AEB4",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 102
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M475.6 716.8c0 .5-.2 1-.5 1.3-.6-1.2-1.3-2.4-1.9-3.6 1.3.1 2.4 1.1 2.4 2.3z",
-        fill: "#87AEB4",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 103
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M489.9 752.2c0 1-.7 1.9-1.7 2.1-.3-1.5-.7-2.9-1.1-4.3h.4c1.3 0 2.4 1 2.4 2.2zM503.1 585.1c-.4.6-1.2 1-2 1-1.3 0-2.4-1-2.4-2.2 0-.5.2-1 .5-1.3 1.1.7 2.4 1.5 3.9 2.5z",
-        fill: "#87AEB4",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 104
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M440.6 491.5c-.1.1-.3.1-.4.1-.6.1-1.2-.2-1.5-.8l-20.9-40.4c.9-.5 1.7-1 2.4-1.5l20.9 40.4c.4.9.2 1.8-.5 2.2zM493.8 453.7l-9.9 39.2c-.4-.3-.7-.6-1.1-.9-.2-.2-.4-.4-.7-.6-.2-.2-.4-.4-.7-.5l9.8-38.7 2.6 1.5z",
-        fill: "#8677A7",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 105
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M493.8 581.5c0 .1 0 .2.1.3-.9 1.1-4.5 4.9-10.3 8.8l-23.6 2c3.6-15.4 6.8-35.7 6.6-59.6-.2-22.1-3.2-41.1-6.6-55.8 4.4-.3 11.8-.1 19.9 3.1 11.8 4.7 18.2 13 19.8 15.3l.1.1c-3.3 9-6.6 20.5-8.3 34.1-.7 5.8-1.1 11.4-1.2 16.7v3.7c.1 12.3 1.7 22.8 3.4 30.9.1.2.1.3.1.4z",
-        fill: "url(#paint11_linear)",
-        opacity: ".42",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 106
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M442.1 662.7c-3.6 1.2-7.1 2.4-10.7 3.6-16.2-14.4-29.5-26.7-29.4-46 .1-16.3 9.3-28.2 13.6-32.8 8.8 25.1 17.7 50.1 26.5 75.2z",
-        fill: "url(#paint12_linear)",
-        opacity: ".42",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 107
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M677.2 966.6c-3 4-8.6 4.7-15.2 4.7-1.3 0-2.7 0-4.1-.1-35.2-.9-60.2-1.5-62.4-11.6-.6-2.6.5-5.8 2.3-7.7 6.3-6.4 22.5 1.3 43.9-.8 1.8-.2 3.3-.7 4.9-1.7 6-4.1 6.4-14.1 5.7-21.9-.4-3.7-1-6.9-1.4-8.8 3.7-.3 7.5-.5 11.2-.8 3.9-.3 7.8-.5 11.7-.8 0 .5.1 1 .1 1.6.3 3.1.5 6.1.8 8.9.7 6.9 1.5 12.6 2.2 17.1.1.4.1.7.2 1.1 1.8 11.7 3.2 16.8.1 20.8zM785.9 963.7c0 .6-.1 1.1-.3 1.6-.3 1.2-.8 2.2-1.5 3.2-.5.7-1.1 1.2-1.7 1.7-.5.4-1 .7-1.6 1-.5.3-1 .5-1.5.7-3.5 1.3-8.1 1.3-13.1 1.2h-1.3c-9.8-.2-18.8-.5-26.7-.9-1.4-.1-2.7-.2-4-.2-.6 0-1.1-.1-1.6-.1-2.3-.2-4.5-.3-6.5-.6-.5 0-1.1-.1-1.6-.2-2.3-.3-4.5-.6-6.5-.9-.6-.1-1.1-.2-1.6-.3-2.5-.5-4.7-1.1-6.5-1.8-.6-.2-1.1-.5-1.6-.7-1-.4-1.8-.9-2.5-1.5-.7-.5-1.2-1-1.7-1.6-.7-.8-1.1-1.7-1.3-2.7-.3-1.2-.2-2.5.2-3.8.1-.6.4-1.1.6-1.6.4-.8.9-1.6 1.6-2.3.9-.9 2-1.5 3.2-1.9.5-.2 1.1-.3 1.6-.4 1.9-.3 4.1-.3 6.5-.1.5 0 1.1.1 1.6.1 2 .2 4.2.5 6.5.7.5.1 1.1.1 1.6.2 2.1.2 4.3.5 6.5.7.5 0 1.1.1 1.6.1 2.1.1 4.3.2 6.5.2h1.6c2.1 0 4.2-.1 6.3-.4h.2c.6-.1 1.1-.2 1.6-.3 1-.3 2-.7 3-1.4.9-.6 1.7-1.3 2.3-2.2.4-.5.8-1.1 1.1-1.7l.1-.1c.7-1.3 1.2-2.8 1.6-4.4.2-.7.3-1.3.4-2 .1-.5.2-1.1.2-1.6.2-1.9.2-3.8.2-5.7 0-.5 0-1.1-.1-1.6-.1-2-.3-3.8-.5-5.5 0-.3-.1-.7-.2-1-.3-2-.6-3.6-.8-4.8.3 0 .5 0 .8-.1 1.9-.1 3.8-.3 5.7-.4.5 0 1.1-.1 1.6-.1 2.2-.2 4.4-.3 6.5-.5.5 0 1.1-.1 1.6-.1 2.2-.2 4.4-.3 6.5-.5v.1c.2 2.1.3 4.1.5 6 .3 3.8.7 7.3 1.1 10.5.1 1.2.3 2.4.4 3.5.1.5.1 1.1.2 1.6.3 2.4.6 4.6.9 6.5v.3c.1.5.1.9.2 1.4.1.9.3 1.8.4 2.7.2 1.4.4 2.7.6 3.9.1.6.2 1.1.2 1.6.9 2.6 1 4.8.9 6.5z",
-        fill: "#BDD3DE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 108
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M675.5 961.9v-6.5h3.1c-.1-.5-.2-1.1-.2-1.6h-2.9v-6.5h1.8a5.06 5.06 0 01-.1-.65c-.025-.225-.05-.45-.1-.65v-.3h-1.6V939h.7c-.05-.25-.075-.525-.1-.8a7.766 7.766 0 00-.1-.8h-.4v-3.5c-.6-4.9-1.2-10.4-1.6-16.7v4.6h-6.5v-4.2c-.25 0-.525.025-.8.05s-.55.05-.8.05v4.1h-6.5v-3.7c-.25 0-.525.025-.8.05s-.55.05-.8.05v3.6h-5.7v-3.2c-.3 0-.6 0-.8.1.079.472.188 1.005.31 1.6.189.92.408 1.986.59 3.2h5.7v6.5h-5c0 .5 0 1.1.1 1.6h4.9v5.7h-5.1c-.047.285-.072.548-.096.798a7.6 7.6 0 01-.104.802h5.3v6.5h-5.7v-4.5c-.4 1.6-.9 3.1-1.6 4.4v.1h-.1c-.3.6-.7 1.1-1.1 1.6h1.2v6.5h-6.5v-3c-.25.05-.525.1-.8.15h-.001c-.275.05-.549.1-.799.15v2.7H636v-2.4h-1.6v2.4h-6.5v-2.7c-.25 0-.525-.025-.8-.05a9.154 9.154 0 00-.8-.05v2.8h-6.5V950a7.766 7.766 0 00-.8-.1c-.275-.025-.55-.05-.8-.1v3.7h-6.5V949c-.314 0-.6-.027-.873-.053-.25-.024-.488-.047-.727-.047v4.6h-6.5V949c-.6.1-1.1.2-1.6.4v4.1h-4.8c-.053.133-.113.272-.174.415h-.001v.002c-.17.396-.352.816-.425 1.183h5.4v6.5h-4.2c.5.6 1 1.1 1.7 1.6h2.5v1.5c.25.1.525.225.8.35.275.125.55.25.8.35v-2.2h6.5v4.1c.25.05.525.1.799.15h.002c.275.05.549.1.799.15v-4.4h6.5v5.4c.25.05.525.075.8.1.275.025.55.05.8.1v-5.5h6.5v6.2c.25 0 .525.025.8.05s.55.05.8.05v-6.3h6.5v6.5h-2.5c1.176.06 2.377.115 3.6.167v.333h6.5v-.093c2.96.098 6.028.186 9.188.277h.002c2.386.069 4.825.139 7.31.216l.061.001c5.377.1 10.453.194 14.239-1.201h-5V963l6.5-.1v5.9c.6-.3 1.1-.6 1.6-1v-4.9h3.2c.05-.25.1-.525.15-.8.05-.275.1-.55.15-.8l-3.9.6zm-33.5 8.307V963.8h-6.5v6.167c2.101.088 4.27.167 6.5.24zm-32.7-7.907h-6.5v-6.5h6.5v6.5zm1.6 0h6.5v-6.5h-6.5v6.5zm14.7-.1h-6.5v-6.5h6.5v6.5zm1.7 0h6.5v-6.5h-6.5v6.5zm8.2-.1h6.5v-6.5h-6.5v6.5zm14.6 8.1h-6.5v-6.5h6.5v6.5zm-6.5-8.2h6.5v-6.5h-6.5v6.5zm13.9 8.2h-5.7v-6.5h5.7v6.5zm-5.7-8.2h5.7v-6.5h-5.7v6.5zm5.7-8.2h-5.7v-6.5h5.7v6.5zm1.7 16.3h6.5v-6.6l-6.5.1v6.5zm6.5-8.2h-6.5v-6.5l6.5-.1v6.6zm-6.5-8.1h6.5v-6.5h-6.5v6.5zm6.5-8.2l-6.5.1v-6.5h6.5v6.4zm-6.5-8.2h6.5v-5.7h-6.5v5.7zm6.5-7.3h-6.5v-6.5h6.5v6.5zm1.6 31.8h6.5v-6.6l-6.5.1v6.5zm6.5-8.2l-6.5.1v-6.5h6.5v6.4zm-6.5-8.2h6.5V939h-6.5v6.5zm6.5-8.1h-6.5v-5.7h6.5v5.7zm-6.5-7.4h6.5v-6.5h-6.5v6.5zM782.4 963.8v-6.5h3.1c-.1-.5-.2-1.1-.2-1.6h-2.9v-6.5h1.8c-.052-.21-.077-.447-.104-.698v-.001c-.024-.226-.048-.463-.096-.701v-.3h-1.6V941h.7a7.746 7.746 0 01-.1-.799v-.001a7.766 7.766 0 00-.1-.8h-.4v-3.5c-.4-3.2-.8-6.7-1.1-10.5-.2-1.9-.4-3.9-.5-6v4.5h-6.5v-4.2c-.25 0-.525.025-.8.05s-.55.05-.8.05v4.1l-6.5.1v-3.7c-.25 0-.525.025-.8.05s-.55.05-.8.05v3.6H759v-3.2c-.3 0-.5 0-.8.1.061.364.14.764.226 1.2.198 1.006.435 2.206.574 3.6h5.7v6.5h-5c0 .5 0 1.1.1 1.6h4.9v5.7h-5.1c0 .5-.1 1.1-.2 1.6h5.3v6.5H759V943c-.4 1.6-.9 3.1-1.6 4.4v.1h-.4c-.212.425-.475.8-.752 1.196-.114.163-.231.329-.348.504h1.2v6.5l-6.5.1v-3c-.25.05-.524.1-.799.15h-.001c-.275.05-.55.1-.8.15v2.7h-6.5v-2.4h-1.6v2.4h-6.5v-2.7c-.25 0-.525-.025-.8-.05a9.154 9.154 0 00-.8-.05v2.8h-6.5v-3.5c-.25-.05-.525-.075-.8-.1-.275-.025-.55-.05-.8-.1v3.7h-6.5v-4.5c-.6-.1-1.1-.1-1.6-.1v4.6h-6.5v-4.5c-.6.1-1.1.2-1.6.4v4.1h-4.8a14.15 14.15 0 01-.175.417c-.171.396-.352.817-.425 1.183h5.4v6.5h-4.2c.5.6 1 1.1 1.7 1.6h2.5v1.5c.25.1.525.225.8.35.275.125.55.25.8.35v-2.2h6.5v4.1c.25.05.525.1.8.15l.001.001c.275.049.549.099.799.149v-4.4h6.5v5.4c.25.05.525.075.8.1.275.025.55.05.8.1v-5.6h6.5v6.2c.25 0 .525.025.8.05s.55.05.8.05v-6.3h6.5v6.5h-2.6c1.336.068 2.703.13 4.1.188v.112l2.057-.031c4.207.159 8.669.286 13.348.42h.001l.002.001h.003c2.343.067 4.741.135 7.189.21h1.3c5 .1 9.5 0 13.1-1.2h-5v-6.5h6.5v5.9c.6-.3 1.1-.6 1.6-1v-4.9h3.2c.05-.25.1-.525.15-.8.05-.275.1-.55.15-.8l-3.6.2zm-37.943 8.469l4.443-.069v-6.4h-6.5v6.388c.679.028 1.365.055 2.057.081zM716.2 964.2h-6.5v-6.5h6.5v6.5zm1.6 0h6.5v-6.5h-6.5v6.5zm14.7-.1H726v-6.5l6.5-.1v6.6zm1.7 0h6.5v-6.6l-6.5.1v6.5zm8.2-.1h6.5v-6.6l-6.5.1v6.5zm14.6 8.1h-6.5v-6.5l6.5-.1v6.6zm-6.5-8.1h6.5v-6.5h-6.5v6.5zm13.9 8.1h-5.7v-6.5h5.7v6.5zm-5.7-8.2h5.7v-6.5h-5.7v6.5zm5.7-8.2h-5.7v-6.5h5.7v6.5zm1.7 16.4l6.5-.1v-6.4h-6.5v6.5zm6.5-8.3h-6.5v-6.5h6.5v6.5zm-6.5-8.1h6.5v-6.5h-6.5v6.5zm6.5-8.2h-6.5V941h6.5v6.5zm-6.5-8.2h6.5v-5.8l-6.5.1v5.7zm6.5-7.3h-6.5v-6.5h6.5v6.5zm1.7 31.8h6.5v-6.5h-6.5v6.5zm6.5-8.2h-6.5v-6.5h6.5v6.5zm-6.5-8.2h6.5v-6.5h-6.5v6.5zm6.5-8.2h-6.5v-5.7h6.5v5.7zm-6.5-7.3h6.5v-6.5h-6.5v6.5z",
-        fill: "#8677A7",
-        fillRule: "evenodd",
-        opacity: ".35",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 109
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M784.1 968.5c-3.4 4.6-10.2 4.8-18 4.6 2.3-13.7 12.1-19.3 18.5-21.5 1.5 9 2.2 13.4-.5 16.9zM677.2 966.6c-3 4-8.6 4.7-15.2 4.7-.4-1.6-.4-3.7 0-6.1 1.8-11.6 8.9-17.5 15-20.5.1.4.1.7.2 1.1 1.7 11.7 3.1 16.8 0 20.8zM781.3 925.2l-22.4 1.3c-.3-2.4-.7-4.4-1-5.8 7.6-.5 15.3-1.1 22.9-1.6.1 2.1.3 4.1.5 6.1zM674.8 927.6h-22.5c-.4-3.7-1-6.9-1.4-8.8 3.7-.3 7.5-.5 11.2-.8l11.8.7c.3 3.2.6 6.1.9 8.9z",
-        fill: "#F2CA5C",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 110
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M880.1 651.2c-7.2 13.9-15.4 20.6-40.3 45.2-10.8 10.7-26.5 26.4-45.2 46.2.4 3.2 1 7.9 1.4 13.7 2.7 36.6-4 63.5-7.6 81.4-3.8 19.1-7.8 47-7.6 83.3-1.5.1-2.9.2-4.4.4-3.6.3-7.3.6-10.9.9-2.5.2-4.9.4-7.4.6-2.5-33.2-4.8-62.7-7-91.2-1.1-14.6-2.3-28.8-3.4-43.2-1.3-16.7-2.7-33 .1-52.2.5-3.7 1.2-7.5 2.1-11.4l.6-2.7c1.8-7.6 4-14.6 6.5-21 6.5-17.3 14.7-30.7 20.8-40 .6-.9 1.2-1.8 1.7-2.7 9-13.9 23.4-32.7 45-51.3 15.2-3.7 30.4-7.5 45.7-11.2 5-1.2 9.9-2.4 14.9-3.6 1.6-.4 3.3-.8 4.9-1.2.2 1.7.3 3.4.5 5.2 1 16.2-.6 35.9-10.4 54.8z",
-        fill: "#302C34",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 111
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M759.8 604.8c-27.6 16-51.2 31.2-70.5 44.4-36.7 25-45.9 38.3-51.3 52.6-.5 1.4-1 2.8-1.4 4.4-3.9 14.3-3.5 26.6-2.8 33.3.2 2 .4 3.4.5 4.1 4.2 30.4 6.4 45.6 9.4 62.9 3 17.1 7 50 11.4 118.3H675c-2-42.3 3.1-73.9 8.5-95.6 3.1-12.3 8.4-30.2 9.5-55.8.7-18.6-1.1-34-2.8-44.5 38.1-26.2 77.7-56.2 117.6-90.6 12.9-11.1 25.3-22.3 37.2-33.4-28.6 0-56.9 0-85.2-.1z",
-        fill: "#19233D",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 112
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M880.1 651.2c-7.2 13.9-15.4 20.6-40.3 45.2-10.8 10.7-26.5 26.4-45.2 46.2.4 3.2 1 7.9 1.4 13.7 2.7 36.6-4 63.5-7.6 81.4-3.8 19.1-7.8 47-7.6 83.3-1.5.1-2.9.2-4.4.4-.1-11.1-.1-22.4 0-33.8.1-21.4.6-43.2.6-43.2 1-42.7 3-81.5-7.6-96.5-1.9-2.7-6.9-9.8-15.2-11.4-2.7-.5-5-.3-6.4-.1.5-3.7 1.2-7.5 2.1-11.4l.6-2.7c1.8-7.6 4-14.6 6.5-21 6.5-17.3 14.7-30.7 20.8-40 22.8-18.4 53.6-40.2 92.4-65.2 2.1-3.3 4.1-6.7 6.2-10l8.6 6.4 5.4 3.9c1.1 16.2-.5 35.9-10.3 54.8z",
-        fill: "url(#paint13_linear)",
-        opacity: ".53",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 113
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M752 831c-.3.3-.6.5-.9.7-1.1-14.6-2.3-28.8-3.4-43.2-1.6-19.9-3.2-39.2 2.2-63.6l16.2-24.1s13 108.3-14.1 130.2z",
-        fill: "#BDD3DE",
-        opacity: ".06",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 114
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M916.1 544.4c-1.2.9-2.4 1.8-3.6 2.6-2.3 1.6-4.5 3.3-6.8 4.9-2.8 10.4-5.7 20.8-8.5 31.2-2 7.3-4 14.5-6 21.8h-70.8l-5.5-14.2-49.2-.8c.3-.8.5-1.7.8-2.5 3.3-11.2 6.9-25.4 10.3-39.6.2-1 .5-2 .7-3 2-8.5 3.9-17 5.7-24.9 3.1-13.9 5.7-25.8 7.2-32.3 4.4-18.7-4.1 2.6-23.7 24.6-6.6 7.4-19.9 22.1-30.5 20.3-.5-.1-1.1-.2-1.6-.4-1-.4-2-.9-2.8-1.5-1.8-1.3-3.1-3-4-4.6-.8-1.4-1.4-2.6-1.7-3.4 0 0-.4-1-.7-2.1-5.1-17.1 10.2-44.3 10.2-44.3 1.7-3.1 3.3-5.9 4.9-8.6 11.3-20 18.2-31.4 29.2-44.3 14.8-17.3 31.1-36.4 52.4-46 3.8-1.7 7.8-3.1 11.9-4.2.9-.2 1.9-.5 2.8-.7 10.5-2.2 20.3-2 25.8-1.7 2.8.2 4.5.4 4.5.4 1.8.3 3.4.6 4.9.9 6.1 1.3 10.6 3 12.9 3.9 2 .8 4 1.6 5.9 2.5 2 1 4 2 5.9 3.1 16.1 9.1 27.3 21.6 32.8 29.4 6.3 8.9 10.7 19.2 13.1 30.4 6.7 31.7-2 70.1-26.5 103.1z",
-        fill: "#336859",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 115
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M867.8 538.7c34.5-36 45-73.1 32.2-88.9-8.1-10-27.2-13.7-40.7-7.6-13.8 6.3-18 21.2-23.7 34.1-4.9 11.1-12.3 24.1-24.3 37.8 0-.4-3.2-62.4-13.5-63.4-9.4-.9-60.3 62.7-70.2 75.3-1.1 1.4-1.7 2.1-1.7 2.1l5.7 2.5 4.4 1.9c10.6 1.8 23.9-12.8 30.5-20.3 19.5-22 28.1-43.3 23.7-24.6-2.4 10.1-7.3 33.5-12.8 57.1-3.6 15.3-7.4 30.7-11 42.7-2.2 7.4-4.4 13.6-6.3 17.5h131.1c4.8-17.7 9.7-35.3 14.5-53 4.6-1.8 6.9-3.4 6.8-4.9-.3-3.7-15.2-6.4-44.7-8.3z",
-        fill: "url(#paint14_linear)",
-        opacity: ".17",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 116
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M942.5 441.4c-3.8-1.2-8.1-3-13-5.6-21-11.2-29.5-37.2-32.9-54.3 16.1 9.1 27.3 21.6 32.8 29.4 6.3 9 10.7 19.3 13.1 30.5z",
-        fill: "url(#paint15_linear)",
-        opacity: ".05",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 117
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M821.8 377.3c-11.3 19.8-47.7 81.9-62.8 91.4-8.2 5.2-14.4 2.9-18.8-1.1 11.3-20 18.2-31.4 29.2-44.3 14.8-17.3 31.1-36.4 52.4-46z",
-        fill: "url(#paint16_linear)",
-        opacity: ".05",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 118
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M890.6 378.5c-7.1 16.5-21.2 26.4-34.2 24.9-2.4-.3-13.1-1.9-18.5-11.6-4.9-8.8-1.9-17.8-1.4-19.4 10.5-2.2 20.3-2 25.8-1.7l9.5 1.3c6.1 1.3 10.6 3 12.9 3.9 2 .9 4 1.7 5.9 2.6zM897.2 583.2c-2 7.3-4 14.5-6 21.8h-70.8l-5.5-14.2-49.2-.8c.3-.8.5-1.7.8-2.5 3.3-11.2 6.9-25.4 10.3-39.6.2-1 .5-2 .7-3 2-8.5 3.9-17 5.7-24.9 21.6 9.2 87.9 38.6 114 63.2z",
-        fill: "#0D2A28",
-        opacity: ".36",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 119
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M880.1 374.1c-.4 11.1-9.2 19.6-18.9 19.9-10.9.3-20.9-9.9-19.9-22.5v-.3c.2-1.3.5-3.3.9-5.7 1.4-8.6 2.2-12.9 2.8-14.2.5-1 1.1-1.8 1.8-2.6 2.4-2.5 6.2-4.2 12.4-6.9 2.5-1.1 5.8-2.3 9.7-3.5 2.8-.8 5.9-1.6 9.3-2.2 0 2.2.1 4.4.2 6.6l.3 7.5v.3c.1 3.1.3 6.2.5 9.3.3 4.9.6 9.6.9 14.3z",
-        fill: "#DF7D56",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 120
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M878.4 342.8h-.2c-.1 1-3.2 20.9-19.9 27.4-7 2.7-13.6 1.9-17 1.2v-.3c.2-1.3.5-3.3.9-5.7 1.4-8.6 2.2-12.9 2.8-14.2.5-1 1.1-1.8 1.8-2.6l22.1-10.4c2.8-.8 5.9-1.6 9.3-2.2.1 2.4.2 4.6.2 6.8z",
-        fill: "#002544",
-        opacity: ".13",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 121
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M884.3 315.9l-.3 3.3c-.5 3.3-1.4 5.6-2.1 8.4-.9.6-2.1 1.3-4.2 3.1-2.8 2.5-4.7 5-6 7.4-3.9 6.8-3.9 13-9.4 18.7-6.9 7.1-21.8 10.6-30.9 4.8-7.4-4.6-7.8-17.3-8.7-42.5 0 0-.6-17.9 6.7-31.1.6-1.1 1.4-2 1.7-2.4l.1-.1.1-.1c.2-.2.4-.4.5-.6l.9-.9.6-.6c.2-.2.5-.4.7-.6.1-.1.3-.2.4-.3.2-.2.4-.3.7-.5 8-5.3 19.4-5.6 27.8-2.6.5.2.9.3 1.4.5.5.2.9.4 1.3.6.4.2.9.4 1.3.7.4.2.7.4 1.1.6h.1c.1.1.4.2.7.4l.9.6c.3.2.5.4.8.6 1.7 1.3 3.3 2.8 4.6 4.5.2.2.4.5.6.7 5.9 8 8.2 18.5 8.6 27.4z",
-        fill: "#DF7D56",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 122
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M884.3 315.9l-.3 3.3c-.5 3.3-1.4 5.6-2.1 8.4-.5 2.1-.9 4.4-.9 7.7 0 4.4.6 8 1.1 10.3-1.8.4-4.8.7-6.6-.9-.5-.5-.9-1.3-1.9-2.8 0 0-1.1-1.9-1.9-3.7-2.2-5.2-2.4-17.1-3.6-17.3-.4 0-.9.9-1.9 5-.9 0-1.9.1-2.9 0-2.2-.1-4.2-.5-5.8-1 .1-4.6.1-9.4 0-14.5-.2-5.6-.5-10.9-1-16-9-2.2-18.1-4.3-27.1-6.5.5-.9 1.1-1.7 1.7-2.4l.1-.1.1-.1c.2-.2.4-.4.5-.6l.9-.9.6-.6c.2-.2.5-.4.7-.6.1-.1.3-.2.4-.3.2-.2.4-.3.7-.5 8-5.3 19.4-5.6 27.8-2.6.5.2.9.3 1.4.5.5.2.9.4 1.3.6.4.2.9.4 1.3.7.4.2.7.4 1.1.6h.1c.1.1.4.2.7.4l.9.6c.3.2.5.4.8.6 1.7 1.3 3.2 2.8 4.6 4.5.2.2.4.5.6.7 5.7 7.6 9.1 17.9 8.6 27.5z",
-        fill: "#302C34",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 123
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M879.6 325.2c0 5.2-3.5 9.4-7.7 9.4-3.5 0-6.4-2.7-7.4-6.5-.2-.9-.4-1.8-.4-2.8 0-5.2 3.5-9.4 7.7-9.4 1.9 0 3.6.8 5 2.2 1.7 1.6 2.8 4.2 2.8 7.1z",
-        fill: "#DF7D56",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 124
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M876.8 318c-4.5 3.8-9.9 8.2-12.3 10-.2-.9-.4-1.8-.4-2.8 0-5.2 3.5-9.4 7.7-9.4 1.9 0 3.7.9 5 2.2z",
-        fill: "url(#paint17_linear)",
-        opacity: ".25",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 125
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M831.438 304.317l9.11 7.18-1.795 2.278-9.11-7.18z",
-        fill: "#302C34",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 126
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M830.8 348.3c-.3 0-.5-.2-.6-.5-.1-.3.1-.6.4-.7 2.8-.7 5.3-2 7.5-3.8 1-.8 2-1.8 2.8-2.8.2-.3.6-.3.8-.1.3.2.3.6.1.8-.9 1.1-1.9 2.1-3 3-2.3 1.9-5 3.2-8 4 .1.1 0 .1 0 .1z",
-        fill: "#000",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 127
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M830.4 315.4s-16.8 14.9-13.6 17.3c3.2 2.4 6.3 2.7 6.3 2.7l7.3-20z",
-        fill: "#DF7D56",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 128
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M858.3 625.6v-.7c0-.6-.1-1.2-.1-1.8 0-.3-.1-.5-.1-.8-.1-.6-.1-1.2-.2-1.9 0-.2-.1-.4-.1-.6-.1-.8-.3-1.7-.4-2.5-.2-.8-.3-1.6-.5-2.4-.1-.3-.1-.5-.2-.8-.1-.5-.3-1.1-.4-1.6-.1-.3-.2-.7-.3-1 0-.1-.1-.3-.1-.5-.1-.2-.2-.5-.2-.7v-.1c-.1-.4-.2-.7-.4-1.1-.3-.8-.5-1.5-.9-2.3-.1-.3-.2-.6-.4-1-1.2-2.9-2.6-5.7-4.2-8.5-.5-.8-1-1.7-1.5-2.5s-1.1-1.7-1.7-2.5l-.9-1.2c-3-4.1-6.4-8-10.2-11.9-.2-.2-.5-.5-.8-.7-4.9-4.8-10.5-9.3-16.7-13.6-.3-.2-.6-.4-.8-.6-.8-.5-1.6-1.1-2.3-1.6-4.7-3.1-9.6-6-14.9-8.9-3-1.6-6.1-3.2-9.3-4.7-.3-.1-.6-.3-.9-.4-10.8-5-22.6-9.5-35.2-13.4-.4-.1-.9-.3-1.3-.4-10.6-3.2-21.8-5.9-33.5-8.1-.3-.1-.7-.1-1-.2-13.5-2.6-27.6-4.4-42.2-5.6-.4 0-.8-.1-1.2-.1-4.1-.3-8.2-.6-12.3-.8H662c-4.6-.2-9.2-.3-13.9-.4H637.8c-14.4.2-28.5 1-42.1 2.5-6.6.8-13.2 1.6-19.6 2.7-.4.1-.8.1-1.2.2-2.6.4-5.2.9-7.8 1.4-3.5.7-7 1.4-10.4 2.1-.3.1-.7.2-1 .2-2.4.5-4.7 1.1-7.1 1.7-2.1.5-4.2 1-6.2 1.6-.3.1-.7.2-1 .3-.2.1-.5.1-.7.2l-6.6 1.8c-.3.1-.7.2-1 .3-6.6 1.9-12.9 4.1-19 6.3h-.1c-.4.2-.9.3-1.3.5-3.4 1.3-6.7 2.6-10 4-.2.1-.5.2-.7.3-.1.1-.3.1-.5.2-8.3 3.6-16 7.5-23.1 11.7-.1.1-.2.1-.3.2-.2.1-.3.2-.5.3-5.2 3.1-10.1 6.4-14.6 9.8-.3.2-.5.4-.8.6-9.1 7-16.7 14.5-22.4 22.5l-.6.9c-3.4 4.8-6.1 9.7-8.1 14.8-2.7 6.9-4.2 14-4.2 21.3v350.5h14.2V666.9c1.3 1.8 2.8 3.5 4.3 5.3.3.4.7.8 1 1.1.2.3.5.6.8.8.3.3.5.6.8.9l.8.8c.4.4.8.9 1.3 1.3l1.7 1.7c.6.5 1.1 1.1 1.7 1.6 1.2 1.1 2.4 2.2 3.7 3.2l3.3 2.7 4.8 3.6c.6.4 1.1.8 1.7 1.2.1.1.3.2.4.3.5.3 1 .7 1.5 1 1.4 1 2.9 1.9 4.4 2.9.3.2.7.4 1 .6.6.4 1.2.8 1.8 1.1.8.5 1.6.9 2.3 1.4.7.4 1.5.9 2.2 1.3l1.3.8c.2.1.4.2.5.3.5.3 1 .5 1.5.8 1.1.6 2.3 1.2 3.4 1.8 1.2.6 2.3 1.2 3.5 1.8 1.2.6 2.4 1.2 3.6 1.7 1.2.6 2.4 1.1 3.7 1.7 1.2.5 2.3 1 3.5 1.6.1 0 .1.1.2.1.4.2.8.3 1.1.5 1.2.5 2.5 1.1 3.8 1.6 1.1.4 2.2.9 3.3 1.3 1.5.6 2.9 1.1 4.4 1.7.8.3 1.7.6 2.6.9.1 0 .2.1.4.1.4.1.8.3 1.1.4l3.6 1.2 4.5 1.5c.9.3 1.8.6 2.8.9.1 0 .2.1.4.1 1.2.4 2.4.7 3.6 1.1.4.1.7.2 1.1.3 3 .9 6 1.7 9.1 2.5 1 .3 2 .5 3.1.8l1.2.3c.3.1.7.2 1 .2.9.2 1.9.5 2.8.7 1.3.3 2.5.6 3.8.9h.1c.4.1.7.2 1.1.2.5.1.9.2 1.4.3l3 .6c1.3.3 2.7.5 4 .8.8.2 1.5.3 2.3.4 1.9.4 3.7.7 5.6 1 .8.2 1.7.3 2.5.4 2.1.3 4.3.7 6.4 1 .4.1.8.1 1.2.2 1.3.2 2.6.4 3.9.5.5.1.9.1 1.4.2 1.3.2 2.5.3 3.8.5 1.3.2 2.5.3 3.8.4l5.4.6c.3 0 .7.1 1 .1 1.3.1 2.6.2 3.9.4 1.7.1 3.4.3 5 .4.8.1 1.5.1 2.3.2.7.1 1.5.1 2.2.1 1.3.1 2.5.2 3.8.2h.2c1.5.1 3.1.2 4.7.2 1 .1 2 .1 3 .1h1.1c1.6.1 3.3.1 4.9.1h.7c1.6 0 3.3.1 4.9.1h4.2v260.2h14.2V736.2c3.5-.1 7-.3 10.4-.5.3 0 .6 0 .9-.1 1.6-.1 3.3-.2 4.9-.3h.1c1.5-.1 3-.2 4.4-.4 1.1-.1 2.1-.2 3.2-.3l2.7-.3c1.4-.1 2.8-.3 4.2-.4.3 0 .7-.1 1-.1 1.5-.2 3-.3 4.5-.5s3-.4 4.4-.6c1.5-.2 2.9-.4 4.4-.6 1.5-.2 2.9-.4 4.3-.7.3-.1.7-.1 1-.2 1.6-.2 3.1-.5 4.7-.8l3.6-.6c.3 0 .7-.1 1-.2 1.8-.3 3.6-.7 5.4-1 1.3-.3 2.7-.6 4-.8.4-.1.8-.2 1.2-.2.9-.2 1.9-.4 2.8-.6 1.5-.3 3-.7 4.5-1l2.4-.6c.3-.1.7-.2 1-.2 1.1-.3 2.1-.5 3.2-.8 3.1-.8 6.2-1.7 9.2-2.5l2.1-.6c1.2-.3 2.3-.7 3.5-1.1.9-.3 1.8-.6 2.6-.8.5-.2 1.1-.4 1.7-.5 1.2-.4 2.4-.8 3.5-1.2 1.2-.4 2.4-.9 3.6-1.3 1.3-.5 2.7-1 4-1.5.3-.1.6-.2 1-.4.3-.1.7-.3 1-.4.7-.3 1.4-.5 2.1-.8 3-1.2 6-2.5 8.9-3.7 1.5-.7 3-1.3 4.4-2 8.1-3.8 15.6-7.9 22.4-12.2.7-.4 1.4-.9 2.1-1.3.5-.3 1-.7 1.5-1 .6-.4 1.2-.8 1.7-1.2.5-.4 1-.7 1.5-1.1.4-.3.8-.5 1.2-.8.3-.2.7-.5 1-.7.5-.3.9-.7 1.4-1 .8-.6 1.5-1.2 2.2-1.7.3-.2.5-.4.8-.6.3-.3.6-.5 1-.8.3-.2.6-.5.9-.7l1.8-1.5c.8-.7 1.7-1.5 2.5-2.2.3-.3.7-.6 1-.9.4-.4.9-.8 1.3-1.2.6-.6 1.3-1.2 1.9-1.8l1.2-1.2.2-.2c.4-.4.8-.8 1.2-1.3.4-.4.7-.8 1.1-1.2.7-.8 1.4-1.5 2-2.3.4-.4.8-.9 1.1-1.3.6-.7 1.2-1.5 1.7-2.2v310.9h14.2v-350c.2-.8.2-1.6.1-2.5z",
-        fill: "#5A142A",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 129
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M858.4 636v31.8c-4.3 4.4-9 8.9-14.2 13.5v-14.5c-.6.7-1.1 1.5-1.7 2.2-.4.5-.7.9-1.1 1.3-.6.8-1.3 1.5-2 2.3-.3.4-.7.8-1.1 1.2-.4.4-.8.8-1.2 1.3l-.2.2-1.2 1.2c-.6.6-1.2 1.2-1.9 1.8-.4.4-.9.8-1.3 1.2-.3.3-.7.6-1 .9-.8.7-1.6 1.5-2.5 2.2l-1.8 1.5c-.3.2-.6.5-.9.7-.3.3-.6.5-1 .8-.2.2-.5.4-.8.6-.7.6-1.5 1.2-2.2 1.7-.5.3-.9.7-1.4 1-.3.2-.7.5-1 .7-.4.3-.8.6-1.2.8-.5.4-1 .7-1.5 1.1-.6.4-1.1.8-1.7 1.2-.5.4-1 .7-1.5 1-.7.5-1.4.9-2.1 1.3-6.8 4.3-14.3 8.4-22.4 12.2-1.5.7-2.9 1.4-4.4 2-2.9 1.3-5.9 2.5-8.9 3.7-.7.3-1.4.5-2.1.8-.3.1-.7.3-1 .4-.3.1-.6.2-1 .4-1.3.5-2.7 1-4 1.5-1.2.4-2.4.9-3.6 1.3-1.2.4-2.4.8-3.5 1.2-.5.2-1.1.4-1.7.5-.9.3-1.8.6-2.6.8-1.2.4-2.3.7-3.5 1.1l-2.1.6c-3 .9-6.1 1.8-9.2 2.5-1.1.3-2.1.5-3.2.8-.3.1-.7.2-1 .2l-2.4.6c-1.5.4-3 .7-4.5 1-.9.2-1.8.4-2.8.6-.4.1-.8.2-1.2.2-1.3.3-2.7.6-4 .8-1.8.4-3.6.7-5.4 1-.3.1-.7.1-1 .2l-3.6.6c-1.5.3-3.1.5-4.7.8-.3.1-.7.1-1 .2-1.4.2-2.9.4-4.3.7-1.5.2-2.9.4-4.4.6-1.5.2-2.9.4-4.4.6-1.5.2-3 .4-4.5.5-.3 0-.6.1-1 .1-1.4.2-2.8.3-4.2.4l-2.7.3c-1.1.1-2.1.2-3.2.3-1.5.1-2.9.2-4.4.4h-.1c-1.6.1-3.2.2-4.9.3-.3 0-.6 0-.9.1-3.5.2-6.9.4-10.4.5v33.5c-2.8.3-5.5.6-8.4.8-1.5.1-3.1.2-4.6.3-.4 0-.8.1-1.2.1V736h-4-.2c-1.7 0-3.3 0-4.9-.1h-.7c-1.6 0-3.3-.1-4.9-.1h-1.1c-1 0-2-.1-3-.1-1.6 0-3.1-.1-4.7-.2h-.2c-1.3-.1-2.6-.1-3.8-.2-.8 0-1.5-.1-2.2-.1-.8 0-1.5-.1-2.3-.2-1.7-.1-3.4-.2-5-.4-1.3-.1-2.6-.2-3.9-.4-.3 0-.7-.1-1-.1l-5.4-.6c-1.3-.1-2.5-.3-3.8-.4-1.3-.2-2.5-.3-3.8-.5-.5 0-.9-.1-1.4-.2-1.3-.2-2.6-.3-3.9-.5-.4 0-.8-.1-1.2-.2-2.2-.3-4.3-.7-6.4-1-.8-.1-1.7-.3-2.5-.4-1.9-.3-3.8-.6-5.6-1-.8-.1-1.5-.3-2.3-.4-1.3-.3-2.7-.5-4-.8l-3-.6c-.5-.1-.9-.2-1.4-.3-.4-.1-.8-.2-1.1-.2h-.1c-1.3-.3-2.6-.6-3.8-.9-1-.2-1.9-.4-2.8-.7-.3-.1-.7-.2-1-.2l-1.2-.3c-1-.2-2.1-.5-3.1-.8-3.1-.8-6.1-1.6-9.1-2.5-.4-.1-.8-.2-1.1-.3-1.2-.3-2.4-.7-3.6-1.1-.1 0-.2-.1-.4-.1-.9-.3-1.8-.6-2.8-.9l-4.5-1.5-3.6-1.2c-.4-.1-.8-.3-1.1-.4-.1 0-.2-.1-.4-.1-.9-.3-1.7-.6-2.6-.9-1.5-.5-2.9-1.1-4.4-1.7-1.1-.4-2.2-.9-3.3-1.3-1.3-.5-2.5-1-3.8-1.6-.4-.2-.8-.3-1.1-.5-.1 0-.1 0-.2-.1-1.2-.5-2.4-1-3.5-1.6-1.2-.5-2.5-1.1-3.7-1.7-1.2-.6-2.4-1.2-3.6-1.7-1.2-.6-2.3-1.2-3.5-1.8-1.2-.6-2.3-1.2-3.4-1.8-.5-.3-1-.5-1.5-.8-.2-.1-.4-.2-.5-.3l-1.3-.8c-.8-.4-1.5-.9-2.2-1.3-.8-.5-1.6-.9-2.3-1.4-.6-.4-1.2-.8-1.8-1.1-.3-.2-.7-.4-1-.6-1.5-.9-2.9-1.9-4.4-2.9-.5-.3-1-.7-1.5-1-.1-.1-.3-.2-.4-.3-.6-.4-1.2-.8-1.7-1.2-1.7-1.2-3.3-2.4-4.8-3.6l-3.3-2.7c-1.3-1.1-2.5-2.2-3.7-3.2-.6-.5-1.2-1.1-1.7-1.6-.6-.5-1.1-1.1-1.7-1.7l-1.3-1.3-.8-.8c-.3-.3-.6-.6-.8-.9-.2-.3-.5-.5-.8-.8-.3-.4-.7-.8-1-1.1-1.5-1.7-3-3.5-4.3-5.3V706c-5-3.6-9.7-7.3-14.2-10.9v-64.7c9.8 11 24.8 25.9 45.2 40.1.4.2.7.5 1.1.7 7.1 4.9 14.9 9.6 23.3 14.1l1.2.6c4.7 2.5 9.6 4.8 14.7 7.1.4.2.8.3 1.2.5 4.6 2 9.3 3.9 14.2 5.6.2.1.3.1.5.2s.4.1.6.2c3.8 1.3 7.5 2.5 11.1 3.6.4.1.8.2 1.1.3 2.8.8 5.6 1.6 8.4 2.2.4.1.8.2 1.1.3 7.5 1.8 14.8 3.1 22 4 .4 0 .8.1 1.2.1 7.8 1 15.6 1.6 23.6 1.9h1c2.6.1 5.1.2 7.8.3 6.1.2 12.3.2 18.7.3H641c13.3 0 27.8-.2 43.1-1.3.3 0 .7 0 1-.1 3.8-.3 7.7-.7 11.6-1.1.3 0 .7-.1 1.1-.1.4 0 .8-.1 1.2-.1 3.3-.4 6.7-.8 10.1-1.4.3 0 .7-.1 1-.1 5.7-.9 11.5-1.9 17.3-3.2.3-.1.7-.2 1-.2 10.9-2.4 22.1-5.5 33.5-9.6.7-.3 1.5-.5 2.2-.8l.9-.3c9-3.3 18.1-7.2 27.3-11.9 5.5-2.8 10.8-5.7 15.8-8.6.3-.2.7-.4 1-.6 3-1.8 5.9-3.6 8.7-5.4l.9-.6c7.9-5.1 15-10.3 21.2-15.2.4-.3.7-.6 1.1-.9 6.7-5.2 12.5-10.4 17.4-15z",
-        fill: "url(#paint18_linear)",
-        opacity: ".19",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 130
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M855.7 610.2l-.2.2c-3.8 3.5-7.6 6.9-11.2 10.2h-.1c-.2.2-.5.4-.7.7-.4.3-.8.7-1.1 1-12.3 11.2-23.5 21.3-33.6 30.5-.3.2-.5.5-.8.7-4.7 4.2-9.1 8.3-13.3 12.1-.3.2-.5.5-.8.7-11.6 10.5-21.4 19.5-29.7 27-.2.2-.5.4-.7.7-.6.5-1.1 1-1.7 1.5-12.2 11.1-20.6 18.9-25.8 23.7-.3.2-.5.5-.8.7-2.6 2.5-4.3 4.1-5.2 4.9 0 0-.1 0-.1.1 0 0-.1 0-.1.1h-.1l-.7.7c-.1.1-.2.2-.3.2l-.6.6-1.2 1.2c-1.8 1.8-4.1 4-7.3 7.2l-.8.8-7.5 7.5-.9.9-2.6 2.6c-10.1 10.1-19.6 19.8-28.4 28.9l-1.2 1.2c-7.3 7.6-14.2 14.7-20.6 21.5-2.2 2.3-4.3 4.6-6.4 6.8-.3.4-.7.7-1 1-2.3 2.5-4.6 4.9-6.8 7.2-7.5 8-14.1 15.2-19.9 21.4-.8-12.7-1.5-25.5-2.1-38.6 0-.9-.1-1.8-.1-2.7-.1-3.4-.3-6.8-.4-10.2v-.1-1.3c-.1-3.5-.2-7.1-.4-10.6 0-1.2-.1-2.4-.1-3.5-.1-2.5-.2-5.1-.2-7.6-.2-7.7-.3-15.3-.4-22.8v-2-.9c-4.6-7.4-9.2-14.7-13.8-22.1-6.2-9.9-12.4-19.9-18.6-29.8-.8-1.2-1.5-2.4-2.3-3.6-11.7-18.7-23.4-37.4-35.1-56l-.9-1.5c-3.4-5.4-6.8-10.9-10.2-16.3-.3-.5-.7-1-1-1.5l-6.6-10.5c-.3-.4-.5-.9-.8-1.3-1.5-2.4-3-4.9-4.6-7.3-5.6-9-11.2-17.9-16.8-26.9-.3-.5-.6-.9-.8-1.4L502 546c-.1-.2-.3-.5-.5-.7.1 0 .1-.1.2-.1.2-.1.3-.2.5-.2 0 0 .1 0 .1-.1l.2-.1c4-1.7 7.6-3 10.5-4 .5-.2.9-.3 1.4-.5 2.4-.8 4.1-1.3 5.2-1.6 5.8-1.7 9.5-3 13.4-4.4l.9-.3c2-.7 4.1-1.5 6.7-2.2.3-.1.5-.2.8-.2.3-.1.7-.2 1-.3 4.4-1.3 8.9-2.5 13.3-3.5.3-.1.7-.2 1-.2 6.4-1.4 12.7-2.5 18.5-3.4.4-.1.8-.1 1.2-.2 6.7-1 12.8-1.7 17.8-2.2.5-.1.9-.1 1.4-.2 13.8-1.5 28-2.4 42.7-2.5h10.5c4.6.1 9.1.2 13.6.4h1.1c4.2.2 8.3.5 12.5.8.4 0 .8 0 1.2.1 14.4 1.1 28.2 3 41.5 5.5.3 0 .7.1 1 .2 11.5 2.2 22.6 4.9 33 8 .4.1.9.2 1.3.4 12.9 3.9 25 8.5 36 13.6.3.1.6.3.9.4 3.9 1.9 7.7 3.8 11.4 5.8 3.5 1.9 6.9 3.9 10.2 6 .8.5 1.7 1.1 2.5 1.6.9.6 1.7 1.2 2.6 1.8.3.2.6.4.8.6 6.3 4.4 11.9 9 16.8 13.9l.7.7c3.7 3.7 7 7.6 9.9 11.6l.9 1.2c.5.8 1.1 1.6 1.6 2.4.7 1.1 1.3 2.1 2 3.2 1.5 2.5 2.8 5.1 3.8 7.8.1.3.3.6.4.9.3 1.3.8 2.7 1.2 4.2z",
-        fill: "#F2CA5C",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 131
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M855.7 610.2l-.2.2c-3.8 3.5-7.6 6.9-11.2 10.2h-.1c-.2.2-.5.4-.7.7-.4.3-.8.7-1.1 1-12.3 11.2-23.5 21.3-33.6 30.5-.3.2-.5.5-.8.7-4.7 4.2-9.1 8.3-13.3 12.1-.3.2-.5.5-.8.7-11.6 10.5-21.4 19.5-29.7 27-.2.2-.5.4-.7.7-.6.5-1.1 1-1.7 1.5-12.2 11.1-20.6 18.9-25.8 23.7-.3.2-.5.5-.8.7-2.6 2.5-4.3 4.1-5.2 4.9 0 0-.1 0-.1.1 0 0-.1 0-.1.1h-.1l-.7.7c-.1.1-.2.2-.3.2l-.6.6-1.2 1.2c-1.8 1.8-4.1 4-7.3 7.2l-.8.8-7.5 7.5-.9.9-2.6 2.6c-10.1 10.1-19.6 19.8-28.4 28.9l-1.2 1.2c-7.3 7.6-14.2 14.7-20.6 21.5-2.2 2.3-4.3 4.6-6.4 6.8-.3.4-.7.7-1 1-2.3 2.5-4.6 4.9-6.8 7.2-7.5 8-14.1 15.2-19.9 21.4-.8-12.7-1.5-25.5-2.1-38.6 0-.9-.1-1.8-.1-2.7-.1-3.4-.3-6.8-.4-10.2v-.1-1.3c-.1-3.5-.2-7.1-.4-10.6 0-1.2-.1-2.4-.1-3.5-.1-2.5-.2-5.1-.2-7.6-.2-7.7-.3-15.3-.4-22.8v-2c2.6-.4 5.2-.8 7.7-1.2.4 0 .7-.1 1-.2 3.9-.7 7.7-1.4 11.3-2.2.4-.1.7-.1 1.1-.2 17.9-4 32.6-9.4 44.6-14.9.3-.1.6-.3.9-.4 3.7-1.7 7.2-3.5 10.3-5.2.3-.1.6-.3.9-.5.3-.2.7-.4 1-.5 1.2-.7 2.4-1.3 3.5-2 1.8-1 3.5-2.1 5.2-3.1.3-.2.6-.4.9-.5 4.7-2.9 9.1-6 13.3-9.1.3-.2.5-.4.8-.6 8.8-6.6 16.7-13.6 24.5-20.8.2-.2.5-.4.7-.7 6.2-5.8 12.4-11.7 19-17.8.3-.2.5-.5.8-.8 7.7-7.1 16.1-14.4 25.7-21.9.5-.4 1-.7 1.4-1.1 11-8.4 23.7-17 39.2-25.8 3.5-2 7.2-4 10.8-5.9.4-.2.7-.4 1.1-.5 1.3-.7 2.6-1.4 3.9-2 .1-.1.3-.1.4-.2 1.5 2.5 2.8 5.1 3.8 7.8.1.3.3.6.4.9.8 1.4 1.3 2.8 1.7 4.3z",
-        fill: "url(#paint19_linear)",
-        opacity: ".71",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 132
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M802.1 554.2c-.7-.1-1.5-.2-2.3-.3-3.1-.4-6.5-.8-10.2-1.2-.3 0-.7-.1-1-.1-9.9-1-21.5-1.9-33.9-2.2h-1c-11.5-.3-23.6 0-35.6 1-.3 0-.7.1-1 .1-23.3 2.1-45.9 7.5-61.8 18.6-.5.3-.9.6-1.4 1-4.4 3.2-8.2 6.9-11.3 11.1-1.9 2.6-4.1 4.9-6.4 6.9-.4.3-.8.7-1.2 1-7 5.7-15.7 8.9-25.1 10.3-.3 0-.7.1-1 .2-5.1.7-10.5.9-16 .6-.4 0-.7 0-1-.1-6.6-.3-13.5-1.3-20.3-2.6-.3-.1-.7-.1-1-.2-6.3-1.3-12.6-2.9-18.7-4.8-.3-.1-.7-.2-1-.3-3.9-1.2-7.8-2.5-11.5-3.8-.3-.1-.7-.2-1-.4-2.1-.7-4.1-1.5-6.1-2.2-.3-.1-.6-.2-1-.4-1.8-.7-3.5-1.4-5.3-2.1-5.6-9-11.2-17.9-16.8-26.9-.3-.5-.6-.9-.8-1.4l-6.4-10c-.1-.2-.3-.5-.5-.7.1 0 .1-.1.2-.1.1-.1.2-.1.4-.2.1 0 .1-.1.2-.1 0 0 .1 0 .1-.1l.2-.1c4-1.7 7.6-3 10.5-4 .5-.2.9-.3 1.4-.5 2.4-.8 4.1-1.3 5.2-1.6 5.8-1.7 9.5-3 13.4-4.4l.9-.3c2-.7 4.1-1.5 6.7-2.2.3 0 .5-.1.8-.1.3 0 .7-.1 1-.1 2.2-.3 4.3-.6 6.1-.9 2.6-.4 5-.8 7.1-1.2.3-.1.7-.1 1-.2 4-.8 7.2-1.7 10.4-2.5 2.5-.7 5-1.3 8-2l1.2-.3c4.5-1 10.1-1.9 18-2.8.5-.1.9-.1 1.4-.2 13.8-1.5 28-2.4 42.7-2.5h10.5c4.6.1 9.1.2 13.6.4h1.1c4.2.2 8.3.5 12.5.8.4 0 .8 0 1.2.1 14.4 1.1 28.2 3 41.5 5.5.3 0 .7.1 1 .2 11.5 2.2 22.6 4.9 33 8 .4.1.9.2 1.3.4 12.9 3.9 25 8.5 36 13.6.3.1.6.3.9.4 3.6 1.9 7.4 3.9 11.1 5.9z",
-        fill: "#FC860A",
-        opacity: ".53",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 133
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M775.9 597.4c-.1.2-.3.4-.4.6l-58.7 43.4c-1.7 1.3-5.7 1.3-8.7 0l-55.7-24c-.5-.4-1.5-1.1-2.1-2.3-1.3-2.5-.3-5-.1-5.4.1-.1.3-.2.6-.3 15.9-7.1 35 9.8 46.7 14.5 13.4 5.3 35.9 2.1 75.9-33.5 1.1.4 1.8.9 2.2 1.4l.3.6c.5 1.5.9 3.4 0 5z",
-        fill: "#302C34",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 134
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M775.9 592.5c0-.2-.1-.4-.3-.6-.4-.5-1.2-1-2.2-1.4-.2-.1-.5-.2-.7-.3l-51.2-16c-2.3-.7-5.2-.7-6.5 0l-4 2.2-31.6 17.3-28 15.3c-.3.2-.5.3-.7.5-1 1-.4 2.4 1.7 3.2l55.7 24c3 1.3 6.9 1.3 8.7 0l58.7-43.4c.3-.3.4-.5.4-.8z",
-        fill: "url(#paint20_linear)",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 135
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M761.6 595.1l-49.9 35.4-9-3.8-11.6-4.8-3.5-1.5-11.6-4.8-15.3-6.4 22-12.4.6-.4 1.3-.7 6.2-3.5 17.4-9.7 3.8-2.2 1.5-.8.1-.1.5.2.7.2 3.3 1.1 5.8 1.9 15.9 5.2 4.4 1.4 1.8.6 15.6 5.1z",
-        fill: "url(#paint21_linear)",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 136
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M743.1 584.8c-1.1.7-3.6.8-5.5.1-1.9-.6-2.5-1.7-1.4-2.4s3.5-.7 5.4-.1c1.9.6 2.6 1.7 1.5 2.4z",
-        fill: "#302C34",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 137
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M744.2 589.4c-.5 1.3-1.2 2.5-2 3.6 0 0-.5.7-1.5 1.7s-2.3 2.2-4.1 3.2c-.9.5-2.1 1.1-3.6 1.7-.6.2-1.2.5-1.9.7-5.3 1.9-13.2 3.5-22.4 2.9-.6 0-1.3-.1-1.9-.2-5.3-.5-10.9-1.9-16.6-4.4-1.9-.9-3.9-1.9-5.7-2.9l-1.2.7-.7.4c2.2 1.4 4.5 2.6 6.8 3.6 5.8 2.6 11.6 4 16.9 4.6.6.1 1.3.1 1.9.2 1.5.1 2.9.2 4.4.2 6 0 11.4-.9 15.6-2.1 1.5-.4 2.8-.8 4-1.3.7-.2 1.3-.5 1.8-.7 1.4-.6 2.6-1.2 3.4-1.6 3.8-2.3 6-5.3 6.1-5.4.9-1.3 1.7-2.7 2.3-4.1l-1.6-.8z",
-        fill: "#FC860A",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 138
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M714.1 579.6l-5.4 23.7-.4 1.8c-.6 0-1.3-.1-1.9-.2l.4-1.8 5.2-22.8 1.6-.9.5.2zM734.3 601.2c-.6.2-1.2.5-1.8.7l-1.2-1.6-16.3-20.6 3.3 1.1 14.9 18.8 1.1 1.6z",
-        fill: "#FC860A",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 139
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M695.9 597.1c1 .5 2.2.7 3.4.7 1.6 0 3.1-.4 3.9-1.1.9-.6 1.3-1.5 1.2-2.3-.1-1-.9-1.9-2.2-2.5-2.3-1.1-5.5-.9-7.3.4-.8.6-1.3 1.4-1.2 2.3.1 1 .9 1.9 2.2 2.5zm-.3-4c.9-.6 2.2-.9 3.5-.9 1 0 2 .2 2.9.5 1 .4 1.6 1 1.7 1.7.1.6-.4 1.1-.8 1.4-1.5 1.2-4.5 1.3-6.5.4-.9-.4-1.5-1.1-1.6-1.7-.1-.5.2-1 .8-1.4zM715.7 593.8c.4.1.9.2 1.4.2 1.1 0 2.2-.2 3-.8 1-.6 1-1.3 1-1.6 0-.3-.2-.9-1.1-1.2-1.2-.4-3.1-.1-4.3.6-1 .6-1.1 1.3-1.1 1.6 0 .3.2.9 1.1 1.2zm.4-1.9c.7-.4 1.6-.6 2.5-.6.4 0 .8 0 1.1.1.3.1.5.3.5.4 0 .2-.2.4-.6.7-1 .6-2.6.8-3.6.5-.3-.1-.5-.3-.5-.4 0-.2.2-.4.6-.7z",
-        fill: "#FC860A",
-        fillRule: "evenodd",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 140
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M702.7 588.9c-.2 0-.4-.1-.4-.3-.1-.2 0-.5.3-.6l4.7-1.9c.2-.1.5 0 .6.3.1.2 0 .5-.3.6l-4.7 1.9h-.2zM712.2 601.2c-.1 0-.3-.1-.4-.2-.2-.2-.1-.5.1-.7l4.7-3.8c.2-.2.5-.1.7.1.2.2.1.5-.1.7l-4.7 3.8c-.1 0-.2.1-.3.1zM725.5 600.2c-.2 0-.3-.1-.4-.3l-1.9-3.8c-.1-.2 0-.5.2-.6.2-.1.5 0 .6.2l1.9 3.8c.1.2 0 .5-.2.6-.1.1-.2.1-.2.1z",
-        fill: "#FC860A",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 141
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M731.6 595.3c.6.2 1.4.3 2.2.3 1.5 0 3.1-.3 4.1-1 1.2-.8 1.3-1.6 1.2-2-.1-.7-.7-1.3-1.8-1.7-1.9-.6-4.7-.3-6.3.7-1.2.8-1.2 1.6-1.2 2 .1.7.7 1.3 1.8 1.7zm-.1-2.9c1-.6 2.3-.9 3.6-.9.6 0 1.3.1 1.9.4.7.2 1.2.5 1.2.9 0 .3-.3.7-.8 1-1.4.9-4 1.2-5.6.6-.6-.2-1.1-.5-1.1-.9s.2-.8.8-1.1z",
-        fill: "#FC860A",
-        fillRule: "evenodd",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 142
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M729.2 587.9h-.2l-5.7-2.8c-.2-.1-.3-.4-.2-.6.1-.2.4-.3.6-.2l5.7 2.8c.2.1.3.4.2.6 0 .1-.2.2-.4.2zM710.8 623.9c-.1 0-.2 0-.3-.1l-40.7-16.1c-.5-.2-.7-.7-.5-1.2.2-.5.7-.7 1.2-.5l40.7 16.1c.5.2.7.7.5 1.2-.2.4-.5.6-.9.6zM707.9 615.4c-.1 0-.2 0-.3-.1l-29.3-11.4c-.5-.2-.7-.7-.5-1.2.2-.5.7-.7 1.2-.5l29.3 11.4c.5.2.7.7.5 1.2-.1.3-.5.6-.9.6z",
-        fill: "#FC860A",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 143
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M708.2 582.5l-20.6 37.9-11.6-4.8 14.8-23.4 17.4-9.7zM723.9 582.8c-7.1 14.7-14.1 29.3-21.2 44l-11.6-4.8c7.5-14.1 14.9-28.3 22.4-42.4l.2-.1.5.2.7.2 3.3 1.1 5.7 1.8z",
-        fill: "#fff",
-        opacity: ".56",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 144
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M742 532.1l-1.5.6c-1.3.4-2.7.7-4.2.8-4.3.4-9.1-.6-12.6-3.1-7.4-5.2-8-15.4-8.1-18.2l-.6-12.3c-1.3-27.8-8.3-134-8.3-134 5.8 2 13.2-.1 17.7 1.3.2.1.4.1.6.2 5.3 2.3 6.3 11.2 6.6 14.2 6.1 51 35.5 138.8 10.4 150.5zM918 540.6c-5.8 13.9-26.2 16.4-65 22.3-2.1.3-4.3.7-6.6 1l-1.8.3c-4.6.7-9.6 1.5-15.2 2.4-.6.1-1.1.2-1.7.3-2 .3-4 .6-6 1-1.6.2-3.1.5-4.7.8-.1 0-.2 0-.3.1-1.2.2-2.5.4-3.8.6-1.9.3-3.8.6-5.8.9-2.8.5-5.7.9-8.7 1.4-1.1.2-2.1.4-3.2.5-.4.1-.8.1-1.2.2-.1 0-.3 0-.4.1-.1 0-.3 0-.4.1-.2 0-.3.1-.5.1-.4.1-.7.1-.8.1h-.3c-1.8 0-4.8-2.2-7.9-5-1-.9-2-1.9-2.9-2.9-3.9-4-6.9-8.2-5.8-8.6 1.3-.5 2.7-1 4.1-1.5 1.1-.4 2.3-.8 3.4-1.2 8.8-3.1 18.6-6.6 29-10.1 20.4-7 43.3-14.5 66.1-21.3.6-.2 1.1-.3 1.7-.5 10.8-3.2 29.3-8.5 36.9 0 2.3 2.5 3.4 6.1 3.5 9.8 0 3.1-.5 6.3-1.7 9.1z",
-        fill: "#DF7D56",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 145
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M724 484.8c-3 7.1-6.2 12.3-9.1 16.1l-3.9-84c8.8 18.4 20.7 49.9 13 67.9z",
-        fill: "url(#paint22_linear)",
-        opacity: ".19",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 146
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M877.5 522.2c-3.2 5-7.5 10.2-13.4 14.6-12.6 9.5-37.6 8.4-52.7 6.7 20.4-7 43.2-14.5 66.1-21.3z",
-        fill: "url(#paint23_linear)",
-        opacity: ".19",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 147
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M690.8 362.1c5.6 6.1 11.3 9.3 16.2 11.9 9.7 5.3 18.6 7.5 24.6 8.5-.2-5.3-1.6-9-2.8-11.4-6.2-12-20.7-15.1-26.6-22-.5-.6-2.4-2.9-3.3-2.4-.5.3-.6 1.1-.6 1.6-.2 2.2 1.1 4.1 2.3 5.7 1.3 1.8 3.2 4.1 5.7 6.6-1.5-.3-3.1-.7-4.7-1.2-2.6-.8-4.6-1.5-5.1-1.7-4.9-2-12.1-9.2-13.8-17.9-.4-2.2-.9-6.1-2.8-6.6-.1 0-.7-.2-1.2.1-2.7 1.8 1.8 17.5 12.1 28.8zM791.5 572.8s-17.3 5.7-24.9 9.5c-.8.4-1.6.6-2.5.6-2.4 0-4.9-1.4-7.3-3.2-5-3.8-9.1-9.7-9.1-9.7-1.3.8-4.2 2.5-4.7 2.8-7.6 4.7-12.5 15.5-17 15.1-.2 0-.3 0-.4-.1-1.4-1.5 8.9-18.2 23.4-26.6 4.6-2.7 14.6-7.4 30-6.4 2.7 3.8 5.4 7.7 8.1 11.5 1.4 2.2 2.9 4.3 4.4 6.5z",
-        fill: "#DF7D56",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 148
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M798.2 571.7c-2.1.4-4.3.7-6.4 1.1-2-3.4-4.4-7.1-7.2-10.9-1.9-2.6-3.8-4.9-5.7-7.1.4-.3 1-.7 1.9-.9.6-.2 1.1-.2 1.5-.2 3.3 2.6 7.1 6.1 10.8 10.7 2.1 2.4 3.8 5 5.1 7.3z",
-        fill: "#302C34",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 149
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M918 540.6c-5.8 13.9-26.2 16.4-65 22.3-2.1.3-4.3.7-6.6 1l-1.8.3c-4.6.7-9.6 1.5-15.2 2.4-.6.1-1.1.2-1.7.3-2 .3-4 .6-6 1-1.6.2-3.1.5-4.7.8-.1 0-.2 0-.3.1-1.2.2-2.5.4-3.8.6-1.9.3-3.8.6-5.8.9-2.8.5-5.7.9-8.7 1.4-1.1.2-2.1.4-3.2.5-.4.1-.8.1-1.2.2-.1 0-.3 0-.4.1-.1 0-.3 0-.4.1-.2 0-.3.1-.5.1-.4.1-.7.1-.8.1h-.3s-17.3 5.7-24.9 9.5c-.8.4-1.6.6-2.5.6-2.4 0-4.9-1.4-7.3-3.2 8.4-4 17.3-8 26.8-11.9 1.1-.5 2.3-.9 3.4-1.4 20.2-8.2 42.8-15.9 67.8-22.4 23.2-6 45-9.9 64.8-12.5 0 3.1-.5 6.3-1.7 9.1z",
-        fill: "url(#paint24_linear)",
-        opacity: ".25",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 150
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M742 532.1l-1.5.6c8.5-22-9.6-129.1-16.2-165.4.2.1.4.1.6.2 5.3 2.3 6.3 11.2 6.6 14.2 6.2 50.9 35.6 138.7 10.5 150.4z",
-        fill: "url(#paint25_linear)",
-        opacity: ".36",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 151
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M556.1 271.9c-32.1 0-58.2 26.1-58.2 58.2 0 18.7 8.8 35.3 22.5 45.9l-14 21.7 29.9-12.9c6.2 2.2 12.8 3.5 19.8 3.5 32.1 0 58.2-26.1 58.2-58.2s-26.1-58.2-58.2-58.2z",
-        fill: "url(#paint26_linear)",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 152
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M822.3 261.9c-5.3-33.3-36.7-55.9-70.1-50.5-33.4 5.4-56.1 36.7-50.7 70 5.4 33.3 36.7 55.9 70.1 50.5 4.3-.7 8.5-1.8 12.4-3.4l26.6 17.2-8.8-27.8c15.5-13.4 24-34.3 20.5-56z",
-        fill: "url(#paint27_linear)",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 153
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M760.9 249.2c.7 7.1.4 16.7-5.7 23.7-2.1 2.4-3.9 3.4-5.7 4.7-5.4 4.1-11.5 12-14.2 29.3 3.2-2.4 8.3-6 15.1-9.5 14.5-7.4 21.6-6.6 28.4-11.4 6-4.2 12.8-13.3 13.2-36-10.3-.2-20.7-.5-31.1-.8z",
-        fill: "#F2BE54",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 154
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M759 247.3c.7 7.1.4 16.7-5.7 23.7-2.1 2.4-3.9 3.4-5.7 4.7-5.2 4-11 12.3-12.3 31.2 2.7-3.1 7.1-7.5 13.2-11.4 12.5-7.8 20.8-6.2 28.4-11.4 6.1-4.1 12.5-12.9 13.2-34.1-10.2-.8-20.7-1.7-31.1-2.7z",
-        fill: "#F2CA5C",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 155
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M794 252c-1.4 1.1-3.2.8-3.9.7h-.2c-5.9-.8-11.8-.9-17.7-1.7-9.9-1.3-14.6 0-16.1-2.8-.5-1-.7-2.6 0-3.8.9-1.4 2.7-1.8 3.8-1.9 8.2-1.1 16.3 2.2 26.5 1.9 1.6-.1 3-.2 4.2-.2 2-.1 3.5 0 4.3 1.2 1.4 1.7 1 5.2-.9 6.6z",
-        fill: "#F2CA5C",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 156
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M794 252c-1.4 1.1-3.2.8-3.9.7h-.2c-2-2-4-5.6.7-8.5 2-.1 3.5 0 4.3 1.2 1.4 1.7 1 5.2-.9 6.6z",
-        fill: "#F2BE54",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 157
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M765.9 259.9c.3.9.6 1.8 1 2.7 0-.2.2-1 1-1.5.2-.1.7-.4 1.3-.3 2.1.3.1 3 .1 3l2.1.3c1.4-1.6 2-3.5 1.4-4.5-.8-1.4-3.9-1.7-6.9.3zM760 279.5c-.9.3-1.9.6-2.8.9.5.2 1.1.5 1.9.9 1.1.7 1.8 1.1 1.9 1.9.1.7-.3 1.6-.9 1.9-1.1.6-2.9-.5-3.9-1.2l.2 2.1c2.1 1.4 4.5 1.2 5.6 0 1.2-1.3.8-4.7-2-6.5z",
-        fill: "#336859",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 158
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M761.2 276.7c.6.2 1.2.3 1.8.3 1.114 0 2.228-.331 3.629-.747.485-.144 1.005-.299 1.571-.453 3.5-1.2 5.2-1.8 5.5-3.2.2-.7-.2-1.6-.9-2.5-1.3-1.6-4.1-3.3-7.1-3.3-2.4 0-5.1 1.1-6.7 2.7-1 .9-1.4 2-1.4 3 0 1.8 1.8 3.5 3.6 4.2zm-1.5-6.6c1.4-1.4 3.8-2.4 6-2.4 2.6 0 5.1 1.4 6.4 2.9.5.6.8 1.2.7 1.7-.2.9-1.9 1.5-4.9 2.5-3.2 1.2-4.7 1.6-6.3 1-1.4-.6-3-2-3-3.4 0-1 .6-1.8 1.1-2.3zM743.1 292.6c.6.5 1.3.7 2 .7.8 0 1.6-.3 2.4-.6 1.3-.7 2.7-2.4 2.5-4.3-.1-1.3-1-2.5-2.3-3.3-1.1-.6-2.2-.7-3-.4-1.056.384-1.375 1.505-1.752 2.832l-.048.168c-.5 1.5-1.1 3.7.2 4.9zm1.9-7.1c.2-.1.4-.1.6-.1.5 0 1.1.2 1.5.5.8.5 1.7 1.4 1.8 2.6.2 1.4-.9 2.7-2 3.3-.8.5-2.4.9-3.2.1-.9-.8-.4-2.7 0-4 .052-.156.1-.306.147-.451.313-.972.544-1.688 1.153-1.949z",
-        fill: "#8677A7",
-        fillRule: "evenodd",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 159
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M753.4 279h-.1c-.3-.1-.4-.3-.3-.6l1.9-6.6c.1-.3.3-.4.6-.3.3.1.4.3.3.6l-1.9 6.6c-.1.2-.3.3-.5.3zM777.1 272.4c-.2 0-.4-.1-.5-.3l-2.1-6.6c-.1-.2.1-.5.3-.6.2-.1.5.1.6.3l2.1 6.6c.1.2-.1.5-.3.6h-.1z",
-        fill: "#EBEE91",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 160
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M776.6 270h1.4c0-.1-.1-.5 0-.9 0 0 .3-.7.9-.9.4-.1.8-.1.9 0 .9.3 1.3 1.4 1.4 2.1l1.2-1.2c-.3-1.6-1.4-2.7-2.6-2.8-1.5-.2-3.4 1.4-3.2 3.7z",
-        fill: "#336859",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 161
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M575.1 359.6c0 .2.1.4.1.6.2 1.4 0 2.7-.5 5.2-.7 3.9-1.1 6-2.4 7.5l-.3.3c-.5.5-3.3 1-8.8 2.1 0 0-3.1.4-5.3-.5l-.4-.2c-1.1-.5-2.8-2.1-6.4-8.7-.7-1.3-1.2-2.4-1.7-3.2-1.4-2.8-1.2-3.3-1.2-3.8 0-.8.2-3.2 2.5-6.8 1.2-1.8 1.9-3 3-3.9.3-.3.7-.5 1-.7.4-.2 1.1-.6 5.4-1.4 4-.8 6.1-1.2 7.1-.7.1.1.2.1.3.2l.1.1s.1 0 .1.1c.6.5 1.1 1.4 2.6 4.1.2.4.5.9.8 1.4 2.9 5.4 3.7 6.6 4 8.3z",
-        fill: "#FDB2A4",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 162
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M575.2 360.2c.2 1.4 0 2.7-.5 5.2-.7 3.9-1.1 6-2.4 7.5l-10.2-16.4-8.4-8.1c.3-.3.7-.5 1-.7.4-.2 1.1-.6 5.4-1.4 4-.8 6.1-1.2 7.1-.7 1.1.5 1.4 1.2 3.9 5.8 3.3 5.9 3.8 6.7 4.1 8.8z",
-        fill: "#FDA19F",
-        opacity: ".53",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 163
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M575.1 359.6c-3.5.3-5.5.1-9 1.2-2.4.7-2.5 1.3-4.5 1.8-2.5.6-6.7 1.3-12.2.2-1.4-2.8-1.2-3.3-1.2-3.8 0-.8.2-3.2 2.5-6.8 1.2-1.8 1.9-3 3-3.9.3-.3.7-.5 1-.7.4-.2 1.1-.6 5.4-1.4 4-.8 6.1-1.2 7.1-.7.1.1.2.1.3.2l.1.1s.1 0 .1.1c.6.5 1.1 1.4 2.6 4.1.2.4.5.9.8 1.4 2.9 5.3 3.7 6.5 4 8.2z",
-        fill: "#FDA19F",
-        opacity: ".53",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 164
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M565.9 380.5c-1 0-2.2-.7-3.2-2.3-2.3-3.9-5.4-6.7-8.3-9.5-1.9-1.7-3.7-3.4-5.2-5.3L548 362l.8-.6 1.2 1.4c1.6 1.8 3.3 3.5 5.2 5.2 3 2.8 6.2 5.7 8.5 9.7 1 1.7 2.2 2.1 2.9 1.7.8-.5 1.4-2.3-.3-5.6-1.4-2.7-6.1-6.4-10.2-9.7-5.2-4.1-8.4-6.8-8.3-8.5 0-.3.2-.8.7-1.1 2.1-1.3 8 3.8 16.8 11.6 3.6 3.2 7.9 7.1 9.2 7.6-.7-3.7-18.8-20.6-23-22.2-2.2-.8-2.6-2.4-2.2-3.5.6-1.9 3.4-3.4 7-2.6 2.8.7 7.4 6.5 11.8 12.1 3.2 4.1 7.7 9.7 8.9 9.4.1 0 .3-.3.3-.9.6-7.3-16.2-21.7-16.4-21.8l.6-.8c.7.6 17.3 14.8 16.7 22.6-.1 1-.4 1.6-1 1.8-1.7.5-4.8-3.2-10-9.7-4.1-5.2-8.8-11.2-11.3-11.8-3.3-.8-5.5.6-5.9 1.9-.3.9.3 1.8 1.6 2.3 4.3 1.7 23.7 19.3 23.7 23.3 0 .5-.3.7-.5.8-1.1.5-3.6-1.6-10.5-7.8-5.2-4.7-14-12.5-15.7-11.5-.2.1-.2.2-.2.3-.1 1.3 4.2 4.7 7.9 7.7 4.4 3.5 9 7.1 10.5 10 1.9 3.7 1.3 6.2-.1 6.9-.1.2-.5.3-.8.3z",
-        fill: "#fff",
-        opacity: ".5",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 165
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M566.9 348c0-.2-.1-.4-.2-.6.2-.4.3-.7.1-.9-.1-.1-.3-.2-.6-.1-.1-.1-.2-.2-.2-.3-.1-.8-.4-1.4-.8-1.3-.4 0-.6.6-.6 1.4-.1-.2-.3-.2-.4-.2-.1 0-.2.1-.3.2-.1-.3-.4-.6-.6-.5-.1 0-.2.1-.3.2-.1-.3-.4-.6-.6-.5-.4 0-.6.6-.6 1.4-.1-.2-.3-.2-.4-.2-.1 0-.3.1-.4.3-.1-.7-.4-1.3-.8-1.3s-.6.6-.6 1.3c-.1-.5-.4-.8-.7-.8-.4 0-.6.6-.6 1.3-.1-.5-.4-.8-.7-.8-.3 0-.5.5-.6 1h-.1c-.1-.3-.4-.5-.6-.5-.2 0-.3.1-.4.3-.3-.4-.7-.7-.9-.6-.4.1-.4.8-.1 1.5l-.1.1c-.3-.4-.7-.5-1-.4-.3.2-.3.7 0 1.2-.4-.6-.9-.9-1.2-.7-.3.2-.3.9.1 1.5h-.2c-.3-.3-.7-.5-1-.4-.3.2-.3.9.1 1.5h-.2c-.2.1-.3.5-.2.8h-.2c-.1.1-.1.1-.2.3-.2-.1-.3-.1-.5 0-.3.2-.3.9.1 1.5h-.2c-.1.1-.1.1-.2.3-.2-.1-.3-.1-.5 0s-.3.5-.2.8h-.2c-.2.1-.3.5-.2.8h-.2c-.3.2-.3.9.1 1.5h-.2c-.3.2-.3.9.1 1.5.2.3.4.6.7.7-.2.2-.2.5-.1.7.2.3.9.3 1.5-.1.1 0 .1-.1.2-.1h.2c0 .5.1.9.4 1 .3.1.7-.3 1-.9.1.2.2.3.3.4.2.1.4 0 .5-.2 0 .3.2.5.4.6.2.1.4-.1.6-.3.3.1.7-.3 1-.9.1.2.2.3.3.4.2.1.4 0 .5-.2 0 .3.2.5.4.6.3.1.8-.3 1-1h.2c-.1.6 0 1.1.3 1.2.4.1.8-.4 1.1-1.1 0-.1 0-.2.1-.2h.1c.4.6.9.9 1.2.7.2-.1.3-.5.1-.9h.1c.4.4.8.6 1 .4.1-.1.1-.1.2-.3.2.1.3.1.5 0s.2-.3.2-.6c.1 0 .2-.1.2-.1.3.3.6.4.8.3.2-.2.3-.6.1-1.1l.1-.1c.6.5 1.3.6 1.5.3.1-.2.1-.4-.1-.7.2 0 .4 0 .5-.2.2-.2 0-.7-.4-1.1.6-.2 1.1-.5 1-.8 0-.1-.1-.2-.1-.2.3-.2.6-.4.5-.7 0-.1-.1-.2-.2-.3.7-.1 1.3-.5 1.2-.9-.1-.4-.7-.6-1.4-.5.5-.2.9-.5.9-.8 0-.1-.1-.3-.3-.4.1-.1.1-.2.1-.3 0-.1-.1-.2-.1-.2.3-.2.6-.4.5-.7 0-.1-.1-.3-.3-.4.1-.1.1-.2.1-.3 0-.1-.1-.2-.1-.2.3-.2.6-.4.5-.7 0-.1-.3-.3-.8-.4z",
-        fill: "#fff",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 166
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M554.8 351.2c-1.5 1.7-2.5 4.5-1.9 5 .1.1.2.1.3.1 7 .5 8.8-2.1 8.8-2.1.4-.6.7-1.3 1.1-2.7.5-1.4.7-2.1.5-2.4-.8-1.3-6.1-.9-8.8 2.1z",
-        fill: "#302C34",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 167
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M557.3 350.2c.3-.1.4 0 .5 0 .9.5-1.2 5.5-1.2 5.5l-3.1-.2c.3-.8.5-1.4.8-1.8.6-1.4 1.5-3.1 3-3.5z",
-        fill: "#EBEE91",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 168
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M558.6 349.7c-.3.5-.2.9-.1 1.5.2 2.4-1.7 3.6-1.2 4.2.5.7 3.3-.1 4.5-1.8.3-.4.1-.3.8-1.8.3-.6.8-1.7.5-2.4 0 0-.3-.4-2.2-.5h-.1-.1c-.5 0-1.6.1-2.1.8z",
-        fill: "#FDB2A4",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 169
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M594.1 308.8c-.3.7-1.1 1.1-1.9.8-.1 0-.2-.1-.3-.2-.3.3-.6.5-1 .5-.5 0-1-.3-1.2-.7-.2.2-.5.3-.9.3-.2 0-.4 0-.6-.1-.2.4-.7.7-1.2.7s-1-.3-1.2-.7c-.2.2-.5.3-.9.3-.4.3-1 .4-1.5.2-.2-.1-.4-.2-.5-.4-.4.2-.9.3-1.4.1-.2-.1-.4-.2-.5-.4-.4.2-.9.3-1.4.1-.5-.2-.7-.7-.8-1.2-.3.1-.6 0-.9-.1-.2-.1-.4-.2-.5-.4-.4.2-.9.3-1.4.1-.2-.1-.4-.2-.5-.4-.4.2-.9.3-1.4.1-.5-.2-.7-.7-.8-1.2-.3.1-.6 0-.9-.1-.7-.3-1-1.2-.7-1.9l.1-.1c-.5-.2-.7-.7-.8-1.2-.3.1-.6 0-.9-.1-.7-.3-1-1.2-.7-1.9.2-.5.7-.7 1.1-.8.2-.5.7-.7 1.1-.8-.1-.3 0-.6.1-.9.3-.7 1.2-1 1.9-.7l.1.1c.3-.7 1.2-1 1.9-.7.5.2.7.7.8 1.2.3-.1.6 0 .9.1l.1.1c0-.1.1-.2.2-.2.4-.5 1.1-.7 1.7-.5.7.3 1 1 .8 1.6 0-.1 0-.2.1-.3.3-.7 1.1-1.1 1.9-.8.6.3 1 1 .8 1.6 0-.1 0-.2.1-.3.3-.7 1.1-1.1 1.9-.8.5.2.8.7.9 1.2.5.2.8.7.8 1.3v.3c0-.1 0-.2.1-.3.3-.7 1.1-1.1 1.9-.8.5.2.8.7.9 1.2.3-.1.6 0 .8.1.7.3 1.1 1.1.8 1.9 0 .1-.1.1-.1.2.5.2.8.7.8 1.2.3-.1.6 0 .8.1.7.3 1.1 1.1.8 1.9 0 .1-.1.2-.1.2.8 0 1.1.8.8 1.5z",
-        fill: "#FC860A",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 170
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M594.3 308.1l-4.6 14.5c-.6.3-5 2.4-10.4 1.7-1.9-.2-3.9-.8-5.9-1.9-5.3-2.9-7.4-7.7-7.9-9.2 1.4-4.2 2.9-8.5 4.3-12.7 1.1 1.5 4.3 5.6 10.1 7.7 1.5.5 3 .9 4.5 1 4.7.7 8.6-.6 9.9-1.1z",
-        fill: "#302C34",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 171
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M590.8 315.1c0 .1-.1.1-.2.1h-.1c-.1 0-6.6-2.8-11.2-.9-3.7 1.5-9-5.2-11.4-8.6.1-.2.1-.4.2-.6 2.2 3.2 7.5 10.2 11 8.8 4.8-1.9 11.3.8 11.5.9.2 0 .3.1.2.3zM586.1 318.9c0 .1-.1.1-.2.1h-.1c-.1 0-6.6-2.8-11.2-.9-2.8 1.1-6.3-2.3-9-5.5.1-.2.1-.4.2-.5 2.6 3.2 6.1 6.6 8.6 5.6 4.8-1.9 11.3.8 11.5.9.2 0 .3.1.2.3z",
-        fill: "#fff",
-        opacity: ".79",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 172
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M594.3 308.1l-4.6 14.5c-.6.3-5 2.4-10.4 1.7 4.9-7.5 5.5-12.3 5.1-15 4.7.6 8.6-.7 9.9-1.2z",
-        fill: "#fff",
-        opacity: ".1",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 173
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M593.5 306.8c0 .1-.1.2-.1.2-.8 1.2-2.1 1.9-3.7 1.4-2.8-.9-4.7-3.8-7.6-3.8-2.8 0-4.7.9-4.7-1.9 0-1.7.3-3.4.6-4.5.4-.5 1.1-.7 1.7-.5.7.3 1 1 .8 1.6 0-.1 0-.2.1-.3.3-.7 1.1-1.1 1.9-.8.6.3 1 1 .8 1.6 0-.1 0-.2.1-.3.3-.7 1.1-1.1 1.9-.8.5.2.8.7.9 1.2.5.2.8.7.8 1.3v.3c0-.1 0-.2.1-.3.3-.7 1.1-1.1 1.9-.8.5.2.8.7.9 1.2.3-.1.6 0 .8.1.7.3 1.1 1.1.8 1.9 0 .1-.1.1-.1.2.5.2.8.7.8 1.2.3-.1.6 0 .8.1.5.1.8 1 .5 1.7z",
-        fill: "#E77B0C",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 174
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M549.9 318.1c.6-.1 1-.4 1-.7 0-.4-.9-.7-1.9-.6.2-.3.2-.5.1-.7-.3-.3-1.1-.2-1.9.2-.1-.5-.3-.8-.7-.9-.2 0-.4.1-.6.2 0-.1-.1-.3-.2-.3-.3-.1-.8 0-1.2.3 0 0-.1 0-.1-.1-.2-.1-.5-.1-.9.1-.2 0-.3-.1-.5-.1.1-.3 0-.6-.2-.7-.3-.2-.8 0-1.3.3-.1 0-.3-.1-.4-.1.1-.5-.1-.9-.5-1-.3-.1-.8.1-1.1.5h-.1c-.2 0-.4 0-.7.1-.2 0-.5-.1-.7-.1-.1-.3-.2-.4-.4-.5h-.3c0-.4-.2-.6-.5-.7-.3-.1-.8.1-1.1.5h-.1c-.3-.1-.7.1-1 .4h-.3c0-.4-.1-.8-.5-.9-.4-.1-1 .2-1.3.8h-.3c-.2-.2-.5-.3-.7-.3-.1-.3-.2-.4-.4-.5-.3-.1-.8.1-1.1.5h-.1c-.3-.1-.7.1-1.1.4h-.3c0-.5-.1-.8-.5-.9-.2 0-.4 0-.6.1-.1 0-.1-.1-.2-.1-.3-.1-.8.1-1.1.5h-.8c-.1 0-.2.1-.3.3-.2.1-.3.3-.4.5.2-.6.1-1.2-.4-1.3-.5-.1-1.1.3-1.4 1-.4-.4-.9-.6-1.2-.4-.2.1-.3.2-.3.4-.1-.1-.3-.2-.4-.2-.4 0-.7.3-.8.7h-.1c-.5 0-.9.5-.9 1.2-.1-.7-.5-1.2-.9-1.2-.5 0-.9.5-.9 1.2-.6-.2-1.1-.3-1.4-.1-.3.3-.1.9.5 1.4-.1.1-.3.2-.4.3-.3-.1-.6-.1-1-.1-1.1 0-1.9.3-1.9.7 0 .2.3.4.8.6-.6.2-1.1.5-1 .8.1.3.7.5 1.5.5v.1c0 .1 0 .2.1.3-.8.5-1.2 1.2-.8 1.5.1.1.3.1.5.1-.6.5-.9 1-.5 1.3.2.2.7.2 1.3 0 0 0 0 .1.1.1.3.3 1.1.1 1.8-.3-.7.5-.9 1.1-.6 1.3.1.1.3.2.6.1 0 .1.1.1.1.2.2.2.7.2 1.3 0 0 0 0 .1.1.1.1.1.2.1.4.1h.2c.1 0 .3 0 .4-.1.3-.1.6-.2.8-.4-.7.5-1 1.1-.6 1.4.3.3 1.1.1 1.9-.3.1.5.4.8.8.8.2 0 .4-.1.6-.3 0 .1.1.2.3.3.3.1.8 0 1.2-.3 0 0 .1 0 .1.1.4.2 1-.1 1.5-.5h.1c-.3.5-.3 1.1.1 1.2.4.2 1.1-.1 1.7-.7l.2.2c-.1.4.1.7.4.8.3.1.8-.1 1.2-.4 0 0 .1 0 .1.1.4.1 1.1-.2 1.5-.8-.3.6-.2 1.2.2 1.4.2.1.4 0 .6-.1.1 0 .1.1.2.1.3.1.8-.1 1.2-.4 0 0 .1 0 .1.1h.7c.1 0 .2-.1.3-.2.2-.2.5-.4.7-.7 0 0 0-.1.1-.1l-.1.1c-.4.7-.4 1.4.1 1.6.4.1 1.1-.2 1.5-.9.4.4.8.6 1.2.5.2-.1.3-.2.4-.4.1.1.3.2.4.2.4 0 .7-.2.9-.7h.1c.5 0 .9-.5 1.1-1.2 0 .7.3 1.3.8 1.3.3 0 .6-.2.9-.6.3.1.6.3 1 .3 1 .2 2 .1 2.1-.3.1-.2 0-.3-.2-.5.5.4 1 .6 1.4.4.2-.1.3-.2.3-.4h.2c.3-.1.4-.5.2-.9h.1l.3-.3.1-.1c0-.1 0-.2-.1-.3 0-.2-.2-.5-.4-.8.5.7 1.3 1 1.7.8.4-.2.4-.8 0-1.4.7 0 1.2-.1 1.3-.4.1-.2 0-.3-.2-.5.2 0 .4 0 .5-.1.2-.2.1-.6-.2-.9 0 0 .1 0 .1-.1.2-.2.2-.5-.2-.9.2 0 .4 0 .5-.1-.4-.4-.7-1-1.3-1.5z",
-        fill: "#fff",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 175
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M559.6 324.9c-1.3.5-3.1-.4-4.8-1.6.7 2.1 1.2 4.4.2 5.6l-.1.1c-1.7 2-3.9-5.5-4.8-9.2 0-.2-.1-.3-.1-.5-.2-.1-.4-.2-.6-.2-1.5-.6-3.1-1.1-4.9-1.4-.3-.1-.6-.1-.9-.2-1.3-.2-2.7-.3-4.1-.3-1.1 0-2 .1-2.8.2-.4.1-.7.1-1.1.2-1.6.3-3.3.8-6.2 1.3-.4 0-.7.1-1.1.2h-.1c-1.5.2-3.1.4-4.9.6-.4 0-.7.1-1.1.1-1.8.2-3.6.3-5.2.2-.4 0-.7 0-1-.1-1.9-.2-3.4-.6-3.8-1.6-.3-.7-.1-1.7.5-2.7 1-1.8 3.1-3.8 5.1-5.1.2-.1.4-.2.6-.4.3-.2.6-.3.9-.5 1.8-.9 3.7-1.4 5.5-1.7.3 0 .6-.1.9-.1 1.6-.1 3.2-.1 4.7.1.3 0 .7.1 1 .1 1.2.1 2.3.3 3.4.5.6.1 1.4.2 2.4.4.3.1.6.1.9.2 1.9.4 4.4 1.1 6.7 2 .3.1.6.3.9.4 1.7.8 3.4 1.8 4.7 3 .3.3.6.5.8.8.5.6.9 1.2 1.3 1.8 3.4 2.5 9.5 6.9 7.1 7.8z",
-        fill: "#FDA19F",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 176
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M523.3 319.8c-.4 0-.7.1-1.1.1 2.6-4.5 3.3-8.8 2.5-11.7.3 0 .6-.1.9-.1.8 3.1.1 7.3-2.3 11.7zM517 320.2c-.4 0-.7 0-1-.1 1.9-3.7 2.7-7.1 2.3-9.8.3-.2.6-.3.9-.5.4 2.9-.2 6.5-2.2 10.4zM529.4 319c-.4 0-.7.1-1.1.2 2.2-4.3 2.9-8.2 2.1-11 .3 0 .7.1 1 .1.6 2.9 0 6.7-2 10.7zM536.7 317.6c-.4.1-.7.1-1.1.2 1.4-3.2 2-6.2 1.6-8.5.3.1.6.1.9.2.3 2.3-.1 5.1-1.4 8.1zM545.8 311.9c0 1.8-.4 3.8-1.2 5.9-.3-.1-.6-.1-.9-.2.9-2.2 1.3-4.3 1.2-6.1.3.1.6.2.9.4zM551.3 315.7c-.2 1.3-.6 2.7-1.1 4.2 0-.2-.1-.3-.1-.5-.2-.1-.4-.2-.6-.2.6-1.5.9-2.9 1-4.3.3.2.6.5.8.8z",
-        fill: "#fff",
-        opacity: ".51",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 177
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M555 329c-1.7 2-3.9-5.4-4.9-9.1 0-.2-.1-.3-.1-.5-.2-.1-.4-.2-.6-.2-1.5-.6-3.1-1.1-4.9-1.4-.3-.1-.6-.1-.9-.2-1.3-.2-2.7-.3-4.1-.3-1.1 0-2 .1-2.8.2-.4.1-.7.1-1.1.2-1.6.3-3.3.8-6.2 1.3-.4 0-.7.1-1.1.2h-.1c-1.5.2-3.1.4-4.9.6-.4 0-.7.1-1.1.1-1.8.2-3.6.3-5.2.2-.4 0-.7 0-1-.1-1.9-.2-3.4-.6-3.8-1.6-.3-.7-.1-1.7.5-2.7 4 .9 15.1 2.9 21.2.6 7.6-2.8 15.7.2 16.8 2 .9 1.4 3.2 7.7 4.3 10.7z",
-        fill: "#FDA19F",
-        opacity: ".61",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 178
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M649.2 427.1c-3.4 4.2-9.3 8.8-15.8 11.7-2.1.9-4 1.6-5.8 2.1-.3.1-.5.1-.8.2-.2.1-.5.1-.7.2-3 .7-5.6.9-7.9 1.1-.4 0-.7.1-1.1.1-.4 0-.9.1-1.3.1-.2 0-.5.1-.7.1-.3 0-.5.1-.8.1-.2 0-.3.1-.5.1s-.4.1-.5.1h-.1c-.2.1-.5.1-.7.2-1.7.5-3.3 1.3-4.8 2.8-.4.4-.8.8-1.1 1.3-1.4 1.9-2.3 4.1-2.9 6.4-.9 3.9-.6 8.1-.2 11.5l-15.4-2.5c.6-4.3 1.7-8 2.9-11.1.6-.9 1.4-2.3 2.5-3.9 1.6-2.3 3.3-4.6 5-6.5.1-.1.1-.1.1-.2.3-.4.7-.8 1-1.2.9-1 1.7-1.9 2.4-2.6 1.1-1.1 2.3-2 3.6-2.8 5.9-3.9 12.9-5.5 16.5-6.1 1.9-.7 3.6-1.6 4.8-2.6.4-.4 2-1.9 3.9-1.6.1 0 1.3.2 1.6.8.4.9-.9 2.9-8.3 8.2 4.4 1.3 7.8.9 9.5.5 3.1-.5 5.3-1.5 6.7-2.3 5-2.9 7.7-7.5 7.9-7.9 1.1-2 2.3-4.9 3-4.8.2.1.7.7.9 1.3.4 2-.7 4.5-2.9 7.2zM316.2 458.4l-13.9 2.3c-.3-1.3-.5-2.6-.8-3.8.1-2.3 0-4.8-.5-7.1v-.2c-.3-1.4-.8-2.8-1.5-4.1-.6-1.1-1.3-2.2-2.2-3.1l-.2-.2c-1.5-1.5-3-2.3-4.7-2.8-4.9-1.4-11-.2-20.4-4.4-.9-.4-1.8-.9-2.6-1.3-9.2-4.9-16.5-12.8-15.5-17 0-.1.3-1.2.9-1.3.7-.1 1.2 1.5 3.7 4.6 3.3 4.2 6.7 6.7 9.3 8.2 2.6 1.4 4.3 1.9 4.3 1.9 1.7.4 5 .9 9.3-.5-1.2-.7-8-4.5-7.6-8 0-.3.1-1.2.8-1.6 1.2-.5 3.2 1.6 4 2.4 3.8 3.6 8.7 4.5 14 6 3.3 1 6.7 2.2 10.1 4.6.6.5 1.3.9 1.9 1.4.8.7 1.9 1.7 3.2 3.2.2.3.4.5.5.8.4.9.7 1.8 1.1 2.6.7 1.5 1.3 3.1 2 4.6l4.8 11.1c-.1.5 0 1.1 0 1.7z",
-        fill: "#E6A67F",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 179
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M647.5 424.6c2.1-3.7 2.8-7 1.5-8.2 0 0-.7-.7-1.3-.5-1.2.3-.9 3.2-1.8 6.1-.8 2.4-2.3 3.9-4 5.6-6.2 6.2-17.7 5.6-18.3 5.6 1 .4 10.3 3.9 18.1-1.5 3.2-2.4 4.9-5.3 5.8-7.1z",
-        fill: "#E6A67F",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 180
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M644.8 423.9c.5-2.8 1.4-7 .2-7.6-.3-.2-.7 0-.8 0-1.9.6-2.1 5-2.4 6.4-.6 3-4.1 6.9-17.8 10.6 0 0 2.7 3.7 5.1 2.1 2.4-1.6 14.8-6.3 15.7-11.5z",
-        fill: "#E6A67F",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 181
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M624.3 433c-.1 0 13.6-2.4 14.4-8.8.4-2.8 1.3-5.3 2-5.3.6 0 1.1 1.6 1.1 2.9.1 1.1-.2 2.7-1.6 4.8-5.1 7.3-15.8 6.5-15.9 6.4zM256.4 417.2s-1.3-3.4.2-3.4 2.3 2.3 2.3 2.3-.8-1.5.8-2.3c1.5-.8 9.3 15.5 21.7 15.5 0 0-2.3 4.6-5.4 3.9-3.1-.8-18.3-8.7-19.6-16z",
-        fill: "#E6A67F",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 182
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M649.2 427.1c-3.4 4.2-9.3 8.8-15.8 11.7-2.1.9-4 1.6-5.8 2.1-.3.1-.5.1-.8.2-.2.1-.5.1-.7.2-3 .7-5.6.9-7.9 1.1-.4 0-.7.1-1.1.1-.4 0-.9.1-1.3.1-.2 0-.5 0-.7.1-.3 0-.5.1-.8.1-.2 0-.3.1-.5.1s-.4.1-.5.1h-.1c-.2.1-.5.1-.7.2-1.7.5-3.3 1.3-4.8 2.8-.4.4-.8.8-1.1 1.3-3.3-2-6.2-4.6-7.9-6.1l-.1-.1c.3-.4.7-.8 1-1.2.6 0 1.2.1 2 .1 9.3.7 32.3 1.1 47.6-12.9z",
-        fill: "url(#paint28_linear)",
-        opacity: ".17",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 183
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M311.2 445.6l-5.8 3.9s-1.7.1-4.4.3v-.2c-.3-1.4-.8-2.8-1.5-4.1-.6-1.1-1.3-2.2-2.2-3.1l-.2-.2c-1.5-1.5-3-2.3-4.7-2.8-4.9-1.4-11-.2-20.4-4.4-.9-.4-1.8-.9-2.6-1.3 11.1 3.4 27.5 4.1 35.7 4.2h2.7c.1.2.2.3.3.5.4.9.7 1.8 1.1 2.6.7 1.5 1.3 3 2 4.6z",
-        fill: "url(#paint29_linear)",
-        opacity: ".17",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 184
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M309.2 441c-.6-.5-1.8-1.4-3.4-2.6-.2-.2-.5-.4-.8-.6-3.5-2.7-8.5-6.4-12.6-9.4 3.3 1 6.7 2.2 10.1 4.6.6.5 1.3.9 1.9 1.4.8.7 1.9 1.7 3.2 3.2.2.3.4.5.5.8.4.8.7 1.7 1.1 2.6z",
-        fill: "url(#paint30_linear)",
-        opacity: ".19",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 185
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M622.1 428.6c-4.3 3.7-13 7.9-18.8 10.7-.6.3-1.2.6-1.7.9-.2.1-.3.2-.5.2-.9.5-1.7.8-2.4.9h-.2c.1-.1.1-.1.1-.2.3-.4.7-.8 1-1.2.9-1 1.7-1.9 2.4-2.6 1.1-1.1 2.3-2 3.6-2.8 5.8-3 11.9-4.2 16.5-5.9z",
-        fill: "url(#paint31_linear)",
-        opacity: ".19",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 186
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M434.5 579.4l-36.1 2.4-7.4.5 6.6-74.7c-8.3 7.5-46.9 41.6-68.9 38.1-2.1-.3-4.1-1-5.9-2.1-7.2-4.5-7.8-13.7-18.9-69.1-1-4.9-1.9-9.5-2.8-13.7-.3-1.6-.6-3.1-.9-4.6-1.1-5.5-2.1-10.1-2.9-13.7v-.1c.2-.2 5.4-2.4 8.5-3.8.5-.2.9-.4 1.2-.6.2-.1.4-.2.5-.3.1.1.1.2.2.3.1.2.2.3.3.5 2.6 3.8 5.8 8.9 9.1 15.2 16.8 32.5 12.8 54.3 21.8 56.8 7.7 2.1 14.5-12.8 36.9-34.1 13.2-12.5 25.7-21.4 35-27.4 7.9 43.4 15.8 86.9 23.7 130.4zM613.3 443.2c-1.5 7.1-3.8 18.4-6.6 32.2-4.3 21.5-7.1 36.1-9.2 46.1-3.3 15.2-5.2 19.9-9.3 22.7-.1.1-.3.2-.4.3-10.9 6.8-29.3-2-45.3-12.7-13.5-9-25.3-19.5-29.5-23.3l6.6 30.3c-1.8.7-3.7 1.4-5.6 2.2-3.4 1.4-6.9 2.9-10.5 4.4-6.3 2.8-12.3 5.6-18 8.5.3-15.6 1.3-32.6 3.3-50.9 2.2-19.7 5.4-37.8 9-54.1 9.8 6.2 22.9 15.5 36.9 28.4 22.1 20.4 29.8 34.5 36.9 32.2 9.3-3.1 2.2-29.6 19.3-57.6.8-1.3 1.6-2.6 2.5-3.9 1.8-2.6 3.5-4.8 5-6.5 1-1.2 1.9-2.2 2.6-2.9.7.3 1.5.6 2.2.9 3.3 1.3 6.6 2.5 9.9 3.8.1-.2.2-.2.2-.1z",
-        fill: "#BDD3DE",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 187
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M409 531.2c0 10.7-6.3 35.4-10.5 50.6l-7.4.5 6.6-74.7c-8.3 7.5-46.9 41.6-68.9 38.1 12.6-14.3 38.1-39 56.6-43.7 25.5-6.8 23.6 13.1 23.6 29.2z",
-        fill: "url(#paint32_linear)",
-        opacity: ".36",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 188
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M588.2 544.1c-.1.1-.3.2-.4.3-10.9 6.8-29.3-2-45.3-12.7-13.5-9-25.3-19.5-29.5-23.3l6.6 30.3c-1.8.7-3.7 1.4-5.6 2.2-5.4-9.1-16.3-29.9-10.5-40 6.6-11.4 67.8 31.2 84.7 43.2z",
-        fill: "url(#paint33_linear)",
-        opacity: ".36",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 189
-        },
-        __self: this
+        clipRule: "evenodd",
+        d: "M736.1 404.5H1018.1C1019.7 404.5 1021.1 403.1 1021.1 401.5V3.2998C1021.1 1.5998 1019.8 0.299805 1018.1 0.299805H736.1C734.4 0.299805 733.1 1.5998 733.1 3.2998V401.5C733.1 403.2 734.4 404.5 736.1 404.5ZM1015.1 398.5H739.1V6.2998H1015.1V398.5Z",
+        fill: "#EEEDEE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("rect", {
+        opacity: "0.42",
+        x: "777.1",
+        y: "48.2002",
+        width: "200",
+        height: "103.9",
+        fill: "#BDD3DE"
     }), /*#__PURE__*/ _reactDefault.default.createElement("g", {
-        fill: "#BDD3DE",
-        opacity: ".42",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 190
-        },
-        __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M777.1 169.1H869V350h-91.9zM885.9 169.1h91.2V350h-91.2z",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 191
-        },
-        __self: this
-    })), /*#__PURE__*/ _reactDefault.default.createElement("g", {
-        fill: "#FC860A",
-        opacity: ".5",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 193
-        },
-        __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M389.9 606.9c3.5 5.7 4.1 13.7 1.6 23.8-2.3 9.4-3.1 17.4-3 23.6-.4-.2-.7-.4-1-.7-.1-6.1.7-13.9 3-23.2 2.4-9.8 1.9-17.5-1.5-23-.3-.5-.6-.9-.9-1.3.3-.2.6-.3.8-.5.4.3.7.8 1 1.3zM410.6 597c-.2 1.2-.5 2.4-.7 3.7l-.4 2.5c-3.4 22.5-6.8 43.9-10 56.4-.3-.1-.6-.2-.9-.4 3.8-15.3 8-43.4 9.9-56.2l.4-2.5c.2-1.2.4-2.3.6-3.3.4 0 .8-.1 1.1-.2zM424.8 601.5c.7 15.9 2 47.4 4.5 63.9h-1c-2.2-14.3-3.5-39.7-4.5-63.9-.1-2.4-.2-4.6-.3-6.5.3 0 .7-.1 1-.1.1 1.9.2 4.2.3 6.6zM444.6 664.9c-.4 0-.8.1-1.3.1 3.4-5.8 5.5-14 2.5-25.4-1-3.8-2.1-7.9-3.2-12.1-3.9-14.4-6.9-25.8-8-32.9h1c1.3 8.1 4.9 21.3 7.9 32.7 1.1 4.2 2.2 8.3 3.2 12.1 3.1 11.2 1.2 19.5-2.1 25.5zM461 661.6c-.3.1-.6.2-1 .3-6.3-23.3-14.9-53.2-20.1-67.1.3 0 .7.1 1 .1 2.3 6 5.6 16 10.5 32.7 3.9 13 7.5 26.2 9.6 34z",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 194
-        },
-        __self: this
-    })), /*#__PURE__*/ _reactDefault.default.createElement("g", {
-        fill: "#FC860A",
-        opacity: ".5",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 196
-        },
-        __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M839.2 671.9c-.3 0-.7-.1-1-.1-.8-2.1-1.7-4.7-2.7-8-1.9-6-4.3-14.3-7.4-25.7-3.4-12.6-6.7-25.3-8.6-33.2.3-.1.6-.2 1-.3 4.9 19.8 11.4 44 16.2 59.3.8 3.1 1.7 5.7 2.5 8zM843 664.2c.6 3.1 1.1 5.7 1.4 7.9h-1c-.3-2.3-.8-4.9-1.4-7.9-1.5-7.7-3.9-17.1-6-25.6-1-4.2-2.1-8.3-3-12.2-2.6-10.8-.9-18.8 2.2-24.6.4 0 .8-.1 1.2-.1-3.2 5.7-5.1 13.6-2.5 24.5.9 3.8 2 8 3 12.2 2.6 10.2 4.7 19 6.1 25.8zM855.4 671.8c-.3 0-.7 0-1 .1-.1-2.1-.1-4.5-.2-7.2v-.9c-.4-16-1.1-46.1-3.1-62.5h1c1.8 14.3 2.6 38.8 3.2 62.3v1c0 2.7 0 5.1.1 7.2zM880.5 607.2c.3.1.6.2.9.4-3.8 14.3-8.2 39.7-10.5 53.2-.2.9-.3 1.8-.4 2.6l-.4 2.5c-.2 1.3-.5 2.6-.8 3.8-.4.1-.7.2-1.1.2.3-1.3.6-2.7.9-4.2l.4-2.5c.1-.7.2-1.4.4-2.1 3.6-21.6 7.3-41.9 10.6-53.9zM890 659.4c.3.5.6 1 1 1.5-.3.2-.6.3-.9.5-.3-.5-.7-1-1-1.5-1-1.7-1.7-3.6-2.2-5.6-1.2-5-.8-11.1 1.1-18.2 2.5-9.3 3.5-17.3 3.4-23.5.3.2.7.5 1 .7 0 6.1-1 13.9-3.5 23.1-1.8 6.8-2.2 12.6-1.2 17.4.6 2.1 1.3 4 2.3 5.6z",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 197
-        },
-        __self: this
-    })), /*#__PURE__*/ _reactDefault.default.createElement("g", {
-        fill: "#DF7D56",
-        opacity: ".5",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 199
-        },
-        __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M626.167 539.2l-.067.1c-14 20.8-28.2 42.1-33.2 61.8-3.2 12.7-2.6 24.9 4.3 36 12.7 20.7 23.7 49.9 28.7 75.5 1.5 7.5 2.5 14.7 2.8 21.3 0 .35.025.724.05 1.099V735c.025.375.05.75.05 1.1h-1c0-.35-.025-.675-.05-1-.025-.325-.05-.65-.05-1-.3-6.4-1.3-13.6-2.8-21.4-.409-2.125-.884-4.249-1.371-6.428l-.329-1.472c-5.7-23.9-15.7-49-26.8-67-7-11.4-7.7-23.7-4.5-36.6 5-20.1 19.3-41.5 33.4-62.5l2.068-3.124.008-.012.009-.014c3.571-5.39 7.048-10.64 10.315-15.75.2-.4.4-.7.6-1h1.2c-.2.4-.4.7-.6 1-3.98 6.368-8.257 12.736-12.733 19.4zM598.4 712.3c-1.7-5.9-3.9-12.2-6.8-19-1.4-3.2-2.7-6.7-4-10.5-7.7-22.3-13.6-53.1-16-84.1-.05-.7-.1-1.375-.15-2.05-.05-.675-.1-1.35-.15-2.05-2-29.6-.2-54.2 4.8-69.4.056-.113.081-.225.109-.355.023-.102.047-.214.091-.345.05-.1.075-.2.1-.3.025-.1.05-.2.1-.3-.2.05-.4.075-.6.1-.2.025-.4.05-.6.1-.1.2-.2.4-.2.7-.05.1-.075.2-.1.3-.025.1-.05.2-.1.3-4.9 15.4-6.6 39.5-4.6 69.3.1 1.3.2 2.6.3 3.8 2.2 29.4 7.6 58.6 14.7 80.7 1.7 5.3 3.5 10.1 5.4 14.5 2.9 6.7 5.1 12.9 6.7 18.6 2.5 8.5 3.7 16 4.2 22.3.15 0 .325.025.5.05s.35.05.5.05c-.5-6.4-1.8-13.9-4.2-22.4zm-46.5-56.9c3.6 11.3 12.7 33.4 21.9 54.9 3.2 7.6 6.4 15.1 9.6 22-.2-.05-.4-.075-.6-.1-.2-.025-.4-.05-.6-.1-.83-1.908-1.682-3.862-2.549-5.849l-.003-.006-.001-.004-.005-.01c-2.265-5.193-4.63-10.612-6.942-16.031-9.1-21.4-18.1-43.2-21.7-54.5-2-6.2-2.3-18.7-1.7-34.2.3-8.7.9-18.2 1.6-28.2.6-8.6 1.3-17.4 2-26.1 1.1-13 2.1-26.2 2.8-37.9v-.4c.1-.4.1-.9.1-1.3.3 0 .7-.1 1-.2 0 .2-.025.425-.05.65-.025.225-.05.45-.05.65v.4c-.7 11.4-1.7 24.5-2.8 38.2-.7 8.8-1.4 17.7-2 26.3-.8 10.5-1.4 20.5-1.7 29.4-.5 14.8-.2 26.5 1.7 32.4zm-1.3 50.8c-6.6-23-12-44.1-12-53.5 0-17.6.1-33.4.4-47.5.1-5.5.2-10.7.3-15.6.7-24.3 1.7-43.1 3-57.3 0-.2 0-.5.1-.7v-.3c-.15.05-.325.1-.5.15-.175.05-.35.1-.5.15v.2c0 .15-.025.3-.05.45-.025.15-.05.3-.05.45-1.4 15.1-2.3 34-3 56.7-.1 4.7-.2 9.5-.3 14.4-.3 14.9-.4 31.3-.4 49.1 0 9.4 5.3 30.3 11.8 53.2 1.464 5.125 3.036 10.411 4.597 15.661.571 1.921 1.141 3.837 1.703 5.739l.084.021.051.013.063.017c.308.08.571.149.902.149-2.1-7.2-4.2-14.5-6.2-21.5zm-19.2-113.1c-3 23.6-6.1 56.5 9.6 110.6 2 6.9 4.4 14.2 7.1 21.7l-1.2-.3c-2.6-7.6-4.9-14.9-6.9-21.8-15.8-54.8-12.4-87.8-9.3-111.5.2-1 .3-1.9.4-2.9.05-.4.1-.775.15-1.15.05-.375.1-.75.15-1.15.2-1.7.4-3.3.6-4.9 2.1-17.3 2.7-35.7 1.1-46.9-.1-.2-.1-.3-.1-.5l.9-.3c0 .041.017.1.037.168.029.097.063.215.063.332 2 13 .5 34.3-1.1 47.3-.085.68-.188 1.378-.294 2.094v.002l-.001.003v.001c-.143.967-.29 1.967-.405 3l-.3 2.1c-.1 1.3-.3 2.7-.5 4.1zm-2.6 106.7c-2.7-10.5-5.5-21.8-8-33.4-10.9-49-14.7-85.9-11.5-108.7 1-6.7 2.5-12.1 4.7-16.3 0-.05.025-.075.05-.1.025-.025.05-.05.05-.1.1-.15.175-.3.25-.45.075-.15.15-.3.25-.45-.4.1-.9.3-1.4.5 0 0 0 .1-.1.1-.05.15-.125.275-.2.4-.075.125-.15.25-.2.4-1.9 3.9-3.3 8.8-4.3 14.6-3.7 22.7.1 59.7 11.4 110.3 2.5 11.4 5.2 22.5 7.9 32.8 1.305 5.156 2.653 10.142 3.933 14.875l.001.003c.68 2.517 1.341 4.961 1.966 7.322.2.05.375.1.55.15h.001c.175.05.349.1.549.15-1.9-6.7-3.9-14.2-5.9-22.1zm-50.4-141.9c8.2 24 23.6 87 35.1 135.9 1.9 8.1 3.7 15.9 5.3 23.1a6.167 6.167 0 01-.371-.143c-.227-.092-.478-.194-.729-.257-1.002-4.512-2.123-9.258-3.287-14.192-.694-2.94-1.403-5.946-2.113-9.008-11.5-48.8-26.7-111.3-34.7-134.9.1-.05.175-.1.25-.15.075-.05.15-.1.25-.15.05-.05.1-.075.15-.1.05-.025.1-.05.15-.1zm23.3 146.3c-.286-1.228-.577-2.464-.868-3.703-1.133-4.817-2.277-9.684-3.232-14.297-1.1-5.2-2-10.2-2.5-14.6-3.2-27.6-14.6-82.3-32.1-103.4-.15.1-.275.2-.4.3-.125.1-.25.2-.4.3 17.4 20.7 28.7 75.4 31.9 103 .5 4.2 1.3 8.9 2.3 13.9 1.3 6.1 2.8 12.5 4.3 18.8.25 1 .475 1.974.7 2.949v.001c.225.975.45 1.95.7 2.95.167.083.334.149.494.213.223.088.431.17.606.287-.4-2.3-.9-4.5-1.5-6.7zm-33.1-66.7c2.4 11.9 3.8 23.3 4.6 34 .6 8.5 1 16.7 1.3 24.4-.15-.1-.325-.2-.5-.3-.175-.1-.35-.2-.5-.3-.3-7.8-.7-16-1.4-24.6-.8-10.4-2.2-21.5-4.5-33-6.6-33-19.3-42.9-28.4-45.6l.6-.9c9.4 2.9 22.2 13.2 28.8 46.3zm372.3 13.6c.794-9.828 1.687-20.051 2.678-29.787l.022-.213c.402-4.541.838-8.917 1.249-13.052l.001-.009.001-.004v-.003c.304-3.053.594-5.973.849-8.732.124-1.551.287-3.064.44-4.49l.001-.006.002-.018v-.007l.002-.019c.092-.855.181-1.678.255-2.46 0-.3 0-.5.1-.8-.3-.3-.6-.7-.9-1.2 0 .3 0 .6-.1.8-.3 2.7-.6 5.6-.9 8.8-.429 4.048-.859 8.472-1.311 13.134l-.001.014c-.285 2.935-.579 5.963-.888 9.052-.157 1.71-.317 3.435-.478 5.171v.002c-.762 8.208-1.544 16.638-2.122 24.727-.6 7.8-1.1 15.2-1.5 21.7.2-.2.375-.4.55-.6.175-.2.35-.4.55-.6.396-6.44.891-13.664 1.483-21.188l.017-.212zm3.3 320.1v1c2.2.2 4.7.3 7.3.3 2.1 0 4.4-.1 6.9-.3v-1c-5.1.5-10.2.4-14.2 0zm0-60.9c1.8.5 3.7 1.1 5.6 1.7 2.8.9 5.7 1.8 8.6 2.6v1c-2.235-.596-4.47-1.303-6.664-1.997l-.002-.001-.004-.001a451.6 451.6 0 00-2.23-.701 109.322 109.322 0 01-3.176-.952l-.003-.001-.017-.005-.01-.003-.015-.005c-.705-.219-1.4-.434-2.079-.634v-1zm6.2 12.3c-2.1-.2-4.2-.4-6.2-.7v1c2 .3 4 .5 6.1.7l.675.075h.004c2.488.276 5.038.558 7.421.925v-1c-2.595-.4-5.291-.7-7.986-1H850.4zm-6.2 26.7l.938.066.792.057c3.843.276 8.044.577 12.47.577v1c-4.426 0-8.627-.301-12.47-.577l-.021-.002-.818-.058-.891-.063v-1zm0 10.7v1.1c4.5.8 9.4.9 14.2.7v-1c-4.7.1-9.7 0-14.2-.8zm14.2-22.8c-5-.4-9.8-.5-14.2-.5v-1c4.4 0 9.2.2 14.2.5v1zm-14.2 5.6v1c4.8.3 9.6.5 14.2.6v-1c-4.582-.199-9.362-.399-14.143-.598h-.003l-.054-.002zm0-52v-1.1c4.7 1.3 9.5 3 14.2 4.9v1.1c-4.7-2-9.6-3.7-14.2-4.9zm14 14.8c-1.096-.268-2.21-.536-3.337-.807l-.003-.001c-3.495-.841-7.106-1.709-10.66-2.692v1c4.5 1.2 9.3 2.4 13.8 3.5.041 0 .083.017.131.037.069.028.152.063.269.063v-1c-.057-.058-.082-.082-.111-.093-.022-.007-.046-.007-.089-.007zm-14-51.1v-1.3c3.4-2.9 8.1-5.9 14.2-8.1v1.1c-6.2 2.2-10.9 5.3-14.2 8.3zm0 7.8v1c5.2-.6 10.2-1 14.2-1.3v-1c-4.5.2-9.8.8-14.2 1.3zm0-54.8v-1h14.2v1h-14.2zm0 25.6v1.7c4.9-6.9 10-11.1 14.2-13.8v-1.2c-4.2 2.6-9.3 6.7-14.2 13.3zm-417.3 44.1v-1.1l14.2-6.5v1.1l-14.2 6.5zm0 12.7v1h.1c5.5-.8 10.3-4.4 14.1-8.6v-1.6c-3.8 4.5-8.6 8.4-14.2 9.2zm0 76.5v-1.1c4 1.9 9.6 4.2 14.2 4.4v1c-4.7-.2-10.2-2.4-14.2-4.3zm7.1-16.6c-2.5-.6-4.9-1.2-7.1-2v1.1c2.2.7 4.5 1.3 6.8 1.9 2.6.6 5.1 1.3 7.4 2v-1c-2.017-.734-4.286-1.299-6.499-1.85l-.601-.15zm1.819-19.288l.181-.012c1.8-.1 3.5-.2 5.1-.4v1c-1.6.2-3.299.3-4.999.4h-.002c-3.2.2-6.399.4-9.199.9v-1c2.745-.49 5.875-.692 8.919-.888zM427.1 923.2c-.042 0-.067 0-.089-.008-.029-.01-.053-.035-.111-.092v1.1c4 1.6 9.4 1.7 14.2 1.7v-1c-4.8 0-10.1-.2-14-1.7zm9.327-87.563l.673.163c.621.177 1.242.335 1.855.491h.001c.768.195 1.521.386 2.244.609v1c-.916-.282-1.882-.514-2.933-.767-.44-.106-.895-.215-1.367-.333a280.28 280.28 0 00-.758-.189c-2.989-.742-6.193-1.537-9.142-3.011v-1.1c2.984 1.585 6.315 2.387 9.427 3.137zM426.9 872.3v1.4c4.5-4.1 10-9.6 14.2-15.1v-1.7c-4 5.5-9.5 11.1-14.2 15.4zm0-68v-1c4.3-.3 9.3.9 14.2 3.7v1.1s-.1-.1-.2-.1c-4.9-2.7-9.9-4-14-3.7zm0-43.4v1c4.8 1.1 9.8 2.4 14.2 4v-1.1c-4.4-1.5-9.4-2.8-14.2-3.9zm0-38.6v-1l14.2 2.6v1l-14.2-2.6zm7.9-71.2c-.796-1.989-1.61-4.007-2.429-6.035-1.857-4.599-3.736-9.254-5.471-13.765v2.8c.591 1.476 1.188 2.981 1.795 4.509v.001l.001.002c1.654 4.164 3.375 8.499 5.204 12.888 2.5 6.2 5 12.4 7.2 18.2V667c-1.8-4.8-3.9-10.1-6.3-15.9zm-7.9 54.1v-1l14.2 4.4v1l-14.2-4.4zm9.9-18.7c-3.3-3.8-6.7-7.6-9.9-10.1v1.3c2.758 2.298 5.601 5.527 8.373 8.675l.727.825c.508.564 1.008 1.129 1.5 1.684 1.252 1.413 2.452 2.767 3.6 3.916v-1.5l-.14-.15c-1.36-1.457-2.807-3.007-4.16-4.65zm211.1-166.7c.1-.15.225-.3.35-.45.125-.15.25-.3.35-.45h-1.2c-.1.15-.225.3-.35.45-.125.15-.25.3-.35.45-5 6.9-10.1 15-14.6 23.1-10.2 18.2-21.2 42-23.2 57.7-.2 1.7-.3 3.3-.3 4.8 0 23.982 16.375 66.036 25.18 88.649l.02.051a885.064 885.064 0 012.7 6.934c.55 1.426 1.05 2.721 1.5 3.866.8 2.2 1.4 4.9 1.8 7.9.7 5.3.7 11.8.3 19-.1 1.5-.2 3-.3 4.6h1.1c.1-1.6.2-3.2.4-4.8.4-6.8.4-13.3-.3-18.8-.4-3.1-1-5.9-1.9-8.3-.788-2.207-1.886-4.972-3.149-8.149-.339-.855-.691-1.74-1.051-2.651-8.8-22.5-25.1-64.5-25.1-88.3 0-1.5.1-3.2.4-4.9 2.6-21.3 21.9-58.8 37.7-80.7zm49.9 190.8c4.6 8.1 8.3 15.1 10.5 20.6-.3.2-.7.3-1 .3-2.2-5.3-5.9-12.3-10.4-20.4a3.553 3.553 0 00-.287-.594l-.064-.113-.049-.093c-2.233-3.987-4.656-8.165-7.22-12.585l-.038-.065-1.942-3.35-.587-1.018c-19.399-33.621-43.273-75-39.313-96.482 1.3-6.9 3.5-15.8 6.6-25.7 3.5-11.3 8.1-23.7 13.6-35.3 2.2-4.9 4.9-10 7.7-14.8.1-.3.3-.6.5-.9.2 0 .4.025.6.05.2.025.4.05.6.05-.1.15-.175.3-.25.45-.075.15-.15.3-.25.45-3.2 5.3-5.9 10.7-8 15.1-5.2 11.1-9.6 23-13.1 33.9-3.3 10.4-5.7 19.8-7 26.9-3.9 21.3 20.3 63.2 39.8 96.8 2.81 4.794 5.415 9.382 7.872 13.71l.005.008.061.108 1.462 2.574c.05.05.075.125.1.2.025.075.05.15.1.2zm-11.3 5.7c-.5-1.6-1.1-3.2-1.7-4.8-5.3-14.6-14.3-31.9-23.2-48.9l-1.011-1.956c-10.226-19.769-19.816-38.309-23.689-52.444-1.6-5.7-1.7-12.1-.7-18.9 2.691-19.93 13.921-42.938 22.114-59.723l.086-.177c.502-1.036.995-2.043 1.474-3.023l.001-.001.001-.002c1.047-2.14 2.033-4.154 2.924-6.074.05-.15.125-.3.2-.45.075-.15.15-.3.2-.45h-1.1c-.05.15-.125.3-.2.45-.075.15-.15.3-.2.45-1.3 2.7-2.7 5.6-4.2 8.7-8.9 18.1-20.2 41.2-22.5 61.3-.8 6.5-.6 12.6 1 18.2 4 14.7 14.1 34.1 24.8 54.6 8.8 16.9 17.7 34.1 23.1 48.5.438 1.126.797 2.212 1.152 3.284.213.642.423 1.279.648 1.916 2.1 6.6 3.3 12.5 3 17.3.15 0 .325-.025.5-.05s.35-.05.5-.05c.2-5-1-11-3.2-17.7zm68.1-165.9c-5.7 17.9-29.1 40-47.4 57.2-12.3 11.6-22.9 21.6-23.7 26.2-1.6 8 7.7 18.6 17.6 29.8l.761.877c6.962 8.02 14.066 16.204 17.539 23.923.782 1.858 1.851 3.907 3.02 6.147l.002.002v.001l.078.15c1.41 2.644 2.976 5.444 4.629 8.399l.671 1.201c.1.3.2.5.4.8l1.074 1.931c2.187 3.93 4.48 8.049 6.626 12.169v.001c1 1.999 2 3.999 2.9 5.899-.3 0-.7.1-1 .2l-2.7-5.4c-2.6-5-5.4-10-8-14.6-.1-.1-.2-.3-.3-.5-1.9-3.3-3.7-6.5-5.3-9.5-1.2-2.4-2.3-4.6-3.2-6.5-3.574-7.843-10.894-16.179-18.044-24.323l-.156-.177-.619-.712c-9.769-11.229-18.846-21.664-17.181-29.988.989-4.944 10.972-14.385 23.666-26.389l.434-.411.082-.078c18.088-17.088 41.227-38.949 47.018-56.422 1.8-5.5 1.9-10.5-.4-14.9-.05-.05-.075-.125-.1-.2-.025-.075-.05-.15-.1-.2-.1-.2-.175-.375-.25-.55a9.786 9.786 0 00-.25-.55c.2.05.425.125.65.2.225.075.45.15.65.2.153.153.247.364.328.544.025.056.048.109.072.156.062.062.085.123.118.209.02.053.044.114.082.191 2.2 4.4 2.1 9.5.3 15zm-36.5 1c1.7-8.2 2.2-16.7 1.5-24.5 0-.139-.021-.278-.044-.427l-.001-.001c-.026-.172-.055-.358-.055-.572-.15-.05-.325-.075-.5-.1-.175-.025-.35-.05-.5-.1 0 .139.022.278.045.427.026.173.055.358.055.573.8 7.9.3 16.5-1.5 24.8-2.3 10.9-6.8 21.1-13.7 28-22.6 22.6-33.6 41.2-32.6 55.2.5 6.9 3.8 12.8 10 17.4 10.2 7.7 18.7 30 26.8 52.8.25.649.474 1.272.699 1.896l.001.004c.225.625.45 1.25.7 1.9.2.5.4 1 .6 1.6 2.4 6.8 4.8 13.5 7.2 19.6.3 0 .7-.1 1-.2-2.4-6.2-4.8-12.9-7.2-19.8-.1-.25-.175-.475-.25-.7-.075-.225-.15-.45-.25-.7l-1.5-4.2c-8.2-22.8-16.7-45.2-27.1-53-5.9-4.5-9.1-10.1-9.6-16.7-.9-13.8 9.9-32.1 32.3-54.5 6.9-6.9 11.5-17.5 13.9-28.7zm80.4 116c4.1 2 7.5 4 10.4 6 7.3 5 11 10.1 12.4 15.6-.15.099-.324.224-.498.349l-.002.001-.002.001a21.608 21.608 0 01-.498.349c-1.2-5.6-4.8-10.7-12.2-15.8-2.7-1.9-6-3.7-9.8-5.6l-.001-.001c-1.399-.699-2.799-1.399-4.199-1.999-10-4.6-19.4-8-27.3-10.8l-.9-.3c-14-5-23.3-8.4-24.8-13.9-.7-2.5.3-5.4 3.1-8.7 4.908-5.89 14.924-10.624 25.696-15.715l.604-.285.244-.115c19.04-8.971 40.468-19.068 43.356-38.485.7-4.8 1.8-9.4 3.1-13.6 0-.238.063-.412.138-.624l.062-.176c.199.199.499.399.798.598l.001.001.001.001c0 .237-.063.412-.138.623l-.001.001L818 565c-1.3 4-2.3 8.4-3 13.1-3.1 19.9-24.9 30.2-44.2 39.3-10.9 5.1-21.2 10-26 15.8-2.6 3-3.5 5.6-2.9 7.8 1.373 4.902 10.627 8.266 23.429 12.92l.771.28c.2.1.425.175.65.25.225.075.45.15.65.25.852.317 1.724.639 2.615.969 7.265 2.688 15.766 5.833 24.585 9.931l3.9 1.8zM789.8 548a2.806 2.806 0 00-.094.403 1.515 1.515 0 01-.106.397c-.3 1.3-.6 2.5-1 3.8-5.6 19.5-18.9 39.9-36.8 49.5l-.35.187c-20.969 11.23-40.656 21.772-41.65 32.513-.3 3.5 1.3 6.7 5 9.8 12.8 10.5 23.6 20.4 32.2 29.4 6.9 7.2 12.4 13.9 16.5 20 .1.15.175.275.25.4.075.125.15.25.25.4 5 7.6 7.8 14.3 8.3 20 .3-.1.6-.2 1-.4-.6-5.7-3.4-12.4-8.4-19.9a7.872 7.872 0 00-.155-.226l-.001-.002a7.628 7.628 0 01-.544-.872c-4.1-6.1-9.7-12.8-16.6-20-8.6-9.1-19.4-18.9-32.2-29.5-3.5-2.8-5-5.8-4.7-8.9.992-10.121 21.281-21.029 41.035-31.65l.465-.25c18.2-9.8 31.7-30.5 37.4-50.3.15-.6.3-1.175.45-1.749v-.003c.15-.574.3-1.149.45-1.748.046-.138.071-.275.094-.403.027-.151.052-.289.106-.397-.3-.3-.6-.4-.9-.5zm61.904 196.336l.009-.005.032-.015.009-.005.646-.311c2-1 4-1.9 6-2.7v1.1c-1.8.7-3.7 1.6-5.6 2.5-2.8 1.4-5.8 2.8-8.6 3.6v-1c2.469-.732 5.021-1.965 7.503-3.164h.001zM844.2 726.5v1.4c.163-.163.336-.326.514-.492v-.001h.001c.366-.344.748-.703 1.085-1.107 3.9-3.6 8.2-6.7 12.5-9.3v-1.1c-5.1 3.1-10 6.8-14.1 10.6zm0-25.9v-2.9c4.6-12.3 9.5-22.1 14.2-25.5v1.2c-4.6 3.8-9.5 14.3-14.2 27.2zm0-23.8v1.9c4.7-8 9.5-12.6 14.2-15.5V662c-4.7 2.9-9.5 7.2-14.2 14.8zM815 604.5c7-8.2 14.4-16.9 20.3-25.2.1-.2.3-.4.4-.5l-.7-.7c-.05.1-.125.2-.2.3-.075.1-.15.2-.2.3-5.911 8.237-13.137 16.755-19.675 24.463l-.001.001-.624.736c-10.2 12-19.2 22.6-21.1 29-.3 1-.4 1.9-.3 2.7.1 1.1.6 1.9 1.4 2.5 3.4 2.6 8.5 8.3 13.8 15.5 3.2 4.4 6.5 9.4 9.6 14.5 3.3 5.6 6.4 11.4 8.8 16.9.15-.1.3-.225.45-.35.15-.125.3-.25.45-.35-2.4-5.5-5.4-11.3-8.7-16.8-3.1-5.2-6.5-10.2-9.8-14.6-5.3-7.2-10.4-12.9-14-15.5-.6-.5-.9-1-1-1.8-.1-1 .2-2.2.8-3.7 2.48-6.447 11.058-16.533 20.076-27.137l.224-.263zm29.2 186.8v-1l14.2-2.6v1l-14.2 2.6zm0-14.8v1c3.8-1.2 8.5-1.7 14.2-1.5v-1c-5.6-.2-10.4.3-14.2 1.5z",
-        fillRule: "evenodd",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 200
-        },
-        __self: this
+        opacity: "0.42"
+    }, /*#__PURE__*/ _reactDefault.default.createElement("rect", {
+        x: "777.1",
+        y: "169.1",
+        width: "91.9",
+        height: "180.9",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("rect", {
+        x: "885.9",
+        y: "169.1",
+        width: "91.2",
+        height: "180.9",
+        fill: "#BDD3DE"
+    })), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M849.3 232.4L868.9 211V232.4H849.3Z",
+        fill: "#BDD3DE"
     }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
-        d: "M657.8 853.8v1.1c-4.4-1.1-9.7-2.2-14.2-2.5v-1c4.6.3 9.8 1.4 14.2 2.4zM643.6 865.3c3.9 1.8 8.6 3.3 14.2 4.5v1h-.1c-5.6-1.2-10.3-2.7-14.1-4.4v-1.1zM657.8 821.2v1c-2 .4-4.4.5-7.1.4-2.9-.1-5.2-.2-7.1-.2v-1c1.9 0 4.3 0 7.1.2 2.8.1 5.1 0 7.1-.4zM657.8 838.4v1c-4.1.4-9.5.7-14.2.3v-1c4.7.4 10.1 0 14.2-.3zM657.8 899.9v1.1c-1.6.7-3.3 1.4-5 2-3.7 1.2-6.7 2.5-9.2 3.9v-1.1c2.4-1.3 5.3-2.6 8.8-3.7 1.9-.7 3.7-1.4 5.4-2.2zM651.4 954.5c2.3.3 4.5.7 6.4 1.3v1.1c-1.9-.7-4.1-1-6.5-1.4-2.5-.4-5.2-.8-7.7-1.6v-1.1c2.4.8 5.2 1.3 7.8 1.7zM657.8 968.3v1c-3.3 0-7.7-1.5-12.3-3-.6-.2-1.3-.4-1.9-.6v-1.1c.7.2 1.5.5 2.2.7 4.4 1.5 8.8 2.9 12 3zM643.6 971.9c4.5 1.7 9.5 3.5 14.2 5.1v1.1c-3.9-1.3-9.2-3.1-14.2-5v-1.2zM657.8 749v1.3c-4.1 3.2-10 8.2-14.2 12.8v-1.5c4.4-4.6 10.3-9.5 14.2-12.6zM646.9 770.2c3.4-1 7.4-2.2 10.9-2.5v1c-3.4.2-7.2 1.4-10.6 2.4-1.3.4-2.5.8-3.6 1v-1c1.1-.2 2.2-.5 3.3-.9zM657.8 778v1.1c-4.8 2-10.4 3.7-14.2 4.7v-1c4.3-1.3 9.8-3 14.2-4.8zM657.8 805.3v1c-4.4-.3-9.8 0-14.2.3v-1c4.4-.3 9.8-.6 14.2-.3z",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 201
-        },
-        __self: this
-    })), /*#__PURE__*/ _reactDefault.default.createElement("circle", {
+        opacity: "0.42",
+        d: "M977 93.5996V152.1H923.2L977 93.5996Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M907.6 169.1H977V350.8H922.8V232.4H885.9V192.6L907.6 169.1Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M777.1 254.2H813.9L859.1 297.1H823V350.8L777.1 350V254.2Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M794.4 111.2H891C891 111.2 886.6 88.6001 872.1 93.6001C857.5 98.6001 840.5 107.4 833.2 102.1C825.9 96.7001 811.6 88.9001 794.4 111.2Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M866.8 79.7003H915.1C908.4 71.9003 903.4 70.5003 900 70.9003C895.5 71.5003 892.8 75.3003 886.2 75.1003C883.2 75.0003 882.7 74.2003 880 74.1003C874.9 73.9003 870.4 76.6003 866.8 79.7003Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M661.8 210.3V220.8C661.8 222.7 660.7 224.4 659 225.2C658.7 225.4 658.4 225.5 658.1 225.5C657.7 225.6 657.3 225.7 656.9 225.7H74.2C71.5 225.7 69.3 223.5 69.3 220.8V210.3C69.3 207.6 71.5 205.4 74.2 205.4H656.8C659.6 205.4 661.8 207.6 661.8 210.3Z",
+        fill: "#EEEDEE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M91.6 225.8H90.4C85.3 218.7 80 209.8 77.5 205.4H78.7C82.5 212 87.4 219.8 91.6 225.8Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M95.8 209.1C97.9 213.4 100.7 219.4 101.9 225.7H100.9C99.7 219.5 97 213.7 94.9 209.5C94.1 207.8 93.4 206.4 93 205.3H94.1C94.6 206.5 95.3 207.9 95.8 209.1Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M112.3 225.8H111.2C109.9 222.5 108.7 217.9 107.7 212.4C107.2 209.4 106.2 207.1 104.9 205.4H106.1C107.2 207 108.1 209.2 108.7 212.2C109.9 218.5 111.1 222.9 112.3 225.8Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M113.5 219.1C114.8 221.4 116 223.7 116.7 225.8H115.6C114.9 223.9 113.7 221.8 112.6 219.6C110 214.8 107.4 209.8 108.3 205.4H109.3V205.5C108.3 209.5 110.9 214.3 113.5 219.1Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M119.1 225.8H118C116.7 222.5 114.8 217 112.1 207.8L111.4 205.5H112.4L113 207.6C115.9 217 117.8 222.6 119.1 225.8Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M118.8 215.7C117.7 220.4 119.1 222 120.4 223.6C120.9 224.3 121.5 224.9 121.9 225.8H120.8C120.5 225.3 120.1 224.8 119.7 224.3C118.3 222.6 116.7 220.7 117.9 215.5C118.7 212.1 120.4 208.3 122.5 205.4H123.7C121.5 208.2 119.7 212.1 118.8 215.7Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M129.5 217C129.1 220 130.4 223.2 132.3 225.7H131.1C129.3 223.1 128.1 219.9 128.5 216.8C129.1 212.6 131 210.6 132.4 209C133.7 207.6 134.4 206.8 133.7 205.2H134.8C135.5 207.2 134.5 208.3 133.2 209.6C131.8 211.3 130.1 213.2 129.5 217Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M141.2 225.8H140.1C139.2 224.4 137.9 223.5 136.5 222.8C134 221.3 131.3 219.8 134 214.4C135.5 211.3 137.5 208.2 139.6 205.5H140.9C138.7 208.2 136.5 211.6 134.9 214.9C132.7 219.5 134.5 220.5 137 222C138.5 222.7 140.3 223.8 141.2 225.8Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M162.6 225.8H161.5C160.4 223.4 159.1 219.7 157.4 214.9C156.3 211.6 155.1 208.2 154 205.4H155.1C156.2 208.1 157.3 211.4 158.4 214.6C159.7 218.3 161.2 223 162.6 225.8Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M170.7 205.4C169.8 208.6 169 212.8 168.4 216.3C167.7 220 167.1 223.4 166.4 225.7H165.4C166.1 223.4 166.8 219.8 167.5 216.1C168.3 211.8 169.1 208.1 169.8 205.3H170.7V205.4Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M174.6 205.4C174.2 207.9 173.5 211.1 172.5 215C171.6 218.8 170.5 223.2 170.3 225.8H169.3C169.4 223.4 170.3 219.6 171.5 214.7C172.3 211.6 173.1 208.1 173.5 205.4H174.6Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M176.3 205.4H177.3C177.2 206.5 177 207.7 176.9 208.9C176 216.1 175.2 222.2 173.9 225.8H172.8C174.3 221.9 175.2 214 175.8 208.8C176.1 207.5 176.2 206.4 176.3 205.4Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M180.5 225.8H179.5C179.3 223.5 179.3 220.2 179.3 216C179.3 212.4 179.4 208.6 179.1 205.4H180.1C180.3 208.5 180.3 212.3 180.3 216C180.3 219.3 180.2 223.2 180.5 225.8Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M188.2 205.4H189.2C188.5 207.8 188 211 187.5 214.2C186.8 218.4 186.1 222.7 184.9 225.8H183.8C185 222.9 185.7 218.4 186.4 214.1C187 210.8 187.5 207.8 188.2 205.4Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M199 225.8H198C197.8 223.9 197.7 221.5 197.7 219C197.7 214.2 197.6 209 196.1 205.4H197.2C198.6 209.2 198.7 214.3 198.7 219C198.8 221.5 198.8 223.9 199 225.8Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M207.1 212.7C207.7 217.3 208.3 222.2 207.2 225.8H206.1C207.3 222.4 206.6 217.4 206.1 212.8C205.8 210.1 205.4 207.5 205.5 205.4H206.5C206.5 207.5 206.8 210 207.1 212.7Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M239.1 225.8H237.8C236 223.8 234.1 221.5 232.1 219.1C228.1 214.3 223.8 209.1 219.5 205.4H221C225.1 209.1 229.2 214 232.9 218.5C235 221.1 237.1 223.6 239.1 225.8Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M252.7 225.8H251.7C252.6 221.1 250.6 215.9 248.9 211.2C248.1 209.1 247.4 207.2 247 205.4H248C248.4 207 249.1 208.8 249.8 210.8C251.5 215.4 253.5 220.8 252.7 225.8Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        fillRule: "evenodd",
+        clipRule: "evenodd",
+        d: "M356.012 218.124L356.1 218.2L356.317 218.393C358.185 220.06 360.511 222.135 360.8 225.6H359.8C359.6 222.4 357.5 220.5 355.5 218.8C355.396 218.709 355.293 218.62 355.192 218.531C353.724 217.255 352.5 216.19 352.5 214.6C352.5 213.4 353.2 212.2 354.7 210.7C355.852 209.62 357.056 208.332 358.35 206.949L358.351 206.948C358.853 206.411 359.369 205.859 359.9 205.3H361.3C361.2 205.4 361.1 205.525 361 205.65L361 205.65C360.9 205.775 360.8 205.9 360.7 206C358.9 208 357 210 355.4 211.5C354.1 212.8 353.5 213.8 353.5 214.7C353.5 215.972 354.65 216.957 356.012 218.124ZM382.6 225.8C385.1 220.8 390.3 212.5 396.2 205.4H397.4C391.5 212.4 386.2 220.7 383.7 225.8H382.6ZM372.6 205.4H371.6C370.8 213.1 372.5 220.7 374.9 225.8H376C373.7 220.9 371.7 213.2 372.6 205.4ZM420.7 205.4C418.7 206.6 415.5 206.9 412.1 207.2L411.999 207.209C407.63 207.606 403.086 208.019 401.3 210.5C400.4 211.8 400.2 213.4 400.7 215.5C401.4 218.6 401.8 222.199 402.2 225.799L402.2 225.8H401.2C400.8 222.2 400.4 218.7 399.7 215.7C399.2 213.2 399.4 211.4 400.5 209.9C402.6 207.1 407.4 206.6 412 206.2C414.2 206 416.3 205.8 418 205.4H420.7ZM427.8 205.4C424.8 210.3 421.9 215.9 419.2 221.7C418.501 223.197 417.902 224.495 417.303 225.793L417.3 225.8H418.4C418.786 225.027 419.131 224.255 419.488 223.456L419.488 223.456L419.488 223.455C419.685 223.013 419.886 222.563 420.1 222.1C423.3 215.2 426.2 209.7 428.8 205.4H427.8ZM429.3 225.8C433.6 220.6 439.8 213 443.5 205.4H444.6C441.1 212.9 435 220.5 430.6 225.8H429.3ZM449.9 205.4C449.523 205.913 449.123 206.45 448.7 207.019C447.886 208.111 446.986 209.319 446 210.7C442.4 215.7 438.2 221.4 434.5 225.8H435.8C439.284 221.751 442.946 216.726 446.284 212.145L446.284 212.145L446.9 211.3C448.3 209.3 449.8 207.2 451.2 205.4H449.9ZM446.7 220.3C449.4 215.5 452.6 209.8 454.4 205.4H455.5C453.995 209.385 451.234 214.311 448.608 218.997L448.608 218.998L448.6 219.012L448.569 219.067C448.243 219.649 447.919 220.227 447.6 220.8C447.15 221.6 446.675 222.45 446.2 223.3C445.725 224.15 445.25 225 444.8 225.8H443.7C444.217 224.831 444.817 223.738 445.5 222.492C445.875 221.808 446.275 221.079 446.7 220.3ZM465 205.4C463.092 207.717 461.183 210.267 459.243 212.859C458.337 214.07 457.423 215.29 456.5 216.5C454 219.9 451.6 223.1 449.4 225.8H450.7C452.555 223.503 454.489 220.894 456.5 218.179L456.501 218.178L457.034 217.458L457.3 217.1C460.2 213.1 463.3 209 466.3 205.4H465ZM636.5 225.8C638 219.6 640.1 211.6 642.3 205.4H643.3C641.5 210.5 639.5 217.5 637.5 225.8H636.5ZM610.2 205.7C610.2 205.65 610.175 205.6 610.15 205.55C610.125 205.5 610.1 205.45 610.1 205.4H609C609.1 205.7 609.2 205.9 609.3 206.099L609.3 206.1C611.5 211 615.3 218.9 619.4 225.8H620.6C617.4 220.5 613.9 213.7 610.2 205.7ZM652.3 205.4H653.3C655.6 212.8 657.9 221 659.1 225.3L658.2 225.6C658.076 225.157 657.941 224.671 657.796 224.147L657.795 224.146L657.795 224.146C656.525 219.578 654.453 212.127 652.3 205.4ZM600.4 222.9L600.3 222.747C597.326 218.187 594.035 213.143 597.2 208.1C597.7 207.2 598.2 206.3 598.6 205.3H597.5C597.2 206.1 596.8 206.8 596.3 207.5C592.823 213.063 596.353 218.527 599.438 223.304L599.5 223.4C599.75 223.8 600 224.175 600.25 224.55C600.5 224.925 600.75 225.3 601 225.7H602.2C601.928 225.21 601.597 224.721 601.255 224.216L601.255 224.215C600.968 223.791 600.674 223.356 600.4 222.9ZM587.5 205.4H588.5C589.6 212.6 593.2 220.4 596.6 225.8H595.3C591.9 220.2 588.6 212.3 587.5 205.4ZM577.9 205.4C575.397 208.938 572.522 213.593 569.275 218.852L569.253 218.888L569.173 219.016L569.164 219.031L569.135 219.079C568.664 219.841 568.186 220.615 567.7 221.4L567.699 221.402C566.799 222.901 565.9 224.401 565 225.8H566.2C566.899 224.601 567.699 223.302 568.498 222.003L568.5 222C568.73 221.624 568.966 221.238 569.207 220.844C572.111 216.097 575.768 210.116 579 205.5H577.9V205.4ZM547.2 205.4C547.5 206.5 547.8 207.7 548.1 208.9C548.218 209.354 548.337 209.814 548.457 210.281C549.771 215.366 551.26 221.128 553 225.8H551.9C550.3 221.4 548.8 215.6 547.2 209.2C546.879 208.157 546.622 207.114 546.379 206.122L546.378 206.121C546.318 205.877 546.259 205.636 546.2 205.4H547.2ZM535.9 205.4C534.7 207.1 533.4 209.1 532 211.3C528.7 216.4 525 222 521.6 225.8H522.9C525.902 222.445 528.903 217.921 531.768 213.604L531.768 213.603L531.769 213.602L531.77 213.601L531.77 213.6C532.149 213.029 532.526 212.461 532.9 211.9C534.3 209.7 535.8 207.4 537.2 205.5H535.9V205.4ZM501 205.3C502.1 207.9 503.2 210.9 504.2 214.1C504.312 214.435 504.424 214.772 504.536 215.109C505.826 218.994 507.136 222.939 508.7 225.7H507.6C505.9 222.6 504.5 218.4 503.2 214.4C502.2 211.2 501.1 207.9 499.9 205.3H501ZM492.5 217.9C490.7 213.6 488.8 209.3 487 205.4H486C487.583 208.733 489.167 212.414 490.75 216.095C491.067 216.831 491.383 217.567 491.7 218.3C492.342 219.798 492.956 221.211 493.525 222.522L493.528 222.527C494.021 223.664 494.482 224.725 494.9 225.7H496C494.8 223.1 493.6 220.4 492.5 217.9ZM497.916 211.155C498.224 212.159 498.529 213.152 498.8 214.1C499.178 215.406 499.58 216.748 499.985 218.1L499.985 218.102C500.759 220.684 501.544 223.307 502.2 225.8H501.2C500.3 222.2 499.1 218.2 497.9 214.4L497.633 213.501C496.654 210.211 495.851 207.511 495.3 205.4H496.3C496.697 207.186 497.313 209.191 497.916 211.154L497.916 211.154L497.916 211.155ZM342.2 205.4C342.2 205.45 342.175 205.475 342.15 205.5V205.5V205.5C342.125 205.525 342.1 205.55 342.1 205.6C341.81 206.096 341.515 206.602 341.214 207.118L341.211 207.122L341.211 207.122C337.569 213.367 333.171 220.905 329.2 225.8H330.5C334.239 221.081 338.296 214.143 341.751 208.232L341.752 208.232L341.752 208.231C342.178 207.503 342.594 206.791 343 206.1C343.05 206 343.125 205.875 343.2 205.75C343.275 205.625 343.35 205.5 343.4 205.4H342.2ZM346.4 205.4H347.4C346.9 212.2 348.6 220.2 350.9 225.8H349.9C347.5 220.1 345.9 212.3 346.4 205.4ZM329.1 205.4C327.5 208.1 325.6 211.7 323.3 216.2C321.5 219.7 319.7 223.1 318.2 225.8H319.4C320.293 224.253 321.221 222.493 322.205 220.626C322.875 219.356 323.571 218.036 324.3 216.7C326.1 213.2 328.4 208.9 330.4 205.4H329.1ZM327.314 221.177L327.314 221.177L327.314 221.177C329.806 216.218 332.816 210.228 334 205.4V205.3H335C333.7 210.7 330.2 217.7 327.5 223C327 223.9 326.5 224.8 326.1 225.7H325C325.5 224.8 326 223.8 326.6 222.6C326.831 222.138 327.069 221.664 327.312 221.18L327.314 221.177ZM301.1 217.2L300.876 216.928L300.876 216.928C296.758 211.927 292.84 207.168 289.5 205.4H284.9C281.763 207.458 283.431 211.439 285.193 215.645L285.3 215.9C286.7 219.1 288.2 222.6 288 225.8H289C289.192 222.538 287.727 219.091 286.371 215.903L286.2 215.5C284 210.5 282.8 207.3 286.1 205.8C289.3 204.4 294.9 211.2 300.3 217.8L300.696 218.278C302.953 221.006 305.116 223.621 307.1 225.7H308.5C306.606 223.806 304.577 221.37 302.467 218.838L302.467 218.837L302.467 218.837L302.467 218.837L302.467 218.837C302.015 218.294 301.559 217.747 301.1 217.2ZM272.303 206.697L272.303 206.697L272.303 206.697C272.454 207.104 272.617 207.541 272.8 208C274.6 212.7 277.7 220.7 280.9 225.8H279.7C277.1 221.4 274.5 214.9 271.9 208.4C271.672 207.773 271.411 207.145 271.174 206.574L271.174 206.574L271.174 206.574C270.995 206.143 270.829 205.744 270.7 205.4H271.8C271.962 205.779 272.125 206.216 272.303 206.697ZM267.9 205.4C267.3 207.7 266.7 211.4 266 216.8C265.844 217.831 265.697 218.882 265.554 219.907L265.554 219.907L265.554 219.907C265.24 222.161 264.944 224.287 264.6 225.8H265.6C265.974 224.155 266.292 221.895 266.638 219.437C266.754 218.609 266.874 217.757 267 216.9C267.5 213.2 268.2 208.1 268.9 205.4H267.9ZM259 205.4H260C261 213.6 262.3 222 263.4 225.8H262.4C261 221.1 259.8 212 259 205.4Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M233.3 225.8H231.6C226.6 222 218.8 215.7 216.6 211.2C214.7 207.6 212.4 206.6 211.4 207.1C210.5 207.5 210.4 209 211.2 210.8C212.9 214.9 211.5 221.9 210.5 225.8H209.5C210.5 222.1 212 215.1 210.4 211.2C209.2 208.3 210 206.7 211.1 206.2C212.8 205.4 215.5 206.8 217.6 210.8C219.9 215.3 228.6 222.2 233.3 225.8Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M159.9 225.8H158.7C156.5 222.4 150.8 213 150.2 208.6C150 207.3 149.5 206.4 148.7 206.1C146.9 205.4 143.9 207.2 141.8 208.9C139.7 210.6 137.6 213.9 137.8 216.7C137.9 217.9 138.4 218.8 139.4 219.4C142.4 221.2 143.6 224.3 144.1 225.8H143C142.5 224.3 141.3 221.7 138.9 220.2C137.7 219.4 136.9 218.2 136.8 216.7C136.6 213.7 138.9 210 141.1 208.1C141.8 207.5 143.6 206.1 145.6 205.3H149.5C150.4 205.8 150.9 206.9 151.2 208.4C151.9 212.8 158.2 223 159.9 225.8Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M372.2 225.8H371.2C369.8 221.9 366.5 212.5 365.1 209.1C364.7 208.2 364.2 208.2 364 208.2C362.9 208.2 361.5 209.7 360.6 211.5C360.2 212.5 359.4 214.9 361 216.6C363.4 219.2 364.1 223.1 364.2 225.7H363.2C363 223.2 362.4 219.5 360.2 217.2C358.8 215.7 358.6 213.4 359.7 211C360.5 209.1 362.3 207.1 364 207.1C364.5 207.1 365.4 207.3 366 208.6C367.5 212.2 370.9 222.1 372.2 225.8Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M490.3 225.8H489.1C486.9 222.4 481.7 214.7 478.6 211.2C478.3 210.9 477.9 210.7 477.3 210.7C472.7 210.7 462.4 221.5 458.5 225.8H457.2C460.5 222.1 472 209.8 477.4 209.7C478.2 209.7 478.9 210 479.4 210.5C482.6 214.3 488.3 222.8 490.3 225.8Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M482.5 225.8H481.3C480.4 224.5 479.1 223 477.4 221.5C474.9 219.3 469.5 223 466.3 225.8H464.8C467.4 223.3 474.4 217.5 478 220.7C480.1 222.5 481.6 224.3 482.5 225.8Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M635.7 205.4C634.8 209.2 632.8 215.4 628.8 220.7C627.9 221.9 626.9 222.5 625.8 222.5C625.6 222.5 625.4 222.5 625.2 222.4C622.8 221.9 620.4 218.2 618 211.4C617.2 209.2 616.6 207 616.1 205.2H617.1C618.9 211.5 622.1 220.7 625.4 221.4C626.3 221.6 627.1 221.1 627.9 220C631.8 214.8 633.7 209 634.6 205.2H635.7V205.4Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M630 205.4C629.3 206.9 628.1 209.2 626.3 212.1C625.7 213 625.1 213.5 624.5 213.5C624.4 213.5 624.3 213.5 624.2 213.5C622.5 213.1 621.6 208.5 621.3 205.5H622.3C622.7 209 623.6 212.4 624.5 212.6C624.7 212.7 625.1 212.3 625.5 211.7C627.1 209.1 628.3 207 628.9 205.5H630V205.4Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M661.8 357.6V368.1C661.8 370.8 659.6 373 656.9 373H74.2C71.5 373 69.3 370.8 69.3 368.1V357.6C69.3 355.7 70.4 354 72 353.2C72.3 353 72.6 352.9 72.9 352.8C73.3 352.7 73.8 352.6 74.2 352.6H656.8C659.6 352.6 661.8 354.8 661.8 357.6Z",
+        fill: "#EEEDEE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M492 360C492 362.9 489.1 365.6 486.6 366.1C484.5 366.6 482.7 365.6 481.4 365C480.6 364.6 479.9 364.2 479.6 364.4C479.3 364.6 478.6 365.8 481.1 373H480C477.5 365.8 478.1 364.1 479 363.6C479.8 363.1 480.7 363.6 481.8 364.1C483 364.7 484.5 365.6 486.3 365.2C488.4 364.7 490.9 362.4 490.9 360C490.9 357.4 487.6 355.2 484.7 353.3C484.3 353.1 483.9 352.8 483.6 352.6H485.4C488.6 354.6 492 356.9 492 360Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M504.7 373H502.7C499.7 371.2 497.4 368.9 496.7 365.8C496.4 364.1 496.7 363.1 497.1 362.2C497.4 361.2 497.8 360.4 497.5 358.6C497.2 356.6 496.2 354.5 494.8 352.7H496C497.3 354.5 498.2 356.5 498.5 358.5C498.8 360.5 498.4 361.6 498 362.5C497.7 363.4 497.4 364.2 497.7 365.6C498.3 368.8 501.2 371.3 504.7 373Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M528.4 354.1C529.4 356.7 530.7 360 530.7 364C530.7 367 530 370.3 528.7 373H527.5C528.9 370.4 529.7 367 529.6 364C529.6 360.1 528.3 357 527.4 354.4C527.2 353.8 526.9 353.2 526.7 352.6H527.7C528 353.1 528.2 353.5 528.4 354.1Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M536.8 370C536.6 371.1 536.3 372.1 536.2 373H535.2C535.3 372 535.5 371 535.8 369.8C536.4 367.3 537.1 364.1 536.7 360.4C536.4 357.7 535.7 354.8 534.5 352.6H535.6C536.7 354.9 537.4 357.7 537.7 360.2C538.1 364.2 537.4 367.4 536.8 370Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M547.2 352.6C546 355.5 545.3 360 544.6 364.3C544.1 367.5 543.6 370.6 542.9 372.9H541.9C542.6 370.5 543.1 367.3 543.6 364.1C544.3 359.9 545 355.6 546.2 352.5H547.2V352.6Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M550.4 373H549.3C549.1 372.6 548.8 372.2 548.6 371.8C548.2 371.1 547.8 370.5 547.6 370C545.4 365.4 547.4 358.5 548.7 354C548.8 353.6 549 353.1 549.1 352.6H550.1C550 353.1 549.8 353.6 549.6 354.2C548.3 358.6 546.4 365.2 548.4 369.5C548.6 370 549 370.5 549.4 371.3C549.7 371.8 550 372.4 550.4 373Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M553 359C551.3 364.1 551.6 369.2 552.2 373H551.2C550.6 369.1 550.2 363.8 552 358.6C552.8 356.3 553.9 354.2 555.2 352.6H556.5C555.2 354.1 553.9 356.3 553 359Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M561.1 352.6C560.9 353.5 560.5 354.7 560 356C559.4 357.8 558.7 359.9 558.1 362.2C557 366.6 556.4 370.3 556.4 372.9H555.4C555.4 369.4 556.4 365 557.2 361.9C557.8 359.5 558.5 357.4 559.1 355.6C559.5 354.6 559.8 353.4 560.1 352.5H561.1V352.6Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M564.7 352.6H565.7C565 354.9 564.4 358.5 563.7 362.2C562.9 366.6 562.2 370.2 561.4 373H560.4C561.3 369.7 562.1 365.3 562.7 362C563.4 358.4 564 355 564.7 352.6Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M575.4 373H574.1C573.2 371.9 572.3 370.6 571.6 369.4C568.3 363.9 567.6 357.4 567.2 353.6C567.2 353.3 567.1 353 567.1 352.6H568.1C568.1 352.9 568.2 353.1 568.2 353.4C568.6 357.4 569.3 363.5 572.5 368.8C573.3 370.3 574.3 371.7 575.4 373Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M597 364.1C595.6 367 593.6 370.2 591.4 373H590.1C592.3 370.3 594.4 367 596.1 363.6C598.3 359 596.5 358 594 356.5C592.5 355.6 590.7 354.6 589.8 352.6H590.9C591.8 354 593.1 354.9 594.5 355.6C597.1 357.1 599.7 358.7 597 364.1Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M602.5 361.5C601.9 365.7 600 367.7 598.6 369.2C597.3 370.6 596.6 371.4 597.3 373H596.2C595.5 371 596.5 369.9 597.8 368.5C599.2 367 600.9 365.2 601.5 361.3C601.9 358.3 600.6 355.1 598.7 352.6H599.9C601.7 355.3 603 358.4 602.5 361.5Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M610.8 365C610.9 365.8 611 366.1 610.9 367.1C610.6 369.1 609.7 371.2 608.5 373H607.3C608.7 371.2 609.6 369 609.9 366.9C610 366.1 610 365.9 609.8 365.2C609.7 364.3 609.4 362.8 609.2 359.1C609.1 356.9 609.1 355.6 609.1 354.6C609.1 353.6 609.1 353.1 609 352.6H610C610.1 353.1 610.1 353.7 610.1 354.6C610.1 355.6 610.1 356.9 610.2 359C610.4 362.7 610.7 364.2 610.8 365Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M619.7 373H618.7C616.1 364 613.6 356.8 611.9 352.6H613C615.6 358.6 618.6 368.8 619.7 372.8C619.7 372.9 619.7 373 619.7 373Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M620.9 368.4C621.4 370 621.7 371.5 621.9 373H620.9C620.7 371.7 620.4 370.2 620 368.7C619.2 365.8 618.2 363.7 617.2 361.7C615.9 359 614.7 356.5 614.2 352.6H615.2C615.6 356.2 616.7 358.5 618.1 361.2C619 363.3 620.1 365.5 620.9 368.4Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M626.2 373H625C623.8 371.2 622.9 369 622.4 366.2C621.2 359.6 619.9 355.4 618.8 352.6H619.9C621.2 355.9 622.4 360.5 623.4 366C623.9 369 624.8 371.3 626.2 373Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M656 361.5C655.4 362.3 654.7 363.1 654.1 364.2C652.9 366.6 652.9 369.5 654.1 373H653.1C652 369.4 652.1 366.3 653.3 363.8C653.9 362.6 654.7 361.7 655.3 360.9C656.1 360 656.5 359.4 656.3 359C656.1 358.5 654.9 358.4 653 358.4C651.9 358.4 650.5 358.3 648.8 358.1C645.8 357.8 643.5 357.2 641.8 356.8C639.3 356.2 637.9 355.8 636.7 356.8C635.6 357.7 635 359.4 635.3 360.5C635.7 361.7 636.9 362.1 638.4 362.6C639.9 363.1 641.7 363.7 642.6 365.3C643.7 367.4 643.1 370.5 641.4 373.1H640.2C642.1 370.7 642.7 367.6 641.8 365.8C641.1 364.5 639.6 364 638.2 363.6C636.6 363.1 634.9 362.6 634.4 360.8C633.9 359.2 634.6 357.2 636.1 356C637.7 354.7 639.4 355.2 642.1 355.8C643.9 356.2 646.1 356.8 649 357.1C650.6 357.3 652 357.3 653.2 357.4C655.5 357.5 656.9 357.5 657.4 358.7C657.6 359.6 656.8 360.5 656 361.5Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M78.8 373H77.7C75.2 365.5 73.1 358 71.9 353.2C72.2 353 72.5 352.9 72.8 352.8C74.1 357.7 76.3 365.3 78.8 373Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M93.5 352.6H94.5C93 358.8 90.9 366.8 88.7 373H87.6C89.5 368 91.5 360.9 93.5 352.6Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M122.1 373H121C121 372.9 120.9 372.8 120.9 372.7C117.2 364.6 113.7 357.8 110.5 352.6H111.7C115.8 359.4 119.6 367.4 121.8 372.3C121.8 372.5 121.9 372.8 122.1 373Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M131.5 354.9C134.7 359.7 138.3 365.2 134.7 370.8C134.3 371.5 133.9 372.3 133.5 373H132.4C132.8 372.1 133.2 371.1 133.8 370.2C137 365.2 133.6 360 130.6 355.4C130 354.4 129.3 353.5 128.8 352.6H130C130.5 353.4 131 354.1 131.5 354.9Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M143.6 373H142.6C141.4 365.8 137.9 358 134.6 352.6H135.9C139.2 358.2 142.5 366.1 143.6 373Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M164.8 352.6H166C165.2 354 164.3 355.4 163.3 357C159.5 363.3 156 368.9 153.1 373H151.9C155.4 368 159.5 361.3 162.4 356.5C163.2 355.1 164 353.8 164.8 352.6Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M187.1 367.6C186.4 369.4 185.7 371.2 185.5 373H184.5C184.7 370.9 185.4 369 186.2 367.2C187.1 364.8 188.1 362.4 187.9 359.5C187.8 357 186.9 354.6 185.6 352.6H186.8C188 354.7 188.8 357 188.9 359.5C189.1 362.6 188.1 365.1 187.1 367.6Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M205.8 352.6H207.5C199.1 358.4 195.2 365.1 195.1 365.2C193.5 368 192.4 370.6 191.5 373H190.4C191.4 370.6 192.5 367.7 194.2 364.8C194.3 364.7 198 358.4 205.8 352.6Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M225 373H222.2C220.1 372.1 218.7 371.4 217.4 369.6C214.4 365.2 215.8 359.3 216.9 354.6C217.1 353.9 217.2 353.3 217.4 352.6H218.4C218.2 353.3 218.1 354 217.9 354.8C216.8 359.3 215.4 365 218.2 369C219.5 370.9 221.1 371.5 223.9 372.6C224.3 372.8 224.6 372.9 225 373Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M227.7 364.8C228.9 368.1 230.7 370.8 232.3 373H231C229.5 370.9 227.8 368.2 226.7 365.2C225.6 362.1 225.6 358.4 226.2 352.7H227.2C226.7 358.2 226.7 361.9 227.7 364.8Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M244.6 373H243.6C242.9 370.8 242.5 368.6 242.1 366.6C241.9 365.8 241.8 365 241.6 364.2C240.7 359.9 239.2 356 237.6 352.6H238.7C240.4 356.1 241.8 360 242.6 364C242.8 364.8 242.9 365.6 243.1 366.4C243.4 368.5 243.8 370.8 244.6 373Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M281.6 352.6C279.4 355.3 277 358.5 274.5 361.9C271.7 365.7 268.8 369.6 266 373H264.7C267.7 369.4 270.7 365.3 273.7 361.3C276 358.2 278.2 355.2 280.3 352.6H281.6V352.6Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M287.3 352.6C286.5 354.1 285.5 355.9 284.3 358.1C281.6 362.9 278.4 368.6 276.6 373H275.5C277.2 368.5 280.4 362.8 283.4 357.6C284.3 356 285.3 354.2 286.2 352.6H287.3Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M296.6 352.6C292.8 357 288.7 362.7 285 367.7C283.5 369.8 282.2 371.5 281.1 373H279.9C281.3 371.2 282.8 369.1 284.2 367.1C287.7 362.3 291.6 356.9 295.3 352.6H296.6V352.6Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M301.2 362.2C301.7 363.1 302.1 364 301.8 365.6C301.3 368.3 299.3 369.7 296.9 371.3C296.1 371.8 295.2 372.4 294.4 373.1H292.8C294.1 372 295.3 371.2 296.4 370.5C298.8 368.9 300.5 367.8 300.9 365.5C301.1 364.3 300.8 363.6 300.3 362.7C299.9 361.8 299.3 360.7 299.3 358.9C299.2 356.6 299.9 354.5 300.9 352.7H302C301 354.5 300.2 356.6 300.3 358.9C300.3 360.5 300.8 361.3 301.2 362.2Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M310.9 365.2C306.2 367.2 302.4 370.1 299.2 373H297.8C301.2 369.7 305.4 366.5 310.5 364.2C311.9 363.6 312.9 363.2 313.8 362.9C315.5 362.3 316.6 361.9 318 360.7C320.5 358.5 322 355.6 322.8 352.6H323.8C322.9 355.9 321.4 359 318.6 361.4C317 362.8 315.7 363.3 314 363.9C313.3 364.2 312.2 364.6 310.9 365.2Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M330.5 368.5C328.4 371.4 323.6 371.8 319 372.2C316.8 372.4 314.7 372.6 313 373H310.3C312.3 371.8 315.6 371.5 318.9 371.2C323.3 370.8 327.9 370.4 329.7 367.9C330.6 366.7 330.8 365.1 330.3 362.9C329.7 360 329.1 356.3 328.5 352.6H329.5C330.1 356.2 330.7 359.9 331.3 362.7C331.9 365.1 331.6 367 330.5 368.5Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M341.6 369.6C341.3 370.8 340.9 371.9 340.3 373H339.2C339.8 371.9 340.3 370.6 340.6 369.4C341.4 366.3 341.6 362.5 339.8 361.1C339.3 360.7 338.9 360.7 338.4 360.6C337.9 360.5 337.3 360.4 336.6 360.1C334.4 358.9 332.9 355.8 332.8 352.8H333.8C334 355.5 335.2 358.2 337.1 359.2C337.6 359.5 338.1 359.6 338.6 359.6C339.2 359.7 339.8 359.8 340.5 360.3C343.1 362.4 342 368 341.6 369.6Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M359.2 373H358.2C357.7 365.7 356.7 362.8 356 362.7C355.4 362.6 354.4 364.9 353.8 366.3C352.7 368.8 351.6 371.3 350.1 371.1C349.6 371.1 349.1 370.7 348.6 370.1C347 368.1 345.8 363 346.5 357.9C346.8 355.6 347.5 353.9 348.2 352.5H349.3C348.6 353.9 347.8 355.7 347.5 358.1C346.8 362.8 347.9 367.7 349.4 369.5C349.7 369.9 350 370.1 350.2 370.1C351.1 370.2 352.2 367.7 352.9 365.9C354 363.4 354.8 361.5 356.1 361.7C357.7 362 358.7 365.8 359.2 373Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M379.7 367.5C380.3 368.5 380.9 369.5 380.8 370.8C380.7 371.6 380.5 372.3 380.2 373.1H379.1C379.5 372.3 379.7 371.5 379.8 370.7C379.9 369.8 379.4 369 378.8 368.1C378.1 366.9 377.2 365.5 377.5 363.6C377.7 362.1 378.4 361.1 378.9 360.4C379.4 359.7 379.7 359.3 379.5 358.9C379.2 358 377.8 357.8 376.2 357.5C374.1 357.2 371.7 356.7 370.6 354.8C370.2 354.2 370.1 353.5 370 352.8H371C371 353.3 371.2 353.9 371.4 354.3C372.3 355.9 374.4 356.2 376.3 356.5C378.2 356.8 379.9 357.1 380.4 358.5C380.7 359.4 380.2 360.1 379.7 360.9C379.2 361.6 378.6 362.4 378.4 363.7C378.3 365.2 379 366.4 379.7 367.5Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M388.1 369.3C387.4 370.4 386.6 371.6 385.8 373H384.7C385.6 371.3 386.5 369.9 387.3 368.7C388.8 366.5 389.7 365 389.2 363.5C389.1 363.3 389.1 363.3 388.9 363.1C388.6 362.8 388.1 362.3 387.1 361.1C385.3 358.9 384.3 357.1 383.5 355.9L383.1 355.3C382.6 354.5 382.1 353.6 381.5 352.7H382.7C383.1 353.4 383.6 354.1 384 354.8L384.4 355.4C385.2 356.7 386.2 358.4 388 360.6C388.9 361.8 389.4 362.2 389.7 362.5C390 362.8 390.1 362.9 390.2 363.3C390.8 365.2 389.7 366.9 388.1 369.3Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M401.9 352.6C397.7 357.8 392.8 366.3 389 372.8C389 372.9 388.9 373 388.9 373H387.8C387.9 372.8 388.1 372.5 388.2 372.3C391.8 366 396.5 358 400.7 352.6H401.9Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M406 352.6C405.5 353.5 405 354.5 404.4 355.7C401.8 360.9 398.3 367.7 397 372.9H396C397.3 367.5 400.8 360.5 403.6 355.2C404.1 354.3 404.5 353.4 405 352.5H406V352.6Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M422.6 360.4C422.4 363.8 417 366.5 413.6 367.3C411.7 367.8 410.6 367.7 409.6 367.6C408.8 367.5 408.1 367.4 406.9 367.8C404.2 368.6 402.3 370.8 400.9 373.1H399.7C401.2 370.5 403.4 367.8 406.6 366.8C407.9 366.4 408.8 366.5 409.6 366.6C410.5 366.7 411.5 366.8 413.2 366.4C416.5 365.6 421.3 363.2 421.4 360.4C421.5 358.4 419.1 356.6 416.9 355.1C415.8 354.3 414.8 353.6 414.1 352.8H415.5C416.1 353.3 416.8 353.8 417.5 354.3C420 355.9 422.7 357.8 422.6 360.4Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M432.7 373H430.1C429.7 372.8 429.4 372.7 429.1 372.5C425.9 370.7 423.9 368.5 423.9 366.6C423.9 364.8 425.4 363.9 426.8 362.9C428.2 361.9 429.7 361 429.9 359.2C430.1 357.3 428.8 354.8 426.4 352.7H427.8C429.7 354.6 431.1 357 430.8 359.4C430.6 361.6 428.8 362.8 427.3 363.8C426 364.7 424.8 365.4 424.9 366.6C424.9 368.1 426.7 370.1 429.6 371.7C430.5 372.2 431.6 372.6 432.7 373Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M447.4 371.6C447.2 372.1 446.8 372.5 446 373H444C444.3 372.9 444.5 372.7 444.8 372.6C445.9 371.9 446.4 371.6 446.5 371.3C446.8 370.3 445.4 369.3 443.7 368C441.4 366.3 438.6 364.1 438 360.7C437.6 358.3 438.3 355.5 440.2 352.6H441.4C439.4 355.5 438.6 358.2 439 360.5C439.5 363.5 442.2 365.5 444.3 367.2C446.2 368.7 447.9 370 447.4 371.6Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M460.4 373H459.3C459 372.2 458.6 371.3 458.3 370.4C456.4 365.7 453.3 357.7 450.3 352.6H451.5C454.1 357 456.7 363.4 459.3 370C459.7 371.1 460.1 372.2 460.4 373Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M465.5 352.6H466.5C466 354.8 465.5 358.3 465.1 361.6C464.4 367 463.8 370.7 463.2 373H462.2C462.9 370.3 463.6 365.2 464.1 361.5C464.5 358.1 465 354.9 465.5 352.6Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M472.1 373H471.1C470.1 364.8 468.8 356.4 467.7 352.6H468.7C470.1 357.3 471.3 366.4 472.1 373Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M520.7 367.2C521.9 370.1 521.1 371.7 520 372.2C519.7 372.3 519.4 372.4 519 372.4C517.4 372.4 515.2 370.9 513.5 367.6C511.2 363.1 502.5 356.1 497.7 352.6H499.4C504.3 356.4 512.1 362.7 514.4 367.2C516.3 370.8 518.6 371.8 519.6 371.4C520.5 371 520.6 369.5 519.8 367.7C518.1 363.6 519.5 356.6 520.5 352.7H521.5C520.6 356.4 519.1 363.3 520.7 367.2Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M589.8 370.3C589.1 370.9 587.2 372.3 585.3 373.1H581.4C580.5 372.6 580 371.5 579.8 370C579.2 365.6 572.9 355.5 571.1 352.7H572.3C574.5 356.1 580.2 365.5 580.8 369.9C581 371.3 581.5 372.1 582.3 372.4C584.1 373.1 587.1 371.3 589.2 369.6C591.3 367.9 593.4 364.6 593.2 361.8C593.1 360.6 592.6 359.7 591.6 359.1C588.7 357.3 587.4 354.2 586.9 352.7H588C588.5 354.2 589.7 356.8 592.1 358.3C593.3 359.1 594.1 360.3 594.2 361.8C594.3 364.7 592 368.4 589.8 370.3Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M371.3 367.3C370.5 369.3 368.7 371.2 367 371.2C366.5 371.2 365.6 371 365 369.7C363.5 366.2 360 356.3 358.8 352.6H359.9C361.3 356.5 364.5 365.9 366 369.3C366.4 370.2 366.9 370.2 367.1 370.2C368.2 370.2 369.6 368.7 370.5 366.9C370.9 365.9 371.7 363.5 370.2 361.8C367.8 359.2 367.1 355.3 367 352.7H368C368.2 355.2 368.8 358.9 371 361.2C372.2 362.6 372.4 364.9 371.3 367.3Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M274 352.6C270.6 356.3 259.1 368.6 253.8 368.7C253 368.7 252.3 368.4 251.8 367.9C248.4 364.1 242.8 355.7 240.8 352.7H242C244.2 356.1 249.4 363.8 252.6 367.3C252.9 367.6 253.4 367.8 253.9 367.8C258.5 367.8 268.8 357 272.7 352.7H274V352.6Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M266.3 352.6C264.2 354.5 259.4 358.6 255.7 358.6C254.7 358.6 253.8 358.3 253.1 357.7C251 355.9 249.6 354 248.6 352.6H249.8C250.7 353.9 252 355.4 253.7 356.9C256.2 359.1 261.6 355.4 264.8 352.6H266.3Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M114.9 373H113.9C112.1 366.7 108.9 357.5 105.6 356.8C104.8 356.6 103.9 357.1 103.1 358.2C99.2 363.4 97.3 369.2 96.4 373H95.4C96.3 369.2 98.3 363 102.3 357.7C103.4 356.2 104.6 355.6 105.8 355.9C108.1 356.4 110.6 360.1 113 366.9C113.7 369.1 114.4 371.3 114.9 373Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M109.8 373H108.8C108.4 369.5 107.5 366.1 106.7 365.9C106.5 365.8 106.1 366.2 105.7 366.8C104.1 369.4 102.9 371.5 102.2 373H101.1C101.8 371.5 103 369.2 104.8 366.3C105.5 365.2 106.2 364.8 106.9 365C108.6 365.4 109.5 370 109.8 373Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M333.7 169.2C332.5 157.2 319.1 155 312.7 138.4C308 126.2 310.3 114 312.7 105.9H288.3C290.7 114 293 126.2 288.3 138.4C282 155 268.5 157.2 267.3 169.2C266.2 180.1 275.6 196.4 291.4 201.1V205.9H309.5V201.1C325.3 196.4 334.7 180.2 333.7 169.2Z",
+        fill: "#EEEDEE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M383.4 67.6H379.5V58H360V67.6H356C349.4 67.6 344 73 344 79.6V193.1C344 199.7 349.4 205.1 356 205.1H383.4C390 205.1 395.4 199.7 395.4 193.1V79.6C395.4 73 390 67.6 383.4 67.6Z",
+        fill: "#EBDEDE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("rect", {
+        x: "145",
+        y: "32.5996",
+        width: "105.4",
+        height: "173.1",
+        fill: "#EBDEDE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("rect", {
+        x: "151.5",
+        y: "40",
+        width: "92.3",
+        height: "158.2",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M224 119.2C236.5 134.2 232 158.9 214.1 173.9C196.1 188.9 171 188.9 158.5 174C180.3 155.7 202.2 137.4 224 119.2Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M173.4 104.2C159.9 97.9 154.3 81 160.9 66.7C167.6 52.4 184.2 45.9 197.7 52.2C189.6 69.5 181.5 86.8 173.4 104.2Z",
+        fill: "#EEEDEE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M173.6 142.7C170.5 142.7 167.1 142.3 163.4 141.5C162.6 141.3 162.1 140.5 162.2 139.7C162.4 138.9 163.2 138.4 164 138.5C174.3 140.6 181.6 139.7 185.7 135.7C189.1 132.4 189.1 128 189 122.9C188.9 117.5 188.9 111.3 193.3 105.5C197.1 100.5 201.7 98.8998 206.2 97.2998C210.5 95.7998 214.6 94.2998 217.5 89.6998C220.2 85.1998 220.9 79.3998 219.3 72.2998C219.1 71.4998 219.6 70.6998 220.5 70.4998C221.3 70.2998 222.1 70.7998 222.3 71.6998C224 79.5998 223.2 86.0998 220.1 91.2998C216.7 96.7998 211.9 98.4998 207.3 100.1C203 101.6 199 103 195.8 107.3C192 112.3 192.1 117.6 192.1 122.8C192.2 128.1 192.2 133.5 187.9 137.7C184.6 141.1 179.8 142.7 173.6 142.7Z",
+        fill: "#EBDEDE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        fillRule: "evenodd",
+        clipRule: "evenodd",
+        d: "M207.1 53.8998C207.1 56.9998 209.6 59.4998 212.7 59.4998C215.8 59.4998 218.3 56.8998 218.3 53.8998C218.3 50.7998 215.8 48.2998 212.7 48.2998C209.6 48.2998 207.1 50.7998 207.1 53.8998ZM210.1 53.8998C210.1 52.4998 211.3 51.2998 212.7 51.2998C214.1 51.2998 215.3 52.3998 215.3 53.8998C215.3 55.2998 214.1 56.4998 212.7 56.4998C211.3 56.4998 210.1 55.2998 210.1 53.8998Z",
+        fill: "#EBDEDE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("circle", {
         cx: "230",
         cy: "188.5",
-        fill: "#EEEDEE",
         r: "4.1",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 203
-        },
-        __self: this
+        fill: "#EEEDEE"
     }), /*#__PURE__*/ _reactDefault.default.createElement("circle", {
         cx: "234",
-        cy: "94.6",
-        fill: "#EEEDEE",
+        cy: "94.5998",
         r: "2.8",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 204
-        },
-        __self: this
+        fill: "#EEEDEE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M534.7 74.5997C534.6 74.5997 534.6 74.5997 534.5 74.5997C534.3 74.4997 534.3 74.2997 534.4 74.0997C535.4 72.2997 535.2 71.7997 535.1 71.6997C535 71.5997 534.9 71.5997 534.8 71.4997C534.6 71.3997 534.2 71.1997 534.1 70.7997C534 70.3997 534 69.9997 534.3 69.4997C534.4 69.2997 534.6 69.2997 534.8 69.3997C535 69.4997 535 69.6997 534.9 69.8997C534.7 70.1997 534.7 70.3997 534.7 70.4997C534.7 70.5997 534.8 70.6997 535 70.7997C535.2 70.8997 535.4 70.9997 535.5 71.1997C536 71.7997 535.8 72.7997 534.9 74.3997C534.9 74.5997 534.8 74.5997 534.7 74.5997Z",
+        fill: "#EBDEDE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M537.7 147.9H530.8V72.7998C531.1 72.7998 531.6 72.7998 532 72.9998C532.7 73.3998 532.8 74.0998 533.2 74.0998C533.8 74.0998 533.9 72.9998 534.7 72.8998C535.2 72.7998 535.4 73.3998 536.1 73.4998C536.7 73.5998 537.3 73.1998 537.6 72.8998C537.7 97.7998 537.7 122.8 537.7 147.9Z",
+        fill: "#EEEDEE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M537.7 147.9H530.8V72.7998C531.1 72.7998 531.6 72.7998 532 72.9998C532.7 73.3998 532.8 74.0998 533.2 74.0998C533.8 74.0998 533.9 72.9998 534.7 72.8998C535.2 72.7998 535.4 73.3998 536.1 73.4998C536.7 73.5998 537.3 73.1998 537.6 72.8998C537.7 97.7998 537.7 122.8 537.7 147.9Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M539.5 131C540.4 130.5 541 129.5 541 128.4C541 126.7 539.6 125.4 538 125.4H530.7C529 125.4 527.7 126.8 527.7 128.4C527.7 129.5 528.3 130.4 529.2 131L517.9 205.2H534.4H550.9L539.5 131Z",
+        fill: "#EEEDEE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M572.2 89.9996C572 89.9996 571.9 89.8996 571.8 89.6996C571.7 88.9996 571.6 88.2996 571.6 87.5996C571.6 86.9996 571.7 86.6996 571.8 86.3996C571.9 85.9996 572.1 85.7996 572.3 85.6996C572.4 85.5996 572.5 85.4996 572.5 85.3996C572.6 85.0996 572.5 84.6996 572.3 84.1996C572.2 83.9996 572.3 83.7996 572.4 83.6996C572.6 83.5996 572.8 83.6996 572.9 83.7996C573.3 84.4996 573.4 85.0996 573.2 85.5996C573.1 85.8996 572.9 85.9996 572.8 86.1996C572.7 86.2996 572.6 86.4996 572.5 86.6996C572.4 86.7996 572.4 86.9996 572.4 87.5996C572.4 88.2996 572.5 88.8996 572.6 89.5996C572.6 89.7996 572.5 89.9996 572.2 89.9996Z",
+        fill: "#EBDEDE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M575.4 152.5H569.5V88.5002C569.5 88.0002 569.9 87.6002 570.3 87.5002C570.6 87.4002 571 87.5002 571.3 87.7002C571.6 88.1002 571.3 88.6002 571.6 88.8002C571.9 89.0002 572.5 88.8002 572.9 88.6002C573.5 88.2002 573.7 87.7002 573.9 87.8002C574.1 87.8002 574.1 88.1002 574.3 88.3002C574.6 88.6002 575 88.6002 575.4 88.5002C575.4 109.8 575.4 131.1 575.4 152.5Z",
+        fill: "#EEEDEE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M575.4 152.5H569.5V88.5002C569.5 88.0002 569.9 87.6002 570.3 87.5002C570.6 87.4002 571 87.5002 571.3 87.7002C571.6 88.1002 571.3 88.6002 571.6 88.8002C571.9 89.0002 572.5 88.8002 572.9 88.6002C573.5 88.2002 573.7 87.7002 573.9 87.8002C574.1 87.8002 574.1 88.1002 574.3 88.3002C574.6 88.6002 575 88.6002 575.4 88.5002C575.4 109.8 575.4 131.1 575.4 152.5Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M576.7 144.5C577.4 144.1 577.9 143.3 577.9 142.4C577.9 141 576.8 139.9 575.4 139.9H569.5C568.1 139.9 567 141 567 142.4C567 143.3 567.5 144.1 568.2 144.5L559 205.1H572.5H586L576.7 144.5Z",
+        fill: "#EEEDEE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M602.7 81.5996C602.5 81.5996 602.4 81.4996 602.3 81.2996C602.2 80.7996 602.2 80.2996 602.3 79.7996C602.4 79.3996 602.6 79.1996 602.7 78.9996C602.8 78.7996 602.9 78.5996 603 78.2996C603.1 77.8996 603 77.5996 603 77.1996C602.9 76.6996 602.8 76.2996 602.6 75.8996C602.5 75.6996 602.6 75.4996 602.8 75.3996C603 75.2996 603.2 75.3996 603.3 75.5996C603.5 76.0996 603.7 76.5996 603.7 77.0996C603.8 77.5996 603.8 77.9996 603.7 78.4996C603.6 78.8996 603.4 79.1996 603.3 79.3996C603.2 79.5996 603.1 79.6996 603 79.9996C602.9 80.2996 602.9 80.6996 603 81.0996C603.1 81.2996 603 81.4996 602.7 81.5996Z",
+        fill: "#EBDEDE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M605.9 144.1H600V80.1004C600.4 79.2004 600.7 79.1004 600.8 79.1004C601.2 79.2004 601.2 80.2004 601.5 80.2004C601.8 80.2004 601.7 78.7004 602.2 78.5004C602.5 78.4004 602.7 79.0004 603.4 79.2004C603.8 79.3004 604 79.1004 604.3 79.4004C604.6 79.6004 604.6 79.9004 604.7 79.9004C604.8 79.9004 604.8 79.5004 604.9 79.4004C605 79.4004 605.2 79.5004 605.7 80.1004C605.9 101.4 605.9 122.7 605.9 144.1Z",
+        fill: "#EEEDEE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M605.9 144.1H600V80.1004C600.4 79.2004 600.7 79.1004 600.8 79.1004C601.2 79.2004 601.2 80.2004 601.5 80.2004C601.8 80.2004 601.7 78.7004 602.2 78.5004C602.5 78.4004 602.7 79.0004 603.4 79.2004C603.8 79.3004 604 79.1004 604.3 79.4004C604.6 79.6004 604.6 79.9004 604.7 79.9004C604.8 79.9004 604.8 79.5004 604.9 79.4004C605 79.4004 605.2 79.5004 605.7 80.1004C605.9 101.4 605.9 122.7 605.9 144.1Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M607.2 144.5C607.9 144.1 608.4 143.3 608.4 142.4C608.4 141 607.3 139.9 605.9 139.9H600C598.6 139.9 597.5 141 597.5 142.4C597.5 143.3 598 144.1 598.7 144.5L589.5 205.1H603H616.5L607.2 144.5Z",
+        fill: "#EEEDEE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M368.1 297C368.1 297.9 368.1 298.7 368 299.6C367.5 310.8 363.6 321.2 357.4 329.7C356.3 331.3 355 332.8 353.7 334.2C346.2 342.4 336.3 348.4 325.1 351C322.8 351.5 320.4 351.9 318 352.2C316.2 352.4 314.4 352.5 312.5 352.5C292.8 352.5 275.5 342.2 265.6 326.7C264.7 325.2 263.8 323.7 263 322.2C259.1 314.6 257 306.1 257 297C257 273.5 271.6 253.4 292.3 245.3C293.9 244.7 295.6 244.1 297.3 243.6C302.1 242.2 307.2 241.5 312.5 241.5C324.3 241.5 335.2 245.2 344.2 251.4C346.2 252.8 348 254.3 349.8 255.9C360.4 265.5 367.2 279.2 367.9 294.4C368.1 295.3 368.1 296.2 368.1 297Z",
+        fill: "#EBDEDE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M274.7 353.6C274.5 353.6 274.3 353.5 274.1 353.4C273.8 353.1 273.6 352.7 273.8 352.3L284 325.8C284.2 325.3 284.8 325 285.3 325.2C285.8 325.4 286.1 326 285.9 326.5L276.8 350.2C283.8 346 295.8 340.6 311.2 340.9C325 341.2 335.9 345.9 343 350.3L336.4 326.4C336.3 325.9 336.6 325.3 337.1 325.2C337.6 325.1 338.2 325.4 338.3 325.9L345.6 352.4C345.7 352.8 345.6 353.2 345.2 353.5C344.9 353.7 344.4 353.8 344.1 353.5C337.3 348.9 326 343.3 311.1 343C294.1 342.6 281.3 349.5 275.3 353.6C275.1 353.5 274.9 353.6 274.7 353.6Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M299.5 274L290.3 281C289.3 281.8 287.8 281.6 287.1 280.6L286.8 280.2C286 279.2 286.2 277.7 287.2 277L296.4 270C297.4 269.2 298.9 269.4 299.6 270.4L299.9 270.8C300.7 271.7 300.5 273.2 299.5 274Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M297.2 332L288 339C287 339.8 285.5 339.6 284.8 338.6L284.5 338.2C283.7 337.2 283.9 335.7 284.9 335L294.1 328C295.1 327.2 296.6 327.4 297.3 328.4L297.6 328.8C298.4 329.7 298.2 331.2 297.2 332Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M267.4 324.2C267.4 325 267.1 325.7 266.4 326.2L265.8 326.7C264.9 325.2 264 323.7 263.2 322.2L263.3 322.1C264.4 321.3 266 321.5 266.9 322.6C267.2 323.1 267.4 323.6 267.4 324.2Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M296 254.8C295.9 254.8 295.8 254.8 295.8 254.8C294.5 254.8 293.4 253.8 293.2 252.5L292.5 245.3C294.1 244.7 295.8 244.1 297.5 243.6L298.3 251.9C298.4 253.4 297.4 254.7 296 254.8Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M333.9 300.6L324.6 293.8C323.6 293 323.4 291.6 324.1 290.6L324.4 290.2C325.2 289.2 326.6 289 327.6 289.7L336.9 296.5C337.9 297.3 338.1 298.7 337.4 299.7L337.1 300.1C336.4 301.2 335 301.4 333.9 300.6Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M325.1 351.1C322.8 351.6 320.4 352 318 352.3L316.7 351.4C315.6 350.6 315.3 349 316.2 347.8C316.7 347.1 317.5 346.8 318.3 346.8C318.8 346.8 319.4 347 319.8 347.3L325.1 351.1Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M331 275.1L321.7 268.3C320.7 267.5 320.5 266.1 321.2 265.1L321.5 264.7C322.3 263.7 323.7 263.5 324.7 264.2L334 271C335 271.8 335.2 273.2 334.5 274.2L334.2 274.6C333.5 275.6 332.1 275.8 331 275.1Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M368.1 297C368.1 297.9 368.1 298.7 368 299.6L362.8 300.1C361.4 300.2 360.1 299.2 360 297.8C360 297.7 360 297.6 360 297.5C360 296.2 361 295.1 362.3 295L368 294.4C368.1 295.3 368.1 296.2 368.1 297Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M349.9 255.9L345.6 256.3C344.2 256.4 342.9 255.4 342.8 254C342.8 253.9 342.8 253.8 342.8 253.7C342.8 252.7 343.4 251.8 344.3 251.4C346.3 252.8 348.1 254.3 349.9 255.9Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M328.8 328L317.3 329.1C316 329.2 314.9 328.3 314.8 327L314.7 326.5C314.6 325.2 315.5 324.1 316.8 324L328.3 322.9C329.6 322.8 330.7 323.7 330.8 325L330.9 325.5C330.9 326.7 330 327.9 328.8 328Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M299.4 308.2L295.1 297.5C294.6 296.3 295.2 295 296.4 294.5L296.9 294.3C298.1 293.8 299.4 294.4 299.9 295.6L304.2 306.3C304.7 307.5 304.1 308.8 302.9 309.3L302.4 309.5C301.2 309.9 299.9 309.3 299.4 308.2Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M357.4 329.7C356.3 331.3 355 332.8 353.7 334.2L351 327.4C350.5 326.1 351.1 324.6 352.4 324.1C352.7 324 353 323.9 353.4 323.9C354.4 323.9 355.4 324.5 355.8 325.5L357.4 329.7Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M273.4 297.1L261.9 298.2C260.6 298.3 259.5 297.4 259.4 296.1L259.3 295.6C259.2 294.3 260.1 293.2 261.4 293.1L272.9 292C274.2 291.9 275.3 292.8 275.4 294.1L275.5 294.6C275.6 295.9 274.6 297 273.4 297.1Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        fillRule: "evenodd",
+        clipRule: "evenodd",
+        d: "M431.2 327.4C430.587 322.417 428.657 317.501 426.921 313.08C424.407 306.679 422.301 301.317 425.2 298.3L425.3 294.5C425.3 294.5 420.2 293.6 419 300.9C418.568 303.49 419.107 306.778 419.648 310.081C420.611 315.961 421.582 321.887 417.1 324V317.5C417.1 309.6 411.9 302.9 404.8 300.5C405.1 300.3 405.2 299.9 405.2 299.6C405.2 298.9 404.6 298.3 403.9 298.3H397.6C400.4 294.4 400.6 290.4 398.8 288.5C398 287.6 396.7 287.1 395.2 287.1C393.3 287 391.3 287.8 390 289C388.7 290.3 387.9 292.1 388 294.1C388 295.6 388.4 297 389.2 298.3H384.1C383.4 298.3 382.8 298.9 382.8 299.6C382.8 300 383 300.3 383.2 300.5C379.3 301.8 376 304.5 373.8 307.9C372.7 306.4 370.2 303.6 366.5 303.5C363.5 303.4 360.9 305.2 359.6 306.7C351.998 315.685 368.277 342.214 370.52 345.87L370.6 346C370.67 346.14 370.788 346.23 370.887 346.307C370.93 346.34 370.97 346.37 371 346.4V351.9V352.5H417.2V351.9V339C417.2 339 432.6 339.6 431.2 327.4ZM361.8 308.7C362.7 307.6 364.5 306.5 366.3 306.5C369.1 306.6 371.1 309.3 371.6 310.2L371.6 310.2C371.8 310.4 372 310.6 372.2 310.7C371.3 312.8 370.8 315.1 370.8 317.5V340.8C365.4 331.5 357.1 314.2 361.8 308.7ZM391.4 290.4C390.5 291.3 390 292.6 390 294.1C390 295.6 390.6 297.1 391.6 298.3H395.1C398.2 294.8 398.6 291.2 397.4 289.9C397 289.4 396.2 289.1 395.2 289.1C393.8 289 392.3 289.5 391.4 290.4Z",
+        fill: "#EEEDEE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("rect", {
+        x: "449.3",
+        y: "257.9",
+        width: "158.7",
+        height: "95.1",
+        fill: "#EBDEDE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M494.7 257.9V313.3C476.2 313.3 461 298.1 461 279.6C461 271.4 464 263.8 469 257.9H494.7Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M477.9 334.8C476.4 340.9 475 347 473.5 353H449.3V341C457.1 334.9 467.6 332.3 477.9 334.8Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M608 344.3V353H599.3C601.6 349.6 604.6 346.6 608 344.3Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M557.2 353H525.5C521.9 349.4 519 345 517.3 339.8C511.4 322.3 521 303 538.5 297.2C544.7 315.8 551 334.4 557.2 353Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M608 257.9V267.7C600.2 282.2 592.4 296.8 584.7 311.3C568.4 302.6 562.2 282 570.9 265.7C572.5 262.8 574.4 260.2 576.7 257.9H608Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        fillRule: "evenodd",
+        clipRule: "evenodd",
+        d: "M258.3 512.2C258.1 511.901 257.8 511.601 257.6 511.401L257.6 511.4C257.2 511.067 256.8 510.867 256.548 510.741C256.422 510.678 256.333 510.634 256.3 510.6C255.543 510.317 254.741 509.071 253.832 507.656C252.818 506.081 251.67 504.296 250.3 503.4C248.609 502.273 246.656 502.564 244.938 502.819C243.303 503.062 241.88 503.273 241.1 502.2C240.515 501.403 240.694 500.435 240.854 499.568C240.995 498.806 241.121 498.122 240.7 497.7C240.043 497.138 238.969 497.763 237.466 498.637C235.765 499.626 233.514 500.935 230.7 501.2C228.013 501.454 225.944 500.654 224.282 500.012C222.666 499.387 221.436 498.912 220.4 499.7C218.3 501.3 219.5 506.2 219.8 507.1C221.7 514.5 228.7 518.7 232.3 520.5C231.8 521.2 231.326 521.9 230.851 522.599L230.85 522.6C230.375 523.3 229.9 524 229.4 524.7C227.6 527.2 225.8 529.6 223.9 532C223 533.2 222 534.4 221 535.6L220.3 536.5L219.6 537.3C219.1 537.8 218.6 538.3 218.1 538.7C217.792 539.008 217.447 539.24 217.111 539.466L217.11 539.466C216.9 539.607 216.692 539.747 216.5 539.9C215.9 540.3 215.3 540.6 214.7 540.9C213.5 541.5 212.2 542 210.9 542.4C208.2 543.2 205.4 543.6 202.5 543.8C199.983 543.974 197.41 543.959 194.772 543.944H194.772H194.772C191.331 543.925 187.779 543.904 184.1 544.3C182.5 544.5 180.8 544.8 179.1 545.3C177.4 545.8 175.7 546.6 174.2 547.7C171.1 549.9 169.2 553.8 168.5 556.9C167.2 562 163.5 566.6 159.1 570.3C154.6 574 149.5 577.2 144.2 579.9C142.909 580.584 141.561 581.209 140.242 581.821L140.242 581.821C139.824 582.015 139.409 582.208 139 582.4C140.117 580.646 141.29 578.919 142.475 577.175C143.518 575.64 144.57 574.092 145.6 572.5C149.7 566.5 153.9 560.3 157.7 553.8C159.6 550.5 161.4 547.1 162.9 543.6C164.5 540 165.8 536.4 166.8 532.5C167.8 528.7 168.4 524.7 168.6 520.7C168.8 516.7 168.4 512.7 167.7 508.8C167.3 506.8 166.8 504.9 166.2 503.1C166.141 502.923 166.082 502.742 166.022 502.558L166.022 502.557L166.021 502.557C165.778 501.809 165.521 501.023 165.2 500.3L164.2 497.7L160.2 487.5L152.2 467.1C151.887 466.314 151.575 465.526 151.262 464.738L151.261 464.738C148.272 457.21 145.259 449.623 142 442.2C147.5 435.4 152.8 430.9 156.9 428C159.106 426.416 161.113 425.136 162.863 424.02C167.298 421.19 170.085 419.412 170.3 416.4C170.5 412.2 165.5 407.6 160.6 406.4C158.111 405.753 156.663 406.271 155.097 406.83C153.516 407.395 151.814 408.003 148.8 407.5C146.899 407.158 145.273 406.513 143.713 405.893C141.169 404.883 138.799 403.943 135.7 404.5C134.4 404.8 133.8 405.1 133.6 405.4C132.444 406.479 132.476 408.389 132.505 410.176C132.553 413.025 132.595 415.56 127.8 413.9C125.567 413.121 124.386 411.938 123.374 410.924C122.437 409.986 121.646 409.193 120.3 409C116.528 408.42 112.756 413.639 111.789 414.978L111.7 415.1C110.241 417.192 109.846 418.692 109.492 420.037C109.118 421.459 108.79 422.708 107.3 424.3C105.707 425.99 104.115 426.631 102.725 427.19C101.234 427.79 99.9761 428.297 99.2 429.9C98.1 432.2 98.6 435.3 99.9 437.4C102.3 441.1 107.2 441.7 122.1 442.6C125.349 442.804 128.417 442.981 131.265 443.145L131.268 443.146C134.03 443.305 136.586 443.453 138.9 443.6L138.9 443.601C139.5 445.101 140.1 446.601 140.6 448.1C143.2 454.9 145.5 461.8 147.8 468.7L147.8 468.7L147.8 468.7C150 475.6 152.2 482.6 154.1 489.6C154.6 491.35 155.075 493.099 155.55 494.849L155.55 494.85C156.025 496.6 156.5 498.35 157 500.1L157.7 502.7L157.7 502.701C157.9 503.501 158.1 504.301 158.2 505.2L158.268 505.583L158.268 505.583C158.544 507.142 158.808 508.628 158.9 510.2C159.2 513.5 159 516.8 158.6 520.1C158.1 523.4 157.3 526.5 156.2 529.7C154 536 150.8 542.1 147.1 548C145.8 550.1 144.4 552.2 142.9 554.3C142.65 554.25 142.375 554.175 142.1 554.1C141.825 554.025 141.55 553.95 141.3 553.9C139.5 553.4 137.7 552.8 135.9 552.2C135 551.9 134.1 551.6 133.2 551.2L132.5 550.9L131.9 550.6C131.7 550.5 131.525 550.4 131.35 550.3C131.175 550.2 131 550.1 130.8 550C129.4 549.2 128.3 548 127.3 546.7C126.4 545.4 125.6 543.9 124.8 542.2C124.321 541.178 123.872 540.104 123.411 539.002L123.411 539.002L123.411 539.002C122.431 536.656 121.397 534.182 119.9 531.8C120.1 528.8 119.9 525.7 119 522.6C118.5 520.9 117.6 519.1 116 517.8C115.4 517.4 115.1 517 115 516.5C114.8 516 114.9 515.3 115.1 514.6C115.373 513.578 115.784 512.556 116.209 511.503L116.209 511.503L116.209 511.502C116.408 511.01 116.609 510.51 116.8 510C116.9 509.9 116.9 509.7 116.9 509.6C118.5 508.6 120.5 507.4 122.9 506.3C126.406 504.77 129.448 504.117 131.654 503.643C133.916 503.158 135.299 502.861 135.4 502C135.487 501.35 134.653 501.019 133.248 500.462C131.413 499.734 128.603 498.62 125.6 495.9C125.545 495.854 125.46 495.78 125.349 495.684L125.348 495.683C124.254 494.729 120.633 491.573 118 491.3C117.3 491.2 117 491.3 116.9 491.4C116.216 491.781 115.965 492.695 115.73 493.552C115.348 494.948 115.008 496.188 112.9 494.7C111.53 493.752 110.987 492.742 110.62 492.06C109.943 490.801 109.868 490.662 106.3 494.1C105.2 495.2 104 495.9 103 496.3V496C102.8 494.9 101.5 491.5 98.8 490.7C97.9 490.4 97.3 490.4 96.2 490.7C93.2732 491.432 90.5998 490.643 88.0908 489.903C86.142 489.328 84.2923 488.782 82.5 489C80.5763 489.235 80.6119 490.879 80.6442 492.371C80.6808 494.06 80.7132 495.556 77.9 494.6C76.0381 493.968 75.0894 493.015 74.4514 492.374C73.2733 491.19 73.1543 491.07 70.3 496C68.4131 499.303 65.9561 500.6 64.0095 501.628C61.4168 502.997 59.7294 503.888 61.5 508.4C63.9 514.7 77.8 513.3 83.3 512.5C85 514.4 86.7 516.2 88.6 518C91.4 520.7 94.4 523.2 97.8 525.2C99.5 526.2 101.3 527.1 103.2 527.7C105.1 528.3 107.2 528.6 109.3 528.5C111.1 528.3 112.7 528.7 113.9 529.6C115.1 530.5 115.9 532 116.5 533.7C117.002 534.974 117.429 536.306 117.867 537.676L117.868 537.676L117.868 537.676C118.566 539.856 119.294 542.128 120.4 544.4C121.3 546.2 122.4 548.1 123.8 549.7C125.2 551.3 127.1 552.7 129.1 553.5C129.6 553.7 130.1 553.9 130.6 554L131.4 554.2L132.1 554.3L134.9 554.9L140.5 556.2L141.2 556.4C139.979 558.145 138.724 559.89 137.454 561.654L137.452 561.657C136.54 562.926 135.62 564.204 134.7 565.5C134.134 566.309 133.56 567.118 132.985 567.929C131.428 570.125 129.861 572.336 128.4 574.6C126.3 577.7 124.3 580.9 122.4 584.4C120.5 587.8 118.8 591.5 117.5 595.4C116.2 599.4 115.4 603.7 115.5 608.2C115.6 612.7 116.7 617.2 118.5 621.2C119.4 623.2 120.5 625 121.7 626.8C121.877 627.037 122.055 627.282 122.235 627.531C122.663 628.124 123.107 628.737 123.6 629.3C123.989 629.82 124.463 630.381 124.857 630.848L124.857 630.848L124.858 630.849C125.071 631.101 125.26 631.325 125.4 631.5C129.5 636.4 132.6 642.3 134.8 648.7C136.9 655.1 138.2 661.9 138.8 668.9C140 682.9 139.1 697.201 137.1 711.5C136.1 718.6 134.8 725.7 133.3 732.8C133.175 733.348 133.05 733.898 132.924 734.45C132.247 737.424 131.559 740.448 130.8 743.4L130.8 743.401C129.9 746.901 129 750.401 128 753.9C127.8 754.6 128.2 755.4 128.9 755.7C129.7 756 130.5 755.7 130.9 754.9C133.7 748.1 136.1 741.2 138.3 734.2C139.4 730.7 140.4 727.2 141.4 723.6C141.529 723.085 141.658 722.571 141.786 722.059C142.556 718.994 143.315 715.971 144 712.8C145.6 705.6 146.8 698.3 147.7 690.9C148.5 683.5 148.9 676 148.6 668.4C148.567 667.9 148.544 667.4 148.522 666.9C148.478 665.9 148.433 664.9 148.3 663.9L154.9 662.3C155.7 662.1 156.5 661.925 157.3 661.75C158.1 661.575 158.9 661.4 159.7 661.2L162.1 660.7L162.7 660.6L163.4 660.4C163.688 660.343 163.942 660.252 164.183 660.167C164.36 660.103 164.53 660.043 164.7 660C165.7 659.6 166.7 659 167.6 658.4C168.8 658.9 170 659.3 171.2 659.7L173.2 660.4L174.2 660.7C174.4 660.8 174.6 660.8 174.8 660.8L175.4 660.9C175.67 660.968 175.986 660.944 176.286 660.922C176.43 660.911 176.57 660.9 176.7 660.9C176.833 660.867 176.978 660.845 177.122 660.823C177.411 660.778 177.7 660.734 177.9 660.6C178.7 660.3 179.4 660 180 659.6C180.697 659.172 181.308 658.685 181.894 658.218L181.894 658.218L181.894 658.218C182.401 657.814 182.89 657.425 183.4 657.1C184 656.7 184.5 656.5 185 656.5C185.475 656.421 185.825 656.655 186.198 656.905L186.198 656.905C186.296 656.971 186.396 657.038 186.5 657.1C187.7 658.1 189.3 658.5 190.8 658.6C192.9 658.8 195 658.5 197.1 658.1C197.4 659.2 197.8 660.701 198.1 662.5C198.202 663.242 198.265 663.905 198.321 664.49C198.483 666.191 198.581 667.228 199.4 667.6C200.4 668.1 202 667.5 202.3 667.1C202.6 666.8 202.7 666.6 202.9 666.1C203.239 664.802 204.119 663.95 204.948 663.148C205.587 662.529 206.195 661.941 206.5 661.2C206.829 660.403 206.188 660.067 205.602 659.76C204.938 659.413 204.345 659.103 205.3 658.2C205.787 657.768 206.245 657.628 206.625 657.511C206.949 657.412 207.216 657.33 207.4 657.1C207.71 656.729 207.521 656.281 207.19 655.495L207.19 655.494C206.986 655.011 206.728 654.4 206.5 653.6C206.219 652.677 206.115 651.996 206.034 651.459C205.912 650.658 205.839 650.179 205.3 649.7C205.1 649.5 204.4 648.8 203.5 648.9C202.599 649.021 202.13 649.935 201.445 651.276C200.989 652.166 200.438 653.243 199.6 654.4C199.403 654.637 199.221 654.874 199.049 655.098C198.784 655.443 198.542 655.758 198.3 656C195.9 656.8 193.4 657.4 191 657.2C189.7 657.1 188.4 656.8 187.4 656C187.292 655.929 187.185 655.844 187.072 655.756L187.072 655.756C186.872 655.598 186.656 655.429 186.4 655.3L185.8 655.1C185.6 655 185.4 655 185.2 655C184.3 655 183.5 655.2 182.8 655.5C181.902 655.885 181.087 656.393 180.328 656.866C179.902 657.131 179.495 657.385 179.1 657.6C177.9 658.2 176.8 658.6 175.7 658.3L175.3 658.2C175.25 658.2 175.175 658.175 175.1 658.15C175.025 658.125 174.95 658.1 174.9 658.1L173.9 657.7L172 656.9C171.482 656.706 170.964 656.47 170.473 656.246L170.471 656.245C170.204 656.124 169.946 656.006 169.7 655.9C170.7 654.7 171.6 653.3 172.2 651.9C173.194 649.846 173.837 647.747 174.449 645.75C174.76 644.734 175.063 643.745 175.4 642.8C175.9 641.4 176.6 640.2 177.5 639.4C178.5 638.6 179.7 638.3 181.2 638.5C184.8 638.7 188.2 637.4 191.1 635.7C194 634 196.5 631.8 198.9 629.6C200.7 627.9 202.4 626.1 204 624.2C205.2 623.8 206.6 623.5 208.2 623.3C211.056 623.02 213.473 623.44 215.381 623.772C217.547 624.149 219.055 624.411 219.8 623.4C220.6 622.3 220.3 619.7 219.7 618.2C219.632 618.064 219.61 618.021 219.603 617.975C219.6 617.954 219.6 617.932 219.6 617.9C219.086 616.987 218.181 616.823 217.201 616.646C216.465 616.513 215.686 616.372 215 615.9C213.85 615.182 213.412 614.005 212.971 612.819C212.491 611.529 212.007 610.23 210.6 609.5C210 609.2 209.7 609.2 209.6 609.2C208.859 609.279 208.331 609.996 207.843 610.658C207.082 611.692 206.42 612.591 205.2 610.7C204.521 609.682 204.418 608.888 204.33 608.21C204.263 607.688 204.204 607.235 203.9 606.8C203.303 606.119 202.416 606.236 198.762 606.719C198.129 606.802 197.412 606.897 196.6 607L196.168 607.048H196.168C192.901 607.41 191.751 607.537 190.6 608.4C189.138 607.588 188.204 606.307 187.321 605.096C186.574 604.071 185.863 603.097 184.9 602.5C183.816 601.841 183.199 602.691 182.64 603.46C182.012 604.324 181.458 605.087 180.4 603.5C179.852 602.678 179.754 601.916 179.679 601.329C179.618 600.846 179.571 600.481 179.3 600.3C178.926 600.067 178.465 600.401 177.783 600.895C177.007 601.458 175.944 602.228 174.4 602.6C173.633 602.762 173.045 602.777 172.531 602.79C171.772 602.809 171.175 602.824 170.4 603.3C169.4 603.9 168.8 605 168.6 605.5C167.8 607.8 171.1 611.5 176.6 614.9L176 615.8C175.6 616.4 175.2 617 174.9 617.8C174.2 619.4 174.5 621.1 174.9 622.5C175.095 623.181 175.36 623.838 175.616 624.472C175.886 625.141 176.146 625.784 176.3 626.4C176.5 627 176.5 627.6 176.4 628C176.318 628.413 176.099 628.621 175.801 628.906C175.737 628.966 175.67 629.03 175.6 629.1C174.2 630.2 173.5 631.7 173 633.2C172.2 635.7 172.1 638.3 172.1 640.8C172.1 640.8 172.1 640.9 172 640.9C170.559 643.176 169.578 645.509 168.665 647.681C168.374 648.373 168.09 649.048 167.8 649.7C167.2 651.1 166.5 652.3 165.8 653.4C165 654.5 164.1 655.5 163 656.2C162.7 656.4 162.4 656.6 162.1 656.7L161.6 656.9L161 657.1C160.826 657.166 160.657 657.231 160.49 657.295C159.891 657.526 159.326 657.744 158.7 657.9C157.2 658.4 155.6 658.9 154.1 659.3C152 659.9 149.9 660.4 147.8 660.7C147.3 655.5 146.4 650.3 144.9 645.1C142.7 637.6 139.4 630.2 134.3 623.7C134.176 623.541 134.061 623.394 133.954 623.257L133.954 623.256C133.455 622.617 133.111 622.176 132.7 621.6C132.34 621.169 132.032 620.685 131.738 620.224L131.738 620.223C131.624 620.044 131.512 619.868 131.4 619.7C130.6 618.4 129.9 617.1 129.3 615.8C128.2 613.1 127.6 610.4 127.7 607.6C127.7 604.8 128.3 601.9 129.3 598.9C130.3 596 131.7 593 133.4 590L133.4 590C133.9 589.1 134.4 588.2 134.9 587.4C135.4 587.2 136 587 136.5 586.9C139.4 585.9 142.3 584.8 145.2 583.5C150.9 581 156.5 578 161.5 574C164 572 166.4 569.8 168.4 567.2C170.4 564.6 172.2 561.6 173.1 558.2L173.7 556.3L174.1 555.5L174.3 555.1L174.5 554.7C175.1 553.7 175.9 552.9 176.8 552.2C178.6 550.9 181.2 550.2 184 549.8C186.825 549.447 189.803 549.374 192.881 549.298C195.906 549.224 199.028 549.147 202.2 548.8C205.4 548.5 208.6 547.9 211.7 546.7C214.8 545.5 217.8 543.6 220 541.2C220.6 540.6 221.1 540 221.6 539.3L222.3 538.3L222.9 537.3L225.4 533.5L230.5 525.9L233.8 521C246.4 523.1 256.1 522.2 257.6 518.6C259 517.4 259.1 513.3 258.3 512.2ZM115.8 527.1C113.8 525.9 111.4 525.7 109.4 526C106 526.3 102.4 525.1 99.2 523.2C96 521.3 93.2 518.9 90.5 516.2C89.2 514.9 87.9 513.5 86.7 512L86.4 511.7C91.3 509.3 95.4 506.7 98.3 504.2C99.3308 504.819 100.787 505.296 102.602 505.89L102.603 505.891C103.429 506.161 104.33 506.456 105.3 506.8C107.5 507.6 110.7 508.8 114.5 510.5C114.336 510.952 114.138 511.403 113.935 511.868L113.935 511.868C113.641 512.536 113.336 513.234 113.1 514C112.8 514.9 112.6 515.9 112.8 517C113 518.1 113.8 519.1 114.6 519.7C115.6 520.5 116.2 521.9 116.6 523.3C117 524.9 117.2 526.5 117.2 528.2C117 527.9 116.4 527.501 115.8 527.101L115.8 527.1ZM177.4 631.1C176.5 631.8 176 633 175.7 634.2C175.4 635.4 175.2 636.6 175.3 637.9C175.7 637.6 176.1 637.3 176.5 637.1C178.3 636.1 180.4 635.9 182.1 636.2C184.9 636.5 188 635.5 190.6 633.9C193.3 632.3 195.7 630.3 197.9 628C199.1 626.9 200.1 625.7 201.1 624.5C201.15 624.4 201.225 624.325 201.3 624.25C201.375 624.175 201.45 624.1 201.5 624C199.5 621 197.4 619 195.6 617.6C194.5 616.8 193.4 616 192.4 615.4C190.3 617 185 617.2 178.6 615.9C178.3 616.3 178.1 616.6 177.9 617L177.4 617.9C177.2 618.2 177.1 618.4 177 618.7C176.6 619.8 176.9 621.1 177.3 622.3C177.478 622.879 177.715 623.437 177.959 624.011C178.263 624.727 178.578 625.468 178.8 626.3C179.1 627 179.2 628 179 628.9C179 629.1 178.9 629.4 178.8 629.6C178.75 629.7 178.675 629.8 178.6 629.9C178.525 630 178.45 630.1 178.4 630.2L177.9 630.7L177.4 631.1Z",
+        fill: "#EBDEDE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M86.6 686C92.2 726.3 97.7 766.7 103.3 807H180.8C186.4 766.7 191.9 726.3 197.5 686H86.6Z",
+        fill: "#EEEDEE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M1006.6 490C985.6 501.3 961.2 519.1 958.1 544.1C956.4 557.9 962.8 560.3 963.4 578C964.2 602.3 952.8 616 944.9 631.8C950 611 955.1 606.2 956.2 588.8C958.3 554.7 940.1 550.2 944.2 523.7C948.4 496.2 969.4 492.2 973.9 463C976.7 445.1 971.5 429.3 966.7 418.8C933.3 439.3 917 464.2 909.9 477.2C869.9 549.8 904 632.6 927 658.9C930.6 663 951.4 665.2 951.1 664.6C943 650.2 1010.9 598.5 1020 549.5C1022.3 536.8 1022.1 517.1 1006.6 490Z",
+        fill: "#EEEDEE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M962.8 681.3L975.2 650.4H938.8H902.4L914.8 681.3C893.9 690.5 879.3 711.4 879.3 735.8C879.3 760.2 894 781.1 915 790.3V804.9H962.7V790.3C983.7 781.1 998.4 760.1 998.4 735.8C998.3 711.5 983.7 690.6 962.8 681.3Z",
+        fill: "#EBDEDE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M377.3 622.9L362.8 737.7L338.4 930.7C338.3 931.4 337.7 931.9 337 931.9C336.9 931.9 336.9 931.9 336.8 931.9C336 931.8 335.5 931.1 335.6 930.3L360.3 735L374.5 622.5C374.6 621.7 375.3 621.2 376.1 621.3C376.9 621.4 377.4 622.2 377.3 622.9Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M919.1 938.2C919.1 939 918.5 939.6 917.7 939.7H917.6C916.9 939.7 916.2 939.1 916.2 938.3L906.2 711.2L902.5 628.3C902.5 627.5 903.1 626.9 903.9 626.8C904.7 626.7 905.3 627.4 905.4 628.2L909 709.2L919.1 938.2Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.35",
+        d: "M377.3 622.9L362.8 737.7C361.9 736.8 361.1 735.9 360.3 735L374.5 622.5C374.6 621.7 375.3 621.2 376.1 621.3C376.9 621.4 377.4 622.2 377.3 622.9Z",
+        fill: "url(#paint0_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.35",
+        d: "M909.1 709.2C908.2 709.9 907.3 710.6 906.4 711.2L902.7 628.3C902.7 627.5 903.3 626.9 904.1 626.8C904.9 626.7 905.5 627.4 905.6 628.2L909.1 709.2Z",
+        fill: "url(#paint1_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M508.5 925.9C508.5 926.7 507.9 927.3 507.1 927.4H507C506.3 927.4 505.6 926.8 505.6 926L499 775.6L492 616C492 615.2 492.6 614.6 493.4 614.5C494.2 614.4 494.8 615.1 494.9 615.9L501.9 775.5L508.5 925.9Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M494.1 630C494.1 636.5 491.1 642.5 485.9 647.8C480 653.7 471.4 658.5 461 661.6C460.7 661.7 460.4 661.8 460 661.9C455.2 663.3 450 664.3 444.6 664.9C444.2 664.9 443.8 665 443.3 665C440 665.3 436.5 665.5 433 665.5C431.7 665.5 430.4 665.5 429.2 665.4C428.9 665.4 428.5 665.4 428.2 665.4C417.7 664.9 407.9 662.9 399.5 659.7C399.2 659.6 398.9 659.5 398.6 659.3C394.9 657.8 391.5 656.1 388.5 654.2C388.1 654 387.8 653.8 387.5 653.5C378.9 647.9 373.4 640.7 372.3 632.7C372.2 631.8 372.1 630.8 372.1 629.9C372.1 628.9 372.2 627.9 372.3 626.9C373.5 618.8 379.3 611.5 388.1 605.9C388.4 605.7 388.7 605.6 388.9 605.4C394.7 601.9 401.7 599.1 409.5 597.2C409.9 597.1 410.2 597 410.6 596.9C414.7 596 419 595.3 423.5 594.9C423.8 594.9 424.2 594.8 424.5 594.8C427.3 594.6 430.2 594.5 433.1 594.5C433.6 594.5 434.1 594.5 434.6 594.5C434.9 594.5 435.3 594.5 435.6 594.5C437 594.5 438.5 594.6 439.9 594.7C440.2 594.7 440.6 594.8 440.9 594.8C471 597.1 494.1 612 494.1 630Z",
+        fill: "#5A142A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("g", {
+        opacity: "0.5"
+    }, /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M389.9 606.9C393.4 612.6 394 620.6 391.5 630.7C389.2 640.1 388.4 648.1 388.5 654.3C388.1 654.1 387.8 653.9 387.5 653.6C387.4 647.5 388.2 639.7 390.5 630.4C392.9 620.6 392.4 612.9 389 607.4C388.7 606.9 388.4 606.5 388.1 606.1C388.4 605.9 388.7 605.8 388.9 605.6C389.3 605.9 389.6 606.4 389.9 606.9Z",
+        fill: "#FC860A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M410.6 597C410.4 598.2 410.1 599.4 409.9 600.7L409.5 603.2C406.1 625.7 402.7 647.1 399.5 659.6C399.2 659.5 398.9 659.4 398.6 659.2C402.4 643.9 406.6 615.8 408.5 603L408.9 600.5C409.1 599.3 409.3 598.2 409.5 597.2C409.9 597.2 410.3 597.1 410.6 597Z",
+        fill: "#FC860A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M424.8 601.5C425.5 617.4 426.8 648.9 429.3 665.4C429 665.4 428.6 665.4 428.3 665.4C426.1 651.1 424.8 625.7 423.8 601.5C423.7 599.1 423.6 596.9 423.5 595C423.8 595 424.2 594.9 424.5 594.9C424.6 596.8 424.7 599.1 424.8 601.5Z",
+        fill: "#FC860A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M444.6 664.9C444.2 664.9 443.8 665 443.3 665C446.7 659.2 448.8 651 445.8 639.6C444.8 635.8 443.7 631.7 442.6 627.5C438.7 613.1 435.7 601.7 434.6 594.6C434.9 594.6 435.3 594.6 435.6 594.6C436.9 602.7 440.5 615.9 443.5 627.3C444.6 631.5 445.7 635.6 446.7 639.4C449.8 650.6 447.9 658.9 444.6 664.9Z",
+        fill: "#FC860A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M461 661.6C460.7 661.7 460.4 661.8 460 661.9C453.7 638.6 445.1 608.7 439.9 594.8C440.2 594.8 440.6 594.9 440.9 594.9C443.2 600.9 446.5 610.9 451.4 627.6C455.3 640.6 458.9 653.8 461 661.6Z",
+        fill: "#FC860A"
+    })), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M907.6 636.6C907.6 639.2 907.1 641.7 906.2 644.1C905.6 645.9 904.7 647.5 903.6 649.2C900.7 653.6 896.4 657.5 891.1 660.8C890.8 661 890.5 661.1 890.2 661.3C884.3 664.8 877.2 667.6 869.3 669.4C868.9 669.5 868.6 669.6 868.2 669.6C864.1 670.5 859.9 671.2 855.4 671.5C855.1 671.5 854.7 671.5 854.4 671.6C851.8 671.8 849.2 671.9 846.6 671.9C845.8 671.9 845.1 671.9 844.4 671.9C844.1 671.9 843.7 671.9 843.4 671.9C842 671.9 840.7 671.8 839.3 671.7C839 671.7 838.6 671.6 838.3 671.6C833.1 671.2 828.2 670.4 823.5 669.3C811.9 666.5 802.1 661.8 795.4 655.7C794.4 654.8 793.5 653.9 792.6 652.9C788.1 648 785.6 642.4 785.6 636.4C785.6 622.5 799.4 610.4 819.5 604.6C819.8 604.5 820.1 604.4 820.5 604.3C825.1 603 830.1 602.1 835.3 601.5C835.7 601.5 836.1 601.4 836.5 601.4C839.8 601.1 843.2 600.9 846.7 600.9C848.2 600.9 849.7 600.9 851.2 601C851.5 601 851.9 601 852.2 601C862.7 601.5 872.4 603.6 880.7 606.8C881 606.9 881.3 607 881.6 607.2C885.3 608.7 888.7 610.4 891.7 612.3C892 612.5 892.4 612.8 892.7 613C900.9 618.5 906.3 625.4 907.5 633C907.5 634.5 907.6 635.5 907.6 636.6Z",
+        fill: "#5A142A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M772.3 938.5H772.2C771.4 938.4 770.8 937.7 770.8 936.9L794.5 627.5C794.6 626.7 795.3 626.1 796.1 626.1C796.9 626.2 797.5 626.9 797.5 627.7L773.8 937.1C773.7 938 773.1 938.5 772.3 938.5Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("g", {
+        opacity: "0.5"
+    }, /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M839.2 671.9C838.9 671.9 838.5 671.8 838.2 671.8C837.4 669.7 836.5 667.1 835.5 663.8C833.6 657.8 831.2 649.5 828.1 638.1C824.7 625.5 821.4 612.8 819.5 604.9C819.8 604.8 820.1 604.7 820.5 604.6C825.4 624.4 831.9 648.6 836.7 663.9C837.5 667 838.4 669.6 839.2 671.9Z",
+        fill: "#FC860A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M843 664.2C843.6 667.3 844.1 669.9 844.4 672.1C844.1 672.1 843.7 672.1 843.4 672.1C843.1 669.8 842.6 667.2 842 664.2C840.5 656.5 838.1 647.1 836 638.6C835 634.4 833.9 630.3 833 626.4C830.4 615.6 832.1 607.6 835.2 601.8C835.6 601.8 836 601.7 836.4 601.7C833.2 607.4 831.3 615.3 833.9 626.2C834.8 630 835.9 634.2 836.9 638.4C839.5 648.6 841.6 657.4 843 664.2Z",
+        fill: "#FC860A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M855.4 671.8C855.1 671.8 854.7 671.8 854.4 671.9C854.3 669.8 854.3 667.4 854.2 664.7C854.2 664.4 854.2 664.1 854.2 663.8C853.8 647.8 853.1 617.7 851.1 601.3C851.4 601.3 851.8 601.3 852.1 601.3C853.9 615.6 854.7 640.1 855.3 663.6C855.3 663.9 855.3 664.3 855.3 664.6C855.3 667.3 855.3 669.7 855.4 671.8Z",
+        fill: "#FC860A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M880.5 607.2C880.8 607.3 881.1 607.4 881.4 607.6C877.6 621.9 873.2 647.3 870.9 660.8C870.7 661.7 870.6 662.6 870.5 663.4L870.1 665.9C869.9 667.2 869.6 668.5 869.3 669.7C868.9 669.8 868.6 669.9 868.2 669.9C868.5 668.6 868.8 667.2 869.1 665.7L869.5 663.2C869.6 662.5 869.7 661.8 869.9 661.1C873.5 639.5 877.2 619.2 880.5 607.2Z",
+        fill: "#FC860A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M890 659.4C890.3 659.9 890.6 660.4 891 660.9C890.7 661.1 890.4 661.2 890.1 661.4C889.8 660.9 889.4 660.4 889.1 659.9C888.1 658.2 887.4 656.3 886.9 654.3C885.7 649.3 886.1 643.2 888 636.1C890.5 626.8 891.5 618.8 891.4 612.6C891.7 612.8 892.1 613.1 892.4 613.3C892.4 619.4 891.4 627.2 888.9 636.4C887.1 643.2 886.7 649 887.7 653.8C888.3 655.9 889 657.8 890 659.4Z",
+        fill: "#FC860A"
+    })), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.19",
+        d: "M485.9 647.8C463.8 661.2 444 664.5 433.1 665.5C401 665.5 374.7 651.1 372.3 632.8C372.2 631.9 372.1 630.9 372.1 630C372.1 629 372.2 628 372.3 627C374.4 630.8 377.4 635 381.5 639C384.2 641.6 392.6 649 410.8 653.2C441.6 660.3 472.6 652 485.9 647.8Z",
+        fill: "url(#paint2_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.19",
+        d: "M907.6 636.6C907.6 639.2 907.1 641.7 906.2 644.1C905.6 645.9 904.7 647.5 903.6 649.2C900.7 653.6 896.4 657.5 891.1 660.8C890.8 661 890.5 661.1 890.2 661.3C884.3 664.8 877.2 667.6 869.3 669.4C868.9 669.5 868.6 669.6 868.2 669.6C864.1 670.5 859.9 671.2 855.4 671.5C855.1 671.5 854.7 671.5 854.4 671.6C851.8 671.8 849.2 671.9 846.6 671.9C845.8 671.9 845.1 671.9 844.4 671.9C844.1 671.9 843.7 671.9 843.4 671.9C842 671.9 840.7 671.8 839.3 671.7C839 671.7 838.6 671.6 838.3 671.6C833.1 671.2 828.2 670.4 823.5 669.3C815 666.3 805.5 661.8 795.4 655C795.3 654.9 795.2 654.8 795 654.8C795.1 654.8 795.2 654.9 795.4 654.9C803.7 657.9 818.4 662.4 835.6 663.7C836 663.7 836.3 663.8 836.7 663.8C838.5 663.9 840.3 664 842.1 664C842.4 664 842.8 664 843.1 664C846.8 664 850.5 663.9 854.3 663.6C854.6 663.6 855 663.6 855.3 663.5C860.1 663 865 662.2 869.9 660.9C870.3 660.8 870.6 660.7 870.9 660.6C877.6 658.8 882.9 656.5 887 654.2C887.3 654 887.6 653.9 887.9 653.7C894.1 650.1 897.5 646.6 899.1 644.9C900.6 643.3 902 641.6 903.2 639.9C904.2 638.6 905.1 637.2 905.9 635.9C906.4 635 906.9 634.1 907.4 633.3C907.5 634.5 907.6 635.5 907.6 636.6Z",
+        fill: "url(#paint3_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M494.9 615.9L501.9 775.5C500.9 775.5 500 775.6 499.1 775.6L492.1 616C492.1 615.2 492.7 614.6 493.5 614.5C494.2 614.5 494.8 615.2 494.9 615.9Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M570.4 735.8C568.9 739.5 567.5 743.1 566 746.7C560.8 759.2 555.6 770.5 550.4 780.9C548.5 784.8 546.5 788.5 544.7 792.1C542.7 795.9 540.8 799.5 538.8 802.9C537 806.2 535.1 809.3 533.4 812.4C531 816.4 528.7 820.2 526.5 823.8C525.5 825.4 524.6 826.8 523.7 828.3C522.9 829.5 497.5 869.7 482.3 918.6C480.2 925.5 475.9 940.5 483.2 951C485.6 954.4 488.3 956.8 490.5 958.3C492.1 959.4 493.5 960.1 494.4 960.5C495 960.8 495.3 960.9 495.3 960.9C502.6 963.5 510.2 961.5 511.3 964.7C511.7 965.8 511.1 967 510.8 967.5C507.7 973.5 494.1 977.1 482.8 973.3C473.9 970.2 475.8 965.7 456.8 947.2C448.9 939.5 445.4 937.1 445.5 932.5C445.6 927.4 449.9 925.3 455.9 917.3C456.6 916.4 457.3 915.3 458.1 914.2C459.4 912.2 462.3 904.7 465.6 895.2C465.8 894.7 465.9 894.3 466.1 893.8C469.1 885.2 472.3 875.3 475.2 866.3C477.7 858.4 479.9 851.3 481.2 846.7C481.4 846.2 481.5 845.6 481.7 845C483.4 838.7 484.9 832.8 486.4 827.3C487.9 821.5 489.3 816.2 490.7 811.1C493.7 800.2 496.5 790.8 499.9 782.6C504.8 770.6 511 761 520.5 752.3C529.7 743.9 539 739 545.6 736.3C553.7 736.1 562 736 570.4 735.8Z",
+        fill: "#E6A67F"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M612.5 726.8C604.3 747.1 595.8 767.5 587.1 788.2C585.9 791.2 584.6 794.1 583.4 797C583 798 582.6 799 582.1 800C580.4 803.9 578.8 807.8 577.1 811.6C574.6 817.3 572.2 823 569.7 828.7C569.7 828.7 568.2 831.9 565.8 837.5C560.5 849.8 550.9 873.8 543.5 902.4C541.8 909 540.2 915.9 538.8 922.9C537.4 929.9 534.7 945.3 542.6 955C545.1 958.1 547.8 960.1 550.1 961.4C550.2 961.4 550.2 961.5 550.3 961.5C550.4 961.5 550.4 961.6 550.5 961.6C553.1 963.1 555.1 963.6 555.1 963.6C562.2 965.4 569.3 962.6 570.6 965.7C571.1 966.8 570.6 968 570.4 968.6C568 974.9 555.4 979.9 544.5 977.3C535.8 975.2 537.1 970.4 517.5 954.1C509.4 947.3 505.7 945.3 505.4 940.7C505.1 935.6 508.9 933 513.8 924.5C514.4 923.5 515 922.4 515.6 921.2C516.9 918.7 519.5 907.9 522.3 895.3C526 878.4 530 858.3 531.3 850C531.7 847.5 532.1 845 532.5 842.6C533.4 837 534.2 831.7 534.9 826.7C535.3 823.9 535.7 821.3 536.1 818.6C536.2 818.1 536.3 817.7 536.3 817.2C536.8 814 537.3 810.9 537.9 807.9C538.2 806.2 538.5 804.6 538.8 802.9C539.6 798.9 540.4 795 541.3 791.4C545 776.5 550.1 764.7 559.4 753.7C561.6 751.1 563.8 748.8 566 746.8C571.8 741.4 577.4 737.7 581.7 735.2C585.1 735.3 589.2 735 593.5 733.7C601.4 731.3 607.2 726.6 611.4 721.8C611.8 723.3 612.2 725 612.5 726.8Z",
+        fill: "#E6A67F"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.1",
+        d: "M583.3 796.9C581.2 800.7 578.9 805.6 577 811.5C574.5 817.2 572.1 822.9 569.6 828.6C569.6 828.6 554.1 860.7 543.4 902.2C541.7 908.8 540.1 915.7 538.7 922.7C537.3 929.7 534.6 945.1 542.5 954.8C545 957.9 547.7 959.9 550 961.2C550.1 961.2 550.1 961.3 550.2 961.3C550.3 961.3 550.3 961.4 550.4 961.4C547.4 961.1 543.6 960.3 540.1 957.8C534.6 953.9 532.8 948.1 531.9 945.4C526.2 926.9 534.2 892.4 541.4 858.4C543 850.8 546.1 835.7 550.9 814.9C552.1 809.8 553.1 805.5 553.7 802.6C555 802.3 556.2 802 557.5 801.7C566.1 800.2 574.7 798.5 583.3 796.9Z",
+        fill: "url(#paint4_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.1",
+        d: "M550.4 780.9C544.5 792.7 538.8 803.2 533.4 812.3C530 818.1 526.7 823.4 523.7 828.1C522.9 829.3 497.5 869.5 482.3 918.4C480.2 925.3 475.9 940.3 483.2 950.8C485.6 954.2 488.3 956.6 490.5 958.1C489.3 958.6 488 958.9 486.6 958.7C479 957.8 475.4 944.2 474.3 939.8C469.4 921 476.1 904.7 481.9 886.8C503.2 820.8 503.6 812.1 516.9 799.8C528.9 788.7 542 783.5 550.4 780.9Z",
+        fill: "url(#paint5_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.19",
+        d: "M472.4 890.7C470.5 892.8 468.4 894.1 468.4 894.1C467.4 894.6 466.5 895 465.5 895.2C465.7 894.7 465.8 894.3 466 893.8C469 885.2 472.2 875.3 475.1 866.3C477.1 860.8 478.8 854.9 481.1 846.7C481.3 846.2 481.4 845.6 481.6 845C483.3 838.7 484.8 832.8 486.3 827.3C487.5 845.8 486.4 874.8 472.4 890.7Z",
+        fill: "url(#paint6_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.19",
+        d: "M524.1 892.8C523.5 893.7 522.8 894.5 522.2 895.2C525.9 878.3 529.9 858.2 531.2 849.9C531.6 847.4 532 844.9 532.4 842.5C534.1 859.4 533.4 879.4 524.1 892.8Z",
+        fill: "url(#paint7_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M510.8 967.5C507.7 973.5 494.1 977.1 482.8 973.3C473.9 970.2 475.8 965.7 456.8 947.2C448.9 939.5 445.4 937.1 445.5 932.5C445.6 929.4 447.2 927.4 449.7 924.6C451.4 922.7 453.5 920.5 455.8 917.3C461.4 930.8 478.1 967.5 490.4 958.3C493.1 960.2 495.2 960.9 495.2 960.9C499.8 962.5 504.5 962.3 507.6 962.8C509.5 963.1 510.8 963.5 511.2 964.7C511.7 965.8 511.1 967 510.8 967.5Z",
+        fill: "#336859"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M570.7 966.5C570.8 967.3 570.5 968.2 570.3 968.6C567.9 974.9 555.3 979.9 544.4 977.3C535.7 975.2 537 970.4 517.4 954.1C509.3 947.3 505.6 945.3 505.3 940.7C505.1 937.6 506.5 935.4 508.6 932.3C510 930.3 511.8 927.9 513.7 924.5C520.2 937.3 539.5 972 550.2 961.6C552.9 963.2 554.9 963.7 554.9 963.7C562 965.5 569.1 962.7 570.4 965.8C570.6 966 570.7 966.2 570.7 966.5Z",
+        fill: "#336859"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.36",
+        d: "M510.8 967.5C507.7 973.5 494.1 977.1 482.8 973.3C473.9 970.2 475.8 965.7 456.8 947.2C448.9 939.5 445.4 937.1 445.5 932.5C445.6 929.4 447.2 927.4 449.7 924.6C456.1 935.7 475.9 969.1 484.6 968.3C491 967.7 500.7 964.6 507.6 962.8C509.5 963.1 510.8 963.5 511.2 964.7C511.7 965.8 511.1 967 510.8 967.5Z",
+        fill: "#0D2A28"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.36",
+        d: "M570.7 966.5C570.8 967.3 570.5 968.2 570.3 968.6C567.9 974.9 555.3 979.9 544.4 977.3C535.7 975.2 537 970.4 517.4 954.1C509.3 947.3 505.6 945.3 505.3 940.7C505.1 937.6 506.5 935.4 508.6 932.3C514.4 940 538.6 971.3 546.1 971.3C552.3 971.1 564.5 968.1 570.7 966.5Z",
+        fill: "#0D2A28"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.14",
+        d: "M582 799.9C580.3 803.8 578.7 807.7 577 811.5C574.5 817.2 572.1 822.9 569.6 828.6C569.6 828.6 568.1 831.8 565.7 837.4C558.3 834.8 547 830.8 534.8 826.6C535.2 823.8 535.6 821.2 536 818.5C536.1 818 536.2 817.6 536.2 817.1C536.7 813.9 537.2 810.8 537.8 807.8C538.1 806.1 538.4 804.5 538.7 802.8C536.9 806.1 535 809.2 533.3 812.3C530.9 816.3 528.6 820.1 526.4 823.7C513.2 819.1 500 814.5 490.4 811.2C493.4 800.3 496.2 790.9 499.6 782.7L541.2 791.4L544.6 792.1L582 799.9Z",
+        fill: "#002544"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M484.7 441.3C480.6 460.7 476.1 481.4 468.2 506.7C467.6 508.7 466.9 510.8 466.2 512.9C464.3 518.7 462.2 524.8 460 531.1C449.4 560.4 438.4 584.2 429.8 601.2C403 593.3 376.2 585.4 349.4 577.5C349.9 548.4 353.2 506.2 366.4 457.3C371.3 439.4 378.5 412.5 388.6 387.5C389.3 385.8 390 384.2 390.7 382.5C403.8 351.4 421.3 324.5 444 322.9C463.2 321.6 481.3 338.8 489.4 353.2C493.3 360.1 499 373.6 484.7 441.3Z",
+        fill: "#19233D"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.35",
+        d: "M468.2 506.7C467.6 508.7 466.9 510.8 466.2 512.9C464.3 518.7 462.2 524.8 460 531.1C449.4 560.4 438.4 584.2 429.8 601.2C403 593.3 376.2 585.4 349.4 577.5C349.9 548.4 353.2 506.2 366.4 457.3C371.3 439.4 378.5 412.5 388.6 387.5C389.3 385.8 390 384.2 390.7 382.5L468.2 506.7Z",
+        fill: "url(#paint8_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M508 464.1L500 495.4C500 495.5 499.9 495.6 499.9 495.6C496.8 503.9 493.8 514.3 492 526.5C491.9 527.5 491.7 528.5 491.6 529.5C490.9 535.4 490.5 541.1 490.4 546.5C490.4 547.7 490.4 549 490.4 550.2C490.5 558.6 491.3 566.1 492.3 572.7C492.8 575.8 493.4 578.7 493.9 581.3C493.9 581.4 493.9 581.4 493.9 581.5L493.8 581.6C493 582.5 490.7 585 487 587.8C485.7 588.8 484.2 589.9 482.5 591C475.1 595.8 464.3 600.5 451 599.8C438.4 599.2 428.7 594 422.9 589.9C420.4 588.1 418.5 586.5 417.5 585.5C418 583.6 418.5 581.8 418.9 580.1H418.8C419.6 576.8 420.3 573.7 420.8 570.7C421.4 567.1 421.9 563.7 422.1 560.6C422.2 559.1 422.3 557.6 422.4 556.1C422.4 555.7 422.4 555.4 422.4 555C422.5 553.5 422.5 552.1 422.4 550.7C422.3 542.8 421.2 536.8 420.1 532.4C418.3 525.2 413.7 511.9 409.1 499.6C409.1 499.5 409 499.4 409 499.3C408.9 499 408.8 498.7 408.6 498.3C406.3 492.7 404.7 488.2 403.7 485.3C400.3 475.5 396.5 465.1 397.2 464.2C400.4 461.8 403.3 459.7 405.9 457.9C405.9 457.9 405.9 457.9 406 457.9C407.3 457 408.5 456.2 409.7 455.5C412.5 453.7 415.3 452 417.6 450.6C418.5 450.1 419.3 449.6 420 449.1C420.7 448.7 421.4 448.3 422 447.9C424.2 446.6 429.6 442.7 433.9 438.7L434.6 438C436.7 436 438.5 434 439.4 432.4C442.6 426.8 443.9 421 444.2 415.5C444.4 412.7 444.3 410 444 407.4C443.3 400.6 441.4 395 440.3 392C450.2 393.3 460.2 394.6 470.1 395.9C469.8 399.6 469.7 403.7 469.9 408C470.1 411.8 470.5 415.8 471.3 419.8C472.1 423.7 473.2 427.7 474.8 431.7C474.8 431.8 474.9 431.9 474.9 431.9C475.7 433.9 476.6 435.9 477.7 437.8C478.1 438.5 478.5 439.3 479 440C479.2 440.3 479.3 440.6 479.5 440.9C480.2 441.9 480.9 442.9 481.6 443.9C484.7 448.1 487.6 450.2 491 452.2C491.2 452.3 491.5 452.5 491.7 452.6C492.3 453 492.9 453.3 493.5 453.7C493.8 453.9 494 454 494.3 454.2C498.3 456.2 502.5 458.9 508 464.1Z",
+        fill: "#E6A67F"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.13",
+        d: "M475.2 431.7C471.4 431.4 466.4 430.5 461.2 428.2C452.4 424.4 447.1 418.7 444.6 415.6C444.8 412.8 444.7 410.1 444.4 407.5L470.4 408.1C470.1 410.6 470 414.9 471.8 419.9C472.5 423.8 473.6 427.8 475.2 431.7Z",
+        fill: "#002544"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.25",
+        d: "M507.8 464.1L499.8 495.4C499.8 495.5 499.7 495.6 499.7 495.6C496.6 503.9 493.6 514.3 491.8 526.5L432.6 516L477.9 437.8C479.1 439.9 480.4 441.9 481.8 443.9C484.9 448.1 487.8 450.2 491.2 452.2C491.4 452.3 491.7 452.5 491.9 452.6C492.5 453 493.1 453.3 493.7 453.7C494 453.9 494.2 454 494.5 454.2C498.1 456.2 502.4 458.9 507.8 464.1Z",
+        fill: "url(#paint9_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.64",
+        d: "M479.8 440.9C477.1 444.2 471.6 449.4 463.4 451.1C463 450.9 462.5 450.7 462 450.7C461.2 450.7 460.5 451 460 451.6C459.6 451.6 459.2 451.7 458.8 451.7C458.5 451.7 458.2 451.7 458 451.7C448.5 451.7 439.6 446.7 434.3 438.7L435 438C440.3 446.1 449.4 451 458.8 450.7C469.5 450.4 476.4 443.7 479.4 440C479.4 440.3 479.6 440.6 479.8 440.9Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.64",
+        d: "M463.4 451.1C463 450.9 462.5 450.7 462 450.7C461.2 450.7 460.5 451 460 451.6C459.5 452.1 459.2 452.8 459.2 453.6C459.2 455.2 460.5 456.4 462 456.4C463.5 456.4 464.8 455.1 464.8 453.6C464.8 452.5 464.2 451.6 463.4 451.1Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M483.7 359C480.6 359.6 472.7 360.8 463.8 357.1C451.8 352 447 341.5 446 339.1C445.9 339.1 445.8 339.2 445.8 339.2C444.1 346.7 442.6 354.5 441.2 362.7C439 375.7 437.5 388 436.5 399.6C441.7 407 448.5 412.2 455.2 415C457.1 415.8 467 418.8 474.2 415.6C486.2 410.4 492.4 387 483.7 359Z",
+        fill: "#E6A67F"
     }), /*#__PURE__*/ _reactDefault.default.createElement("circle", {
         cx: "459.6",
         cy: "372.7",
-        fill: "#000",
         r: "2.4",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 205
-        },
-        __self: this
+        fill: "black"
     }), /*#__PURE__*/ _reactDefault.default.createElement("circle", {
         cx: "481.3",
         cy: "369.8",
-        fill: "#000",
         r: "2.4",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 206
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("circle", {
-        cx: "765.2",
-        cy: "259.1",
-        fill: "#791D2C",
-        r: "4.3",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 207
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("circle", {
-        cx: "769",
-        cy: "277.1",
-        fill: "#791D2C",
-        r: "4.3",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 208
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("circle", {
-        cx: "782.2",
-        cy: "258.2",
-        fill: "#791D2C",
-        r: "4.3",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 209
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("circle", {
-        cx: "749.1",
-        cy: "284.7",
-        fill: "#791D2C",
-        r: "4.3",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 210
-        },
-        __self: this
+        fill: "black"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M471.4 371.3C472.4 374.3 474.1 378 477.1 381.7C479.4 384.5 481.3 385.9 480.9 387.4C480.6 388.7 478.4 389.9 471.4 390.2C471.4 383.9 471.4 377.6 471.4 371.3Z",
+        fill: "#C5856E"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M469.8 400.8C468.3 400.8 466.4 400.5 464.5 399.7C460.1 397.7 458.3 393.9 457.8 392.4C457.7 392.1 457.8 391.7 458.2 391.6C458.5 391.5 458.9 391.6 459 392C459.4 393.1 461 396.7 465.1 398.6C468.6 400.2 472 399.5 473.2 399.2C473.5 399.1 473.9 399.3 473.9 399.6C474 399.9 473.8 400.3 473.5 400.3C472.8 400.5 471.5 400.8 469.8 400.8Z",
+        fill: "black"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M461.1 358.4C459.3 358.9 457.4 359.3 455.6 359.8C453.5 360.3 451.3 360.9 449.2 361.4C449.8 360.7 451.8 358.6 455.2 357.9C457.9 357.4 460.1 358 461.1 358.4Z",
+        fill: "black"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M487.1 364.2C485.3 363.8 483.4 363.3 481.6 362.9C479.5 362.4 477.3 361.9 475.2 361.3C476.1 361 478.8 360.1 482.1 361C484.8 361.8 486.4 363.4 487.1 364.2Z",
+        fill: "black"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M613.4 726.8C605.2 747.1 596.7 767.5 588 788.2C584.7 796.1 581.3 803.9 578 811.6C572.4 814.2 566 816.3 558.9 817.6C551.1 819 543.8 819.2 537.1 818.6C513.5 816.5 496.9 804.7 493.5 802.2C493.1 749.8 477.6 718 462.7 698.3C452.9 685.3 441.6 675.4 431.5 666.3C415.3 651.9 402 639.6 402.1 620.3C402.2 604 411.4 592.1 415.7 587.5C416.5 586.6 417.2 585.9 417.5 585.6C443.2 560.9 489.7 578.4 493.5 579.8C503.5 583.6 512.9 589.2 571.4 656.7C598.8 688.3 602.4 693.6 606 701.9C608.9 708.4 610.9 715 612.4 721.4C612.8 723.3 613.1 725 613.4 726.8Z",
+        fill: "#8677A7"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M497.1 698.6C501.5 707.9 507.9 722.2 514.9 740.2C525.5 767.6 528.8 781.2 537.6 782.8C546.1 784.3 554.5 773.6 558.4 768.6C573 750 588.2 710 566.9 691C551.4 677.2 520.7 678.4 497.1 698.6Z",
+        fill: "url(#paint10_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M493.8 581.5C493.8 581.6 493.8 581.7 493.9 581.8C493 582.8 489.4 586.7 483.6 590.6C483.4 590.8 483.2 590.9 482.9 591.1C480.5 592.7 477.8 594.2 474.8 595.6C473.5 596.2 472.2 596.7 470.8 597.2C465.1 599.2 458.5 600.5 451 600.2C449.7 600.1 448.4 600 447.2 599.8C446.2 599.7 445.3 599.5 444.3 599.4C439.9 598.6 435.9 597.2 432.4 595.7C431.8 595.4 431.2 595.1 430.6 594.8C424.9 592 420.8 588.8 418.5 586.8C418 586.4 417.7 586.1 417.4 585.8C417.4 585.8 417.4 585.8 417.4 585.7C417.4 585.6 417.5 585.6 417.5 585.5C417.8 584.4 418.1 583.4 418.4 582.4C418.6 581.6 418.8 580.8 419 580.1C420.8 572.9 421.8 566.4 422.3 560.6C422.4 559.1 422.5 557.6 422.6 556.1C422.6 555.7 422.6 555.4 422.6 555C422.7 553.5 422.7 552.1 422.6 550.7C422.5 543 421.4 537.1 420.3 532.8C420.3 532.7 420.3 532.7 420.3 532.6C420.3 532.6 420.3 532.6 420.3 532.5V532.4C420.2 532.1 420.1 531.8 420 531.4C419.9 531.2 419.9 530.9 419.8 530.6C419.7 530.2 419.6 529.9 419.5 529.5C419.5 529.3 419.4 529.2 419.4 529C419.3 528.8 419.3 528.5 419.2 528.3C419.1 528 419 527.6 418.9 527.3C418.9 527.2 418.9 527.2 418.8 527.1C418.7 526.7 418.6 526.3 418.4 525.9C418.3 525.6 418.2 525.3 418.1 524.9C417.7 523.7 417.3 522.6 416.9 521.3C416.9 521.2 416.9 521.2 416.8 521.1C416.6 520.6 416.5 520.1 416.3 519.7C416.3 519.6 416.3 519.6 416.2 519.5L416 519V518.9C415.4 517.3 414.9 515.6 414.3 513.8C414 513 413.8 512.3 413.5 511.5C412.2 507.6 410.7 503.7 409.3 499.8L409.4 499.7C410.7 498.7 411.9 497.8 413.2 496.9C413.8 496.4 414.4 496 415.1 495.6C415.8 495.2 416.3 494.7 417 494.3C417.2 494.1 417.5 494 417.7 493.8C418 493.6 418.2 493.4 418.5 493.3C419.3 492.8 420 492.3 420.7 491.8C421.1 491.5 421.6 491.2 422 491C422.2 490.9 422.3 490.8 422.5 490.7C423 490.4 423.6 490 424.1 489.7C424.7 489.3 425.3 489 425.8 488.7C426.8 488.1 427.8 487.6 428.8 487.1C429.2 486.9 429.7 486.6 430.1 486.4C430.2 486.4 430.2 486.3 430.3 486.3H430.4C430.6 486.2 430.7 486.1 430.9 486.1C431.4 485.9 431.8 485.6 432.3 485.4C432.4 485.3 432.5 485.3 432.7 485.2C433 485 433.4 484.9 433.7 484.7C434 484.5 434.4 484.4 434.7 484.2C435.4 483.9 436 483.6 436.7 483.3C437.3 483 438 482.8 438.6 482.5C438.9 482.4 439.2 482.3 439.4 482.2C439.8 482.1 440.1 481.9 440.5 481.8C440.9 481.6 441.4 481.5 441.8 481.3C442.3 481.1 442.8 481 443.3 480.8C443.5 480.7 443.8 480.6 444 480.6C444.2 480.5 444.5 480.5 444.7 480.4C445.3 480.2 445.9 480.1 446.4 479.9C447 479.7 447.6 479.6 448.1 479.4C448.4 479.3 448.8 479.2 449.1 479.2C449.7 479 450.3 478.9 451 478.8C451.3 478.7 451.7 478.7 452 478.6C452.4 478.5 452.7 478.5 453.1 478.4C453.3 478.4 453.6 478.3 453.8 478.3C454 478.3 454.3 478.2 454.5 478.2C454.7 478.2 455 478.1 455.2 478.1C455.4 478.1 455.7 478 455.9 478C456.4 477.9 456.8 477.9 457.3 477.8C457.8 477.8 458.2 477.7 458.6 477.7C458.8 477.7 459.1 477.7 459.3 477.7C459.5 477.7 459.6 477.7 459.8 477.7H459.9C463.7 477.5 467.3 477.7 470.6 478.3C471 478.4 471.4 478.4 471.7 478.5C472 478.6 472.4 478.6 472.7 478.7C472.8 478.7 472.8 478.7 472.9 478.7C473.2 478.8 473.5 478.8 473.8 478.9C474.2 479 474.6 479.1 474.9 479.2C475 479.2 475 479.2 475.1 479.2C475.5 479.3 475.9 479.4 476.2 479.5C476.6 479.6 477.1 479.8 477.5 479.9C477.8 480 478.1 480.1 478.4 480.2C478.6 480.3 478.8 480.3 478.9 480.4C478.9 480.4 478.9 480.4 479 480.4C479.2 480.5 479.3 480.5 479.5 480.6C479.7 480.7 479.9 480.7 480 480.8C480.5 481 481 481.2 481.5 481.4C482 481.6 482.5 481.9 483 482.1C483.2 482.2 483.5 482.3 483.7 482.5C483.9 482.6 484.2 482.7 484.4 482.9C484.6 483 484.8 483.1 485.1 483.3C485.5 483.5 486 483.8 486.4 484.1C486.6 484.2 486.8 484.4 487 484.5C487.1 484.6 487.2 484.6 487.3 484.7C487.8 485 488.3 485.3 488.8 485.7C489 485.9 489.3 486 489.5 486.2C490.4 486.8 491.2 487.5 492 488.1C492.3 488.4 492.6 488.6 492.9 488.9C493.2 489.2 493.5 489.4 493.8 489.7C494.1 490 494.3 490.2 494.6 490.5C494.7 490.6 494.9 490.7 495 490.9C495.1 491 495.2 491.1 495.4 491.3C495.6 491.5 495.9 491.8 496.1 492C496.3 492.2 496.5 492.5 496.7 492.7C496.8 492.8 496.9 492.9 497 493C497.1 493.1 497.2 493.2 497.3 493.3C497.4 493.4 497.5 493.5 497.6 493.6C497.8 493.8 497.9 494 498.1 494.2C498.3 494.4 498.4 494.6 498.6 494.8C498.7 494.9 498.8 495 498.9 495.1C499.2 495.5 499.5 495.9 499.7 496.2L499.8 496.3C496.5 505.3 493.2 516.8 491.5 530.4C490.8 536.2 490.4 541.8 490.3 547.1C490.3 548.3 490.3 549.6 490.3 550.8C490.3 552.3 490.3 553.7 490.4 555.1C490.4 555.2 490.4 555.2 490.4 555.3C490.4 556 490.5 556.8 490.5 557.5C490.5 558.2 490.6 559 490.6 559.7C490.7 561.8 490.9 563.9 491.1 565.9C491.2 566.6 491.3 567.3 491.3 567.9C491.4 568.5 491.4 569.1 491.5 569.7C491.6 570.2 491.7 570.8 491.7 571.3C491.8 571.8 491.9 572.4 491.9 572.9C492.1 574 492.2 575 492.4 576C492.5 576.5 492.6 577 492.7 577.5C492.8 577.9 492.8 578.3 492.9 578.6C493 579.1 493.1 579.7 493.2 580.2C493.2 580.3 493.2 580.4 493.3 580.5C493.4 580.9 493.5 581.3 493.5 581.7C493.8 581.3 493.8 581.4 493.8 581.5Z",
+        fill: "#8677A7"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "514.6",
         cy: "604.8",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 211
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "514.6",
         cy: "618.1",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 212
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "514.6",
         cy: "631.4",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 213
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "514.6",
         cy: "644.7",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 214
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "514.6",
         cy: "658",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 215
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "514.6",
         cy: "671.2",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 216
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "514.6",
         cy: "684.5",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 217
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "514.6",
         cy: "697.8",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 218
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "514.6",
         cy: "711.1",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 219
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "514.6",
         cy: "724.4",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 220
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "514.6",
         cy: "737.7",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 221
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "514.6",
         cy: "751",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 222
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "514.6",
         cy: "764.3",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 223
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "514.6",
         cy: "777.6",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 224
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "514.6",
         cy: "790.8",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 225
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "514.6",
         cy: "804.1",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 226
-        },
-        __self: this
+        fill: "#87AEB4"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M530 610.6C529.6 611.1 528.9 611.4 528.2 611.4C526.9 611.4 525.8 610.4 525.8 609.2C525.8 608.4 526.3 607.7 526.9 607.3C527.9 608.4 529 609.5 530 610.6Z",
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "528.2",
         cy: "622.5",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 227
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "528.2",
         cy: "635.8",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 228
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "528.2",
         cy: "649.1",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 229
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "528.2",
         cy: "662.4",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 230
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "528.2",
         cy: "675.7",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 231
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "528.2",
         cy: "689",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 232
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "528.2",
         cy: "702.3",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 233
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "528.2",
         cy: "715.5",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 234
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "528.2",
         cy: "728.8",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 235
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "528.2",
         cy: "742.1",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 236
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "528.2",
         cy: "755.4",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 237
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "528.2",
         cy: "768.7",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 238
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "528.2",
         cy: "782",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 239
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "528.2",
         cy: "795.3",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 240
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "528.2",
         cy: "808.6",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 241
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "542.4",
         cy: "631.4",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 242
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "542.4",
         cy: "644.7",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 243
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "542.4",
         cy: "658",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 244
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "542.4",
         cy: "671.2",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 245
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "542.4",
         cy: "684.5",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 246
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "542.4",
         cy: "697.8",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 247
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "542.4",
         cy: "711.1",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 248
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "542.4",
         cy: "724.4",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 249
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "542.4",
         cy: "737.7",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 250
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "542.4",
         cy: "751",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 251
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "542.4",
         cy: "764.3",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 252
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "542.4",
         cy: "777.6",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 253
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "542.4",
         cy: "790.8",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 254
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "542.4",
         cy: "804.1",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 255
-        },
-        __self: this
+        fill: "#87AEB4"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M544.8 817.4C544.8 817.9 544.6 818.4 544.2 818.8C543 818.8 541.7 818.8 540.5 818.7C540.2 818.3 540 817.9 540 817.4C540 816.2 541.1 815.2 542.4 815.2C543.7 815.2 544.8 816.2 544.8 817.4Z",
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "556",
         cy: "649.1",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 256
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "556",
         cy: "662.4",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 257
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "556",
         cy: "675.7",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 258
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "556",
         cy: "689",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 259
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "556",
         cy: "702.3",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 260
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "556",
         cy: "715.5",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 261
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "556",
         cy: "728.8",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 262
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "556",
         cy: "742.1",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 263
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "556",
         cy: "755.4",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 264
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "556",
         cy: "768.7",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 265
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "556",
         cy: "782",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 266
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "556",
         cy: "795.3",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 267
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "556",
         cy: "808.6",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 268
-        },
-        __self: this
+        fill: "#004E5A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M571.9 657.6C571.8 658.7 570.8 659.6 569.5 659.6C568.2 659.6 567.1 658.6 567.1 657.4C567.1 656.2 568.2 655.2 569.5 655.2C569.6 655.2 569.7 655.2 569.7 655.2C570.2 655.8 570.7 656.4 571.2 657C571.5 657.1 571.7 657.3 571.9 657.6Z",
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "569.6",
         cy: "670.6",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 269
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "569.6",
         cy: "683.9",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 270
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "569.6",
         cy: "697.2",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 271
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "569.6",
         cy: "710.5",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 272
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "569.6",
         cy: "723.8",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 273
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "569.6",
         cy: "737.1",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 274
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "569.6",
         cy: "750.3",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 275
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "569.6",
         cy: "763.6",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 276
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "569.6",
         cy: "776.9",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 277
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "569.6",
         cy: "790.2",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 278
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "569.6",
         cy: "803.5",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 279
-        },
-        __self: this
+        fill: "#87AEB4"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M570.1 814.6C569.3 814.9 568.5 815.1 567.7 815.4C568.1 814.9 568.8 814.6 569.5 814.6C569.8 814.6 569.9 814.6 570.1 814.6Z",
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "583.1",
         cy: "675",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 280
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "583.1",
         cy: "688.3",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 281
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "583.1",
         cy: "701.6",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 282
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "583.1",
         cy: "714.9",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 283
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "583.1",
         cy: "728.2",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 284
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "583.1",
         cy: "741.5",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 285
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "583.1",
         cy: "754.8",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 286
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "583.1",
         cy: "768.1",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 287
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "583.1",
         cy: "781.4",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 288
-        },
-        __self: this
+        fill: "#004E5A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M585.5 794.1C585.2 794.9 584.8 795.7 584.5 796.4C584.1 796.6 583.7 796.8 583.2 796.8C581.9 796.8 580.8 795.8 580.8 794.6C580.8 793.4 581.9 792.4 583.2 792.4C584.3 792.4 585.2 793.2 585.5 794.1Z",
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "597.4",
         cy: "697.2",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 289
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "597.4",
         cy: "710.5",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 290
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "597.4",
         cy: "723.8",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 291
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "597.4",
         cy: "737.1",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 292
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "597.4",
         cy: "750.3",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 293
-        },
-        __self: this
+        fill: "#87AEB4"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M599 762C598.5 763.3 597.9 764.6 597.4 765.9C596.1 765.9 595.1 764.9 595.1 763.7C595.1 762.5 596.2 761.5 597.5 761.5C598 761.4 598.6 761.6 599 762Z",
+        fill: "#004E5A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M611.3 717.1C611.2 717.1 611.1 717.1 611 717.1C609.7 717.1 608.6 716.1 608.6 714.9C608.6 714 609.2 713.2 610 712.9C610.5 714.3 610.9 715.7 611.3 717.1Z",
+        fill: "#87AEB4"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M613.2 727.4C612.8 728.3 612.4 729.3 612.1 730.2C611.8 730.4 611.4 730.4 611 730.4C609.7 730.4 608.6 729.4 608.6 728.2C608.6 727 609.7 726 611 726C612 726 612.8 726.6 613.2 727.4Z",
+        fill: "#004E5A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M407.1 606.7C407.1 607.9 406 608.9 404.7 608.9C404.3 608.9 404 608.8 403.7 608.7C404.1 607.2 404.6 605.9 405.1 604.5C406.2 604.7 407.1 605.6 407.1 606.7Z",
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "404.7",
         cy: "620",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 294
-        },
-        __self: this
+        fill: "#87AEB4"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M407.1 633.3C407.1 634.4 406.2 635.3 405.1 635.5C404.5 634.2 404 632.8 403.6 631.4C403.9 631.2 404.3 631.1 404.7 631.1C406 631.1 407.1 632.1 407.1 633.3Z",
+        fill: "#004E5A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M420.7 491.7C420.6 492.8 419.6 493.8 418.3 493.8C418.1 493.8 417.9 493.8 417.6 493.7C417.9 493.5 418.1 493.3 418.4 493.2C419.2 492.6 419.9 492.1 420.7 491.7Z",
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "418.3",
         cy: "504.8",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 295
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "418.3",
         cy: "518.1",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 296
-        },
-        __self: this
+        fill: "#004E5A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M420.7 531.4C420.7 531.9 420.6 532.3 420.3 532.6C420.3 532.6 420.3 532.6 420.3 532.5V532.4C420.2 532.1 420.1 531.8 420 531.4C419.9 531.2 419.9 530.9 419.8 530.6C419.7 530.2 419.6 529.9 419.5 529.5C420.2 529.8 420.7 530.6 420.7 531.4Z",
+        fill: "#87AEB4"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M420.7 584.6C420.7 585.7 419.8 586.6 418.6 586.8C418.5 586.8 418.4 586.8 418.3 586.8C417.8 586.8 417.2 586.6 416.8 586.3C417.1 586 417.3 585.8 417.4 585.7C417.4 585.6 417.5 585.6 417.5 585.5C417.8 584.4 418.1 583.4 418.4 582.4C419.7 582.4 420.7 583.4 420.7 584.6Z",
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "418.3",
         cy: "597.8",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 297
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "418.3",
         cy: "611.1",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 298
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "418.3",
         cy: "624.4",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 299
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "418.3",
         cy: "637.7",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 300
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "418.3",
         cy: "651",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 301
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "432.5",
         cy: "487.1",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 302
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "432.5",
         cy: "500.4",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 303
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "432.5",
         cy: "513.7",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 304
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "432.5",
         cy: "527",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 305
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "432.5",
         cy: "540.3",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 306
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "432.5",
         cy: "553.5",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 307
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "432.5",
         cy: "566.8",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 308
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "432.5",
         cy: "580.1",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 309
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "432.5",
         cy: "593.4",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 310
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "432.5",
         cy: "606.7",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 311
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "432.5",
         cy: "620",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 312
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "432.5",
         cy: "633.3",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 313
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "432.5",
         cy: "646.6",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 314
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "432.5",
         cy: "659.9",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 315
-        },
-        __self: this
+        fill: "#004E5A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M448.3 479.1C447.9 479.9 447.1 480.4 446.1 480.4C445.6 480.4 445.2 480.3 444.8 480C445.4 479.8 446 479.7 446.5 479.5C447.1 479.4 447.7 479.3 448.3 479.1Z",
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "446.1",
         cy: "491.5",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 316
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "446.1",
         cy: "504.8",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 317
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "446.1",
         cy: "518.1",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 318
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "446.1",
         cy: "531.4",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 319
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "446.1",
         cy: "544.7",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 320
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "446.1",
         cy: "558",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 321
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "446.1",
         cy: "571.3",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 322
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "446.1",
         cy: "584.6",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 323
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "446.1",
         cy: "597.8",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 324
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "446.1",
         cy: "611.1",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 325
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "446.1",
         cy: "624.4",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 326
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "446.1",
         cy: "637.7",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 327
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "446.1",
         cy: "651",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 328
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "446.1",
         cy: "664.3",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 329
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "446.1",
         cy: "677.6",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 330
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "459.7",
         cy: "486.5",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 331
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "459.7",
         cy: "499.8",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 332
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "459.7",
         cy: "513.1",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 333
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "459.7",
         cy: "526.3",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 334
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "459.7",
         cy: "539.6",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 335
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "459.7",
         cy: "552.9",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 336
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "459.7",
         cy: "566.2",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 337
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "459.7",
         cy: "579.5",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 338
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "459.7",
         cy: "592.8",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 339
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "459.7",
         cy: "606.1",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 340
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "459.7",
         cy: "619.4",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 341
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "459.7",
         cy: "632.6",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 342
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "459.7",
         cy: "645.9",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 343
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "459.7",
         cy: "659.2",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 344
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "459.7",
         cy: "672.5",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 345
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "459.7",
         cy: "685.8",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 346
-        },
-        __self: this
+        fill: "#004E5A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M475.2 478.8C474.8 479.4 474.1 479.8 473.2 479.8C472 479.8 471 478.9 470.8 477.8C471.2 477.9 471.6 477.9 471.9 478C472.2 478.1 472.6 478.1 472.9 478.2C473 478.2 473 478.2 473.1 478.2C473.4 478.3 473.7 478.3 474 478.4C474.5 478.6 474.8 478.7 475.2 478.8Z",
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "473.2",
         cy: "490.9",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 347
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "473.2",
         cy: "504.2",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 348
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "473.2",
         cy: "517.5",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 349
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "473.2",
         cy: "530.8",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 350
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "473.2",
         cy: "544.1",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 351
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "473.2",
         cy: "557.3",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 352
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "473.2",
         cy: "570.6",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 353
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "473.2",
         cy: "583.9",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 354
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "473.2",
         cy: "597.2",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 355
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "473.2",
         cy: "610.5",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 356
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "473.2",
         cy: "623.8",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 357
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "473.2",
         cy: "637.1",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 358
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "473.2",
         cy: "650.4",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 359
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "473.2",
         cy: "663.7",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 360
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "473.2",
         cy: "676.9",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 361
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "473.2",
         cy: "690.2",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 362
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "473.2",
         cy: "703.5",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 363
-        },
-        __self: this
+        fill: "#004E5A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M475.6 716.8C475.6 717.3 475.4 717.8 475.1 718.1C474.5 716.9 473.8 715.7 473.2 714.5C474.5 714.6 475.6 715.6 475.6 716.8Z",
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "487.5",
         cy: "486.5",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 364
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "487.5",
         cy: "499.8",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 365
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "487.5",
         cy: "513.1",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 366
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "487.5",
         cy: "526.3",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 367
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "487.5",
         cy: "539.6",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 368
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "487.5",
         cy: "552.9",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 369
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "487.5",
         cy: "566.2",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 370
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "487.5",
         cy: "579.5",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 371
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "487.5",
         cy: "592.8",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 372
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "487.5",
         cy: "606.1",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 373
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "487.5",
         cy: "619.4",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 374
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "487.5",
         cy: "632.6",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 375
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "487.5",
         cy: "645.9",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 376
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "487.5",
         cy: "659.2",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 377
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "487.5",
         cy: "672.5",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 378
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "487.5",
         cy: "685.8",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 379
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "487.5",
         cy: "699.1",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 380
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "487.5",
         cy: "712.4",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 381
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "487.5",
         cy: "725.7",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 382
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "487.5",
         cy: "739",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 383
-        },
-        __self: this
+        fill: "#004E5A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M489.9 752.2C489.9 753.2 489.2 754.1 488.2 754.3C487.9 752.8 487.5 751.4 487.1 750C487.2 750 487.4 750 487.5 750C488.8 750 489.9 751 489.9 752.2Z",
+        fill: "#87AEB4"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M503.1 585.1C502.7 585.7 501.9 586.1 501.1 586.1C499.8 586.1 498.7 585.1 498.7 583.9C498.7 583.4 498.9 582.9 499.2 582.6C500.3 583.3 501.6 584.1 503.1 585.1Z",
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "501.1",
         cy: "597.2",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 384
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "501.1",
         cy: "610.5",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 385
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "501.1",
         cy: "623.8",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 386
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "501.1",
         cy: "637.1",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 387
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "501.1",
         cy: "650.4",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 388
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "501.1",
         cy: "663.7",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 389
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "501.1",
         cy: "676.9",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 390
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "501.1",
         cy: "690.2",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 391
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "501.1",
         cy: "703.5",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 392
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "501.1",
         cy: "716.8",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 393
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "501.1",
         cy: "730.1",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 394
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "501.1",
         cy: "743.4",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 395
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "501.1",
         cy: "756.7",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 396
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "501.1",
         cy: "770",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 397
-        },
-        __self: this
+        fill: "#87AEB4"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "501.1",
         cy: "783.3",
-        fill: "#004E5A",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 398
-        },
-        __self: this
+        fill: "#004E5A"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "501.1",
         cy: "796.5",
-        fill: "#87AEB4",
         rx: "2.4",
         ry: "2.2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 399
-        },
-        __self: this
+        fill: "#87AEB4"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M440.6 491.5C440.5 491.6 440.3 491.6 440.2 491.6C439.6 491.7 439 491.4 438.7 490.8L417.8 450.4C418.7 449.9 419.5 449.4 420.2 448.9L441.1 489.3C441.5 490.2 441.3 491.1 440.6 491.5Z",
+        fill: "#8677A7"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M493.8 453.7L483.9 492.9C483.5 492.6 483.2 492.3 482.8 492C482.6 491.8 482.4 491.6 482.1 491.4C481.9 491.2 481.7 491 481.4 490.9L491.2 452.2L493.8 453.7Z",
+        fill: "#8677A7"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M493.8 581.5C493.8 581.6 493.8 581.7 493.9 581.8C493 582.9 489.4 586.7 483.6 590.6L460 592.6C463.6 577.2 466.8 556.9 466.6 533C466.4 510.9 463.4 491.9 460 477.2C464.4 476.9 471.8 477.1 479.9 480.3C491.7 485 498.1 493.3 499.7 495.6L499.8 495.7C496.5 504.7 493.2 516.2 491.5 529.8C490.8 535.6 490.4 541.2 490.3 546.5C490.3 547.7 490.3 549 490.3 550.2C490.4 562.5 492 573 493.7 581.1C493.8 581.3 493.8 581.4 493.8 581.5Z",
+        fill: "url(#paint11_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.42",
+        d: "M442.1 662.7C438.5 663.9 435 665.1 431.4 666.3C415.2 651.9 401.9 639.6 402 620.3C402.1 604 411.3 592.1 415.6 587.5C424.4 612.6 433.3 637.6 442.1 662.7Z",
+        fill: "url(#paint12_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M677.2 966.6C674.2 970.6 668.6 971.3 662 971.3C660.7 971.3 659.3 971.3 657.9 971.2C622.7 970.3 597.7 969.7 595.5 959.6C594.9 957 596 953.8 597.8 951.9C604.1 945.5 620.3 953.2 641.7 951.1C643.5 950.9 645 950.4 646.6 949.4C652.6 945.3 653 935.3 652.3 927.5C651.9 923.8 651.3 920.6 650.9 918.7C654.6 918.4 658.4 918.2 662.1 917.9C666 917.6 669.9 917.4 673.8 917.1C673.8 917.6 673.9 918.1 673.9 918.7C674.2 921.8 674.4 924.8 674.7 927.6C675.4 934.5 676.2 940.2 676.9 944.7C677 945.1 677 945.4 677.1 945.8C678.9 957.5 680.3 962.6 677.2 966.6Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M785.9 963.7C785.9 964.3 785.8 964.8 785.6 965.3C785.3 966.5 784.8 967.5 784.1 968.5C783.6 969.2 783 969.7 782.4 970.2C781.9 970.6 781.4 970.9 780.8 971.2C780.3 971.5 779.8 971.7 779.3 971.9C775.8 973.2 771.2 973.2 766.2 973.1C765.8 973.1 765.4 973.1 764.9 973.1C755.1 972.9 746.1 972.6 738.2 972.2C736.8 972.1 735.5 972 734.2 972C733.6 972 733.1 971.9 732.6 971.9C730.3 971.7 728.1 971.6 726.1 971.3C725.6 971.3 725 971.2 724.5 971.1C722.2 970.8 720 970.5 718 970.2C717.4 970.1 716.9 970 716.4 969.9C713.9 969.4 711.7 968.8 709.9 968.1C709.3 967.9 708.8 967.6 708.3 967.4C707.3 967 706.5 966.5 705.8 965.9C705.1 965.4 704.6 964.9 704.1 964.3C703.4 963.5 703 962.6 702.8 961.6C702.5 960.4 702.6 959.1 703 957.8C703.1 957.2 703.4 956.7 703.6 956.2C704 955.4 704.5 954.6 705.2 953.9C706.1 953 707.2 952.4 708.4 952C708.9 951.8 709.5 951.7 710 951.6C711.9 951.3 714.1 951.3 716.5 951.5C717 951.5 717.6 951.6 718.1 951.6C720.1 951.8 722.3 952.1 724.6 952.3C725.1 952.4 725.7 952.4 726.2 952.5C728.3 952.7 730.5 953 732.7 953.2C733.2 953.2 733.8 953.3 734.3 953.3C736.4 953.4 738.6 953.5 740.8 953.5C741.3 953.5 741.9 953.5 742.4 953.5C744.5 953.5 746.6 953.4 748.7 953.1C748.8 953.1 748.8 953.1 748.9 953.1C749.5 953 750 952.9 750.5 952.8C751.5 952.5 752.5 952.1 753.5 951.4C754.4 950.8 755.2 950.1 755.8 949.2C756.2 948.7 756.6 948.1 756.9 947.5L757 947.4C757.7 946.1 758.2 944.6 758.6 943C758.8 942.3 758.9 941.7 759 941C759.1 940.5 759.2 939.9 759.2 939.4C759.4 937.5 759.4 935.6 759.4 933.7C759.4 933.2 759.4 932.6 759.3 932.1C759.2 930.1 759 928.3 758.8 926.6C758.8 926.3 758.7 925.9 758.6 925.6C758.3 923.6 758 922 757.8 920.8C758.1 920.8 758.3 920.8 758.6 920.7C760.5 920.6 762.4 920.4 764.3 920.3C764.8 920.3 765.4 920.2 765.9 920.2C768.1 920 770.3 919.9 772.4 919.7C772.9 919.7 773.5 919.6 774 919.6C776.2 919.4 778.4 919.3 780.5 919.1V919.2C780.7 921.3 780.8 923.3 781 925.2C781.3 929 781.7 932.5 782.1 935.7C782.2 936.9 782.4 938.1 782.5 939.2C782.6 939.7 782.6 940.3 782.7 940.8C783 943.2 783.3 945.4 783.6 947.3C783.6 947.4 783.6 947.5 783.6 947.6C783.7 948.1 783.7 948.5 783.8 949C783.9 949.9 784.1 950.8 784.2 951.7C784.4 953.1 784.6 954.4 784.8 955.6C784.9 956.2 785 956.7 785 957.2C785.9 959.8 786 962 785.9 963.7Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.35",
+        fillRule: "evenodd",
+        clipRule: "evenodd",
+        d: "M675.5 961.9V955.4H678.6C678.5 954.9 678.4 954.3 678.4 953.8H675.5V947.3H677.3C677.25 947.1 677.225 946.875 677.2 946.65L677.2 946.65L677.2 946.65C677.175 946.425 677.15 946.2 677.1 946V945.7H675.5V939H676.2C676.15 938.75 676.125 938.475 676.1 938.2C676.075 937.925 676.05 937.65 676 937.4H675.6V933.9C675 929 674.4 923.5 674 917.2V921.8H667.5V917.6C667.25 917.6 666.975 917.625 666.7 917.65C666.425 917.675 666.15 917.7 665.9 917.7V921.8H659.4V918.1C659.15 918.1 658.875 918.125 658.6 918.15C658.325 918.175 658.05 918.2 657.8 918.2V921.8H652.1V918.6C651.8 918.6 651.5 918.6 651.3 918.7C651.379 919.172 651.488 919.705 651.61 920.3L651.61 920.3L651.61 920.3C651.799 921.22 652.018 922.286 652.2 923.5H657.9V930H652.9C652.9 930.5 652.9 931.1 653 931.6H657.9V937.3H652.8C652.753 937.585 652.728 937.848 652.704 938.098C652.678 938.375 652.653 938.638 652.6 938.9H657.9V945.4H652.2V940.9C651.8 942.5 651.3 944 650.6 945.3V945.4H650.5C650.2 946 649.8 946.5 649.4 947H650.6V953.5H644.1V950.5C643.85 950.55 643.575 950.6 643.3 950.65L643.3 950.65L643.299 950.65L643.299 950.65L643.299 950.65C643.024 950.7 642.75 950.75 642.5 950.8V953.5H636V951.1H634.4V953.5H627.9V950.8C627.65 950.8 627.375 950.775 627.1 950.75L627.1 950.75L627.1 950.75C626.825 950.725 626.55 950.7 626.3 950.7V953.5H619.8V950C619.55 949.95 619.275 949.925 619 949.9L619 949.9C618.725 949.875 618.45 949.85 618.2 949.8V953.5H611.7V949C611.386 949 611.1 948.973 610.827 948.947C610.577 948.923 610.339 948.9 610.1 948.9V953.5H603.6V949C603 949.1 602.5 949.2 602 949.4V953.5H597.2C597.147 953.633 597.087 953.772 597.026 953.915L597.025 953.915L597.025 953.916L597.025 953.916L597.025 953.916L597.025 953.916L597.025 953.916L597.025 953.917L597.025 953.917L597.025 953.917C596.855 954.313 596.673 954.733 596.6 955.1H602V961.6H597.8C598.3 962.2 598.8 962.7 599.5 963.2H602V964.7C602.25 964.8 602.525 964.925 602.8 965.05C603.075 965.175 603.35 965.3 603.6 965.4V963.2H610.1V967.3C610.35 967.35 610.625 967.4 610.899 967.45L610.9 967.45L610.901 967.45C611.176 967.5 611.45 967.55 611.7 967.6V963.2H618.2V968.6C618.45 968.65 618.725 968.675 619 968.7L619 968.7L619 968.7C619.275 968.725 619.55 968.75 619.8 968.8V963.3H626.3V969.5C626.55 969.5 626.825 969.525 627.1 969.55C627.375 969.575 627.65 969.6 627.9 969.6V963.3H634.4V969.8H631.9C633.076 969.86 634.277 969.915 635.5 969.967V970.3H642V970.207C644.96 970.305 648.028 970.393 651.188 970.484H651.188L651.189 970.484H651.189H651.189L651.189 970.484L651.189 970.484H651.19H651.19L651.19 970.484C653.576 970.553 656.015 970.623 658.5 970.7L658.561 970.701C663.938 970.801 669.014 970.895 672.8 969.5H667.8V963L674.3 962.9V968.8C674.9 968.5 675.4 968.2 675.9 967.8V962.9H679.1C679.15 962.65 679.2 962.375 679.25 962.1C679.3 961.825 679.35 961.55 679.4 961.3L675.5 961.9ZM642 970.207V963.8H635.5V969.967C637.601 970.055 639.77 970.134 642 970.207ZM609.3 962.3H602.8V955.8H609.3V962.3ZM610.9 962.3H617.4V955.8H610.9V962.3ZM625.6 962.2H619.1V955.7H625.6V962.2ZM627.3 962.2H633.8V955.7H627.3V962.2ZM635.5 962.1H642V955.6H635.5V962.1ZM650.1 970.2H643.6V963.7H650.1V970.2ZM643.6 962H650.1V955.5H643.6V962ZM657.5 970.2H651.8V963.7H657.5V970.2ZM651.8 962H657.5V955.5H651.8V962ZM657.5 953.8H651.8V947.3H657.5V953.8ZM659.2 970.1H665.7V963.5L659.2 963.6V970.1ZM665.7 961.9H659.2V955.4L665.7 955.3V961.9ZM659.2 953.8H665.7V947.3H659.2V953.8ZM665.7 945.6L659.2 945.7V939.2H665.7V945.6ZM659.2 937.4H665.7V931.7H659.2V937.4ZM665.7 930.1H659.2V923.6H665.7V930.1ZM667.3 961.9H673.8V955.3L667.3 955.4V961.9ZM673.8 953.7L667.3 953.8V947.3H673.8V953.7ZM667.3 945.5H673.8V939H667.3V945.5ZM673.8 937.4H667.3V931.7H673.8V937.4ZM667.3 930H673.8V923.5H667.3V930Z",
+        fill: "#8677A7"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.35",
+        fillRule: "evenodd",
+        clipRule: "evenodd",
+        d: "M782.4 963.8V957.3H785.5C785.4 956.8 785.3 956.2 785.3 955.7H782.4V949.2H784.2C784.148 948.99 784.123 948.753 784.096 948.502L784.096 948.502V948.502L784.096 948.501C784.072 948.275 784.048 948.038 784 947.8V947.5H782.4V941H783.1C783.05 940.75 783.025 940.476 783 940.201L783 940.2L783 940.2C782.975 939.925 782.95 939.65 782.9 939.4H782.5V935.9C782.1 932.7 781.7 929.2 781.4 925.4C781.2 923.5 781 921.5 780.9 919.4V923.9H774.4V919.7C774.15 919.7 773.875 919.725 773.6 919.75C773.325 919.775 773.05 919.8 772.8 919.8V923.9L766.3 924V920.3C766.05 920.3 765.775 920.325 765.5 920.35C765.225 920.375 764.95 920.4 764.7 920.4V924H759V920.8C758.7 920.8 758.5 920.8 758.2 920.9C758.261 921.264 758.34 921.664 758.426 922.1C758.624 923.106 758.861 924.306 759 925.7H764.7V932.2H759.7C759.7 932.7 759.7 933.3 759.8 933.8H764.7V939.5H759.6C759.6 940 759.5 940.6 759.4 941.1H764.7V947.6H759V943C758.6 944.6 758.1 946.1 757.4 947.4V947.5H757C756.788 947.925 756.525 948.3 756.248 948.696L756.248 948.696C756.134 948.859 756.017 949.025 755.9 949.2H757.1V955.7L750.6 955.8V952.8C750.35 952.85 750.076 952.9 749.801 952.95L749.801 952.95L749.8 952.95L749.8 952.95C749.525 953 749.25 953.05 749 953.1V955.8H742.5V953.4H740.9V955.8H734.4V953.1C734.15 953.1 733.875 953.075 733.6 953.05C733.325 953.025 733.05 953 732.8 953V955.8H726.3V952.3C726.05 952.25 725.775 952.225 725.5 952.2L725.5 952.2C725.225 952.175 724.95 952.15 724.7 952.1V955.8H718.2V951.3C717.6 951.2 717.1 951.2 716.6 951.2V955.8H710.1V951.3C709.5 951.4 709 951.5 708.5 951.7V955.8H703.7C703.647 955.934 703.587 956.074 703.525 956.217L703.525 956.217L703.525 956.217C703.354 956.613 703.173 957.034 703.1 957.4H708.5V963.9H704.3C704.8 964.5 705.3 965 706 965.5H708.5V967C708.75 967.1 709.025 967.225 709.3 967.35C709.575 967.475 709.85 967.6 710.1 967.7V965.5H716.6V969.6C716.85 969.65 717.125 969.7 717.4 969.75L717.401 969.751C717.676 969.8 717.95 969.85 718.2 969.9V965.5H724.7V970.9C724.95 970.95 725.225 970.975 725.5 971L725.5 971C725.775 971.025 726.05 971.05 726.3 971.1V965.5H732.8V971.7C733.05 971.7 733.325 971.725 733.6 971.75C733.875 971.775 734.15 971.8 734.4 971.8V965.5H740.9V972H738.3C739.636 972.068 741.003 972.13 742.4 972.188V972.3L744.457 972.269C748.664 972.428 753.126 972.555 757.805 972.689L757.806 972.689L757.808 972.69L757.809 972.69L757.809 972.69L757.81 972.69L757.811 972.69C760.154 972.757 762.552 972.825 765 972.9H766.3C771.3 973 775.8 972.9 779.4 971.7H774.4V965.2H780.9V971.1C781.5 970.8 782 970.5 782.5 970.1V965.2H785.7C785.75 964.95 785.8 964.675 785.85 964.4C785.9 964.125 785.95 963.85 786 963.6L782.4 963.8ZM744.457 972.269L748.9 972.2V965.8H742.4V972.188C743.079 972.216 743.765 972.243 744.457 972.269ZM716.2 964.2H709.7V957.7H716.2V964.2ZM717.8 964.2H724.3V957.7H717.8V964.2ZM732.5 964.1H726V957.6L732.5 957.5V964.1ZM734.2 964.1H740.7V957.5L734.2 957.6V964.1ZM742.4 964H748.9V957.4L742.4 957.5V964ZM757 972.1H750.5V965.6L757 965.5V972.1ZM750.5 964H757V957.5H750.5V964ZM764.4 972.1H758.7V965.6H764.4V972.1ZM758.7 963.9H764.4V957.4H758.7V963.9ZM764.4 955.7H758.7V949.2H764.4V955.7ZM766.1 972.1L772.6 972V965.6H766.1V972.1ZM772.6 963.8H766.1V957.3H772.6V963.8ZM766.1 955.7H772.6V949.2H766.1V955.7ZM772.6 947.5H766.1V941H772.6V947.5ZM766.1 939.3H772.6V933.5L766.1 933.6V939.3ZM772.6 932H766.1V925.5H772.6V932ZM774.3 963.8H780.8V957.3H774.3V963.8ZM780.8 955.6H774.3V949.1H780.8V955.6ZM774.3 947.4H780.8V940.9H774.3V947.4ZM780.8 939.2H774.3V933.5H780.8V939.2ZM774.3 931.9H780.8V925.4H774.3V931.9Z",
+        fill: "#8677A7"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M784.1 968.5C780.7 973.1 773.9 973.3 766.1 973.1C768.4 959.4 778.2 953.8 784.6 951.6C786.1 960.6 786.8 965 784.1 968.5Z",
+        fill: "#F2CA5C"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M677.2 966.6C674.2 970.6 668.6 971.3 662 971.3C661.6 969.7 661.6 967.6 662 965.2C663.8 953.6 670.9 947.7 677 944.7C677.1 945.1 677.1 945.4 677.2 945.8C678.9 957.5 680.3 962.6 677.2 966.6Z",
+        fill: "#F2CA5C"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M781.3 925.2L758.9 926.5C758.6 924.1 758.2 922.1 757.9 920.7C765.5 920.2 773.2 919.6 780.8 919.1C780.9 921.2 781.1 923.2 781.3 925.2Z",
+        fill: "#F2CA5C"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M674.8 927.6H652.3C651.9 923.9 651.3 920.7 650.9 918.8C654.6 918.5 658.4 918.3 662.1 918L673.9 918.7C674.2 921.9 674.5 924.8 674.8 927.6Z",
+        fill: "#F2CA5C"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M880.1 651.2C872.9 665.1 864.7 671.8 839.8 696.4C829 707.1 813.3 722.8 794.6 742.6C795 745.8 795.6 750.5 796 756.3C798.7 792.9 792 819.8 788.4 837.7C784.6 856.8 780.6 884.7 780.8 921C779.3 921.1 777.9 921.2 776.4 921.4C772.8 921.7 769.1 922 765.5 922.3C763 922.5 760.6 922.7 758.1 922.9C755.6 889.7 753.3 860.2 751.1 831.7C750 817.1 748.8 802.9 747.7 788.5C746.4 771.8 745 755.5 747.8 736.3C748.3 732.6 749 728.8 749.9 724.9C750.1 724 750.3 723.1 750.5 722.2C752.3 714.6 754.5 707.6 757 701.2C763.5 683.9 771.7 670.5 777.8 661.2C778.4 660.3 779 659.4 779.5 658.5C788.5 644.6 802.9 625.8 824.5 607.2C839.7 603.5 854.9 599.7 870.2 596C875.2 594.8 880.1 593.6 885.1 592.4C886.7 592 888.4 591.6 890 591.2C890.2 592.9 890.3 594.6 890.5 596.4C891.5 612.6 889.9 632.3 880.1 651.2Z",
+        fill: "#302C34"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M759.8 604.8C732.2 620.8 708.6 636 689.3 649.2C652.6 674.2 643.4 687.5 638 701.8C637.5 703.2 637 704.6 636.6 706.2C632.7 720.5 633.1 732.8 633.8 739.5C634 741.5 634.2 742.9 634.3 743.6C638.5 774 640.7 789.2 643.7 806.5C646.7 823.6 650.7 856.5 655.1 924.8C661.7 924.8 668.3 924.8 675 924.8C673 882.5 678.1 850.9 683.5 829.2C686.6 816.9 691.9 799 693 773.4C693.7 754.8 691.9 739.4 690.2 728.9C728.3 702.7 767.9 672.7 807.8 638.3C820.7 627.2 833.1 616 845 604.9C816.4 604.9 788.1 604.9 759.8 604.8Z",
+        fill: "#19233D"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.53",
+        d: "M880.1 651.2C872.9 665.1 864.7 671.8 839.8 696.4C829 707.1 813.3 722.8 794.6 742.6C795 745.8 795.6 750.5 796 756.3C798.7 792.9 792 819.8 788.4 837.7C784.6 856.8 780.6 884.7 780.8 921C779.3 921.1 777.9 921.2 776.4 921.4C776.3 910.3 776.3 899 776.4 887.6C776.5 866.2 777 844.4 777 844.4C778 801.7 780 762.9 769.4 747.9C767.5 745.2 762.5 738.1 754.2 736.5C751.5 736 749.2 736.2 747.8 736.4C748.3 732.7 749 728.9 749.9 725C750.1 724.1 750.3 723.2 750.5 722.3C752.3 714.7 754.5 707.7 757 701.3C763.5 684 771.7 670.6 777.8 661.3C800.6 642.9 831.4 621.1 870.2 596.1C872.3 592.8 874.3 589.4 876.4 586.1L885 592.5L890.4 596.4C891.5 612.6 889.9 632.3 880.1 651.2Z",
+        fill: "url(#paint13_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.06",
+        d: "M752 831C751.7 831.3 751.4 831.5 751.1 831.7C750 817.1 748.8 802.9 747.7 788.5C746.1 768.6 744.5 749.3 749.9 724.9L766.1 700.8C766.1 700.8 779.1 809.1 752 831Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M916.1 544.4C914.9 545.3 913.7 546.2 912.5 547C910.2 548.6 908 550.3 905.7 551.9C902.9 562.3 900 572.7 897.2 583.1C895.2 590.4 893.2 597.6 891.2 604.9H820.4L814.9 590.7L765.7 589.9C766 589.1 766.2 588.2 766.5 587.4C769.8 576.2 773.4 562 776.8 547.8C777 546.8 777.3 545.8 777.5 544.8C779.5 536.3 781.4 527.8 783.2 519.9C786.3 506 788.9 494.1 790.4 487.6C794.8 468.9 786.3 490.2 766.7 512.2C760.1 519.6 746.8 534.3 736.2 532.5C735.7 532.4 735.1 532.3 734.6 532.1C733.6 531.7 732.6 531.2 731.8 530.6C730 529.3 728.7 527.6 727.8 526C727 524.6 726.4 523.4 726.1 522.6C726.1 522.6 725.7 521.6 725.4 520.5C720.3 503.4 735.6 476.2 735.6 476.2C737.3 473.1 738.9 470.3 740.5 467.6C751.8 447.6 758.7 436.2 769.7 423.3C784.5 406 800.8 386.9 822.1 377.3C825.9 375.6 829.9 374.2 834 373.1C834.9 372.9 835.9 372.6 836.8 372.4C847.3 370.2 857.1 370.4 862.6 370.7C865.4 370.9 867.1 371.1 867.1 371.1C868.9 371.4 870.5 371.7 872 372C878.1 373.3 882.6 375 884.9 375.9C886.9 376.7 888.9 377.5 890.8 378.4C892.8 379.4 894.8 380.4 896.7 381.5C912.8 390.6 924 403.1 929.5 410.9C935.8 419.8 940.2 430.1 942.6 441.3C949.3 473 940.6 511.4 916.1 544.4Z",
+        fill: "#336859"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.17",
+        d: "M867.8 538.7C902.3 502.7 912.8 465.6 900 449.8C891.9 439.8 872.8 436.1 859.3 442.2C845.5 448.5 841.3 463.4 835.6 476.3C830.7 487.4 823.3 500.4 811.3 514.1C811.3 513.7 808.1 451.7 797.8 450.7C788.4 449.8 737.5 513.4 727.6 526C726.5 527.4 725.9 528.1 725.9 528.1L731.6 530.6L736 532.5C746.6 534.3 759.9 519.7 766.5 512.2C786 490.2 794.6 468.9 790.2 487.6C787.8 497.7 782.9 521.1 777.4 544.7C773.8 560 770 575.4 766.4 587.4C764.2 594.8 762 601 760.1 604.9H891.2C896 587.2 900.9 569.6 905.7 551.9C910.3 550.1 912.6 548.5 912.5 547C912.2 543.3 897.3 540.6 867.8 538.7Z",
+        fill: "url(#paint14_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.05",
+        d: "M942.5 441.4C938.7 440.2 934.4 438.4 929.5 435.8C908.5 424.6 900 398.6 896.6 381.5C912.7 390.6 923.9 403.1 929.4 410.9C935.7 419.9 940.1 430.2 942.5 441.4Z",
+        fill: "url(#paint15_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.05",
+        d: "M821.8 377.3C810.5 397.1 774.1 459.2 759 468.7C750.8 473.9 744.6 471.6 740.2 467.6C751.5 447.6 758.4 436.2 769.4 423.3C784.2 406 800.5 386.9 821.8 377.3Z",
+        fill: "url(#paint16_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.36",
+        d: "M890.6 378.5C883.5 395 869.4 404.9 856.4 403.4C854 403.1 843.3 401.5 837.9 391.8C833 383 836 374 836.5 372.4C847 370.2 856.8 370.4 862.3 370.7L871.8 372C877.9 373.3 882.4 375 884.7 375.9C886.7 376.8 888.7 377.6 890.6 378.5Z",
+        fill: "#0D2A28"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.36",
+        d: "M897.2 583.2C895.2 590.5 893.2 597.7 891.2 605H820.4L814.9 590.8L765.7 590C766 589.2 766.2 588.3 766.5 587.5C769.8 576.3 773.4 562.1 776.8 547.9C777 546.9 777.3 545.9 777.5 544.9C779.5 536.4 781.4 527.9 783.2 520C804.8 529.2 871.1 558.6 897.2 583.2Z",
+        fill: "#0D2A28"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M880.1 374.1C879.7 385.2 870.9 393.7 861.2 394C850.3 394.3 840.3 384.1 841.3 371.5C841.3 371.4 841.3 371.3 841.3 371.2C841.5 369.9 841.8 367.9 842.2 365.5C843.6 356.9 844.4 352.6 845 351.3C845.5 350.3 846.1 349.5 846.8 348.7C849.2 346.2 853 344.5 859.2 341.8C861.7 340.7 865 339.5 868.9 338.3C871.7 337.5 874.8 336.7 878.2 336.1C878.2 338.3 878.3 340.5 878.4 342.7C878.5 345.2 878.6 347.7 878.7 350.2C878.7 350.3 878.7 350.4 878.7 350.5C878.8 353.6 879 356.7 879.2 359.8C879.5 364.7 879.8 369.4 880.1 374.1Z",
+        fill: "#DF7D56"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.13",
+        d: "M878.4 342.8C878.3 342.8 878.3 342.8 878.2 342.8C878.1 343.8 875 363.7 858.3 370.2C851.3 372.9 844.7 372.1 841.3 371.4C841.3 371.3 841.3 371.2 841.3 371.1C841.5 369.8 841.8 367.8 842.2 365.4C843.6 356.8 844.4 352.5 845 351.2C845.5 350.2 846.1 349.4 846.8 348.6L868.9 338.2C871.7 337.4 874.8 336.6 878.2 336C878.3 338.4 878.4 340.6 878.4 342.8Z",
+        fill: "#002544"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M884.3 315.9C884.2 317 884.1 318.1 884 319.2C883.5 322.5 882.6 324.8 881.9 327.6C881 328.2 879.8 328.9 877.7 330.7C874.9 333.2 873 335.7 871.7 338.1C867.8 344.9 867.8 351.1 862.3 356.8C855.4 363.9 840.5 367.4 831.4 361.6C824 357 823.6 344.3 822.7 319.1C822.7 319.1 822.1 301.2 829.4 288C830 286.9 830.8 286 831.1 285.6L831.2 285.5L831.3 285.4C831.5 285.2 831.7 285 831.8 284.8C832.1 284.5 832.4 284.2 832.7 283.9C832.9 283.7 833.1 283.5 833.3 283.3C833.5 283.1 833.8 282.9 834 282.7C834.1 282.6 834.3 282.5 834.4 282.4C834.6 282.2 834.8 282.1 835.1 281.9C843.1 276.6 854.5 276.3 862.9 279.3C863.4 279.5 863.8 279.6 864.3 279.8C864.8 280 865.2 280.2 865.6 280.4C866 280.6 866.5 280.8 866.9 281.1C867.3 281.3 867.6 281.5 868 281.7C868 281.7 868 281.7 868.1 281.7C868.2 281.8 868.5 281.9 868.8 282.1C869.1 282.3 869.4 282.5 869.7 282.7C870 282.9 870.2 283.1 870.5 283.3C872.2 284.6 873.8 286.1 875.1 287.8C875.3 288 875.5 288.3 875.7 288.5C881.6 296.5 883.9 307 884.3 315.9Z",
+        fill: "#DF7D56"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M884.3 315.9C884.2 317 884.1 318.1 884 319.2C883.5 322.5 882.6 324.8 881.9 327.6C881.4 329.7 881 332 881 335.3C881 339.7 881.6 343.3 882.1 345.6C880.3 346 877.3 346.3 875.5 344.7C875 344.2 874.6 343.4 873.6 341.9C873.6 341.9 872.5 340 871.7 338.2C869.5 333 869.3 321.1 868.1 320.9C867.7 320.9 867.2 321.8 866.2 325.9C865.3 325.9 864.3 326 863.3 325.9C861.1 325.8 859.1 325.4 857.5 324.9C857.6 320.3 857.6 315.5 857.5 310.4C857.3 304.8 857 299.5 856.5 294.4C847.5 292.2 838.4 290.1 829.4 287.9C829.9 287 830.5 286.2 831.1 285.5L831.2 285.4L831.3 285.3C831.5 285.1 831.7 284.9 831.8 284.7C832.1 284.4 832.4 284.1 832.7 283.8C832.9 283.6 833.1 283.4 833.3 283.2C833.5 283 833.8 282.8 834 282.6C834.1 282.5 834.3 282.4 834.4 282.3C834.6 282.1 834.8 282 835.1 281.8C843.1 276.5 854.5 276.2 862.9 279.2C863.4 279.4 863.8 279.5 864.3 279.7C864.8 279.9 865.2 280.1 865.6 280.3C866 280.5 866.5 280.7 866.9 281C867.3 281.2 867.6 281.4 868 281.6C868 281.6 868 281.6 868.1 281.6C868.2 281.7 868.5 281.8 868.8 282C869.1 282.2 869.4 282.4 869.7 282.6C870 282.8 870.2 283 870.5 283.2C872.2 284.5 873.7 286 875.1 287.7C875.3 287.9 875.5 288.2 875.7 288.4C881.4 296 884.8 306.3 884.3 315.9Z",
+        fill: "#302C34"
     }), /*#__PURE__*/ _reactDefault.default.createElement("ellipse", {
         cx: "832.264",
         cy: "320.296",
-        fill: "#302C34",
         rx: "2.1",
         ry: "2",
-        transform: "rotate(-64.609 832.264 320.296)",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 400
-        },
-        __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("defs", {
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 401
-        },
-        __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
+        transform: "rotate(-64.6086 832.264 320.296)",
+        fill: "#302C34"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M879.6 325.2C879.6 330.4 876.1 334.6 871.9 334.6C868.4 334.6 865.5 331.9 864.5 328.1C864.3 327.2 864.1 326.3 864.1 325.3C864.1 320.1 867.6 315.9 871.8 315.9C873.7 315.9 875.4 316.7 876.8 318.1C878.5 319.7 879.6 322.3 879.6 325.2Z",
+        fill: "#DF7D56"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.25",
+        d: "M876.8 318C872.3 321.8 866.9 326.2 864.5 328C864.3 327.1 864.1 326.2 864.1 325.2C864.1 320 867.6 315.8 871.8 315.8C873.7 315.8 875.5 316.7 876.8 318Z",
+        fill: "url(#paint17_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("rect", {
+        x: "831.438",
+        y: "304.317",
+        width: "11.6001",
+        height: "2.90002",
+        transform: "rotate(38.2428 831.438 304.317)",
+        fill: "#302C34"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M830.8 348.3C830.5 348.3 830.3 348.1 830.2 347.8C830.1 347.5 830.3 347.2 830.6 347.1C833.4 346.4 835.9 345.1 838.1 343.3C839.1 342.5 840.1 341.5 840.9 340.5C841.1 340.2 841.5 340.2 841.7 340.4C842 340.6 842 341 841.8 341.2C840.9 342.3 839.9 343.3 838.8 344.2C836.5 346.1 833.8 347.4 830.8 348.2C830.9 348.3 830.8 348.3 830.8 348.3Z",
+        fill: "black"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M830.4 315.4C830.4 315.4 813.6 330.3 816.8 332.7C820 335.1 823.1 335.4 823.1 335.4L830.4 315.4Z",
+        fill: "#DF7D56"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M858.3 625.6C858.3 625.4 858.3 625.1 858.3 624.9C858.3 624.3 858.2 623.7 858.2 623.1C858.2 622.8 858.1 622.6 858.1 622.3C858 621.7 858 621.1 857.9 620.4C857.9 620.2 857.8 620 857.8 619.8C857.7 619 857.5 618.1 857.4 617.3C857.2 616.5 857.1 615.7 856.9 614.9C856.8 614.6 856.8 614.4 856.7 614.1C856.6 613.6 856.4 613 856.3 612.5C856.2 612.2 856.1 611.8 856 611.5C856 611.4 855.9 611.2 855.9 611C855.8 610.8 855.7 610.5 855.7 610.3V610.2C855.6 609.8 855.5 609.5 855.3 609.1C855 608.3 854.8 607.6 854.4 606.8C854.3 606.5 854.2 606.2 854 605.8C852.8 602.9 851.4 600.1 849.8 597.3C849.3 596.5 848.8 595.6 848.3 594.8C847.8 594 847.2 593.1 846.6 592.3C846.3 591.9 846 591.5 845.7 591.1C842.7 587 839.3 583.1 835.5 579.2C835.3 579 835 578.7 834.7 578.5C829.8 573.7 824.2 569.2 818 564.9C817.7 564.7 817.4 564.5 817.2 564.3C816.4 563.8 815.6 563.2 814.9 562.7C810.2 559.6 805.3 556.7 800 553.8C797 552.2 793.9 550.6 790.7 549.1C790.4 549 790.1 548.8 789.8 548.7C779 543.7 767.2 539.2 754.6 535.3C754.2 535.2 753.7 535 753.3 534.9C742.7 531.7 731.5 529 719.8 526.8C719.5 526.7 719.1 526.7 718.8 526.6C705.3 524 691.2 522.2 676.6 521C676.2 521 675.8 520.9 675.4 520.9C671.3 520.6 667.2 520.3 663.1 520.1C662.7 520.1 662.4 520.1 662 520.1C657.4 519.9 652.8 519.8 648.1 519.7C647.7 519.7 647.3 519.7 646.9 519.7C645.9 519.7 644.8 519.7 643.8 519.7H642.8C642 519.7 641.1 519.7 640.3 519.7C639.8 519.7 639.4 519.7 639 519.7C638.6 519.7 638.2 519.7 637.8 519.7C623.4 519.9 609.3 520.7 595.7 522.2C589.1 523 582.5 523.8 576.1 524.9C575.7 525 575.3 525 574.9 525.1C572.3 525.5 569.7 526 567.1 526.5C563.6 527.2 560.1 527.9 556.7 528.6C556.4 528.7 556 528.8 555.7 528.8C553.3 529.3 551 529.9 548.6 530.5C546.5 531 544.4 531.5 542.4 532.1C542.1 532.2 541.7 532.3 541.4 532.4C541.2 532.5 540.9 532.5 540.7 532.6C538.5 533.2 536.3 533.8 534.1 534.4C533.8 534.5 533.4 534.6 533.1 534.7C526.5 536.6 520.2 538.8 514.1 541C514.1 541 514.1 541 514 541C513.6 541.2 513.1 541.3 512.7 541.5C509.3 542.8 506 544.1 502.7 545.5C502.5 545.6 502.2 545.7 502 545.8C501.9 545.9 501.7 545.9 501.5 546C493.2 549.6 485.5 553.5 478.4 557.7C478.3 557.8 478.2 557.8 478.1 557.9C477.9 558 477.8 558.1 477.6 558.2C472.4 561.3 467.5 564.6 463 568C462.7 568.2 462.5 568.4 462.2 568.6C453.1 575.6 445.5 583.1 439.8 591.1C439.6 591.4 439.4 591.7 439.2 592C435.8 596.8 433.1 601.7 431.1 606.8C428.4 613.7 426.9 620.8 426.9 628.1V978.6H441.1V666.9C442.4 668.7 443.9 670.4 445.4 672.2C445.7 672.6 446.1 673 446.4 673.3C446.6 673.6 446.9 673.9 447.2 674.1C447.5 674.4 447.7 674.7 448 675C448.3 675.3 448.5 675.5 448.8 675.8C449.2 676.2 449.6 676.7 450.1 677.1C450.7 677.7 451.2 678.2 451.8 678.8C452.4 679.3 452.9 679.9 453.5 680.4C454.7 681.5 455.9 682.6 457.2 683.6C458.3 684.5 459.4 685.4 460.5 686.3C462.1 687.5 463.7 688.7 465.3 689.9C465.9 690.3 466.4 690.7 467 691.1C467.1 691.2 467.3 691.3 467.4 691.4C467.9 691.7 468.4 692.1 468.9 692.4C470.3 693.4 471.8 694.3 473.3 695.3C473.6 695.5 474 695.7 474.3 695.9C474.9 696.3 475.5 696.7 476.1 697C476.9 697.5 477.7 697.9 478.4 698.4C479.1 698.8 479.9 699.3 480.6 699.7L481.9 700.5C482.1 700.6 482.3 700.7 482.4 700.8C482.9 701.1 483.4 701.3 483.9 701.6C485 702.2 486.2 702.8 487.3 703.4C488.5 704 489.6 704.6 490.8 705.2C492 705.8 493.2 706.4 494.4 706.9C495.6 707.5 496.8 708 498.1 708.6C499.3 709.1 500.4 709.6 501.6 710.2C501.7 710.2 501.7 710.3 501.8 710.3C502.2 710.5 502.6 710.6 502.9 710.8C504.1 711.3 505.4 711.9 506.7 712.4C507.8 712.8 508.9 713.3 510 713.7C511.5 714.3 512.9 714.8 514.4 715.4C515.2 715.7 516.1 716 517 716.3C517.1 716.3 517.2 716.4 517.4 716.4C517.8 716.5 518.2 716.7 518.5 716.8C519.7 717.2 520.9 717.6 522.1 718C523.6 718.5 525.1 719 526.6 719.5C527.5 719.8 528.4 720.1 529.4 720.4C529.5 720.4 529.6 720.5 529.8 720.5C531 720.9 532.2 721.2 533.4 721.6C533.8 721.7 534.1 721.8 534.5 721.9C537.5 722.8 540.5 723.6 543.6 724.4C544.6 724.7 545.6 724.9 546.7 725.2C547.1 725.3 547.5 725.4 547.9 725.5C548.2 725.6 548.6 725.7 548.9 725.7C549.8 725.9 550.8 726.2 551.7 726.4C553 726.7 554.2 727 555.5 727.3C555.5 727.3 555.5 727.3 555.6 727.3C556 727.4 556.3 727.5 556.7 727.5C557.2 727.6 557.6 727.7 558.1 727.8C559.1 728 560.1 728.2 561.1 728.4C562.4 728.7 563.8 728.9 565.1 729.2C565.9 729.4 566.6 729.5 567.4 729.6C569.3 730 571.1 730.3 573 730.6C573.8 730.8 574.7 730.9 575.5 731C577.6 731.3 579.8 731.7 581.9 732C582.3 732.1 582.7 732.1 583.1 732.2C584.4 732.4 585.7 732.6 587 732.7C587.5 732.8 587.9 732.8 588.4 732.9C589.7 733.1 590.9 733.2 592.2 733.4C593.5 733.6 594.7 733.7 596 733.8C597.8 734 599.6 734.2 601.4 734.4C601.7 734.4 602.1 734.5 602.4 734.5C603.7 734.6 605 734.7 606.3 734.9C608 735 609.7 735.2 611.3 735.3C612.1 735.4 612.8 735.4 613.6 735.5C614.3 735.6 615.1 735.6 615.8 735.6C617.1 735.7 618.3 735.8 619.6 735.8C619.7 735.8 619.7 735.8 619.8 735.8C621.3 735.9 622.9 736 624.5 736C625.5 736.1 626.5 736.1 627.5 736.1H627.6C627.9 736.1 628.2 736.1 628.5 736.1H628.6C630.2 736.2 631.9 736.2 633.5 736.2C633.7 736.2 634 736.2 634.2 736.2C635.8 736.2 637.5 736.3 639.1 736.3C639.1 736.3 639.2 736.3 639.3 736.3C639.7 736.3 640 736.3 640.4 736.3C641 736.3 641.7 736.3 642.3 736.3C642.6 736.3 642.9 736.3 643.3 736.3V996.5H657.5V736.2C661 736.1 664.5 735.9 667.9 735.7C668.2 735.7 668.5 735.7 668.8 735.6C670.4 735.5 672.1 735.4 673.7 735.3H673.8C675.3 735.2 676.8 735.1 678.2 734.9C679.3 734.8 680.3 734.7 681.4 734.6C682.3 734.5 683.2 734.4 684.1 734.3C685.5 734.2 686.9 734 688.3 733.9C688.6 733.9 689 733.8 689.3 733.8C690.8 733.6 692.3 733.5 693.8 733.3C695.3 733.1 696.8 732.9 698.2 732.7C699.7 732.5 701.1 732.3 702.6 732.1C704.1 731.9 705.5 731.7 706.9 731.4C707.2 731.3 707.6 731.3 707.9 731.2C709.5 731 711 730.7 712.6 730.4C713.8 730.2 715 730 716.2 729.8C716.5 729.8 716.9 729.7 717.2 729.6C719 729.3 720.8 728.9 722.6 728.6C723.9 728.3 725.3 728 726.6 727.8C727 727.7 727.4 727.6 727.8 727.6C728.7 727.4 729.7 727.2 730.6 727C732.1 726.7 733.6 726.3 735.1 726C735.9 725.8 736.7 725.6 737.5 725.4C737.8 725.3 738.2 725.2 738.5 725.2C739.6 724.9 740.6 724.7 741.7 724.4C744.8 723.6 747.9 722.7 750.9 721.9C751.6 721.7 752.3 721.5 753 721.3C754.2 721 755.3 720.6 756.5 720.2C757.4 719.9 758.3 719.6 759.1 719.4C759.6 719.2 760.2 719 760.8 718.9C762 718.5 763.2 718.1 764.3 717.7C765.5 717.3 766.7 716.8 767.9 716.4C769.2 715.9 770.6 715.4 771.9 714.9C772.2 714.8 772.5 714.7 772.9 714.5C773.2 714.4 773.6 714.2 773.9 714.1C774.6 713.8 775.3 713.6 776 713.3C779 712.1 782 710.8 784.9 709.6C786.4 708.9 787.9 708.3 789.3 707.6C797.4 703.8 804.9 699.7 811.7 695.4C812.4 695 813.1 694.5 813.8 694.1C814.3 693.8 814.8 693.4 815.3 693.1C815.9 692.7 816.5 692.3 817 691.9C817.5 691.5 818 691.2 818.5 690.8C818.9 690.5 819.3 690.3 819.7 690C820 689.8 820.4 689.5 820.7 689.3C821.2 689 821.6 688.6 822.1 688.3C822.9 687.7 823.6 687.1 824.3 686.6C824.6 686.4 824.8 686.2 825.1 686C825.4 685.7 825.7 685.5 826.1 685.2C826.4 685 826.7 684.7 827 684.5C827.6 684 828.2 683.5 828.8 683C829.6 682.3 830.5 681.5 831.3 680.8C831.6 680.5 832 680.2 832.3 679.9C832.7 679.5 833.2 679.1 833.6 678.7C834.2 678.1 834.9 677.5 835.5 676.9C835.9 676.5 836.3 676.1 836.7 675.7C836.8 675.6 836.8 675.6 836.9 675.5C837.3 675.1 837.7 674.7 838.1 674.2C838.5 673.8 838.8 673.4 839.2 673C839.9 672.2 840.6 671.5 841.2 670.7C841.6 670.3 842 669.8 842.3 669.4C842.9 668.7 843.5 667.9 844 667.2V978.1H858.2V628.1C858.4 627.3 858.4 626.5 858.3 625.6Z",
+        fill: "#5A142A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("g", {
+        opacity: "0.5"
+    }, /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        fillRule: "evenodd",
+        clipRule: "evenodd",
+        d: "M626.167 539.2L626.1 539.3C612.1 560.1 597.9 581.4 592.9 601.1C589.7 613.8 590.3 626 597.2 637.1C609.9 657.8 620.9 687 625.9 712.6C627.4 720.1 628.4 727.3 628.7 733.9C628.7 734.25 628.725 734.624 628.75 734.999L628.75 735C628.775 735.375 628.8 735.75 628.8 736.1H627.9H627.8C627.8 735.75 627.775 735.425 627.75 735.1C627.725 734.775 627.7 734.45 627.7 734.1C627.4 727.7 626.4 720.5 624.9 712.7C624.491 710.575 624.016 708.451 623.529 706.272C623.42 705.784 623.31 705.294 623.2 704.8C617.5 680.9 607.5 655.8 596.4 637.8C589.4 626.4 588.7 614.1 591.9 601.2C596.9 581.1 611.2 559.7 625.3 538.7C625.992 537.653 626.682 536.612 627.368 535.576L627.376 535.564L627.385 535.55C630.956 530.16 634.433 524.91 637.7 519.8C637.9 519.4 638.1 519.1 638.3 518.8H639.5C639.3 519.2 639.1 519.5 638.9 519.8L638.9 519.8C634.92 526.168 630.643 532.536 626.167 539.2ZM598.4 712.3C596.7 706.4 594.5 700.1 591.6 693.3C590.2 690.1 588.9 686.6 587.6 682.8C579.9 660.5 574 629.7 571.6 598.7C571.55 598 571.5 597.325 571.45 596.65C571.4 595.975 571.35 595.3 571.3 594.6C569.3 565 571.1 540.4 576.1 525.2C576.156 525.087 576.181 524.975 576.209 524.845L576.209 524.845C576.232 524.743 576.256 524.631 576.3 524.5C576.35 524.4 576.375 524.3 576.4 524.2C576.425 524.1 576.45 524 576.5 523.9C576.3 523.95 576.1 523.975 575.9 524C575.7 524.025 575.5 524.05 575.3 524.1C575.2 524.3 575.1 524.5 575.1 524.8C575.05 524.9 575.025 525 575 525.1C574.975 525.2 574.95 525.3 574.9 525.4C570 540.8 568.3 564.9 570.3 594.7C570.4 596 570.5 597.3 570.6 598.5C572.8 627.9 578.2 657.1 585.3 679.2C587 684.5 588.8 689.3 590.7 693.7C593.6 700.4 595.8 706.6 597.4 712.3C599.9 720.8 601.1 728.3 601.6 734.6C601.75 734.6 601.925 734.625 602.1 734.65C602.275 734.675 602.45 734.7 602.6 734.7C602.1 728.3 600.8 720.8 598.4 712.3ZM551.9 655.4C555.5 666.7 564.6 688.8 573.8 710.3C577 717.9 580.2 725.4 583.4 732.3C583.2 732.25 583 732.225 582.8 732.2C582.6 732.175 582.4 732.15 582.2 732.1C581.37 730.192 580.518 728.238 579.651 726.251L579.648 726.245L579.647 726.241L579.642 726.231C577.377 721.038 575.012 715.619 572.7 710.2C563.6 688.8 554.6 667 551 655.7C549 649.5 548.7 637 549.3 621.5C549.6 612.8 550.2 603.3 550.9 593.3C551.5 584.7 552.2 575.9 552.9 567.2C554 554.2 555 541 555.7 529.3V528.9C555.8 528.5 555.8 528 555.8 527.6C556.1 527.6 556.5 527.5 556.8 527.4C556.8 527.6 556.775 527.825 556.75 528.05L556.75 528.05C556.725 528.275 556.7 528.5 556.7 528.7V529.1C556 540.5 555 553.6 553.9 567.3C553.2 576.1 552.5 585 551.9 593.6C551.1 604.1 550.5 614.1 550.2 623C549.7 637.8 550 649.5 551.9 655.4ZM550.6 706.2C544 683.2 538.6 662.1 538.6 652.7C538.6 635.1 538.7 619.3 539 605.2C539.1 599.7 539.2 594.5 539.3 589.6C540 565.3 541 546.5 542.3 532.3C542.3 532.1 542.3 531.8 542.4 531.6V531.3C542.25 531.35 542.075 531.4 541.9 531.45C541.725 531.5 541.55 531.55 541.4 531.6V531.8C541.4 531.95 541.375 532.1 541.35 532.25C541.325 532.4 541.3 532.55 541.3 532.7C539.9 547.8 539 566.7 538.3 589.4C538.2 594.1 538.1 598.9 538 603.8C537.7 618.7 537.6 635.1 537.6 652.9C537.6 662.3 542.9 683.2 549.4 706.1C550.864 711.225 552.436 716.511 553.997 721.761C554.568 723.682 555.138 725.598 555.7 727.5C555.729 727.507 555.757 727.514 555.784 727.521L555.835 727.534L555.898 727.551C556.206 727.631 556.469 727.7 556.8 727.7C554.7 720.5 552.6 713.2 550.6 706.2ZM531.4 593.1C528.4 616.7 525.3 649.6 541 703.7C543 710.6 545.4 717.9 548.1 725.4L546.9 725.1C544.3 717.5 542 710.2 540 703.3C524.2 648.5 527.6 615.5 530.7 591.8C530.9 590.8 531 589.9 531.1 588.9C531.15 588.5 531.2 588.125 531.25 587.75C531.3 587.375 531.35 587 531.4 586.6C531.6 584.9 531.8 583.3 532 581.7C534.1 564.4 534.7 546 533.1 534.8C533 534.6 533 534.5 533 534.3L533.9 534C533.9 534.041 533.917 534.1 533.937 534.168C533.966 534.265 534 534.383 534 534.5C536 547.5 534.5 568.8 532.9 581.8C532.815 582.48 532.712 583.178 532.606 583.894L532.606 583.896L532.605 583.899L532.605 583.9C532.462 584.867 532.315 585.867 532.2 586.9L531.9 589C531.8 590.3 531.6 591.7 531.4 593.1ZM528.8 699.8C526.1 689.3 523.3 678 520.8 666.4C509.9 617.4 506.1 580.5 509.3 557.7C510.3 551 511.8 545.6 514 541.4C514 541.35 514.025 541.325 514.05 541.3C514.075 541.275 514.1 541.25 514.1 541.2C514.2 541.05 514.275 540.9 514.35 540.75C514.425 540.6 514.5 540.45 514.6 540.3C514.2 540.4 513.7 540.6 513.2 540.8C513.2 540.8 513.2 540.9 513.1 540.9C513.05 541.05 512.975 541.175 512.9 541.3C512.825 541.425 512.75 541.55 512.7 541.7C510.8 545.6 509.4 550.5 508.4 556.3C504.7 579 508.5 616 519.8 666.6C522.3 678 525 689.1 527.7 699.4C529.005 704.556 530.353 709.542 531.633 714.275L531.634 714.278C532.314 716.795 532.975 719.239 533.6 721.6C533.8 721.65 533.975 721.7 534.15 721.75L534.151 721.75C534.326 721.8 534.5 721.85 534.7 721.9C532.8 715.2 530.8 707.7 528.8 699.8ZM478.4 557.9C486.6 581.9 502 644.9 513.5 693.8C515.4 701.9 517.2 709.7 518.8 716.9C518.689 716.863 518.563 716.812 518.429 716.757L518.429 716.757C518.202 716.665 517.951 716.563 517.7 716.5C516.698 711.988 515.577 707.242 514.413 702.308C513.719 699.368 513.01 696.362 512.3 693.3C500.8 644.5 485.6 582 477.6 558.4C477.7 558.35 477.775 558.3 477.85 558.25L477.85 558.25C477.925 558.2 478 558.15 478.1 558.1C478.15 558.05 478.2 558.025 478.25 558C478.3 557.975 478.35 557.95 478.4 557.9ZM501.7 704.2C501.414 702.972 501.123 701.736 500.832 700.497C499.699 695.68 498.555 690.813 497.6 686.2C496.5 681 495.6 676 495.1 671.6C491.9 644 480.5 589.3 463 568.2C462.85 568.3 462.725 568.4 462.6 568.5L462.6 568.5C462.475 568.6 462.35 568.7 462.2 568.8C479.6 589.5 490.9 644.2 494.1 671.8C494.6 676 495.4 680.7 496.4 685.7C497.7 691.8 499.2 698.2 500.7 704.5C500.95 705.5 501.175 706.474 501.4 707.449L501.4 707.45L501.4 707.45C501.625 708.425 501.85 709.4 502.1 710.4C502.267 710.483 502.434 710.549 502.594 710.613C502.817 710.701 503.025 710.783 503.2 710.9C502.8 708.6 502.3 706.4 501.7 704.2ZM468.6 637.5C471 649.4 472.4 660.8 473.2 671.5C473.8 680 474.2 688.2 474.5 695.9C474.35 695.8 474.175 695.7 474 695.6C473.825 695.5 473.65 695.4 473.5 695.3C473.2 687.5 472.8 679.3 472.1 670.7C471.3 660.3 469.9 649.2 467.6 637.7C461 604.7 448.3 594.8 439.2 592.1L439.8 591.2C449.2 594.1 462 604.4 468.6 637.5ZM840.9 651.1C841.694 641.272 842.587 631.049 843.578 621.313L843.6 621.1C844.002 616.559 844.438 612.183 844.849 608.048L844.85 608.039L844.851 608.035L844.851 608.033L844.851 608.032C845.155 604.979 845.445 602.059 845.7 599.3C845.824 597.749 845.987 596.236 846.14 594.81L846.141 594.804L846.143 594.786L846.143 594.779L846.145 594.76C846.237 593.905 846.326 593.082 846.4 592.3C846.4 592 846.4 591.8 846.5 591.5C846.2 591.2 845.9 590.8 845.6 590.3C845.6 590.6 845.6 590.9 845.5 591.1C845.2 593.8 844.9 596.7 844.6 599.9C844.171 603.948 843.741 608.372 843.289 613.034L843.288 613.048C843.003 615.983 842.709 619.011 842.4 622.1C842.243 623.81 842.083 625.535 841.922 627.271L841.922 627.273C841.16 635.481 840.378 643.911 839.8 652C839.2 659.8 838.7 667.2 838.3 673.7C838.5 673.5 838.675 673.3 838.85 673.1C839.025 672.9 839.2 672.7 839.4 672.5C839.796 666.06 840.291 658.836 840.883 651.312L840.9 651.1ZM844.2 971.2V972.2C846.4 972.4 848.9 972.5 851.5 972.5C853.6 972.5 855.9 972.4 858.4 972.2V971.2C853.3 971.7 848.2 971.6 844.2 971.2ZM844.2 910.3C846 910.8 847.9 911.4 849.8 912C852.6 912.9 855.5 913.8 858.4 914.6V915.6C856.165 915.004 853.93 914.297 851.736 913.603L851.734 913.602L851.73 913.601C850.981 913.364 850.237 913.129 849.5 912.9C848.435 912.604 847.369 912.273 846.324 911.948L846.321 911.947L846.304 911.942L846.294 911.939L846.279 911.934C845.574 911.715 844.879 911.5 844.2 911.3V910.3ZM850.4 922.6C848.3 922.4 846.2 922.2 844.2 921.9V922.9C846.2 923.2 848.2 923.4 850.3 923.6L850.975 923.675L850.976 923.675L850.977 923.675L850.978 923.675L850.979 923.675C853.467 923.951 856.017 924.233 858.4 924.6V923.6C855.805 923.2 853.109 922.9 850.414 922.6H850.413H850.413H850.413H850.413H850.412H850.412H850.412H850.412H850.411H850.411H850.411H850.41H850.41H850.41H850.41H850.409H850.409H850.409H850.409H850.408H850.408H850.408H850.407H850.407H850.407H850.407H850.406H850.406H850.406H850.406H850.405H850.405H850.405H850.404H850.404H850.404H850.404H850.403H850.403H850.403H850.402H850.402H850.402H850.402H850.401H850.401H850.401H850.401H850.4H850.4ZM844.2 949.3C844.51 949.321 844.823 949.344 845.138 949.366L845.93 949.423C849.773 949.699 853.974 950 858.4 950V951C853.974 951 849.773 950.699 845.93 950.423L845.909 950.421L845.091 950.363C844.792 950.341 844.495 950.32 844.2 950.3V949.3ZM844.2 960V961.1C848.7 961.9 853.6 962 858.4 961.8V960.8C853.7 960.9 848.7 960.8 844.2 960ZM858.4 937.2C853.4 936.8 848.6 936.7 844.2 936.7V935.7C848.6 935.7 853.4 935.9 858.4 936.2V937.2ZM844.2 942.8V943.8C849 944.1 853.8 944.3 858.4 944.4V943.4C853.818 943.201 849.038 943.001 844.257 942.802L844.254 942.802L844.2 942.8ZM844.2 890.8V889.7C848.9 891 853.7 892.7 858.4 894.6V895.7C853.7 893.7 848.8 892 844.2 890.8ZM858.2 905.6C857.104 905.332 855.99 905.064 854.863 904.793L854.86 904.792C851.365 903.951 847.754 903.083 844.2 902.1V903.1C848.7 904.3 853.5 905.5 858 906.6C858.041 906.6 858.083 906.617 858.131 906.637C858.2 906.665 858.283 906.7 858.4 906.7V905.7C858.343 905.642 858.318 905.618 858.289 905.607C858.267 905.6 858.243 905.6 858.2 905.6ZM844.2 854.5V853.2C847.6 850.3 852.3 847.3 858.4 845.1V846.2C852.2 848.4 847.5 851.5 844.2 854.5ZM844.2 862.3V863.3C849.4 862.7 854.4 862.3 858.4 862V861C853.9 861.2 848.6 861.8 844.2 862.3ZM844.2 807.5V806.5H858.4V807.5H844.2ZM844.2 833.1V834.8C849.1 827.9 854.2 823.7 858.4 821V819.8C854.2 822.4 849.1 826.5 844.2 833.1ZM426.9 877.2V876.1L441.1 869.6V870.7L426.9 877.2ZM426.9 889.9V890.9H427C432.5 890.1 437.3 886.5 441.1 882.3V880.7C437.3 885.2 432.5 889.1 426.9 889.9ZM426.9 966.4V965.3C430.9 967.2 436.5 969.5 441.1 969.7V970.7C436.4 970.5 430.9 968.3 426.9 966.4ZM434 949.8C431.5 949.2 429.1 948.6 426.9 947.8V948.9C429.1 949.6 431.4 950.2 433.7 950.8C436.3 951.4 438.8 952.1 441.1 952.8V951.8C439.083 951.066 436.814 950.501 434.601 949.95C434.4 949.9 434.2 949.85 434 949.8ZM435.819 930.512L436 930.5C437.8 930.4 439.5 930.3 441.1 930.1V931.1C439.5 931.3 437.801 931.4 436.101 931.5L436.1 931.5L436.099 931.5C432.899 931.7 429.7 931.9 426.9 932.4V931.4C429.645 930.91 432.775 930.708 435.819 930.512ZM427.1 923.2C427.058 923.2 427.033 923.2 427.011 923.192C426.982 923.182 426.958 923.157 426.9 923.1L426.9 923.1V924.2C430.9 925.8 436.3 925.9 441.1 925.9V924.9C436.3 924.9 431 924.7 427.1 923.2ZM436.427 835.637C436.652 835.692 436.877 835.746 437.1 835.8C437.721 835.977 438.342 836.135 438.955 836.291L438.956 836.291C439.724 836.486 440.477 836.677 441.2 836.9V837.9C440.284 837.618 439.318 837.386 438.267 837.133L438.267 837.133C437.827 837.027 437.372 836.918 436.9 836.8C436.649 836.737 436.396 836.674 436.142 836.611C433.153 835.869 429.949 835.074 427 833.6V832.5C429.984 834.085 433.315 834.887 436.427 835.637ZM426.9 872.3V873.7C431.4 869.6 436.9 864.1 441.1 858.6V856.9C437.1 862.4 431.6 868 426.9 872.3ZM426.9 804.3V803.3C431.2 803 436.2 804.2 441.1 807V808.1C441.1 808.1 441 808 440.9 808C436 805.3 431 804 426.9 804.3ZM426.9 760.9V761.9C431.7 763 436.7 764.3 441.1 765.9V764.8C436.7 763.3 431.7 762 426.9 760.9ZM426.9 722.3V721.3L441.1 723.9V724.9L426.9 722.3ZM434.8 651.1C434.004 649.111 433.19 647.093 432.371 645.065C430.514 640.466 428.635 635.811 426.9 631.3V634.1C427.491 635.576 428.088 637.081 428.695 638.609L428.695 638.61L428.696 638.612C430.35 642.776 432.071 647.111 433.9 651.5C436.4 657.7 438.9 663.9 441.1 669.7V667C439.3 662.2 437.2 656.9 434.8 651.1ZM426.9 705.2V704.2L441.1 708.6V709.6L426.9 705.2ZM436.8 686.5C433.5 682.7 430.1 678.9 426.9 676.4V677.7C429.658 679.998 432.501 683.227 435.273 686.375C435.516 686.651 435.758 686.926 436 687.2C436.508 687.764 437.008 688.329 437.5 688.884L437.5 688.884C438.752 690.297 439.952 691.651 441.1 692.8V691.3L440.96 691.15C439.6 689.693 438.153 688.143 436.8 686.5ZM647.9 519.8C648 519.65 648.125 519.5 648.25 519.35C648.375 519.2 648.5 519.05 648.6 518.9H647.4C647.3 519.05 647.175 519.2 647.05 519.35C646.925 519.5 646.8 519.65 646.7 519.8C641.7 526.7 636.6 534.8 632.1 542.9C621.9 561.1 610.9 584.9 608.9 600.6C608.7 602.3 608.6 603.9 608.6 605.4C608.6 629.382 624.975 671.436 633.78 694.049L633.8 694.1C634.805 696.642 635.705 698.974 636.5 701.034C637.05 702.46 637.55 703.755 638 704.9C638.8 707.1 639.4 709.8 639.8 712.8C640.5 718.1 640.5 724.6 640.1 731.8C640 733.3 639.9 734.8 639.8 736.4H640.9C641 734.8 641.1 733.2 641.3 731.6C641.7 724.8 641.7 718.3 641 712.8C640.6 709.7 640 706.9 639.1 704.5C638.312 702.293 637.214 699.528 635.951 696.351C635.612 695.496 635.26 694.611 634.9 693.7C626.1 671.2 609.8 629.2 609.8 605.4C609.8 603.9 609.9 602.2 610.2 600.5C612.8 579.2 632.1 541.7 647.9 519.8ZM697.8 710.6C702.4 718.7 706.1 725.7 708.3 731.2C708 731.4 707.6 731.5 707.3 731.5C705.1 726.2 701.4 719.2 696.9 711.1C696.83 710.891 696.712 710.681 696.613 710.506C696.59 710.467 696.569 710.429 696.549 710.393C696.531 710.36 696.515 710.329 696.5 710.3C694.267 706.313 691.844 702.135 689.28 697.715L689.242 697.65C688.603 696.549 687.956 695.432 687.3 694.3L686.713 693.282C667.314 659.661 643.44 618.282 647.4 596.8C648.7 589.9 650.9 581 654 571.1C657.5 559.8 662.1 547.4 667.6 535.8C669.8 530.9 672.5 525.8 675.3 521C675.4 520.7 675.6 520.4 675.8 520.1C676 520.1 676.2 520.125 676.4 520.15C676.6 520.175 676.8 520.2 677 520.2C676.9 520.35 676.825 520.5 676.75 520.65C676.675 520.8 676.6 520.95 676.5 521.1C673.3 526.4 670.6 531.8 668.5 536.2C663.3 547.3 658.9 559.2 655.4 570.1C652.1 580.5 649.7 589.9 648.4 597C644.5 618.3 668.7 660.2 688.2 693.8C691.01 698.594 693.615 703.182 696.072 707.51L696.077 707.518L696.138 707.626C696.631 708.495 697.118 709.353 697.6 710.2C697.65 710.25 697.675 710.325 697.7 710.4C697.725 710.475 697.75 710.55 697.8 710.6ZM686.5 716.3C686 714.7 685.4 713.1 684.8 711.5C679.5 696.9 670.5 679.6 661.6 662.6L660.589 660.644L660.589 660.644C650.363 640.875 640.773 622.335 636.9 608.2C635.3 602.5 635.2 596.1 636.2 589.3C638.891 569.37 650.121 546.362 658.314 529.577L658.4 529.4C658.902 528.364 659.395 527.357 659.874 526.377L659.875 526.376L659.876 526.374C660.923 524.234 661.909 522.22 662.8 520.3C662.85 520.15 662.925 520 663 519.85L663 519.85C663.075 519.7 663.15 519.55 663.2 519.4H662.1C662.05 519.55 661.975 519.7 661.9 519.85C661.825 520 661.75 520.15 661.7 520.3C660.4 523 659 525.9 657.5 529C648.6 547.1 637.3 570.2 635 590.3C634.2 596.8 634.4 602.9 636 608.5C640 623.2 650.1 642.6 660.8 663.1C669.6 680 678.5 697.2 683.9 711.6C684.338 712.726 684.697 713.812 685.052 714.884C685.265 715.526 685.475 716.163 685.7 716.8C687.8 723.4 689 729.3 688.7 734.1C688.85 734.1 689.025 734.075 689.2 734.05L689.2 734.05C689.375 734.025 689.55 734 689.7 734C689.9 729 688.7 723 686.5 716.3ZM754.6 550.4C748.9 568.3 725.5 590.4 707.2 607.6C694.9 619.2 684.3 629.2 683.5 633.8C681.9 641.8 691.2 652.4 701.1 663.6L701.861 664.477C708.823 672.497 715.927 680.681 719.4 688.4C720.182 690.258 721.251 692.307 722.42 694.547L722.422 694.549L722.422 694.55L722.5 694.7C723.91 697.344 725.476 700.144 727.129 703.099C727.351 703.496 727.575 703.897 727.8 704.3C727.9 704.6 728 704.8 728.2 705.1C728.554 705.738 728.913 706.382 729.274 707.031C731.461 710.961 733.754 715.08 735.9 719.2L735.9 719.201C736.9 721.2 737.9 723.2 738.8 725.1C738.5 725.1 738.1 725.2 737.8 725.3L735.1 719.9C732.5 714.9 729.7 709.9 727.1 705.3C727 705.2 726.9 705 726.8 704.8C724.9 701.5 723.1 698.3 721.5 695.3C720.3 692.9 719.2 690.7 718.3 688.8C714.726 680.957 707.406 672.621 700.256 664.477L700.1 664.3L699.481 663.588C689.712 652.359 680.635 641.924 682.3 633.6C683.289 628.656 693.272 619.215 705.966 607.211L706.4 606.8L706.482 606.722C724.57 589.634 747.709 567.773 753.5 550.3C755.3 544.8 755.4 539.8 753.1 535.4C753.05 535.35 753.025 535.275 753 535.2C752.975 535.125 752.95 535.05 752.9 535C752.8 534.8 752.725 534.625 752.65 534.45C752.575 534.275 752.5 534.1 752.4 533.9C752.6 533.95 752.825 534.025 753.05 534.1C753.275 534.175 753.5 534.25 753.7 534.3C753.853 534.453 753.947 534.664 754.028 534.844C754.053 534.9 754.076 534.953 754.1 535C754.162 535.062 754.185 535.123 754.218 535.209C754.238 535.262 754.262 535.323 754.3 535.4C756.5 539.8 756.4 544.9 754.6 550.4ZM718.1 551.4C719.8 543.2 720.3 534.7 719.6 526.9C719.6 526.761 719.579 526.622 719.556 526.473L719.555 526.472C719.529 526.3 719.5 526.114 719.5 525.9C719.35 525.85 719.175 525.825 719 525.8C718.825 525.775 718.65 525.75 718.5 525.7C718.5 525.839 718.522 525.978 718.545 526.127L718.545 526.127C718.571 526.3 718.6 526.485 718.6 526.7C719.4 534.6 718.9 543.2 717.1 551.5C714.8 562.4 710.3 572.6 703.4 579.5C680.8 602.1 669.8 620.7 670.8 634.7C671.3 641.6 674.6 647.5 680.8 652.1C691 659.8 699.5 682.1 707.6 704.9C707.85 705.549 708.074 706.172 708.299 706.796L708.3 706.8C708.525 707.425 708.75 708.05 709 708.7C709.2 709.2 709.4 709.7 709.6 710.3C712 717.1 714.4 723.8 716.8 729.9C717.1 729.9 717.5 729.8 717.8 729.7C715.4 723.5 713 716.8 710.6 709.9C710.5 709.65 710.425 709.425 710.35 709.2C710.275 708.975 710.2 708.75 710.1 708.5L708.6 704.3C700.4 681.5 691.9 659.1 681.5 651.3C675.6 646.8 672.4 641.2 671.9 634.6C671 620.8 681.8 602.5 704.2 580.1C711.1 573.2 715.7 562.6 718.1 551.4ZM798.5 667.4C802.6 669.4 806 671.4 808.9 673.4C816.2 678.4 819.9 683.5 821.3 689C821.15 689.099 820.976 689.224 820.802 689.349L820.8 689.35L820.798 689.351C820.712 689.413 820.625 689.475 820.542 689.533C820.457 689.593 820.375 689.65 820.3 689.7C819.1 684.1 815.5 679 808.1 673.9C805.4 672 802.1 670.2 798.3 668.3L798.299 668.299C796.9 667.6 795.5 666.9 794.1 666.3C784.1 661.7 774.7 658.3 766.8 655.5L765.9 655.2C751.9 650.2 742.6 646.8 741.1 641.3C740.4 638.8 741.4 635.9 744.2 632.6C749.108 626.71 759.124 621.976 769.896 616.885L770.5 616.6L770.744 616.485C789.784 607.514 811.212 597.417 814.1 578C814.8 573.2 815.9 568.6 817.2 564.4C817.2 564.162 817.263 563.988 817.338 563.776C817.358 563.721 817.379 563.662 817.4 563.6C817.599 563.799 817.899 563.999 818.198 564.198L818.198 564.198L818.198 564.198L818.199 564.199L818.199 564.199L818.199 564.199L818.199 564.199L818.199 564.199L818.199 564.199L818.2 564.2L818.2 564.2L818.2 564.2C818.2 564.437 818.137 564.612 818.062 564.823L818.061 564.824C818.042 564.879 818.021 564.937 818 565C816.7 569 815.7 573.4 815 578.1C811.9 598 790.1 608.3 770.8 617.4C759.9 622.5 749.6 627.4 744.8 633.2C742.2 636.2 741.3 638.8 741.9 641C743.273 645.902 752.527 649.266 765.329 653.92L766.1 654.2C766.3 654.3 766.525 654.375 766.75 654.45C766.975 654.525 767.2 654.6 767.4 654.7C768.252 655.017 769.124 655.339 770.015 655.669L770.015 655.669C777.28 658.357 785.781 661.502 794.6 665.6L798.5 667.4ZM789.8 548C789.754 548.137 789.729 548.275 789.706 548.403C789.679 548.554 789.654 548.692 789.6 548.8C789.3 550.1 789 551.3 788.6 552.6C783 572.1 769.7 592.5 751.8 602.1L751.45 602.287C730.481 613.517 710.794 624.059 709.8 634.8C709.5 638.3 711.1 641.5 714.8 644.6C727.6 655.1 738.4 665 747 674C753.9 681.2 759.4 687.9 763.5 694C763.6 694.15 763.675 694.275 763.75 694.4C763.825 694.525 763.9 694.65 764 694.8C769 702.4 771.8 709.1 772.3 714.8C772.6 714.7 772.9 714.6 773.3 714.4C772.7 708.7 769.9 702 764.9 694.5C764.88 694.47 764.859 694.439 764.837 694.407C764.808 694.364 764.777 694.319 764.745 694.274L764.744 694.272C764.564 694.011 764.353 693.705 764.2 693.4C760.1 687.3 754.5 680.6 747.6 673.4C739 664.3 728.2 654.5 715.4 643.9C711.9 641.1 710.4 638.1 710.7 635C711.692 624.879 731.981 613.971 751.735 603.35L752.2 603.1C770.4 593.3 783.9 572.6 789.6 552.8C789.75 552.2 789.9 551.625 790.05 551.051L790.05 551.05L790.05 551.05L790.05 551.049L790.05 551.049L790.05 551.048C790.2 550.474 790.35 549.899 790.5 549.3C790.546 549.162 790.571 549.025 790.594 548.897C790.621 548.746 790.646 548.608 790.7 548.5C790.4 548.2 790.1 548.1 789.8 548ZM851.704 744.336L851.713 744.331L851.745 744.316L851.754 744.311C851.97 744.207 852.185 744.103 852.4 744C854.4 743 856.4 742.1 858.4 741.3V742.4C856.6 743.1 854.7 744 852.8 744.9C850 746.3 847 747.7 844.2 748.5V747.5C846.669 746.768 849.221 745.535 851.703 744.336L851.704 744.336ZM844.2 726.5V727.9C844.363 727.737 844.536 727.574 844.714 727.408L844.714 727.407L844.715 727.407C845.081 727.063 845.463 726.704 845.8 726.3C849.7 722.7 854 719.6 858.3 717V715.9C853.2 719 848.3 722.7 844.2 726.5ZM844.2 700.6V697.7C848.8 685.4 853.7 675.6 858.4 672.2V673.4C853.8 677.2 848.9 687.7 844.2 700.6ZM844.2 676.8V678.7C848.9 670.7 853.7 666.1 858.4 663.2V662C853.7 664.9 848.9 669.2 844.2 676.8ZM815 604.5C822 596.3 829.4 587.6 835.3 579.3C835.4 579.1 835.6 578.9 835.7 578.8L835 578.1C834.95 578.2 834.875 578.3 834.8 578.4L834.8 578.4C834.725 578.5 834.65 578.6 834.6 578.7C828.689 586.937 821.463 595.455 814.925 603.163L814.924 603.164L814.924 603.164L814.3 603.9C804.1 615.9 795.1 626.5 793.2 632.9C792.9 633.9 792.8 634.8 792.9 635.6C793 636.7 793.5 637.5 794.3 638.1C797.7 640.7 802.8 646.4 808.1 653.6C811.3 658 814.6 663 817.7 668.1C821 673.7 824.1 679.5 826.5 685C826.65 684.9 826.8 684.775 826.95 684.65C827.1 684.525 827.25 684.4 827.4 684.3C825 678.8 822 673 818.7 667.5C815.6 662.3 812.2 657.3 808.9 652.9C803.6 645.7 798.5 640 794.9 637.4C794.3 636.9 794 636.4 793.9 635.6C793.8 634.6 794.1 633.4 794.7 631.9C797.18 625.453 805.758 615.367 814.776 604.763L815 604.5ZM844.2 791.3V790.3L858.4 787.7V788.7L844.2 791.3ZM844.2 776.5V777.5C848 776.3 852.7 775.8 858.4 776V775C852.8 774.8 848 775.3 844.2 776.5Z",
+        fill: "#DF7D56"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M657.8 853.8V854.9C653.4 853.8 648.1 852.7 643.6 852.4V851.4C648.2 851.7 653.4 852.8 657.8 853.8Z",
+        fill: "#DF7D56"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M643.6 865.3C647.5 867.1 652.2 868.6 657.8 869.8V870.8H657.7C652.1 869.6 647.4 868.1 643.6 866.4V865.3Z",
+        fill: "#DF7D56"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M657.8 821.2V822.2C655.8 822.6 653.4 822.7 650.7 822.6C647.8 822.5 645.5 822.4 643.6 822.4V821.4C645.5 821.4 647.9 821.4 650.7 821.6C653.5 821.7 655.8 821.6 657.8 821.2Z",
+        fill: "#DF7D56"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M657.8 838.4V839.4C653.7 839.8 648.3 840.1 643.6 839.7V838.7C648.3 839.1 653.7 838.7 657.8 838.4Z",
+        fill: "#DF7D56"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M657.8 899.9V901C656.2 901.7 654.5 902.4 652.8 903C649.1 904.2 646.1 905.5 643.6 906.9V905.8C646 904.5 648.9 903.2 652.4 902.1C654.3 901.4 656.1 900.7 657.8 899.9Z",
+        fill: "#DF7D56"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M651.4 954.5C653.7 954.8 655.9 955.2 657.8 955.8V956.9C655.9 956.2 653.7 955.9 651.3 955.5C648.8 955.1 646.1 954.7 643.6 953.9V952.8C646 953.6 648.8 954.1 651.4 954.5Z",
+        fill: "#DF7D56"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M657.8 968.3V969.3C654.5 969.3 650.1 967.8 645.5 966.3C644.9 966.1 644.2 965.9 643.6 965.7V964.6C644.3 964.8 645.1 965.1 645.8 965.3C650.2 966.8 654.6 968.2 657.8 968.3Z",
+        fill: "#DF7D56"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M643.6 971.9C648.1 973.6 653.1 975.4 657.8 977V978.1C653.9 976.8 648.6 975 643.6 973.1V971.9Z",
+        fill: "#DF7D56"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M657.8 749V750.3C653.7 753.5 647.8 758.5 643.6 763.1V761.6C648 757 653.9 752.1 657.8 749Z",
+        fill: "#DF7D56"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M646.9 770.2C650.3 769.2 654.3 768 657.8 767.7V768.7C654.4 768.9 650.6 770.1 647.2 771.1C645.9 771.5 644.7 771.9 643.6 772.1V771.1C644.7 770.9 645.8 770.6 646.9 770.2Z",
+        fill: "#DF7D56"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M657.8 778V779.1C653 781.1 647.4 782.8 643.6 783.8V782.8C647.9 781.5 653.4 779.8 657.8 778Z",
+        fill: "#DF7D56"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M657.8 805.3V806.3C653.4 806 648 806.3 643.6 806.6V805.6C648 805.3 653.4 805 657.8 805.3Z",
+        fill: "#DF7D56"
+    })), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.19",
+        d: "M858.4 636V667.8C854.1 672.2 849.4 676.7 844.2 681.3V666.8C843.6 667.5 843.1 668.3 842.5 669C842.1 669.5 841.8 669.9 841.4 670.3C840.8 671.1 840.1 671.8 839.4 672.6C839.1 673 838.7 673.4 838.3 673.8C837.9 674.2 837.5 674.6 837.1 675.1C837 675.2 837 675.2 836.9 675.3C836.5 675.7 836.1 676.1 835.7 676.5C835.1 677.1 834.5 677.7 833.8 678.3C833.4 678.7 832.9 679.1 832.5 679.5C832.2 679.8 831.8 680.1 831.5 680.4C830.7 681.1 829.9 681.9 829 682.6C828.4 683.1 827.8 683.6 827.2 684.1C826.9 684.3 826.6 684.6 826.3 684.8C826 685.1 825.7 685.3 825.3 685.6C825.1 685.8 824.8 686 824.5 686.2C823.8 686.8 823 687.4 822.3 687.9C821.8 688.2 821.4 688.6 820.9 688.9C820.6 689.1 820.2 689.4 819.9 689.6C819.5 689.9 819.1 690.2 818.7 690.4C818.2 690.8 817.7 691.1 817.2 691.5C816.6 691.9 816.1 692.3 815.5 692.7C815 693.1 814.5 693.4 814 693.7C813.3 694.2 812.6 694.6 811.9 695C805.1 699.3 797.6 703.4 789.5 707.2C788 707.9 786.6 708.6 785.1 709.2C782.2 710.5 779.2 711.7 776.2 712.9C775.5 713.2 774.8 713.4 774.1 713.7C773.8 713.8 773.4 714 773.1 714.1C772.8 714.2 772.5 714.3 772.1 714.5C770.8 715 769.4 715.5 768.1 716C766.9 716.4 765.7 716.9 764.5 717.3C763.3 717.7 762.1 718.1 761 718.5C760.5 718.7 759.9 718.9 759.3 719C758.4 719.3 757.5 719.6 756.7 719.8C755.5 720.2 754.4 720.5 753.2 720.9C752.5 721.1 751.8 721.3 751.1 721.5C748.1 722.4 745 723.3 741.9 724C740.8 724.3 739.8 724.5 738.7 724.8C738.4 724.9 738 725 737.7 725C736.9 725.2 736.1 725.4 735.3 725.6C733.8 726 732.3 726.3 730.8 726.6C729.9 726.8 729 727 728 727.2C727.6 727.3 727.2 727.4 726.8 727.4C725.5 727.7 724.1 728 722.8 728.2C721 728.6 719.2 728.9 717.4 729.2C717.1 729.3 716.7 729.3 716.4 729.4C715.2 729.6 714 729.8 712.8 730C711.3 730.3 709.7 730.5 708.1 730.8C707.8 730.9 707.4 730.9 707.1 731C705.7 731.2 704.2 731.4 702.8 731.7C701.3 731.9 699.9 732.1 698.4 732.3C696.9 732.5 695.5 732.7 694 732.9C692.5 733.1 691 733.3 689.5 733.4C689.2 733.4 688.9 733.5 688.5 733.5C687.1 733.7 685.7 733.8 684.3 733.9C683.4 734 682.5 734.1 681.6 734.2C680.5 734.3 679.5 734.4 678.4 734.5C676.9 734.6 675.5 734.7 674 734.9H673.9C672.3 735 670.7 735.1 669 735.2C668.7 735.2 668.4 735.2 668.1 735.3C664.6 735.5 661.2 735.7 657.7 735.8V769.3C654.9 769.6 652.2 769.9 649.3 770.1C647.8 770.2 646.2 770.3 644.7 770.4C644.3 770.4 643.9 770.5 643.5 770.5V736C643.2 736 642.9 736 642.5 736C641.9 736 641.2 736 640.6 736C640.2 736 639.9 736 639.5 736C639.5 736 639.4 736 639.3 736C637.6 736 636 736 634.4 735.9C634.2 735.9 633.9 735.9 633.7 735.9C632.1 735.9 630.4 735.8 628.8 735.8C628.7 735.8 628.7 735.8 628.7 735.8C628.4 735.8 628.1 735.8 627.8 735.8C627.7 735.8 627.7 735.8 627.7 735.8C626.7 735.8 625.7 735.7 624.7 735.7C623.1 735.7 621.6 735.6 620 735.5C619.9 735.5 619.9 735.5 619.8 735.5C618.5 735.4 617.2 735.4 616 735.3C615.2 735.3 614.5 735.2 613.8 735.2C613 735.2 612.3 735.1 611.5 735C609.8 734.9 608.1 734.8 606.5 734.6C605.2 734.5 603.9 734.4 602.6 734.2C602.3 734.2 601.9 734.1 601.6 734.1C599.8 733.9 598 733.7 596.2 733.5C594.9 733.4 593.7 733.2 592.4 733.1C591.1 732.9 589.9 732.8 588.6 732.6C588.1 732.6 587.7 732.5 587.2 732.4C585.9 732.2 584.6 732.1 583.3 731.9C582.9 731.9 582.5 731.8 582.1 731.7C579.9 731.4 577.8 731 575.7 730.7C574.9 730.6 574 730.4 573.2 730.3C571.3 730 569.4 729.7 567.6 729.3C566.8 729.2 566.1 729 565.3 728.9C564 728.6 562.6 728.4 561.3 728.1C560.3 727.9 559.3 727.7 558.3 727.5C557.8 727.4 557.4 727.3 556.9 727.2C556.5 727.1 556.1 727 555.8 727C555.8 727 555.8 727 555.7 727C554.4 726.7 553.1 726.4 551.9 726.1C550.9 725.9 550 725.7 549.1 725.4C548.8 725.3 548.4 725.2 548.1 725.2C547.7 725.1 547.3 725 546.9 724.9C545.9 724.7 544.8 724.4 543.8 724.1C540.7 723.3 537.7 722.5 534.7 721.6C534.3 721.5 533.9 721.4 533.6 721.3C532.4 721 531.2 720.6 530 720.2C529.9 720.2 529.8 720.1 529.6 720.1C528.7 719.8 527.8 719.5 526.8 719.2C525.3 718.7 523.8 718.2 522.3 717.7C521.1 717.3 519.9 716.9 518.7 716.5C518.3 716.4 517.9 716.2 517.6 716.1C517.5 716.1 517.4 716 517.2 716C516.3 715.7 515.5 715.4 514.6 715.1C513.1 714.6 511.7 714 510.2 713.4C509.1 713 508 712.5 506.9 712.1C505.6 711.6 504.4 711.1 503.1 710.5C502.7 710.3 502.3 710.2 502 710C501.9 710 501.9 710 501.8 709.9C500.6 709.4 499.4 708.9 498.3 708.3C497.1 707.8 495.8 707.2 494.6 706.6C493.4 706 492.2 705.4 491 704.9C489.8 704.3 488.7 703.7 487.5 703.1C486.3 702.5 485.2 701.9 484.1 701.3C483.6 701 483.1 700.8 482.6 700.5C482.4 700.4 482.2 700.3 482.1 700.2L480.8 699.4C480 699 479.3 698.5 478.6 698.1C477.8 697.6 477 697.2 476.3 696.7C475.7 696.3 475.1 695.9 474.5 695.6C474.2 695.4 473.8 695.2 473.5 695C472 694.1 470.6 693.1 469.1 692.1C468.6 691.8 468.1 691.4 467.6 691.1C467.5 691 467.3 690.9 467.2 690.8C466.6 690.4 466 690 465.5 689.6C463.8 688.4 462.2 687.2 460.7 686C459.6 685.1 458.5 684.2 457.4 683.3C456.1 682.2 454.9 681.1 453.7 680.1C453.1 679.6 452.5 679 452 678.5C451.4 678 450.9 677.4 450.3 676.8C449.9 676.4 449.4 675.9 449 675.5C448.7 675.2 448.5 675 448.2 674.7C447.9 674.4 447.6 674.1 447.4 673.8C447.2 673.5 446.9 673.3 446.6 673C446.3 672.6 445.9 672.2 445.6 671.9C444.1 670.2 442.6 668.4 441.3 666.6V706C436.3 702.4 431.6 698.7 427.1 695.1V630.4C436.9 641.4 451.9 656.3 472.3 670.5C472.7 670.7 473 671 473.4 671.2C480.5 676.1 488.3 680.8 496.7 685.3C497.1 685.5 497.5 685.7 497.9 685.9C502.6 688.4 507.5 690.7 512.6 693C513 693.2 513.4 693.3 513.8 693.5C518.4 695.5 523.1 697.4 528 699.1C528.2 699.2 528.3 699.2 528.5 699.3C528.7 699.4 528.9 699.4 529.1 699.5C532.9 700.8 536.6 702 540.2 703.1C540.6 703.2 541 703.3 541.3 703.4C544.1 704.2 546.9 705 549.7 705.6C550.1 705.7 550.5 705.8 550.8 705.9C558.3 707.7 565.6 709 572.8 709.9C573.2 709.9 573.6 710 574 710C581.8 711 589.6 711.6 597.6 711.9C598 711.9 598.3 711.9 598.6 711.9C601.2 712 603.7 712.1 606.4 712.2C612.5 712.4 618.7 712.4 625.1 712.5H626.2C627.7 712.5 629.1 712.5 630.6 712.5C633.6 712.5 636.8 712.5 640 712.5C640.3 712.5 640.7 712.5 641 712.5C654.3 712.5 668.8 712.3 684.1 711.2C684.4 711.2 684.8 711.2 685.1 711.1C688.9 710.8 692.8 710.4 696.7 710C697 710 697.4 709.9 697.8 709.9C698.2 709.9 698.6 709.8 699 709.8C702.3 709.4 705.7 709 709.1 708.4C709.4 708.4 709.8 708.3 710.1 708.3C715.8 707.4 721.6 706.4 727.4 705.1C727.7 705 728.1 704.9 728.4 704.9C739.3 702.5 750.5 699.4 761.9 695.3C762.6 695 763.4 694.8 764.1 694.5C764.4 694.4 764.7 694.3 765 694.2C774 690.9 783.1 687 792.3 682.3C797.8 679.5 803.1 676.6 808.1 673.7C808.4 673.5 808.8 673.3 809.1 673.1C812.1 671.3 815 669.5 817.8 667.7C818.1 667.5 818.4 667.3 818.7 667.1C826.6 662 833.7 656.8 839.9 651.9C840.3 651.6 840.6 651.3 841 651C847.7 645.8 853.5 640.6 858.4 636Z",
+        fill: "url(#paint18_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M855.7 610.2C855.6 610.3 855.5 610.4 855.5 610.4C851.7 613.9 847.9 617.3 844.3 620.6C844.3 620.6 844.3 620.6 844.2 620.6C844 620.8 843.7 621 843.5 621.3C843.1 621.6 842.7 622 842.4 622.3C830.1 633.5 818.9 643.6 808.8 652.8C808.5 653 808.3 653.3 808 653.5C803.3 657.7 798.9 661.8 794.7 665.6C794.4 665.8 794.2 666.1 793.9 666.3C782.3 676.8 772.5 685.8 764.2 693.3C764 693.5 763.7 693.7 763.5 694C762.9 694.5 762.4 695 761.8 695.5C749.6 706.6 741.2 714.4 736 719.2C735.7 719.4 735.5 719.7 735.2 719.9C732.6 722.4 730.9 724 730 724.8C730 724.8 729.9 724.8 729.9 724.9C729.9 724.9 729.8 724.9 729.8 725C729.7 725 729.7 725 729.7 725C729.7 725 729.4 725.3 729 725.7C728.9 725.8 728.8 725.9 728.7 725.9C728.5 726.1 728.3 726.3 728.1 726.5C727.7 726.9 727.3 727.3 726.9 727.7C725.1 729.5 722.8 731.7 719.6 734.9C719.4 735.1 719.1 735.4 718.8 735.7C716.7 737.8 714.3 740.2 711.3 743.2C711 743.5 710.7 743.8 710.4 744.1C709.6 744.9 708.7 745.8 707.8 746.7C697.7 756.8 688.2 766.5 679.4 775.6C679 776 678.6 776.4 678.2 776.8C670.9 784.4 664 791.5 657.6 798.3C655.4 800.6 653.3 802.9 651.2 805.1C650.9 805.5 650.5 805.8 650.2 806.1C647.9 808.6 645.6 811 643.4 813.3C635.9 821.3 629.3 828.5 623.5 834.7C622.7 822 622 809.2 621.4 796.1C621.4 795.2 621.3 794.3 621.3 793.4C621.2 790 621 786.6 620.9 783.2V783.1C620.9 782.6 620.9 782.2 620.9 781.8C620.8 778.3 620.7 774.7 620.5 771.2C620.5 770 620.4 768.8 620.4 767.7C620.3 765.2 620.2 762.6 620.2 760.1C620 752.4 619.9 744.8 619.8 737.3C619.8 736.8 619.8 736.3 619.8 735.8V735.3C619.8 735.1 619.8 735 619.8 734.8V734.4C615.2 727 610.6 719.7 606 712.3C599.8 702.4 593.6 692.4 587.4 682.5C586.6 681.3 585.9 680.1 585.1 678.9C573.4 660.2 561.7 641.5 550 622.9C549.7 622.4 549.4 621.9 549.1 621.4C545.7 616 542.3 610.5 538.9 605.1C538.6 604.6 538.2 604.1 537.9 603.6L531.3 593.1C531 592.7 530.8 592.2 530.5 591.8C529 589.4 527.5 586.9 525.9 584.5C520.3 575.5 514.7 566.6 509.1 557.6C508.8 557.1 508.5 556.7 508.3 556.2L502 546C501.9 545.8 501.7 545.5 501.5 545.3C501.6 545.3 501.6 545.2 501.7 545.2C501.9 545.1 502 545 502.2 545C502.2 545 502.3 545 502.3 544.9C502.5 544.8 502.5 544.8 502.5 544.8C506.5 543.1 510.1 541.8 513 540.8C513.5 540.6 513.9 540.5 514.4 540.3C516.8 539.5 518.5 539 519.6 538.7C525.4 537 529.1 535.7 533 534.3C533.3 534.2 533.6 534.1 533.9 534C535.9 533.3 538 532.5 540.6 531.8C540.9 531.7 541.1 531.6 541.4 531.6C541.7 531.5 542.1 531.4 542.4 531.3C546.8 530 551.3 528.8 555.7 527.8C556 527.7 556.4 527.6 556.7 527.6C563.1 526.2 569.4 525.1 575.2 524.2C575.6 524.1 576 524.1 576.4 524C583.1 523 589.2 522.3 594.2 521.8C594.7 521.7 595.1 521.7 595.6 521.6C609.4 520.1 623.6 519.2 638.3 519.1C638.7 519.1 639.1 519.1 639.5 519.1C639.7 519.1 640 519.1 640.3 519.1C641.1 519.1 641.9 519.1 642.8 519.1H643.8C645.1 519.1 646.3 519.1 647.6 519.1C648 519.1 648.4 519.1 648.8 519.1C653.4 519.2 657.9 519.3 662.4 519.5C662.8 519.5 663.1 519.5 663.5 519.5C667.7 519.7 671.8 520 676 520.3C676.4 520.3 676.8 520.3 677.2 520.4C691.6 521.5 705.4 523.4 718.7 525.9C719 525.9 719.4 526 719.7 526.1C731.2 528.3 742.3 531 752.7 534.1C753.1 534.2 753.6 534.3 754 534.5C766.9 538.4 779 543 790 548.1C790.3 548.2 790.6 548.4 790.9 548.5C794.8 550.4 798.6 552.3 802.3 554.3C805.8 556.2 809.2 558.2 812.5 560.3C813.3 560.8 814.2 561.4 815 561.9C815.9 562.5 816.7 563.1 817.6 563.7C817.9 563.9 818.2 564.1 818.4 564.3C824.7 568.7 830.3 573.3 835.2 578.2C835.4 578.4 835.7 578.7 835.9 578.9C839.6 582.6 842.9 586.5 845.8 590.5C846.1 590.9 846.4 591.3 846.7 591.7C847.2 592.5 847.8 593.3 848.3 594.1C849 595.2 849.6 596.2 850.3 597.3C851.8 599.8 853.1 602.4 854.1 605.1C854.2 605.4 854.4 605.7 854.5 606C854.8 607.3 855.3 608.7 855.7 610.2Z",
+        fill: "#F2CA5C"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.71",
+        d: "M855.7 610.2C855.6 610.3 855.5 610.4 855.5 610.4C851.7 613.9 847.9 617.3 844.3 620.6C844.3 620.6 844.3 620.6 844.2 620.6C844 620.8 843.7 621 843.5 621.3C843.1 621.6 842.7 622 842.4 622.3C830.1 633.5 818.9 643.6 808.8 652.8C808.5 653 808.3 653.3 808 653.5C803.3 657.7 798.9 661.8 794.7 665.6C794.4 665.8 794.2 666.1 793.9 666.3C782.3 676.8 772.5 685.8 764.2 693.3C764 693.5 763.7 693.7 763.5 694C762.9 694.5 762.4 695 761.8 695.5C749.6 706.6 741.2 714.4 736 719.2C735.7 719.4 735.5 719.7 735.2 719.9C732.6 722.4 730.9 724 730 724.8C730 724.8 729.9 724.8 729.9 724.9C729.9 724.9 729.8 724.9 729.8 725C729.7 725 729.7 725 729.7 725C729.7 725 729.4 725.3 729 725.7C728.9 725.8 728.8 725.9 728.7 725.9C728.5 726.1 728.3 726.3 728.1 726.5C727.7 726.9 727.3 727.3 726.9 727.7C725.1 729.5 722.8 731.7 719.6 734.9C719.4 735.1 719.1 735.4 718.8 735.7C716.7 737.8 714.3 740.2 711.3 743.2C711 743.5 710.7 743.8 710.4 744.1C709.6 744.9 708.7 745.8 707.8 746.7C697.7 756.8 688.2 766.5 679.4 775.6C679 776 678.6 776.4 678.2 776.8C670.9 784.4 664 791.5 657.6 798.3C655.4 800.6 653.3 802.9 651.2 805.1C650.9 805.5 650.5 805.8 650.2 806.1C647.9 808.6 645.6 811 643.4 813.3C635.9 821.3 629.3 828.5 623.5 834.7C622.7 822 622 809.2 621.4 796.1C621.4 795.2 621.3 794.3 621.3 793.4C621.2 790 621 786.6 620.9 783.2V783.1C620.9 782.8 620.9 782.4 620.9 781.8C620.8 778.3 620.7 774.7 620.5 771.2C620.5 770 620.4 768.8 620.4 767.7C620.3 765.2 620.2 762.6 620.2 760.1C620 752.4 619.9 744.8 619.8 737.3C619.8 736.8 619.8 736.3 619.8 735.8V735.3C622.4 734.9 625 734.5 627.5 734.1C627.9 734.1 628.2 734 628.5 733.9C632.4 733.2 636.2 732.5 639.8 731.7C640.2 731.6 640.5 731.6 640.9 731.5C658.8 727.5 673.5 722.1 685.5 716.6C685.8 716.5 686.1 716.3 686.4 716.2C690.1 714.5 693.6 712.7 696.7 711C697 710.9 697.3 710.7 697.6 710.5C697.9 710.3 698.3 710.1 698.6 710C699.8 709.3 701 708.7 702.1 708C703.9 707 705.6 705.9 707.3 704.9C707.6 704.7 707.9 704.5 708.2 704.4C712.9 701.5 717.3 698.4 721.5 695.3C721.8 695.1 722 694.9 722.3 694.7C731.1 688.1 739 681.1 746.8 673.9C747 673.7 747.3 673.5 747.5 673.2C753.7 667.4 759.9 661.5 766.5 655.4C766.8 655.2 767 654.9 767.3 654.6C775 647.5 783.4 640.2 793 632.7C793.5 632.3 794 632 794.4 631.6C805.4 623.2 818.1 614.6 833.6 605.8C837.1 603.8 840.8 601.8 844.4 599.9C844.8 599.7 845.1 599.5 845.5 599.4C846.8 598.7 848.1 598 849.4 597.4C849.5 597.3 849.7 597.3 849.8 597.2C851.3 599.7 852.6 602.3 853.6 605C853.7 605.3 853.9 605.6 854 605.9C854.8 607.3 855.3 608.7 855.7 610.2Z",
+        fill: "url(#paint19_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.53",
+        d: "M802.1 554.2C801.4 554.1 800.6 554 799.8 553.9C796.7 553.5 793.3 553.1 789.6 552.7C789.3 552.7 788.9 552.6 788.6 552.6C778.7 551.6 767.1 550.7 754.7 550.4C754.4 550.4 754 550.4 753.7 550.4C742.2 550.1 730.1 550.4 718.1 551.4C717.8 551.4 717.4 551.5 717.1 551.5C693.8 553.6 671.2 559 655.3 570.1C654.8 570.4 654.4 570.7 653.9 571.1C649.5 574.3 645.7 578 642.6 582.2C640.7 584.8 638.5 587.1 636.2 589.1C635.8 589.4 635.4 589.8 635 590.1C628 595.8 619.3 599 609.9 600.4C609.6 600.4 609.2 600.5 608.9 600.6C603.8 601.3 598.4 601.5 592.9 601.2C592.5 601.2 592.2 601.2 591.9 601.1C585.3 600.8 578.4 599.8 571.6 598.5C571.3 598.4 570.9 598.4 570.6 598.3C564.3 597 558 595.4 551.9 593.5C551.6 593.4 551.2 593.3 550.9 593.2C547 592 543.1 590.7 539.4 589.4C539.1 589.3 538.7 589.2 538.4 589C536.3 588.3 534.3 587.5 532.3 586.8C532 586.7 531.7 586.6 531.3 586.4C529.5 585.7 527.8 585 526 584.3C520.4 575.3 514.8 566.4 509.2 557.4C508.9 556.9 508.6 556.5 508.4 556L502 546C501.9 545.8 501.7 545.5 501.5 545.3C501.6 545.3 501.6 545.2 501.7 545.2C501.8 545.1 501.9 545.1 502.1 545C502.2 545 502.2 544.9 502.3 544.9C502.3 544.9 502.4 544.9 502.4 544.8C502.6 544.7 502.6 544.7 502.6 544.7C506.6 543 510.2 541.7 513.1 540.7C513.6 540.5 514 540.4 514.5 540.2C516.9 539.4 518.6 538.9 519.7 538.6C525.5 536.9 529.2 535.6 533.1 534.2C533.4 534.1 533.7 534 534 533.9C536 533.2 538.1 532.4 540.7 531.7C541 531.7 541.2 531.6 541.5 531.6C541.8 531.6 542.2 531.5 542.5 531.5C544.7 531.2 546.8 530.9 548.6 530.6C551.2 530.2 553.6 529.8 555.7 529.4C556 529.3 556.4 529.3 556.7 529.2C560.7 528.4 563.9 527.5 567.1 526.7C569.6 526 572.1 525.4 575.1 524.7C575.5 524.6 575.9 524.5 576.3 524.4C580.8 523.4 586.4 522.5 594.3 521.6C594.8 521.5 595.2 521.5 595.7 521.4C609.5 519.9 623.7 519 638.4 518.9C638.8 518.9 639.2 518.9 639.6 518.9C639.8 518.9 640.1 518.9 640.4 518.9C641.2 518.9 642 518.9 642.9 518.9H643.9C645.2 518.9 646.4 518.9 647.7 518.9C648.1 518.9 648.5 518.9 648.9 518.9C653.5 519 658 519.1 662.5 519.3C662.9 519.3 663.2 519.3 663.6 519.3C667.8 519.5 671.9 519.8 676.1 520.1C676.5 520.1 676.9 520.1 677.3 520.2C691.7 521.3 705.5 523.2 718.8 525.7C719.1 525.7 719.5 525.8 719.8 525.9C731.3 528.1 742.4 530.8 752.8 533.9C753.2 534 753.7 534.1 754.1 534.3C767 538.2 779.1 542.8 790.1 547.9C790.4 548 790.7 548.2 791 548.3C794.6 550.2 798.4 552.2 802.1 554.2Z",
+        fill: "#FC860A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M775.9 597.4C775.8 597.6 775.6 597.8 775.5 598L716.8 641.4C715.1 642.7 711.1 642.7 708.1 641.4L652.4 617.4C651.9 617 650.9 616.3 650.3 615.1C649 612.6 650 610.1 650.2 609.7C650.3 609.6 650.5 609.5 650.8 609.4C666.7 602.3 685.8 619.2 697.5 623.9C710.9 629.2 733.4 626 773.4 590.4C774.5 590.8 775.2 591.3 775.6 591.8C775.7 592 775.8 592.2 775.9 592.4C776.4 593.9 776.8 595.8 775.9 597.4Z",
+        fill: "#302C34"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M775.9 592.5C775.9 592.3 775.8 592.1 775.6 591.9C775.2 591.4 774.4 590.9 773.4 590.5C773.2 590.4 772.9 590.3 772.7 590.2L721.5 574.2C719.2 573.5 716.3 573.5 715 574.2L711 576.4L679.4 593.7L651.4 609C651.1 609.2 650.9 609.3 650.7 609.5C649.7 610.5 650.3 611.9 652.4 612.7L708.1 636.7C711.1 638 715 638 716.8 636.7L775.5 593.3C775.8 593 775.9 592.8 775.9 592.5Z",
+        fill: "url(#paint20_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M761.6 595.1L711.7 630.5L702.7 626.7L691.1 621.9L687.6 620.4L676 615.6L660.7 609.2L682.7 596.8L683.3 596.4L684.6 595.7L690.8 592.2L708.2 582.5L712 580.3L713.5 579.5L713.6 579.4L714.1 579.6L714.8 579.8L718.1 580.9L723.9 582.8L739.8 588L744.2 589.4L746 590L761.6 595.1Z",
+        fill: "url(#paint21_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M743.1 584.8C742 585.5 739.5 585.6 737.6 584.9C735.7 584.3 735.1 583.2 736.2 582.5C737.3 581.8 739.7 581.8 741.6 582.4C743.5 583 744.2 584.1 743.1 584.8Z",
+        fill: "#302C34"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M744.2 589.4C743.7 590.7 743 591.9 742.2 593C742.2 593 741.7 593.7 740.7 594.7C739.7 595.7 738.4 596.9 736.6 597.9C735.7 598.4 734.5 599 733 599.6C732.4 599.8 731.8 600.1 731.1 600.3C725.8 602.2 717.9 603.8 708.7 603.2C708.1 603.2 707.4 603.1 706.8 603C701.5 602.5 695.9 601.1 690.2 598.6C688.3 597.7 686.3 596.7 684.5 595.7L683.3 596.4L682.6 596.8C684.8 598.2 687.1 599.4 689.4 600.4C695.2 603 701 604.4 706.3 605C706.9 605.1 707.6 605.1 708.2 605.2C709.7 605.3 711.1 605.4 712.6 605.4C718.6 605.4 724 604.5 728.2 603.3C729.7 602.9 731 602.5 732.2 602C732.9 601.8 733.5 601.5 734 601.3C735.4 600.7 736.6 600.1 737.4 599.7C741.2 597.4 743.4 594.4 743.5 594.3C744.4 593 745.2 591.6 745.8 590.2L744.2 589.4Z",
+        fill: "#FC860A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M714.1 579.6L708.7 603.3L708.3 605.1C707.7 605.1 707 605 706.4 604.9L706.8 603.1L712 580.3L713.6 579.4L714.1 579.6Z",
+        fill: "#FC860A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M734.3 601.2C733.7 601.4 733.1 601.7 732.5 601.9L731.3 600.3L715 579.7L718.3 580.8L733.2 599.6L734.3 601.2Z",
+        fill: "#FC860A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        fillRule: "evenodd",
+        clipRule: "evenodd",
+        d: "M695.9 597.1C696.9 597.6 698.1 597.8 699.3 597.8C700.9 597.8 702.4 597.4 703.2 596.7C704.1 596.1 704.5 595.2 704.4 594.4C704.3 593.4 703.5 592.5 702.2 591.9C699.9 590.8 696.7 591 694.9 592.3C694.1 592.9 693.6 593.7 693.7 594.6C693.8 595.6 694.6 596.5 695.9 597.1ZM695.6 593.1C696.5 592.5 697.8 592.2 699.1 592.2C700.1 592.2 701.1 592.4 702 592.7C703 593.1 703.6 593.7 703.7 594.4C703.8 595 703.3 595.5 702.9 595.8C701.4 597 698.4 597.1 696.4 596.2C695.5 595.8 694.9 595.1 694.8 594.5C694.7 594 695 593.5 695.6 593.1Z",
+        fill: "#FC860A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        fillRule: "evenodd",
+        clipRule: "evenodd",
+        d: "M715.7 593.8C716.1 593.9 716.6 594 717.1 594C718.2 594 719.3 593.8 720.1 593.2C721.1 592.6 721.1 591.9 721.1 591.6C721.1 591.3 720.9 590.7 720 590.4C718.8 590 716.9 590.3 715.7 591C714.7 591.6 714.6 592.3 714.6 592.6C714.6 592.9 714.8 593.5 715.7 593.8ZM716.1 591.9C716.8 591.5 717.7 591.3 718.6 591.3C719 591.3 719.4 591.3 719.7 591.4C720 591.5 720.2 591.7 720.2 591.8C720.2 592 720 592.2 719.6 592.5C718.6 593.1 717 593.3 716 593C715.7 592.9 715.5 592.7 715.5 592.6C715.5 592.4 715.7 592.2 716.1 591.9Z",
+        fill: "#FC860A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M702.7 588.9C702.5 588.9 702.3 588.8 702.3 588.6C702.2 588.4 702.3 588.1 702.6 588L707.3 586.1C707.5 586 707.8 586.1 707.9 586.4C708 586.6 707.9 586.9 707.6 587L702.9 588.9C702.9 588.9 702.8 588.9 702.7 588.9Z",
+        fill: "#FC860A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M712.2 601.2C712.1 601.2 711.9 601.1 711.8 601C711.6 600.8 711.7 600.5 711.9 600.3L716.6 596.5C716.8 596.3 717.1 596.4 717.3 596.6C717.5 596.8 717.4 597.1 717.2 597.3L712.5 601.1C712.4 601.1 712.3 601.2 712.2 601.2Z",
+        fill: "#FC860A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M725.5 600.2C725.3 600.2 725.2 600.1 725.1 599.9L723.2 596.1C723.1 595.9 723.2 595.6 723.4 595.5C723.6 595.4 723.9 595.5 724 595.7L725.9 599.5C726 599.7 725.9 600 725.7 600.1C725.6 600.2 725.5 600.2 725.5 600.2Z",
+        fill: "#FC860A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        fillRule: "evenodd",
+        clipRule: "evenodd",
+        d: "M731.6 595.3C732.2 595.5 733 595.6 733.8 595.6C735.3 595.6 736.9 595.3 737.9 594.6C739.1 593.8 739.2 593 739.1 592.6C739 591.9 738.4 591.3 737.3 590.9C735.4 590.3 732.6 590.6 731 591.6C729.8 592.4 729.8 593.2 729.8 593.6C729.9 594.3 730.5 594.9 731.6 595.3ZM731.5 592.4C732.5 591.8 733.8 591.5 735.1 591.5C735.7 591.5 736.4 591.6 737 591.9C737.7 592.1 738.2 592.4 738.2 592.8C738.2 593.1 737.9 593.5 737.4 593.8C736 594.7 733.4 595 731.8 594.4C731.2 594.2 730.7 593.9 730.7 593.5C730.7 593.1 730.9 592.7 731.5 592.4Z",
+        fill: "#FC860A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M729.2 587.9C729.1 587.9 729.1 587.9 729 587.9L723.3 585.1C723.1 585 723 584.7 723.1 584.5C723.2 584.3 723.5 584.2 723.7 584.3L729.4 587.1C729.6 587.2 729.7 587.5 729.6 587.7C729.6 587.8 729.4 587.9 729.2 587.9Z",
+        fill: "#FC860A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M710.8 623.9C710.7 623.9 710.6 623.9 710.5 623.8L669.8 607.7C669.3 607.5 669.1 607 669.3 606.5C669.5 606 670 605.8 670.5 606L711.2 622.1C711.7 622.3 711.9 622.8 711.7 623.3C711.5 623.7 711.2 623.9 710.8 623.9Z",
+        fill: "#FC860A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M707.9 615.4C707.8 615.4 707.7 615.4 707.6 615.3L678.3 603.9C677.8 603.7 677.6 603.2 677.8 602.7C678 602.2 678.5 602 679 602.2L708.3 613.6C708.8 613.8 709 614.3 708.8 614.8C708.7 615.1 708.3 615.4 707.9 615.4Z",
+        fill: "#FC860A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.56",
+        d: "M708.2 582.5L687.6 620.4L676 615.6L690.8 592.2L708.2 582.5Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.56",
+        d: "M723.9 582.8C716.8 597.5 709.8 612.1 702.7 626.8L691.1 622C698.6 607.9 706 593.7 713.5 579.6L713.7 579.5L714.2 579.7L714.9 579.9L718.2 581L723.9 582.8Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M742 532.1C741.5 532.3 741 532.5 740.5 532.7C739.2 533.1 737.8 533.4 736.3 533.5C732 533.9 727.2 532.9 723.7 530.4C716.3 525.2 715.7 515 715.6 512.2C715.4 508.1 715.2 504 715 499.9C713.7 472.1 706.7 365.9 706.7 365.9C712.5 367.9 719.9 365.8 724.4 367.2C724.6 367.3 724.8 367.3 725 367.4C730.3 369.7 731.3 378.6 731.6 381.6C737.7 432.6 767.1 520.4 742 532.1Z",
+        fill: "#DF7D56"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M918 540.6C912.2 554.5 891.8 557 853 562.9C850.9 563.2 848.7 563.6 846.4 563.9C845.8 564 845.2 564.1 844.6 564.2C840 564.9 835 565.7 829.4 566.6C828.8 566.7 828.3 566.8 827.7 566.9C825.7 567.2 823.7 567.5 821.7 567.9C820.1 568.1 818.6 568.4 817 568.7C816.9 568.7 816.8 568.7 816.7 568.8C815.5 569 814.2 569.2 812.9 569.4C811 569.7 809.1 570 807.1 570.3C804.3 570.8 801.4 571.2 798.4 571.7C797.3 571.9 796.3 572.1 795.2 572.2C794.8 572.3 794.4 572.3 794 572.4C793.9 572.4 793.7 572.4 793.6 572.5C793.5 572.5 793.3 572.5 793.2 572.6C793 572.6 792.9 572.7 792.7 572.7C792.3 572.8 792 572.8 791.9 572.8C791.8 572.8 791.7 572.8 791.6 572.8C789.8 572.8 786.8 570.6 783.7 567.8C782.7 566.9 781.7 565.9 780.8 564.9C776.9 560.9 773.9 556.7 775 556.3C776.3 555.8 777.7 555.3 779.1 554.8C780.2 554.4 781.4 554 782.5 553.6C791.3 550.5 801.1 547 811.5 543.5C831.9 536.5 854.8 529 877.6 522.2C878.2 522 878.7 521.9 879.3 521.7C890.1 518.5 908.6 513.2 916.2 521.7C918.5 524.2 919.6 527.8 919.7 531.5C919.7 534.6 919.2 537.8 918 540.6Z",
+        fill: "#DF7D56"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.19",
+        d: "M724 484.8C721 491.9 717.8 497.1 714.9 500.9C713.6 472.9 712.3 444.9 711 416.9C719.8 435.3 731.7 466.8 724 484.8Z",
+        fill: "url(#paint22_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.19",
+        d: "M877.5 522.2C874.3 527.2 870 532.4 864.1 536.8C851.5 546.3 826.5 545.2 811.4 543.5C831.8 536.5 854.6 529 877.5 522.2Z",
+        fill: "url(#paint23_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M690.8 362.1C696.4 368.2 702.1 371.4 707 374C716.7 379.3 725.6 381.5 731.6 382.5C731.4 377.2 730 373.5 728.8 371.1C722.6 359.1 708.1 356 702.2 349.1C701.7 348.5 699.8 346.2 698.9 346.7C698.4 347 698.3 347.8 698.3 348.3C698.1 350.5 699.4 352.4 700.6 354C701.9 355.8 703.8 358.1 706.3 360.6C704.8 360.3 703.2 359.9 701.6 359.4C699 358.6 697 357.9 696.5 357.7C691.6 355.7 684.4 348.5 682.7 339.8C682.3 337.6 681.8 333.7 679.9 333.2C679.8 333.2 679.2 333 678.7 333.3C676 335.1 680.5 350.8 690.8 362.1Z",
+        fill: "#DF7D56"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M791.5 572.8C791.5 572.8 774.2 578.5 766.6 582.3C765.8 582.7 765 582.9 764.1 582.9C761.7 582.9 759.2 581.5 756.8 579.7C751.8 575.9 747.7 570 747.7 570C746.4 570.8 743.5 572.5 743 572.8C735.4 577.5 730.5 588.3 726 587.9C725.8 587.9 725.7 587.9 725.6 587.8C724.2 586.3 734.5 569.6 749 561.2C753.6 558.5 763.6 553.8 779 554.8C781.7 558.6 784.4 562.5 787.1 566.3C788.5 568.5 790 570.6 791.5 572.8Z",
+        fill: "#DF7D56"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M798.2 571.7C796.1 572.1 793.9 572.4 791.8 572.8C789.8 569.4 787.4 565.7 784.6 561.9C782.7 559.3 780.8 557 778.9 554.8C779.3 554.5 779.9 554.1 780.8 553.9C781.4 553.7 781.9 553.7 782.3 553.7C785.6 556.3 789.4 559.8 793.1 564.4C795.2 566.8 796.9 569.4 798.2 571.7Z",
+        fill: "#302C34"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.25",
+        d: "M918 540.6C912.2 554.5 891.8 557 853 562.9C850.9 563.2 848.7 563.6 846.4 563.9C845.8 564 845.2 564.1 844.6 564.2C840 564.9 835 565.7 829.4 566.6C828.8 566.7 828.3 566.8 827.7 566.9C825.7 567.2 823.7 567.5 821.7 567.9C820.1 568.1 818.6 568.4 817 568.7C816.9 568.7 816.8 568.7 816.7 568.8C815.5 569 814.2 569.2 812.9 569.4C811 569.7 809.1 570 807.1 570.3C804.3 570.8 801.4 571.2 798.4 571.7C797.3 571.9 796.3 572.1 795.2 572.2C794.8 572.3 794.4 572.3 794 572.4C793.9 572.4 793.7 572.4 793.6 572.5C793.5 572.5 793.3 572.5 793.2 572.6C793 572.6 792.9 572.7 792.7 572.7C792.3 572.8 792 572.8 791.9 572.8C791.8 572.8 791.7 572.8 791.6 572.8C791.6 572.8 774.3 578.5 766.7 582.3C765.9 582.7 765.1 582.9 764.2 582.9C761.8 582.9 759.3 581.5 756.9 579.7C765.3 575.7 774.2 571.7 783.7 567.8C784.8 567.3 786 566.9 787.1 566.4C807.3 558.2 829.9 550.5 854.9 544C878.1 538 899.9 534.1 919.7 531.5C919.7 534.6 919.2 537.8 918 540.6Z",
+        fill: "url(#paint24_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.36",
+        d: "M742 532.1C741.5 532.3 741 532.5 740.5 532.7C749 510.7 730.9 403.6 724.3 367.3C724.5 367.4 724.7 367.4 724.9 367.5C730.2 369.8 731.2 378.7 731.5 381.7C737.7 432.6 767.1 520.4 742 532.1Z",
+        fill: "url(#paint25_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M556.1 271.9C524 271.9 497.9 298 497.9 330.1C497.9 348.8 506.7 365.4 520.4 376L506.4 397.7L536.3 384.8C542.5 387 549.1 388.3 556.1 388.3C588.2 388.3 614.3 362.2 614.3 330.1C614.3 298 588.2 271.9 556.1 271.9Z",
+        fill: "url(#paint26_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M822.3 261.9C817 228.6 785.6 206 752.2 211.4C718.8 216.8 696.1 248.1 701.5 281.4C706.9 314.7 738.2 337.3 771.6 331.9C775.9 331.2 780.1 330.1 784 328.5L810.6 345.7L801.8 317.9C817.3 304.5 825.8 283.6 822.3 261.9Z",
+        fill: "url(#paint27_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M760.9 249.2C761.6 256.3 761.3 265.9 755.2 272.9C753.1 275.3 751.3 276.3 749.5 277.6C744.1 281.7 738 289.6 735.3 306.9C738.5 304.5 743.6 300.9 750.4 297.4C764.9 290 772 290.8 778.8 286C784.8 281.8 791.6 272.7 792 250C781.7 249.8 771.3 249.5 760.9 249.2Z",
+        fill: "#F2BE54"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M759 247.3C759.7 254.4 759.4 264 753.3 271C751.2 273.4 749.4 274.4 747.6 275.7C742.4 279.7 736.6 288 735.3 306.9C738 303.8 742.4 299.4 748.5 295.5C761 287.7 769.3 289.3 776.9 284.1C783 280 789.4 271.2 790.1 250C779.9 249.2 769.4 248.3 759 247.3Z",
+        fill: "#F2CA5C"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M794 252C792.6 253.1 790.8 252.8 790.1 252.7C790 252.7 790 252.7 789.9 252.7C784 251.9 778.1 251.8 772.2 251C762.3 249.7 757.6 251 756.1 248.2C755.6 247.2 755.4 245.6 756.1 244.4C757 243 758.8 242.6 759.9 242.5C768.1 241.4 776.2 244.7 786.4 244.4C788 244.3 789.4 244.2 790.6 244.2C792.6 244.1 794.1 244.2 794.9 245.4C796.3 247.1 795.9 250.6 794 252Z",
+        fill: "#F2CA5C"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M794 252C792.6 253.1 790.8 252.8 790.1 252.7C790 252.7 790 252.7 789.9 252.7C787.9 250.7 785.9 247.1 790.6 244.2C792.6 244.1 794.1 244.2 794.9 245.4C796.3 247.1 795.9 250.6 794 252Z",
+        fill: "#F2BE54"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("circle", {
+        cx: "765.2",
+        cy: "259.1",
+        r: "4.3",
+        fill: "#791D2C"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("circle", {
+        cx: "769",
+        cy: "277.1",
+        r: "4.3",
+        fill: "#791D2C"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("circle", {
+        cx: "782.2",
+        cy: "258.2",
+        r: "4.3",
+        fill: "#791D2C"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("circle", {
+        cx: "749.1",
+        cy: "284.7",
+        r: "4.3",
+        fill: "#791D2C"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M765.9 259.9C766.2 260.8 766.5 261.7 766.9 262.6C766.9 262.4 767.1 261.6 767.9 261.1C768.1 261 768.6 260.7 769.2 260.8C771.3 261.1 769.3 263.8 769.3 263.8L771.4 264.1C772.8 262.5 773.4 260.6 772.8 259.6C772 258.2 768.9 257.9 765.9 259.9Z",
+        fill: "#336859"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M760 279.5C759.1 279.8 758.1 280.1 757.2 280.4C757.7 280.6 758.3 280.9 759.1 281.3C760.2 282 760.9 282.4 761 283.2C761.1 283.9 760.7 284.8 760.1 285.1C759 285.7 757.2 284.6 756.2 283.9L756.4 286C758.5 287.4 760.9 287.2 762 286C763.2 284.7 762.8 281.3 760 279.5Z",
+        fill: "#336859"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        fillRule: "evenodd",
+        clipRule: "evenodd",
+        d: "M761.2 276.7C761.8 276.9 762.4 277 763 277C764.114 277 765.228 276.669 766.629 276.253C767.114 276.109 767.634 275.954 768.2 275.8C771.7 274.6 773.4 274 773.7 272.6C773.9 271.9 773.5 271 772.8 270.1C771.5 268.5 768.7 266.8 765.7 266.8C763.3 266.8 760.6 267.9 759 269.5C758 270.4 757.6 271.5 757.6 272.5C757.6 274.3 759.4 276 761.2 276.7ZM759.7 270.1C761.1 268.7 763.5 267.7 765.7 267.7C768.3 267.7 770.8 269.1 772.1 270.6C772.6 271.2 772.9 271.8 772.8 272.3C772.6 273.2 770.9 273.8 767.9 274.8C764.7 276 763.2 276.4 761.6 275.8C760.2 275.2 758.6 273.8 758.6 272.4C758.6 271.4 759.2 270.6 759.7 270.1Z",
+        fill: "#8677A7"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        fillRule: "evenodd",
+        clipRule: "evenodd",
+        d: "M743.1 292.6C743.7 293.1 744.4 293.3 745.1 293.3C745.9 293.3 746.7 293 747.5 292.7C748.8 292 750.2 290.3 750 288.4C749.9 287.1 749 285.9 747.7 285.1C746.6 284.5 745.5 284.4 744.7 284.7C743.644 285.084 743.325 286.205 742.948 287.532C742.932 287.588 742.916 287.644 742.9 287.7C742.4 289.2 741.8 291.4 743.1 292.6ZM745 285.5C745.2 285.4 745.4 285.4 745.6 285.4C746.1 285.4 746.7 285.6 747.1 285.9C747.9 286.4 748.8 287.3 748.9 288.5C749.1 289.9 748 291.2 746.9 291.8C746.1 292.3 744.5 292.7 743.7 291.9C742.8 291.1 743.3 289.2 743.7 287.9C743.752 287.744 743.8 287.594 743.847 287.449C744.16 286.477 744.391 285.761 745 285.5Z",
+        fill: "#8677A7"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M753.4 279H753.3C753 278.9 752.9 278.7 753 278.4L754.9 271.8C755 271.5 755.2 271.4 755.5 271.5C755.8 271.6 755.9 271.8 755.8 272.1L753.9 278.7C753.8 278.9 753.6 279 753.4 279Z",
+        fill: "#EBEE91"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M777.1 272.4C776.9 272.4 776.7 272.3 776.6 272.1L774.5 265.5C774.4 265.3 774.6 265 774.8 264.9C775 264.8 775.3 265 775.4 265.2L777.5 271.8C777.6 272 777.4 272.3 777.2 272.4H777.1Z",
+        fill: "#EBEE91"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M776.6 270C777.1 270 777.5 270 778 270C778 269.9 777.9 269.5 778 269.1C778 269.1 778.3 268.4 778.9 268.2C779.3 268.1 779.7 268.1 779.8 268.2C780.7 268.5 781.1 269.6 781.2 270.3L782.4 269.1C782.1 267.5 781 266.4 779.8 266.3C778.3 266.1 776.4 267.7 776.6 270Z",
+        fill: "#336859"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M575.1 359.6C575.1 359.8 575.2 360 575.2 360.2C575.4 361.6 575.2 362.9 574.7 365.4C574 369.3 573.6 371.4 572.3 372.9C572.2 373 572.1 373.1 572 373.2C571.5 373.7 568.7 374.2 563.2 375.3C563.2 375.3 560.1 375.7 557.9 374.8C557.9 374.8 557.7 374.7 557.5 374.6C556.4 374.1 554.7 372.5 551.1 365.9C550.4 364.6 549.9 363.5 549.4 362.7C548 359.9 548.2 359.4 548.2 358.9C548.2 358.1 548.4 355.7 550.7 352.1C551.9 350.3 552.6 349.1 553.7 348.2C554 347.9 554.4 347.7 554.7 347.5C555.1 347.3 555.8 346.9 560.1 346.1C564.1 345.3 566.2 344.9 567.2 345.4C567.3 345.5 567.4 345.5 567.5 345.6L567.6 345.7C567.6 345.7 567.7 345.7 567.7 345.8C568.3 346.3 568.8 347.2 570.3 349.9C570.5 350.3 570.8 350.8 571.1 351.3C574 356.7 574.8 357.9 575.1 359.6Z",
+        fill: "#FDB2A4"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.53",
+        d: "M575.2 360.2C575.4 361.6 575.2 362.9 574.7 365.4C574 369.3 573.6 371.4 572.3 372.9L562.1 356.5L553.7 348.4C554 348.1 554.4 347.9 554.7 347.7C555.1 347.5 555.8 347.1 560.1 346.3C564.1 345.5 566.2 345.1 567.2 345.6C568.3 346.1 568.6 346.8 571.1 351.4C574.4 357.3 574.9 358.1 575.2 360.2Z",
+        fill: "#FDA19F"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.53",
+        d: "M575.1 359.6C571.6 359.9 569.6 359.7 566.1 360.8C563.7 361.5 563.6 362.1 561.6 362.6C559.1 363.2 554.9 363.9 549.4 362.8C548 360 548.2 359.5 548.2 359C548.2 358.2 548.4 355.8 550.7 352.2C551.9 350.4 552.6 349.2 553.7 348.3C554 348 554.4 347.8 554.7 347.6C555.1 347.4 555.8 347 560.1 346.2C564.1 345.4 566.2 345 567.2 345.5C567.3 345.6 567.4 345.6 567.5 345.7L567.6 345.8C567.6 345.8 567.7 345.8 567.7 345.9C568.3 346.4 568.8 347.3 570.3 350C570.5 350.4 570.8 350.9 571.1 351.4C574 356.7 574.8 357.9 575.1 359.6Z",
+        fill: "#FDA19F"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("g", {
+        opacity: "0.5"
+    }, /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M565.9 380.5C564.9 380.5 563.7 379.8 562.7 378.2C560.4 374.3 557.3 371.5 554.4 368.7C552.5 367 550.7 365.3 549.2 363.4L548 362L548.8 361.4L550 362.8C551.6 364.6 553.3 366.3 555.2 368C558.2 370.8 561.4 373.7 563.7 377.7C564.7 379.4 565.9 379.8 566.6 379.4C567.4 378.9 568 377.1 566.3 373.8C564.9 371.1 560.2 367.4 556.1 364.1C550.9 360 547.7 357.3 547.8 355.6C547.8 355.3 548 354.8 548.5 354.5C550.6 353.2 556.5 358.3 565.3 366.1C568.9 369.3 573.2 373.2 574.5 373.7C573.8 370 555.7 353.1 551.5 351.5C549.3 350.7 548.9 349.1 549.3 348C549.9 346.1 552.7 344.6 556.3 345.4C559.1 346.1 563.7 351.9 568.1 357.5C571.3 361.6 575.8 367.2 577 366.9C577.1 366.9 577.3 366.6 577.3 366C577.9 358.7 561.1 344.3 560.9 344.2L561.5 343.4C562.2 344 578.8 358.2 578.2 366C578.1 367 577.8 367.6 577.2 367.8C575.5 368.3 572.4 364.6 567.2 358.1C563.1 352.9 558.4 346.9 555.9 346.3C552.6 345.5 550.4 346.9 550 348.2C549.7 349.1 550.3 350 551.6 350.5C555.9 352.2 575.3 369.8 575.3 373.8C575.3 374.3 575 374.5 574.8 374.6C573.7 375.1 571.2 373 564.3 366.8C559.1 362.1 550.3 354.3 548.6 355.3C548.4 355.4 548.4 355.5 548.4 355.6C548.3 356.9 552.6 360.3 556.3 363.3C560.7 366.8 565.3 370.4 566.8 373.3C568.7 377 568.1 379.5 566.7 380.2C566.6 380.4 566.2 380.5 565.9 380.5Z",
+        fill: "white"
+    })), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M566.9 348C566.9 347.8 566.8 347.6 566.7 347.4C566.9 347 567 346.7 566.8 346.5C566.7 346.4 566.5 346.3 566.2 346.4C566.1 346.3 566 346.2 566 346.1C565.9 345.3 565.6 344.7 565.2 344.8C564.8 344.8 564.6 345.4 564.6 346.2C564.5 346 564.3 346 564.2 346C564.1 346 564 346.1 563.9 346.2C563.8 345.9 563.5 345.6 563.3 345.7C563.2 345.7 563.1 345.8 563 345.9C562.9 345.6 562.6 345.3 562.4 345.4C562 345.4 561.8 346 561.8 346.8C561.7 346.6 561.5 346.6 561.4 346.6C561.3 346.6 561.1 346.7 561 346.9C560.9 346.2 560.6 345.6 560.2 345.6C559.8 345.6 559.6 346.2 559.6 346.9C559.5 346.4 559.2 346.1 558.9 346.1C558.5 346.1 558.3 346.7 558.3 347.4C558.2 346.9 557.9 346.6 557.6 346.6C557.3 346.6 557.1 347.1 557 347.6H556.9C556.8 347.3 556.5 347.1 556.3 347.1C556.1 347.1 556 347.2 555.9 347.4C555.6 347 555.2 346.7 555 346.8C554.6 346.9 554.6 347.6 554.9 348.3L554.8 348.4C554.5 348 554.1 347.9 553.8 348C553.5 348.2 553.5 348.7 553.8 349.2C553.4 348.6 552.9 348.3 552.6 348.5C552.3 348.7 552.3 349.4 552.7 350C552.6 350 552.6 350 552.5 350C552.2 349.7 551.8 349.5 551.5 349.6C551.2 349.8 551.2 350.5 551.6 351.1C551.5 351.1 551.4 351.1 551.4 351.1C551.2 351.2 551.1 351.6 551.2 351.9C551.1 351.9 551 351.9 551 351.9C550.9 352 550.9 352 550.8 352.2C550.6 352.1 550.5 352.1 550.3 352.2C550 352.4 550 353.1 550.4 353.7C550.3 353.7 550.2 353.7 550.2 353.7C550.1 353.8 550.1 353.8 550 354C549.8 353.9 549.7 353.9 549.5 354C549.3 354.1 549.2 354.5 549.3 354.8C549.2 354.8 549.1 354.8 549.1 354.8C548.9 354.9 548.8 355.3 548.9 355.6C548.8 355.6 548.7 355.6 548.7 355.6C548.4 355.8 548.4 356.5 548.8 357.1C548.7 357.1 548.6 357.1 548.6 357.1C548.3 357.3 548.3 358 548.7 358.6C548.9 358.9 549.1 359.2 549.4 359.3C549.2 359.5 549.2 359.8 549.3 360C549.5 360.3 550.2 360.3 550.8 359.9C550.9 359.9 550.9 359.8 551 359.8C551.1 359.8 551.1 359.8 551.2 359.8C551.2 360.3 551.3 360.7 551.6 360.8C551.9 360.9 552.3 360.5 552.6 359.9C552.7 360.1 552.8 360.2 552.9 360.3C553.1 360.4 553.3 360.3 553.4 360.1C553.4 360.4 553.6 360.6 553.8 360.7C554 360.8 554.2 360.6 554.4 360.4C554.7 360.5 555.1 360.1 555.4 359.5C555.5 359.7 555.6 359.8 555.7 359.9C555.9 360 556.1 359.9 556.2 359.7C556.2 360 556.4 360.2 556.6 360.3C556.9 360.4 557.4 360 557.6 359.3C557.7 359.3 557.7 359.3 557.8 359.3C557.7 359.9 557.8 360.4 558.1 360.5C558.5 360.6 558.9 360.1 559.2 359.4C559.2 359.3 559.2 359.2 559.3 359.2C559.3 359.2 559.3 359.2 559.4 359.2C559.8 359.8 560.3 360.1 560.6 359.9C560.8 359.8 560.9 359.4 560.7 359H560.8C561.2 359.4 561.6 359.6 561.8 359.4C561.9 359.3 561.9 359.3 562 359.1C562.2 359.2 562.3 359.2 562.5 359.1C562.7 359 562.7 358.8 562.7 358.5C562.8 358.5 562.9 358.4 562.9 358.4C563.2 358.7 563.5 358.8 563.7 358.7C563.9 358.5 564 358.1 563.8 357.6C563.8 357.6 563.8 357.6 563.9 357.5C564.5 358 565.2 358.1 565.4 357.8C565.5 357.6 565.5 357.4 565.3 357.1C565.5 357.1 565.7 357.1 565.8 356.9C566 356.7 565.8 356.2 565.4 355.8C566 355.6 566.5 355.3 566.4 355C566.4 354.9 566.3 354.8 566.3 354.8C566.6 354.6 566.9 354.4 566.8 354.1C566.8 354 566.7 353.9 566.6 353.8C567.3 353.7 567.9 353.3 567.8 352.9C567.7 352.5 567.1 352.3 566.4 352.4C566.9 352.2 567.3 351.9 567.3 351.6C567.3 351.5 567.2 351.3 567 351.2C567.1 351.1 567.1 351 567.1 350.9C567.1 350.8 567 350.7 567 350.7C567.3 350.5 567.6 350.3 567.5 350C567.5 349.9 567.4 349.7 567.2 349.6C567.3 349.5 567.3 349.4 567.3 349.3C567.3 349.2 567.2 349.1 567.2 349.1C567.5 348.9 567.8 348.7 567.7 348.4C567.7 348.3 567.4 348.1 566.9 348Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M554.8 351.2C553.3 352.9 552.3 355.7 552.9 356.2C553 356.3 553.1 356.3 553.2 356.3C560.2 356.8 562 354.2 562 354.2C562.4 353.6 562.7 352.9 563.1 351.5C563.6 350.1 563.8 349.4 563.6 349.1C562.8 347.8 557.5 348.2 554.8 351.2Z",
+        fill: "#302C34"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M557.3 350.2C557.6 350.1 557.7 350.2 557.8 350.2C558.7 350.7 556.6 355.7 556.6 355.7L553.5 355.5C553.8 354.7 554 354.1 554.3 353.7C554.9 352.3 555.8 350.6 557.3 350.2Z",
+        fill: "#EBEE91"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M558.6 349.7C558.3 350.2 558.4 350.6 558.5 351.2C558.7 353.6 556.8 354.8 557.3 355.4C557.8 356.1 560.6 355.3 561.8 353.6C562.1 353.2 561.9 353.3 562.6 351.8C562.9 351.2 563.4 350.1 563.1 349.4C563.1 349.4 562.8 349 560.9 348.9C560.8 348.9 560.8 348.9 560.8 348.9C560.8 348.9 560.8 348.9 560.7 348.9C560.2 348.9 559.1 349 558.6 349.7Z",
+        fill: "#FDB2A4"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M594.1 308.8C593.8 309.5 593 309.9 592.2 309.6C592.1 309.6 592 309.5 591.9 309.4C591.6 309.7 591.3 309.9 590.9 309.9C590.4 309.9 589.9 309.6 589.7 309.2C589.5 309.4 589.2 309.5 588.8 309.5C588.6 309.5 588.4 309.5 588.2 309.4C588 309.8 587.5 310.1 587 310.1C586.5 310.1 586 309.8 585.8 309.4C585.6 309.6 585.3 309.7 584.9 309.7C584.5 310 583.9 310.1 583.4 309.9C583.2 309.8 583 309.7 582.9 309.5C582.5 309.7 582 309.8 581.5 309.6C581.3 309.5 581.1 309.4 581 309.2C580.6 309.4 580.1 309.5 579.6 309.3C579.1 309.1 578.9 308.6 578.8 308.1C578.5 308.2 578.2 308.1 577.9 308C577.7 307.9 577.5 307.8 577.4 307.6C577 307.8 576.5 307.9 576 307.7C575.8 307.6 575.6 307.5 575.5 307.3C575.1 307.5 574.6 307.6 574.1 307.4C573.6 307.2 573.4 306.7 573.3 306.2C573 306.3 572.7 306.2 572.4 306.1C571.7 305.8 571.4 304.9 571.7 304.2L571.8 304.1C571.3 303.9 571.1 303.4 571 302.9C570.7 303 570.4 302.9 570.1 302.8C569.4 302.5 569.1 301.6 569.4 300.9C569.6 300.4 570.1 300.2 570.5 300.1C570.7 299.6 571.2 299.4 571.6 299.3C571.5 299 571.6 298.7 571.7 298.4C572 297.7 572.9 297.4 573.6 297.7L573.7 297.8C574 297.1 574.9 296.8 575.6 297.1C576.1 297.3 576.3 297.8 576.4 298.3C576.7 298.2 577 298.3 577.3 298.4L577.4 298.5C577.4 298.4 577.5 298.3 577.6 298.3C578 297.8 578.7 297.6 579.3 297.8C580 298.1 580.3 298.8 580.1 299.4C580.1 299.3 580.1 299.2 580.2 299.1C580.5 298.4 581.3 298 582.1 298.3C582.7 298.6 583.1 299.3 582.9 299.9C582.9 299.8 582.9 299.7 583 299.6C583.3 298.9 584.1 298.5 584.9 298.8C585.4 299 585.7 299.5 585.8 300C586.3 300.2 586.6 300.7 586.6 301.3C586.6 301.4 586.6 301.5 586.6 301.6C586.6 301.5 586.6 301.4 586.7 301.3C587 300.6 587.8 300.2 588.6 300.5C589.1 300.7 589.4 301.2 589.5 301.7C589.8 301.6 590.1 301.7 590.3 301.8C591 302.1 591.4 302.9 591.1 303.7C591.1 303.8 591 303.8 591 303.9C591.5 304.1 591.8 304.6 591.8 305.1C592.1 305 592.4 305.1 592.6 305.2C593.3 305.5 593.7 306.3 593.4 307.1C593.4 307.2 593.3 307.3 593.3 307.3C594.1 307.3 594.4 308.1 594.1 308.8Z",
+        fill: "#FC860A"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M594.3 308.1L589.7 322.6C589.1 322.9 584.7 325 579.3 324.3C577.4 324.1 575.4 323.5 573.4 322.4C568.1 319.5 566 314.7 565.5 313.2C566.9 309 568.4 304.7 569.8 300.5C570.9 302 574.1 306.1 579.9 308.2C581.4 308.7 582.9 309.1 584.4 309.2C589.1 309.9 593 308.6 594.3 308.1Z",
+        fill: "#302C34"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.79",
+        d: "M590.8 315.1C590.8 315.2 590.7 315.2 590.6 315.2H590.5C590.4 315.2 583.9 312.4 579.3 314.3C575.6 315.8 570.3 309.1 567.9 305.7C568 305.5 568 305.3 568.1 305.1C570.3 308.3 575.6 315.3 579.1 313.9C583.9 312 590.4 314.7 590.6 314.8C590.8 314.8 590.9 314.9 590.8 315.1Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.79",
+        d: "M586.1 318.9C586.1 319 586 319 585.9 319H585.8C585.7 319 579.2 316.2 574.6 318.1C571.8 319.2 568.3 315.8 565.6 312.6C565.7 312.4 565.7 312.2 565.8 312.1C568.4 315.3 571.9 318.7 574.4 317.7C579.2 315.8 585.7 318.5 585.9 318.6C586.1 318.6 586.2 318.7 586.1 318.9Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.1",
+        d: "M594.3 308.1L589.7 322.6C589.1 322.9 584.7 325 579.3 324.3C584.2 316.8 584.8 312 584.4 309.3C589.1 309.9 593 308.6 594.3 308.1Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M593.5 306.8C593.5 306.9 593.4 307 593.4 307C592.6 308.2 591.3 308.9 589.7 308.4C586.9 307.5 585 304.6 582.1 304.6C579.3 304.6 577.4 305.5 577.4 302.7C577.4 301 577.7 299.3 578 298.2C578.4 297.7 579.1 297.5 579.7 297.7C580.4 298 580.7 298.7 580.5 299.3C580.5 299.2 580.5 299.1 580.6 299C580.9 298.3 581.7 297.9 582.5 298.2C583.1 298.5 583.5 299.2 583.3 299.8C583.3 299.7 583.3 299.6 583.4 299.5C583.7 298.8 584.5 298.4 585.3 298.7C585.8 298.9 586.1 299.4 586.2 299.9C586.7 300.1 587 300.6 587 301.2C587 301.3 587 301.4 587 301.5C587 301.4 587 301.3 587.1 301.2C587.4 300.5 588.2 300.1 589 300.4C589.5 300.6 589.8 301.1 589.9 301.6C590.2 301.5 590.5 301.6 590.7 301.7C591.4 302 591.8 302.8 591.5 303.6C591.5 303.7 591.4 303.7 591.4 303.8C591.9 304 592.2 304.5 592.2 305C592.5 304.9 592.8 305 593 305.1C593.5 305.2 593.8 306.1 593.5 306.8Z",
+        fill: "#E77B0C"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M549.9 318.1C550.5 318 550.9 317.7 550.9 317.4C550.9 317 550 316.7 549 316.8C549.2 316.5 549.2 316.3 549.1 316.1C548.8 315.8 548 315.9 547.2 316.3C547.1 315.8 546.9 315.5 546.5 315.4C546.3 315.4 546.1 315.5 545.9 315.6C545.9 315.5 545.8 315.3 545.7 315.3C545.4 315.2 544.9 315.3 544.5 315.6C544.5 315.6 544.4 315.6 544.4 315.5C544.2 315.4 543.9 315.4 543.5 315.6C543.3 315.6 543.2 315.5 543 315.5C543.1 315.2 543 314.9 542.8 314.8C542.5 314.6 542 314.8 541.5 315.1C541.4 315.1 541.2 315 541.1 315C541.2 314.5 541 314.1 540.6 314C540.3 313.9 539.8 314.1 539.5 314.5H539.4C539.2 314.5 539 314.5 538.7 314.6C538.5 314.6 538.2 314.5 538 314.5C537.9 314.2 537.8 314.1 537.6 314C537.5 314 537.4 314 537.3 314C537.3 313.6 537.1 313.4 536.8 313.3C536.5 313.2 536 313.4 535.7 313.8H535.6C535.3 313.7 534.9 313.9 534.6 314.2C534.5 314.2 534.4 314.2 534.3 314.2C534.3 313.8 534.2 313.4 533.8 313.3C533.4 313.2 532.8 313.5 532.5 314.1C532.4 314.1 532.3 314.1 532.2 314.1C532 313.9 531.7 313.8 531.5 313.8C531.4 313.5 531.3 313.4 531.1 313.3C530.8 313.2 530.3 313.4 530 313.8H529.9C529.6 313.7 529.2 313.9 528.8 314.2C528.7 314.2 528.6 314.2 528.5 314.2C528.5 313.7 528.4 313.4 528 313.3C527.8 313.3 527.6 313.3 527.4 313.4C527.3 313.4 527.3 313.3 527.2 313.3C526.9 313.2 526.4 313.4 526.1 313.8H526C525.9 313.8 525.7 313.8 525.5 313.8C525.4 313.8 525.4 313.8 525.3 313.8C525.2 313.8 525.1 313.9 525 314.1C524.8 314.2 524.7 314.4 524.6 314.6C524.8 314 524.7 313.4 524.2 313.3C523.7 313.2 523.1 313.6 522.8 314.3C522.4 313.9 521.9 313.7 521.6 313.9C521.4 314 521.3 314.1 521.3 314.3C521.2 314.2 521 314.1 520.9 314.1C520.5 314.1 520.2 314.4 520.1 314.8H520C519.5 314.8 519.1 315.3 519.1 316C519 315.3 518.6 314.8 518.2 314.8C517.7 314.8 517.3 315.3 517.3 316C516.7 315.8 516.2 315.7 515.9 315.9C515.6 316.2 515.8 316.8 516.4 317.3C516.3 317.4 516.1 317.5 516 317.6C515.7 317.5 515.4 317.5 515 317.5C513.9 317.5 513.1 317.8 513.1 318.2C513.1 318.4 513.4 318.6 513.9 318.8C513.3 319 512.8 319.3 512.9 319.6C513 319.9 513.6 320.1 514.4 320.1V320.2C514.4 320.3 514.4 320.4 514.5 320.5C513.7 321 513.3 321.7 513.7 322C513.8 322.1 514 322.1 514.2 322.1C513.6 322.6 513.3 323.1 513.7 323.4C513.9 323.6 514.4 323.6 515 323.4C515 323.4 515 323.5 515.1 323.5C515.4 323.8 516.2 323.6 516.9 323.2C516.2 323.7 516 324.3 516.3 324.5C516.4 324.6 516.6 324.7 516.9 324.6C516.9 324.7 517 324.7 517 324.8C517.2 325 517.7 325 518.3 324.8C518.3 324.8 518.3 324.9 518.4 324.9C518.5 325 518.6 325 518.8 325C518.9 325 518.9 325 519 325C519.1 325 519.3 325 519.4 324.9C519.7 324.8 520 324.7 520.2 324.5C519.5 325 519.2 325.6 519.6 325.9C519.9 326.2 520.7 326 521.5 325.6C521.6 326.1 521.9 326.4 522.3 326.4C522.5 326.4 522.7 326.3 522.9 326.1C522.9 326.2 523 326.3 523.2 326.4C523.5 326.5 524 326.4 524.4 326.1C524.4 326.1 524.5 326.1 524.5 326.2C524.9 326.4 525.5 326.1 526 325.7H526.1C525.8 326.2 525.8 326.8 526.2 326.9C526.6 327.1 527.3 326.8 527.9 326.2C528 326.3 528 326.3 528.1 326.4C528 326.8 528.2 327.1 528.5 327.2C528.8 327.3 529.3 327.1 529.7 326.8C529.7 326.8 529.8 326.8 529.8 326.9C530.2 327 530.9 326.7 531.3 326.1C531 326.7 531.1 327.3 531.5 327.5C531.7 327.6 531.9 327.5 532.1 327.4C532.2 327.4 532.2 327.5 532.3 327.5C532.6 327.6 533.1 327.4 533.5 327.1C533.5 327.1 533.6 327.1 533.6 327.2C533.7 327.2 533.9 327.2 534.1 327.2C534.2 327.2 534.2 327.2 534.3 327.2C534.4 327.2 534.5 327.1 534.6 327C534.8 326.8 535.1 326.6 535.3 326.3C535.3 326.3 535.3 326.2 535.4 326.2L535.3 326.3C534.9 327 534.9 327.7 535.4 327.9C535.8 328 536.5 327.7 536.9 327C537.3 327.4 537.7 327.6 538.1 327.5C538.3 327.4 538.4 327.3 538.5 327.1C538.6 327.2 538.8 327.3 538.9 327.3C539.3 327.3 539.6 327.1 539.8 326.6H539.9C540.4 326.6 540.8 326.1 541 325.4C541 326.1 541.3 326.7 541.8 326.7C542.1 326.7 542.4 326.5 542.7 326.1C543 326.2 543.3 326.4 543.7 326.4C544.7 326.6 545.7 326.5 545.8 326.1C545.9 325.9 545.8 325.8 545.6 325.6C546.1 326 546.6 326.2 547 326C547.2 325.9 547.3 325.8 547.3 325.6C547.4 325.6 547.5 325.6 547.5 325.6C547.8 325.5 547.9 325.1 547.7 324.7H547.8C547.9 324.6 548 324.5 548.1 324.4L548.2 324.3C548.2 324.2 548.2 324.1 548.1 324C548.1 323.8 547.9 323.5 547.7 323.2C548.2 323.9 549 324.2 549.4 324C549.8 323.8 549.8 323.2 549.4 322.6C550.1 322.6 550.6 322.5 550.7 322.2C550.8 322 550.7 321.9 550.5 321.7C550.7 321.7 550.9 321.7 551 321.6C551.2 321.4 551.1 321 550.8 320.7C550.8 320.7 550.9 320.7 550.9 320.6C551.1 320.4 551.1 320.1 550.7 319.7C550.9 319.7 551.1 319.7 551.2 319.6C550.8 319.2 550.5 318.6 549.9 318.1Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M559.6 324.9C558.3 325.4 556.5 324.5 554.8 323.3C555.5 325.4 556 327.7 555 328.9C555 328.9 555 328.9 554.9 329C553.2 331 551 323.5 550.1 319.8C550.1 319.6 550 319.5 550 319.3C549.8 319.2 549.6 319.1 549.4 319.1C547.9 318.5 546.3 318 544.5 317.7C544.2 317.6 543.9 317.6 543.6 317.5C542.3 317.3 540.9 317.2 539.5 317.2C538.4 317.2 537.5 317.3 536.7 317.4C536.3 317.5 536 317.5 535.6 317.6C534 317.9 532.3 318.4 529.4 318.9C529 318.9 528.7 319 528.3 319.1H528.2C526.7 319.3 525.1 319.5 523.3 319.7C522.9 319.7 522.6 319.8 522.2 319.8C520.4 320 518.6 320.1 517 320C516.6 320 516.3 320 516 319.9C514.1 319.7 512.6 319.3 512.2 318.3C511.9 317.6 512.1 316.6 512.7 315.6C513.7 313.8 515.8 311.8 517.8 310.5C518 310.4 518.2 310.3 518.4 310.1C518.7 309.9 519 309.8 519.3 309.6C521.1 308.7 523 308.2 524.8 307.9C525.1 307.9 525.4 307.8 525.7 307.8C527.3 307.7 528.9 307.7 530.4 307.9C530.7 307.9 531.1 308 531.4 308C532.6 308.1 533.7 308.3 534.8 308.5C535.4 308.6 536.2 308.7 537.2 308.9C537.5 309 537.8 309 538.1 309.1C540 309.5 542.5 310.2 544.8 311.1C545.1 311.2 545.4 311.4 545.7 311.5C547.4 312.3 549.1 313.3 550.4 314.5C550.7 314.8 551 315 551.2 315.3C551.7 315.9 552.1 316.5 552.5 317.1C555.9 319.6 562 324 559.6 324.9Z",
+        fill: "#FDA19F"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.51",
+        d: "M523.3 319.8C522.9 319.8 522.6 319.9 522.2 319.9C524.8 315.4 525.5 311.1 524.7 308.2C525 308.2 525.3 308.1 525.6 308.1C526.4 311.2 525.7 315.4 523.3 319.8Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.51",
+        d: "M517 320.2C516.6 320.2 516.3 320.2 516 320.1C517.9 316.4 518.7 313 518.3 310.3C518.6 310.1 518.9 310 519.2 309.8C519.6 312.7 519 316.3 517 320.2Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.51",
+        d: "M529.4 319C529 319 528.7 319.1 528.3 319.2C530.5 314.9 531.2 311 530.4 308.2C530.7 308.2 531.1 308.3 531.4 308.3C532 311.2 531.4 315 529.4 319Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.51",
+        d: "M536.7 317.6C536.3 317.7 536 317.7 535.6 317.8C537 314.6 537.6 311.6 537.2 309.3C537.5 309.4 537.8 309.4 538.1 309.5C538.4 311.8 538 314.6 536.7 317.6Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.51",
+        d: "M545.8 311.9C545.8 313.7 545.4 315.7 544.6 317.8C544.3 317.7 544 317.7 543.7 317.6C544.6 315.4 545 313.3 544.9 311.5C545.2 311.6 545.5 311.7 545.8 311.9Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.51",
+        d: "M551.3 315.7C551.1 317 550.7 318.4 550.2 319.9C550.2 319.7 550.1 319.6 550.1 319.4C549.9 319.3 549.7 319.2 549.5 319.2C550.1 317.7 550.4 316.3 550.5 314.9C550.8 315.1 551.1 315.4 551.3 315.7Z",
+        fill: "white"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.61",
+        d: "M555 329C553.3 331 551.1 323.6 550.1 319.9C550.1 319.7 550 319.6 550 319.4C549.8 319.3 549.6 319.2 549.4 319.2C547.9 318.6 546.3 318.1 544.5 317.8C544.2 317.7 543.9 317.7 543.6 317.6C542.3 317.4 540.9 317.3 539.5 317.3C538.4 317.3 537.5 317.4 536.7 317.5C536.3 317.6 536 317.6 535.6 317.7C534 318 532.3 318.5 529.4 319C529 319 528.7 319.1 528.3 319.2H528.2C526.7 319.4 525.1 319.6 523.3 319.8C522.9 319.8 522.6 319.9 522.2 319.9C520.4 320.1 518.6 320.2 517 320.1C516.6 320.1 516.3 320.1 516 320C514.1 319.8 512.6 319.4 512.2 318.4C511.9 317.7 512.1 316.7 512.7 315.7C516.7 316.6 527.8 318.6 533.9 316.3C541.5 313.5 549.6 316.5 550.7 318.3C551.6 319.7 553.9 326 555 329Z",
+        fill: "#FDA19F"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M649.2 427.1C645.8 431.3 639.9 435.9 633.4 438.8C631.3 439.7 629.4 440.4 627.6 440.9C627.3 441 627.1 441 626.8 441.1C626.6 441.2 626.3 441.2 626.1 441.3C623.1 442 620.5 442.2 618.2 442.4C617.8 442.4 617.5 442.5 617.1 442.5C616.7 442.5 616.2 442.6 615.8 442.6C615.6 442.6 615.3 442.7 615.1 442.7C614.8 442.7 614.6 442.8 614.3 442.8C614.1 442.8 614 442.9 613.8 442.9C613.6 442.9 613.4 443 613.3 443H613.2C613 443.1 612.7 443.1 612.5 443.2C610.8 443.7 609.2 444.5 607.7 446C607.3 446.4 606.9 446.8 606.6 447.3C605.2 449.2 604.3 451.4 603.7 453.7C602.8 457.6 603.1 461.8 603.5 465.2L588.1 462.7C588.7 458.4 589.8 454.7 591 451.6C591.6 450.7 592.4 449.3 593.5 447.7C595.1 445.4 596.8 443.1 598.5 441.2C598.6 441.1 598.6 441.1 598.6 441C598.9 440.6 599.3 440.2 599.6 439.8C600.5 438.8 601.3 437.9 602 437.2C603.1 436.1 604.3 435.2 605.6 434.4C611.5 430.5 618.5 428.9 622.1 428.3C624 427.6 625.7 426.7 626.9 425.7C627.3 425.3 628.9 423.8 630.8 424.1C630.9 424.1 632.1 424.3 632.4 424.9C632.8 425.8 631.5 427.8 624.1 433.1C628.5 434.4 631.9 434 633.6 433.6C636.7 433.1 638.9 432.1 640.3 431.3C645.3 428.4 648 423.8 648.2 423.4C649.3 421.4 650.5 418.5 651.2 418.6C651.4 418.7 651.9 419.3 652.1 419.9C652.5 421.9 651.4 424.4 649.2 427.1Z",
+        fill: "#E6A67F"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M316.2 458.4L302.3 460.7C302 459.4 301.8 458.1 301.5 456.9C301.6 454.6 301.5 452.1 301 449.8C301 449.7 301 449.7 301 449.6C300.7 448.2 300.2 446.8 299.5 445.5C298.9 444.4 298.2 443.3 297.3 442.4L297.1 442.2C295.6 440.7 294.1 439.9 292.4 439.4C287.5 438 281.4 439.2 272 435C271.1 434.6 270.2 434.1 269.4 433.7C260.2 428.8 252.9 420.9 253.9 416.7C253.9 416.6 254.2 415.5 254.8 415.4C255.5 415.3 256 416.9 258.5 420C261.8 424.2 265.2 426.7 267.8 428.2C270.4 429.6 272.1 430.1 272.1 430.1C273.8 430.5 277.1 431 281.4 429.6C280.2 428.9 273.4 425.1 273.8 421.6C273.8 421.3 273.9 420.4 274.6 420C275.8 419.5 277.8 421.6 278.6 422.4C282.4 426 287.3 426.9 292.6 428.4C295.9 429.4 299.3 430.6 302.7 433C303.3 433.5 304 433.9 304.6 434.4C305.4 435.1 306.5 436.1 307.8 437.6C308 437.9 308.2 438.1 308.3 438.4C308.7 439.3 309 440.2 309.4 441C310.1 442.5 310.7 444.1 311.4 445.6C313 449.3 314.6 453 316.2 456.7C316.1 457.2 316.2 457.8 316.2 458.4Z",
+        fill: "#E6A67F"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M647.5 424.6C649.6 420.9 650.3 417.6 649 416.4C649 416.4 648.3 415.7 647.7 415.9C646.5 416.2 646.8 419.1 645.9 422C645.1 424.4 643.6 425.9 641.9 427.6C635.7 433.8 624.2 433.2 623.6 433.2C624.6 433.6 633.9 437.1 641.7 431.7C644.9 429.3 646.6 426.4 647.5 424.6Z",
+        fill: "#E6A67F"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M644.8 423.9C645.3 421.1 646.2 416.9 645 416.3C644.7 416.1 644.3 416.3 644.2 416.3C642.3 416.9 642.1 421.3 641.8 422.7C641.2 425.7 637.7 429.6 624 433.3C624 433.3 626.7 437 629.1 435.4C631.5 433.8 643.9 429.1 644.8 423.9Z",
+        fill: "#E6A67F"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M624.3 433C624.2 433 637.9 430.6 638.7 424.2C639.1 421.4 640 418.9 640.7 418.9C641.3 418.9 641.8 420.5 641.8 421.8C641.9 422.9 641.6 424.5 640.2 426.6C635.1 433.9 624.4 433.1 624.3 433Z",
+        fill: "#E6A67F"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M256.4 417.2C256.4 417.2 255.1 413.8 256.6 413.8C258.1 413.8 258.9 416.1 258.9 416.1C258.9 416.1 258.1 414.6 259.7 413.8C261.2 413 269 429.3 281.4 429.3C281.4 429.3 279.1 433.9 276 433.2C272.9 432.4 257.7 424.5 256.4 417.2Z",
+        fill: "#E6A67F"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.17",
+        d: "M649.2 427.1C645.8 431.3 639.9 435.9 633.4 438.8C631.3 439.7 629.4 440.4 627.6 440.9C627.3 441 627.1 441 626.8 441.1C626.6 441.2 626.3 441.2 626.1 441.3C623.1 442 620.5 442.2 618.2 442.4C617.8 442.4 617.5 442.5 617.1 442.5C616.7 442.5 616.2 442.6 615.8 442.6C615.6 442.6 615.3 442.6 615.1 442.7C614.8 442.7 614.6 442.8 614.3 442.8C614.1 442.8 614 442.9 613.8 442.9C613.6 442.9 613.4 443 613.3 443H613.2C613 443.1 612.7 443.1 612.5 443.2C610.8 443.7 609.2 444.5 607.7 446C607.3 446.4 606.9 446.8 606.6 447.3C603.3 445.3 600.4 442.7 598.7 441.2L598.6 441.1C598.9 440.7 599.3 440.3 599.6 439.9C600.2 439.9 600.8 440 601.6 440C610.9 440.7 633.9 441.1 649.2 427.1Z",
+        fill: "url(#paint28_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.17",
+        d: "M311.2 445.6L305.4 449.5C305.4 449.5 303.7 449.6 301 449.8C301 449.7 301 449.7 301 449.6C300.7 448.2 300.2 446.8 299.5 445.5C298.9 444.4 298.2 443.3 297.3 442.4L297.1 442.2C295.6 440.7 294.1 439.9 292.4 439.4C287.5 438 281.4 439.2 272 435C271.1 434.6 270.2 434.1 269.4 433.7C280.5 437.1 296.9 437.8 305.1 437.9C305.8 437.9 306.5 437.9 307.1 437.9C307.3 437.9 307.6 437.9 307.8 437.9C307.9 438.1 308 438.2 308.1 438.4C308.5 439.3 308.8 440.2 309.2 441C309.9 442.5 310.5 444 311.2 445.6Z",
+        fill: "url(#paint29_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.19",
+        d: "M309.2 441C308.6 440.5 307.4 439.6 305.8 438.4C305.6 438.2 305.3 438 305 437.8C301.5 435.1 296.5 431.4 292.4 428.4C295.7 429.4 299.1 430.6 302.5 433C303.1 433.5 303.8 433.9 304.4 434.4C305.2 435.1 306.3 436.1 307.6 437.6C307.8 437.9 308 438.1 308.1 438.4C308.5 439.2 308.8 440.1 309.2 441Z",
+        fill: "url(#paint30_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.19",
+        d: "M622.1 428.6C617.8 432.3 609.1 436.5 603.3 439.3C602.7 439.6 602.1 439.9 601.6 440.2C601.4 440.3 601.3 440.4 601.1 440.4C600.2 440.9 599.4 441.2 598.7 441.3C598.6 441.3 598.5 441.3 598.5 441.3C598.6 441.2 598.6 441.2 598.6 441.1C598.9 440.7 599.3 440.3 599.6 439.9C600.5 438.9 601.3 438 602 437.3C603.1 436.2 604.3 435.3 605.6 434.5C611.4 431.5 617.5 430.3 622.1 428.6Z",
+        fill: "url(#paint31_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M434.5 579.4L398.4 581.8L391 582.3L397.6 507.6C389.3 515.1 350.7 549.2 328.7 545.7C326.6 545.4 324.6 544.7 322.8 543.6C315.6 539.1 315 529.9 303.9 474.5C302.9 469.6 302 465 301.1 460.8C300.8 459.2 300.5 457.7 300.2 456.2C299.1 450.7 298.1 446.1 297.3 442.5V442.4C297.5 442.2 302.7 440 305.8 438.6C306.3 438.4 306.7 438.2 307 438C307.2 437.9 307.4 437.8 307.5 437.7C307.6 437.8 307.6 437.9 307.7 438C307.8 438.2 307.9 438.3 308 438.5C310.6 442.3 313.8 447.4 317.1 453.7C333.9 486.2 329.9 508 338.9 510.5C346.6 512.6 353.4 497.7 375.8 476.4C389 463.9 401.5 455 410.8 449C418.7 492.4 426.6 535.9 434.5 579.4Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        d: "M613.3 443.2C611.8 450.3 609.5 461.6 606.7 475.4C602.4 496.9 599.6 511.5 597.5 521.5C594.2 536.7 592.3 541.4 588.2 544.2C588.1 544.3 587.9 544.4 587.8 544.5C576.9 551.3 558.5 542.5 542.5 531.8C529 522.8 517.2 512.3 513 508.5C515.2 518.6 517.4 528.7 519.6 538.8C517.8 539.5 515.9 540.2 514 541C510.6 542.4 507.1 543.9 503.5 545.4C497.2 548.2 491.2 551 485.5 553.9C485.8 538.3 486.8 521.3 488.8 503C491 483.3 494.2 465.2 497.8 448.9C507.6 455.1 520.7 464.4 534.7 477.3C556.8 497.7 564.5 511.8 571.6 509.5C580.9 506.4 573.8 479.9 590.9 451.9C591.7 450.6 592.5 449.3 593.4 448C595.2 445.4 596.9 443.2 598.4 441.5C599.4 440.3 600.3 439.3 601 438.6C601.7 438.9 602.5 439.2 603.2 439.5C606.5 440.8 609.8 442 613.1 443.3C613.2 443.1 613.3 443.1 613.3 443.2Z",
+        fill: "#BDD3DE"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.36",
+        d: "M409 531.2C409 541.9 402.7 566.6 398.5 581.8L391.1 582.3L397.7 507.6C389.4 515.1 350.8 549.2 328.8 545.7C341.4 531.4 366.9 506.7 385.4 502C410.9 495.2 409 515.1 409 531.2Z",
+        fill: "url(#paint32_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("path", {
+        opacity: "0.36",
+        d: "M588.2 544.1C588.1 544.2 587.9 544.3 587.8 544.4C576.9 551.2 558.5 542.4 542.5 531.7C529 522.7 517.2 512.2 513 508.4C515.2 518.5 517.4 528.6 519.6 538.7C517.8 539.4 515.9 540.1 514 540.9C508.6 531.8 497.7 511 503.5 500.9C510.1 489.5 571.3 532.1 588.2 544.1Z",
+        fill: "url(#paint33_linear)"
+    }), /*#__PURE__*/ _reactDefault.default.createElement("defs", null, /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint0_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "360.299",
-        x2: "377.351",
         y1: "737.9",
+        x2: "377.351",
         y2: "737.9",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 402
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        stopColor: "#153E5C",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 403
-        },
-        __self: this
+        stopColor: "#153E5C"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
         offset: "1",
-        stopColor: "#271C41",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 404
-        },
-        __self: this
+        stopColor: "#271C41"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint1_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "902.662",
-        x2: "909.059",
         y1: "711.251",
+        x2: "909.059",
         y2: "711.251",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 406
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        stopColor: "#153E5C",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 407
-        },
-        __self: this
+        stopColor: "#153E5C"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
         offset: "1",
-        stopColor: "#271C41",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 408
-        },
-        __self: this
+        stopColor: "#271C41"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint2_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "372.069",
-        x2: "485.936",
         y1: "665.534",
+        x2: "485.936",
         y2: "665.534",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 410
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".002",
-        stopColor: "#FF931E",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 411
-        },
-        __self: this
+        offset: "0.00238381",
+        stopColor: "#FF931E"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".997",
-        stopColor: "#153E5C",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 412
-        },
-        __self: this
+        offset: "0.9972",
+        stopColor: "#153E5C"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint3_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "794.99",
-        x2: "907.58",
         y1: "672.048",
+        x2: "907.58",
         y2: "672.048",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 414
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".002",
-        stopColor: "#FF931E",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 415
-        },
-        __self: this
+        offset: "0.00238381",
+        stopColor: "#FF931E"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".997",
-        stopColor: "#153E5C",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 416
-        },
-        __self: this
+        offset: "0.9972",
+        stopColor: "#153E5C"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint4_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "530.046",
-        x2: "583.313",
         y1: "961.412",
+        x2: "583.313",
         y2: "961.412",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 418
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".154",
-        stopColor: "#691B26",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 419
-        },
-        __self: this
+        offset: "0.1545",
+        stopColor: "#691B26"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".873",
-        stopColor: "#CD907F",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 420
-        },
-        __self: this
+        offset: "0.8731",
+        stopColor: "#CD907F"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint5_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "472.561",
-        x2: "550.369",
         y1: "958.809",
+        x2: "550.369",
         y2: "958.809",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 422
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".154",
-        stopColor: "#691B26",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 423
-        },
-        __self: this
+        offset: "0.1545",
+        stopColor: "#691B26"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".873",
-        stopColor: "#CD907F",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 424
-        },
-        __self: this
+        offset: "0.8731",
+        stopColor: "#CD907F"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint6_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "465.528",
-        x2: "486.569",
         y1: "895.022",
+        x2: "486.569",
         y2: "895.022",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 426
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".002",
-        stopColor: "#FF931E",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 427
-        },
-        __self: this
+        offset: "0.00238381",
+        stopColor: "#FF931E"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
         offset: "1",
-        stopColor: "#fff",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 428
-        },
-        __self: this
+        stopColor: "white"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint7_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "522.193",
-        x2: "533.139",
         y1: "895.232",
+        x2: "533.139",
         y2: "895.232",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 430
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".002",
-        stopColor: "#FF931E",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 431
-        },
-        __self: this
+        offset: "0.00238381",
+        stopColor: "#FF931E"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
         offset: "1",
-        stopColor: "#fff",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 432
-        },
-        __self: this
+        stopColor: "white"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint8_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "349.361",
-        x2: "468.196",
         y1: "601.269",
+        x2: "468.196",
         y2: "601.269",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 434
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        stopColor: "#153E5C",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 435
-        },
-        __self: this
+        stopColor: "#153E5C"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
         offset: "1",
-        stopColor: "#271C41",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 436
-        },
-        __self: this
+        stopColor: "#271C41"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint9_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "459.669",
-        x2: "427.988",
         y1: "419.307",
+        x2: "427.988",
         y2: "489.327",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 438
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".154",
-        stopColor: "#691B26",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 439
-        },
-        __self: this
+        offset: "0.1545",
+        stopColor: "#691B26"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".517",
+        offset: "0.5166",
         stopColor: "#CD907F",
-        stopOpacity: ".5",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 440
-        },
-        __self: this
+        stopOpacity: "0.5"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint10_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "497.091",
-        x2: "577.52",
         y1: "783.014",
+        x2: "577.52",
         y2: "783.014",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 442
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        stopColor: "#9776A6",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 443
-        },
-        __self: this
+        stopColor: "#9776A6"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
         offset: "1",
-        stopColor: "#271C41",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 444
-        },
-        __self: this
+        stopColor: "#271C41"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint11_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "460.06",
-        x2: "499.845",
         y1: "592.645",
+        x2: "499.845",
         y2: "592.645",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 446
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        stopColor: "#9776A6",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 447
-        },
-        __self: this
+        stopColor: "#9776A6"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
         offset: "1",
-        stopColor: "#271C41",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 448
-        },
-        __self: this
+        stopColor: "#271C41"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint12_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "402.042",
-        x2: "442.083",
         y1: "666.266",
+        x2: "442.083",
         y2: "666.266",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 450
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        stopColor: "#9776A6",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 451
-        },
-        __self: this
+        stopColor: "#9776A6"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
         offset: "1",
-        stopColor: "#271C41",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 452
-        },
-        __self: this
+        stopColor: "#271C41"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint13_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "747.828",
-        x2: "890.68",
         y1: "921.277",
+        x2: "890.68",
         y2: "921.277",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 454
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        stopColor: "#19233D",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 455
-        },
-        __self: this
+        stopColor: "#19233D"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".998",
+        offset: "0.9983",
         stopColor: "#302C34",
-        stopOpacity: ".9",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 456
-        },
-        __self: this
+        stopOpacity: "0.9"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint14_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "725.925",
-        x2: "912.459",
         y1: "604.896",
+        x2: "912.459",
         y2: "604.896",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 458
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".002",
-        stopColor: "#FF931E",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 459
-        },
-        __self: this
+        offset: "0.00238381",
+        stopColor: "#FF931E"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".662",
-        stopColor: "#0D2A28",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 460
-        },
-        __self: this
+        offset: "0.6622",
+        stopColor: "#0D2A28"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint15_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "896.533",
-        x2: "942.477",
         y1: "441.5",
+        x2: "942.477",
         y2: "441.5",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 462
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".002",
-        stopColor: "#FF931E",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 463
-        },
-        __self: this
+        offset: "0.00238381",
+        stopColor: "#FF931E"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
         offset: "1",
-        stopColor: "#fff",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 464
-        },
-        __self: this
+        stopColor: "white"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint16_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "740.259",
-        x2: "821.835",
         y1: "471.709",
+        x2: "821.835",
         y2: "471.709",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 466
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".002",
-        stopColor: "#FF931E",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 467
-        },
-        __self: this
+        offset: "0.00238381",
+        stopColor: "#FF931E"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
         offset: "1",
-        stopColor: "#fff",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 468
-        },
-        __self: this
+        stopColor: "white"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint17_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "864.129",
-        x2: "876.821",
         y1: "328.024",
+        x2: "876.821",
         y2: "328.024",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 470
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".127",
-        stopColor: "#CD907F",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 471
-        },
-        __self: this
+        offset: "0.1269",
+        stopColor: "#CD907F"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".846",
-        stopColor: "#691B26",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 472
-        },
-        __self: this
+        offset: "0.8455",
+        stopColor: "#691B26"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint18_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "426.94",
-        x2: "858.38",
         y1: "770.883",
+        x2: "858.38",
         y2: "770.883",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 474
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".002",
-        stopColor: "#FF931E",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 475
-        },
-        __self: this
+        offset: "0.00238381",
+        stopColor: "#FF931E"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".997",
-        stopColor: "#153E5C",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 476
-        },
-        __self: this
+        offset: "0.9972",
+        stopColor: "#153E5C"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint19_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "619.97",
-        x2: "855.74",
         y1: "834.72",
+        x2: "855.74",
         y2: "834.72",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 478
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".001",
+        offset: "0.000833551",
         stopColor: "#DA9E29",
-        stopOpacity: ".5",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 479
-        },
-        __self: this
+        stopOpacity: "0.5"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".998",
-        stopColor: "#FC860A",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 480
-        },
-        __self: this
+        offset: "0.9978",
+        stopColor: "#FC860A"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint20_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "650.344",
-        x2: "775.919",
         y1: "637.557",
+        x2: "775.919",
         y2: "637.557",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 482
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        stopColor: "#002544",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 483
-        },
-        __self: this
+        stopColor: "#002544"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".917",
-        stopColor: "#271C41",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 484
-        },
-        __self: this
+        offset: "0.9174",
+        stopColor: "#271C41"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint21_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "660.651",
-        x2: "761.566",
         y1: "630.509",
+        x2: "761.566",
         y2: "630.509",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 486
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        stopColor: "#F1F0E2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 487
-        },
-        __self: this
+        stopColor: "#F1F0E2"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".608",
-        stopColor: "#F0F0E2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 488
-        },
-        __self: this
+        offset: "0.6079",
+        stopColor: "#F0F0E2"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
         offset: "1",
-        stopColor: "#D3E0DF",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 489
-        },
-        __self: this
+        stopColor: "#D3E0DF"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint22_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "711.07",
-        x2: "726.515",
         y1: "500.816",
+        x2: "726.515",
         y2: "500.816",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 491
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".002",
-        stopColor: "#FF931E",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 492
-        },
-        __self: this
+        offset: "0.00238381",
+        stopColor: "#FF931E"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
         offset: "1",
-        stopColor: "#fff",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 493
-        },
-        __self: this
+        stopColor: "white"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint23_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "811.37",
-        x2: "877.496",
         y1: "544.653",
+        x2: "877.496",
         y2: "544.653",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 495
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".002",
-        stopColor: "#FF931E",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 496
-        },
-        __self: this
+        offset: "0.00238381",
+        stopColor: "#FF931E"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
         offset: "1",
-        stopColor: "#fff",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 497
-        },
-        __self: this
+        stopColor: "white"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint24_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "756.807",
-        x2: "919.632",
         y1: "582.846",
+        x2: "919.632",
         y2: "582.846",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 499
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".127",
-        stopColor: "#CD907F",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 500
-        },
-        __self: this
+        offset: "0.1269",
+        stopColor: "#CD907F"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".846",
-        stopColor: "#691B26",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 501
-        },
-        __self: this
+        offset: "0.8455",
+        stopColor: "#691B26"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint25_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "724.354",
-        x2: "752.016",
         y1: "532.599",
+        x2: "752.016",
         y2: "532.599",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 503
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".127",
-        stopColor: "#CD907F",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 504
-        },
-        __self: this
+        offset: "0.1269",
+        stopColor: "#CD907F"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".846",
-        stopColor: "#691B26",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 505
-        },
-        __self: this
+        offset: "0.8455",
+        stopColor: "#691B26"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint26_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "644.486",
-        x2: "639.002",
         y1: "429.873",
+        x2: "639.002",
         y2: "244.432",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 507
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        stopColor: "#F1F0E2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 508
-        },
-        __self: this
+        stopColor: "#F1F0E2"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".608",
-        stopColor: "#F0F0E2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 509
-        },
-        __self: this
+        offset: "0.6079",
+        stopColor: "#F0F0E2"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
         offset: "1",
-        stopColor: "#D3E0DF",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 510
-        },
-        __self: this
+        stopColor: "#D3E0DF"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint27_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "879.162",
-        x2: "831.978",
         y1: "370.909",
+        x2: "831.978",
         y2: "163.667",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 512
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        stopColor: "#F1F0E2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 513
-        },
-        __self: this
+        stopColor: "#F1F0E2"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".588",
-        stopColor: "#F0F0E2",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 514
-        },
-        __self: this
+        offset: "0.5884",
+        stopColor: "#F0F0E2"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
         offset: "1",
-        stopColor: "#D3E0DF",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 515
-        },
-        __self: this
+        stopColor: "#D3E0DF"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint28_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "598.565",
-        x2: "649.212",
         y1: "447.356",
+        x2: "649.212",
         y2: "447.356",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 517
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".154",
-        stopColor: "#691B26",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 518
-        },
-        __self: this
+        offset: "0.1545",
+        stopColor: "#691B26"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".873",
-        stopColor: "#CD907F",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 519
-        },
-        __self: this
+        offset: "0.8731",
+        stopColor: "#CD907F"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint29_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "269.413",
-        x2: "311.194",
         y1: "449.754",
+        x2: "311.194",
         y2: "449.754",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 521
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".154",
-        stopColor: "#691B26",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 522
-        },
-        __self: this
+        offset: "0.1545",
+        stopColor: "#691B26"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".873",
-        stopColor: "#CD907F",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 523
-        },
-        __self: this
+        offset: "0.8731",
+        stopColor: "#CD907F"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint30_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "292.423",
-        x2: "309.226",
         y1: "440.989",
+        x2: "309.226",
         y2: "440.989",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 525
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".002",
-        stopColor: "#FF931E",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 526
-        },
-        __self: this
+        offset: "0.00238381",
+        stopColor: "#FF931E"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
         offset: "1",
-        stopColor: "#fff",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 527
-        },
-        __self: this
+        stopColor: "white"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint31_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "598.432",
-        x2: "622.058",
         y1: "441.313",
+        x2: "622.058",
         y2: "441.313",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 529
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".002",
-        stopColor: "#FF931E",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 530
-        },
-        __self: this
+        offset: "0.00238381",
+        stopColor: "#FF931E"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
         offset: "1",
-        stopColor: "#fff",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 531
-        },
-        __self: this
+        stopColor: "white"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint32_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "328.745",
-        x2: "409",
         y1: "582.229",
+        x2: "409",
         y2: "582.229",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 533
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        stopColor: "#153E5C",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 534
-        },
-        __self: this
+        stopColor: "#153E5C"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".996",
-        stopColor: "#AAC0DC",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 535
-        },
-        __self: this
+        offset: "0.9956",
+        stopColor: "#AAC0DC"
     })), /*#__PURE__*/ _reactDefault.default.createElement("linearGradient", {
         id: "paint33_linear",
-        gradientUnits: "userSpaceOnUse",
         x1: "501.927",
-        x2: "588.205",
         y1: "546.752",
+        x2: "588.205",
         y2: "546.752",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 537
-        },
-        __self: this
+        gradientUnits: "userSpaceOnUse"
     }, /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        stopColor: "#153E5C",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 538
-        },
-        __self: this
+        stopColor: "#153E5C"
     }), /*#__PURE__*/ _reactDefault.default.createElement("stop", {
-        offset: ".996",
-        stopColor: "#AAC0DC",
-        __source: {
-            fileName: "/Users/saaliklok/Documents/Projects/GlucoseTrail/glucose-trail-crystal-ball/src/images/landing.svg",
-            lineNumber: 539
-        },
-        __self: this
+        offset: "0.9956",
+        stopColor: "#AAC0DC"
     })))));
-}
-exports.default = SvgLanding;
-_c = SvgLanding;
+};
+_c = LandingImg;
+exports.default = LandingImg; //# sourceMappingURL=LandingImg.js.map
 var _c;
-$RefreshReg$(_c, "SvgLanding");
+$RefreshReg$(_c, "LandingImg");
 
   helpers.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}]},["1j6wU","5x2oD","7a5BI"], "7a5BI", "parcelRequiree01b")
+},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}]},["1j6wU","425bw","5mCR7"], "5mCR7", "parcelRequiree01b")
 
-//# sourceMappingURL=index.01a295fb.js.map
+//# sourceMappingURL=index.ed731f93.js.map
