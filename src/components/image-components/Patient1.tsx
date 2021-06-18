@@ -1,6 +1,6 @@
 import React from "react";
 
-const Patient1 = () => (
+const Patient1: React.FC = () => (
   <svg
     xmlns="http=" //www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
