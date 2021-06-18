@@ -1,8 +1,27 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css";
-$family-sans-serif: 'Quicksand', sans-serif;
+$family-sans-serif: "Quicksand", sans-serif;
+$yellow: rgb(255, 201, 60);
+$green: rgb(74, 165, 78);
+$dark: #333;
+$light: #fefefe;
 
 body {
   font-family: $family-sans-serif;
-  color: #333;
-  background-color: #fefefe;
+  color: $dark;
+  background-color: $light;
+}
+
+.has-background-yellow,
+.is-yellow {
+  background-color: $yellow !important;
+}
+
+.has-background-green,
+.is-green {
+  background-color: $green !important;
+  color: $light !important;
+}
+
+.selected {
+  border: 3px solid $green;
 }
