@@ -4,7 +4,7 @@ import Patient2 from "../../image-components/Patient2";
 import Patient3 from "../../image-components/Patient3";
 import Patient4 from "../../image-components/Patient4";
 
-interface Props {
+type Props = {
   id: number;
   patientName: string;
   subtitle: string;

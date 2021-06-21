@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "@emotion/styled";
-//import {SVGReactComponent as LandingImg} from "../../images/landing.svg";
 import LandingImg from "../image-components/LandingImg";
 
 const Container = styled("div")`

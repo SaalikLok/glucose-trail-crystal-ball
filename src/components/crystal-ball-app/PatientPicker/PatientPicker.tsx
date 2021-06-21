@@ -3,6 +3,8 @@ import PatientCard from "./PatientCard";
 import { patients } from "../../../data/patients";
 
 const PatientPicker: React.FC = () => {
+  // useContext to get the new context and use dispatches to select the new selected patient.
+
   const [selectedPatient, setSelectedPatient] = useState(0);
 
   const selectPatient = (id: number) => {

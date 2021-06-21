@@ -10,7 +10,7 @@ This application is built with React and TypeScript. The tools used:
 - React -> powers the UI 
 - TypeScript -> statically typed language 
 - Parcel -> bundling
-- Emotion -> styled components
+- Bulma -> CSS Framework
 
 ## Running Locally
 
