@@ -2,21 +2,20 @@ import React from "react";
 import PatientCard from "./PatientCard";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import {
-  selectAllPatients,
   selectCurrentPatient,
   updateCurrentPatient,
 } from "./patientSlice";
+import { patients, PatientData } from "../../../data/patients"
 
 const PatientPicker: React.FC = () => {
   const dispatch = useAppDispatch();
   const currentPatient = useAppSelector(selectCurrentPatient);
-  const patients = useAppSelector(selectAllPatients);
 
   const updatePatient = (id: number) => {
     dispatch(updateCurrentPatient(id));
   };
 
-  const patientCards = patients.map((patient: any) => {
+  const patientCards = patients.map((patient: PatientData) => {
     return (
       <PatientCard
         key={patient.key}
