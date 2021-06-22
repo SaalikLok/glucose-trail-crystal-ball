@@ -14,7 +14,7 @@ type Props = {
   avgBloodSugar: number;
   selectPatient(id: number): void;
   selectedPatient: number;
-}
+};
 
 const PatientCard: React.FC<Props> = ({
   id,
@@ -71,7 +71,9 @@ const PatientCard: React.FC<Props> = ({
       </div>
       <div className="card-footer">
         <div
-          onClick={() => selectPatient(id)}
+          onClick={() => {
+            selectPatient(id);
+          }}
           className="card-footer-item has-background-yellow"
         >
           Select This Patient

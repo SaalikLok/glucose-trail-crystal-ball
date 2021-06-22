@@ -1,17 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import PatientCard from "./PatientCard";
-import { patients } from "../../../data/patients";
+import { useAppSelector, useAppDispatch } from "../../app/hooks";
+import {
+  selectAllPatients,
+  selectCurrentPatient,
+  updateCurrentPatient,
+} from "./patientSlice";
 
 const PatientPicker: React.FC = () => {
-  // useContext to get the new context and use dispatches to select the new selected patient.
+  const dispatch = useAppDispatch();
+  const currentPatient = useAppSelector(selectCurrentPatient);
+  const patients = useAppSelector(selectAllPatients);
 
-  const [selectedPatient, setSelectedPatient] = useState(0);
-
-  const selectPatient = (id: number) => {
-    setSelectedPatient(id);
+  const updatePatient = (id: number) => {
+    dispatch(updateCurrentPatient(id));
   };
 
-  const patientCards = patients.map((patient) => {
+  const patientCards = patients.map((patient: any) => {
     return (
       <PatientCard
         key={patient.key}
@@ -22,8 +27,8 @@ const PatientPicker: React.FC = () => {
         hba1c={patient.hba1c}
         avgBloodSugar={patient.avgBloodSugar}
         weight={patient.weight}
-        selectPatient={selectPatient}
-        selectedPatient={selectedPatient}
+        selectPatient={updatePatient}
+        selectedPatient={currentPatient}
       />
     );
   });
