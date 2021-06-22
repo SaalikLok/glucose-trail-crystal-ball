@@ -1,7 +1,11 @@
 import React from "react";
+import MealPicker from "./MealPicker";
 
 const RoutineBuilder = () => {
-  return <div className="column">Routine Builder Component</div>;
+  return (
+  <div className="column">
+    <MealPicker />  
+  </div>);
 };
 
 export default RoutineBuilder;
