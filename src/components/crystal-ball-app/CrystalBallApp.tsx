@@ -8,9 +8,9 @@ const CrystalBallApp = () => {
     <div className="section">
       <h1 className="title">The Crystal Ball</h1>
       <div className="columns">
-          <PatientPicker />
-          <RoutineBuilder />
-          <Calculator />
+        <PatientPicker />
+        <RoutineBuilder />
+        <Calculator />
       </div>
     </div>
   );

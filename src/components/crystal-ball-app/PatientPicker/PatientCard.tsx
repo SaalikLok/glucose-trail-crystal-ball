@@ -4,7 +4,7 @@ import Patient2 from "../../image-components/Patient2";
 import Patient3 from "../../image-components/Patient3";
 import Patient4 from "../../image-components/Patient4";
 
-interface Props {
+type Props = {
   id: number;
   patientName: string;
   subtitle: string;
@@ -14,7 +14,7 @@ interface Props {
   avgBloodSugar: number;
   selectPatient(id: number): void;
   selectedPatient: number;
-}
+};
 
 const PatientCard: React.FC<Props> = ({
   id,
@@ -71,7 +71,9 @@ const PatientCard: React.FC<Props> = ({
       </div>
       <div className="card-footer">
         <div
-          onClick={() => selectPatient(id)}
+          onClick={() => {
+            selectPatient(id);
+          }}
           className="card-footer-item has-background-yellow"
         >
           Select This Patient

@@ -1,4 +1,4 @@
-interface PatientData {
+export type PatientData = {
   key: number;
   patientName: string;
   subtitle: string;
