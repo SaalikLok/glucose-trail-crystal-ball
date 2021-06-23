@@ -3,8 +3,8 @@ import React from "react";
 const LandingImg = () => {
   return (
     <svg
-      width="1050"
-      height="997"
+      width="500"
+      height="450"
       viewBox="0 0 1050 997"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

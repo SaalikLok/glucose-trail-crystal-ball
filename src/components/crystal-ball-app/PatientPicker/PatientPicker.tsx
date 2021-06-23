@@ -5,14 +5,13 @@ import {
   selectCurrentPatient,
   updateCurrentPatient,
 } from "./patientSlice";
-import { patients, PatientData } from "../../../data/patients"
 import AvatarSelector from "./AvatarSelector";
 
 
 const PatientPicker: React.FC = () => {
   const dispatch = useAppDispatch();
-  const currentPatientId = useAppSelector(selectCurrentPatient);
-  const patient = patients[currentPatientId]
+  const currentPatient = useAppSelector(selectCurrentPatient);
+  const { key, title, description, hba1c, avgBloodSugar, weight } = currentPatient
 
   const updatePatient = (id: number) => {
     dispatch(updateCurrentPatient(id));
@@ -22,15 +21,15 @@ const PatientPicker: React.FC = () => {
     <div className="column">
       <AvatarSelector
         selectPatient={updatePatient}
-        selectedPatient={currentPatientId}
+        selectedPatient={key}
       />
     <PatientCard
-        key={patient.key}
-        title={patient.title}
-        description={patient.description}
-        hba1c={patient.hba1c}
-        avgBloodSugar={patient.avgBloodSugar}
-        weight={patient.weight}
+        key={key}
+        title={title}
+        description={description}
+        hba1c={hba1c}
+        avgBloodSugar={avgBloodSugar}
+        weight={weight}
       />
     </div>);
 };
