@@ -32,7 +32,6 @@ const MealPicker = () => {
 
   return (
     <div className="dropdown is-hoverable">
-      <p>Meal Selected: {meals[currentRoutine.breakfastId - 1].name}</p>
       <div className="dropdown-trigger">
         <button className="button">
           <span>Select a Meal</span>

@@ -9,7 +9,7 @@ type PatientState = {
 };
 
 const initialState: PatientState = {
-  currentPatient: 1
+  currentPatient: 0
 };
 
 export const patientSlice = createSlice({
