@@ -11,7 +11,7 @@ type RoutineState = {
 };
 
 const initialState: RoutineState = {
-  breakfastId: 0,
+  breakfastId: 1,
   lunchId: 0,
   dinnerId: 0,
   snackId: 0,

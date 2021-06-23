@@ -6,33 +6,33 @@ import {
   updateCurrentPatient,
 } from "./patientSlice";
 import { patients, PatientData } from "../../../data/patients"
+import AvatarSelector from "./AvatarSelector";
+
 
 const PatientPicker: React.FC = () => {
   const dispatch = useAppDispatch();
-  const currentPatient = useAppSelector(selectCurrentPatient);
+  const currentPatientId = useAppSelector(selectCurrentPatient);
+  const patient = patients[currentPatientId]
 
   const updatePatient = (id: number) => {
     dispatch(updateCurrentPatient(id));
   };
 
-  const patientCards = patients.map((patient: PatientData) => {
-    return (
-      <PatientCard
+  return (
+    <div className="column">
+      <AvatarSelector
+        selectPatient={updatePatient}
+        selectedPatient={currentPatientId}
+      />
+    <PatientCard
         key={patient.key}
-        id={patient.key}
-        patientName={patient.patientName}
-        subtitle={patient.subtitle}
+        title={patient.title}
         description={patient.description}
         hba1c={patient.hba1c}
         avgBloodSugar={patient.avgBloodSugar}
         weight={patient.weight}
-        selectPatient={updatePatient}
-        selectedPatient={currentPatient}
       />
-    );
-  });
-
-  return <div className="column">{patientCards}</div>;
+    </div>);
 };
 
 export default PatientPicker;
