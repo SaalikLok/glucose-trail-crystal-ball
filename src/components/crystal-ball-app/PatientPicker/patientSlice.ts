@@ -2,14 +2,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 import {patients, PatientData} from "../../../data/patients"
 
-// TODO: figure out whether I want to be passing in the full object or just the id.
-
 type PatientState = {
-  currentPatient: number;
+  currentPatient: PatientData;
 };
 
 const initialState: PatientState = {
-  currentPatient: 0
+  currentPatient: patients[0]
 };
 
 export const patientSlice = createSlice({
@@ -17,7 +15,7 @@ export const patientSlice = createSlice({
   initialState,
   reducers: {
     updateCurrentPatient: (state, action: PayloadAction<number>) => {
-      state.currentPatient = action.payload;
+      state.currentPatient = patients[action.payload];
     },
   },
 });
