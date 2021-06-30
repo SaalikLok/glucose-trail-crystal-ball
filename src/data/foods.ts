@@ -1,93 +1,138 @@
-/**
- * Assumptions:
- * - Calories for a single serving of each food
- * - Estimated caltories for an average serving
- */
-
 export type FoodData = {
+  name: string,
+  serving: string,
   calories: number;
 };
 
-export const foods: { [name: string]: FoodData } = {
-  banana: {
+export const foods: FoodData[] = [
+  {
+    name: "Banana",
+    serving: "fruits",
     calories: 100,
   },
-  chickenBreast: {
+  {
+    name: "Chicken Breast",
+    serving: "breasts",
     calories: 150,
   },
-  apple: {
+  {
+    name: "Apple",
+    serving: "fruits",
     calories: 95,
   },
-  grapes: {
+  {
+    name: "Grapes",
+    serving: "cup",
     calories: 104,
   },
-  orange: {
+  {
+    name: "Orange",
+    serving: "fruits",
     calories: 62,
   },
-  chickenNuggetsTen: {
-    calories: 590,
+  {
+    name: "Chicken Nugget",
+    serving: "nuggets",
+    calories: 59,
   },
-  chickenNuggetsFive: {
-    calories: 295,
-  },
-  cheeseBurger: {
+  {
+    name: "Cheeseburger",
+    serving: "burgers",
     calories: 410,
   },
-  fries: {
+  {
+    name: "Fries",
+    serving: "basket",
     calories: 222,
   },
-  pizzaSlice: {
+  {
+    name: "Pizza",
+    serving: "slices",
     calories: 168,
   },
-  milk: {
+  {
+    name: "Milk", 
+    serving: "cups",
     calories: 149,
   },
-  almondMilk: {
+  {
+    name: "Almond Milk",
+    serving: "cups",
     calories: 40,
   },
-  yogurt: {
+  {
+    name: "Yogurt",
+    serving: "cups",
     calories: 138,
   },
-  beefSteak: {
+  {
+    name: "Beef Steak",
+    serving: "pieces",
     calories: 407,
   },
-  chickenDrumstick: {
+  {
+    name: "Chicken Drumstick",
+    serving: "drumsticks",
     calories: 131,
   },
-  vanillaIceCream: {
+  {
+    name: "Vanilla Ice Cream",
+    serving: "scoops",
     calories: 145,
   },
-  chocolateIceCream: {
+  {
+    name: "Chocolate Ice Cream",
+    serving: "scoops",
     calories: 156,
   },
-  cola: {
+  {
+    name: "Cola",
+    serving: "cans",
     calories: 149,
   },
-  water: {
+  {
+    name: "Water",
+    serving: "cups",
     calories: 0,
   },
-  appleJuice: {
+  {
+    name: "Apple Juice",
+    serving: "cups",
     calories: 110,
   },
-  potato: {
+  {
+    name: "Potato",
+    serving: "potatoes",
     calories: 165,
   },
-  broccoli: {
+  {
+    name: "Broccoli",
+    serving: "heads",
     calories: 207,
   },
-  onion: {
+  {
+    name: "Onion",
+    serving: "onions",
     calories: 34,
   },
-  tomato: {
+  {
+    name: "Tomato",
+    serving: "tomatoes",
     calories: 20,
   },
-  bagel: {
+  {
+    name: "Bagel",
+    serving: "bagels",
     calories: 252
   },
-  englishMuffin: {
+  {
+    name: "English Muffin",
+    serving: "muffins",
     calories: 129
   },
-  pancake: {
+  {
+    name: "Pancake",
+    serving: "pancakes",
     calories: 89
   }
-};
+];
