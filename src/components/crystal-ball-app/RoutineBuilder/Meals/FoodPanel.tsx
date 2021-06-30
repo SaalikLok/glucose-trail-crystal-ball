@@ -1,20 +1,23 @@
 import React, { useState } from "react";
+import { FoodData } from "../../../../data/foods";
+import { useAppDispatch } from "../../../app/hooks";
+import { removeBreakfastFood } from "./mealsSlice";
 
 type Props = {
-  foodName: string;
-  serving: string;
+  food: FoodData;
 };
 
-const FoodPanel: React.FC<Props> = ({ foodName, serving }: Props) => {
+const FoodPanel: React.FC<Props> = ({ food }: Props) => {
+  const dispatch = useAppDispatch();
   const [numServings, setNumServings] = useState("");
 
   return (
     <div className="panel-block columns">
       <div className="column">
-      <span className="panel-icon">
-        <i className="fas fa-utensils"></i>
-      </span>
-        {foodName}
+        <span className="panel-icon">
+          <i className="fas fa-utensils"></i>
+        </span>
+        {food.name}
       </div>
       <span className="column">
         <input
@@ -25,8 +28,14 @@ const FoodPanel: React.FC<Props> = ({ foodName, serving }: Props) => {
           value={numServings}
           onChange={(e) => setNumServings(e.target.value)}
         />
-        {serving}
+        {food.serving}
       </span>
+      <a
+        className="column button"
+        onClick={() => dispatch(removeBreakfastFood(food))}
+      >
+        Remove
+      </a>
     </div>
   );
 };

@@ -2,25 +2,25 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 
 type RoutineState = {
-  activePicker: number;
-  panels: string[];
+  activeTabId: number;
+  tabs: string[];
 };
 
 const initialState: RoutineState = {
-  activePicker: 0,
-  panels: ["Breakfast", "Lunch", "Dinner", "Activity", "Medications"],
+  activeTabId: 0,
+  tabs: ["Breakfast", "Lunch", "Dinner", "Activity", "Medications"],
 };
 
 export const routineSlice = createSlice({
   name: "routine",
   initialState,
   reducers: {
-    updateActivePicker: (state, action: PayloadAction<number>) => {
-      state.activePicker = action.payload;
+    updateActiveTabId: (state, action: PayloadAction<number>) => {
+      state.activeTabId = action.payload;
     },
   },
 });
 
-export const { updateActivePicker } = routineSlice.actions;
+export const { updateActiveTabId } = routineSlice.actions;
 export const selectRoutineState = (state: RootState) => state.routine;
 export default routineSlice.reducer;

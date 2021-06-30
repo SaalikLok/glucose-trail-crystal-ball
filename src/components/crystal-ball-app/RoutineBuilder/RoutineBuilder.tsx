@@ -1,23 +1,18 @@
 import React from "react";
 import PanelsContainer from "./PanelsContainer";
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
-import { selectRoutineState, updateActivePicker } from './routineSlice';
-
+import { selectRoutineState, updateActiveTabId } from './routineSlice';
 
 const RoutineBuilder = () => {
   const dispatch = useAppDispatch();
   const routine = useAppSelector(selectRoutineState)
-  const { activePicker, panels } = routine
+  const { activeTabId, tabs } = routine
 
-  const switchTab = (tabId: number) => {
-    dispatch(updateActivePicker(tabId))
-  }
-
-  const panelTabs = panels.map((panel, index) => {
-    if(activePicker === index){
-      return <a key={index} className="is-active">{panel}</a>
+  const panelTabs = tabs.map((tab, index) => {
+    if(activeTabId === index){
+      return <a key={index} className="is-active">{tab}</a>
     }
-    return <a key={index} onClick={() => switchTab(index)}>{panel}</a>
+    return <a key={index} onClick={() => dispatch(updateActiveTabId(index))}>{tab}</a>
   })
 
   return (
@@ -27,7 +22,7 @@ const RoutineBuilder = () => {
         <p className="panel-tabs">
           {panelTabs}
         </p>
-        <PanelsContainer data={activePicker}/>
+        <PanelsContainer tabId={activeTabId}/>
       </nav>
     </div>
   );
