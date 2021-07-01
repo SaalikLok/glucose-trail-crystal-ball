@@ -1,38 +1,25 @@
 import React from "react";
-import FoodPanel from "./Meals/FoodPanel";
-import FoodSearch from "./Meals/FoodSearch";
-import { selectBreakfast, selectLunch, selectDinner } from "./Meals/mealsSlice";
 import { useAppSelector } from "../../app/hooks";
-import { FoodData } from "../../../data/foods";
+import MealTab from "./Meals/MealTab";
+import ActivityTab from "./Activity/ActivityTab";
+import { selectRoutineState } from "./routineSlice";
 
-type Props = {
-  tabId: number;
-};
+const PanelsContainer = () => {
+  const tabId = useAppSelector(selectRoutineState).activeTabId
 
-const PanelsContainer: React.FC<Props> = ({ tabId }: Props) => {
-  const getMeal = () => {
-    switch (tabId) {
-      case 0:
-        return useAppSelector(selectBreakfast);
-      case 1:
-        return useAppSelector(selectLunch);
-      case 2:
-        return useAppSelector(selectDinner);
-      default:
-        return [];
+  const renderTab = () => {
+    if(tabId <= 2) {
+      return <MealTab />
+    } else if(tabId === 3) {
+      return <ActivityTab />
+    } else {
+      return <div>Last Tab</div>
     }
-  };
-
-  let meal: [] | FoodData[] = getMeal();
-
-  const allPanels = meal.map((food, index) => {
-    return <FoodPanel key={index} food={food} />;
-  });
+  }
 
   return (
     <>
-      <FoodSearch />
-      {allPanels}
+      {renderTab()}
     </>
   );
 };
