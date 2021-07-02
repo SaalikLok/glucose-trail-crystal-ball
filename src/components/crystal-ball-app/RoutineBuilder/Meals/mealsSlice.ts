@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { FoodData } from "../../../../data/foods";
 import { RootState } from "../../../app/store";
-import _ from "lodash";
 
 type MealsState = {
   breakfast: FoodData[];

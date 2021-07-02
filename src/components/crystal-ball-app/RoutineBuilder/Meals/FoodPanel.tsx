@@ -19,7 +19,7 @@ const FoodPanel: React.FC<Props> = ({ food }: Props) => {
         </span>
         {food.name}
       </div>
-      <span className="column">
+      <div className="column">
         <input
           type="number"
           min="0"
@@ -29,7 +29,7 @@ const FoodPanel: React.FC<Props> = ({ food }: Props) => {
           onChange={(e) => setNumServings(e.target.value)}
         />
         {food.serving}
-      </span>
+      </div>
       <a
         className="column button"
         onClick={() => dispatch(removeBreakfastFood(food))}

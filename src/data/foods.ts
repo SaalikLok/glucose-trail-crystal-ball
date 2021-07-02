@@ -12,7 +12,7 @@ export const foods: FoodData[] = [
   },
   {
     name: "Chicken Breast",
-    serving: "breasts",
+    serving: "pieces",
     calories: 150,
   },
   {
@@ -22,7 +22,7 @@ export const foods: FoodData[] = [
   },
   {
     name: "Grapes",
-    serving: "cup",
+    serving: "cups",
     calories: 104,
   },
   {

@@ -22,7 +22,7 @@ const RoutineBuilder = () => {
         <p className="panel-tabs">
           {panelTabs}
         </p>
-        <PanelsContainer tabId={activeTabId}/>
+        <PanelsContainer />
       </nav>
     </div>
   );
