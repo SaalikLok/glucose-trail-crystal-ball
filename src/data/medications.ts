@@ -1,23 +1,27 @@
-export type Medication = {
+export type MedicationData = {
   generic: string,
   dose: number,
-  unit: string
+  unit: string,
+  timesTaken: number
 }
 
-export const medications: { [name: string ]: Medication } = {
-  metformin: {
+export const medications: MedicationData[] = [
+  {
     generic: "Metformin",
     dose: 1,
-    unit: "mg"
+    unit: "mg",
+    timesTaken: 0
   },
-  tyranasaurus: {
+  {
     generic: "dinosaur",
     dose: 2,
-    unit: "mg"
+    unit: "mg",
+    timesTaken: 0
   },
-  pikachu: {
+  {
     generic: "pokemon",
     dose: 1,
-    unit: "g"
+    unit: "g",
+    timesTaken: 0
   }
-} 
+] 

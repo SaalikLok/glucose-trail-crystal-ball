@@ -2,6 +2,7 @@ import React from "react";
 import { useAppSelector } from "../../app/hooks";
 import MealTab from "./Meals/MealTab";
 import ActivityTab from "./Activity/ActivityTab";
+import MedicationTab from "./Medication/MedicationTab";
 import { selectRoutineState } from "./routineSlice";
 
 const PanelsContainer = () => {
@@ -13,7 +14,7 @@ const PanelsContainer = () => {
     } else if(tabId === 3) {
       return <ActivityTab />
     } else {
-      return <div>Last Tab</div>
+      return <MedicationTab />
     }
   }
 
