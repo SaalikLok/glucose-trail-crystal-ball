@@ -6,8 +6,11 @@ import { ActivityData } from '../../../../data/activities'
 
 const ActivityTab = () => {
   const allActivities = useAppSelector(selectActivitiesState)
+
   const activityPanels = allActivities.map( (activity: ActivityData) => {
-    return <ActivityPanel key={activity.intensity} activity={activity} />
+    if(activity.intensity !== "Sitting"){
+      return <ActivityPanel key={activity.intensity} activity={activity} />
+    }
   })
 
   return (
