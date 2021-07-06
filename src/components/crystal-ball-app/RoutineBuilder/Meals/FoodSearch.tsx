@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { foods, FoodData } from "../../../../data/foods";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import { addBreakfastFood, addDinnerFood, addLunchFood } from "./mealsSlice";
+import { addFoodToMeal } from "./mealsSlice";
 import { selectRoutineState } from "../routineSlice";
 
 const FoodSearch = () => {
-  const routineState = useAppSelector(selectRoutineState)
-  const { activeTabId, tabs } = routineState
+  const routineState = useAppSelector(selectRoutineState);
+  const { activeTabId, tabs } = routineState;
   const dispatch = useAppDispatch();
   const [searchVal, setSearchVal] = useState("");
   const [searchResults, setSearchResults] = useState<FoodData[] | []>([]);
@@ -19,14 +19,14 @@ const FoodSearch = () => {
   }, [searchVal]);
 
   const addFood = (food: FoodData) => {
-    if(activeTabId === 0) {
-      dispatch(addBreakfastFood(food))
-    } else if(activeTabId === 1) {
-      dispatch(addLunchFood(food))
+    if (activeTabId === 0) {
+      dispatch(addFoodToMeal({ mealName: "Breakfast", food: food }));
+    } else if (activeTabId === 1) {
+      dispatch(addFoodToMeal({ mealName: "Lunch", food: food }));
     } else {
-      dispatch(addDinnerFood(food))
+      dispatch(addFoodToMeal({ mealName: "Dinner", food: food }));
     }
-  }
+  };
 
   const renderSearchResults = () => {
     if (searchVal.length > 0) {

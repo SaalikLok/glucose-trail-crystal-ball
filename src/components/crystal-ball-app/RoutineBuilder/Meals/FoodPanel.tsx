@@ -1,15 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import { FoodData } from "../../../../data/foods";
 import { useAppDispatch } from "../../../app/hooks";
-import { removeBreakfastFood } from "./mealsSlice";
+import { removeFoodFromMeal } from "./mealsSlice";
+import { changeFoodCount } from "./mealsSlice";
 
 type Props = {
   food: FoodData;
+  mealName: string;
 };
 
-const FoodPanel: React.FC<Props> = ({ food }: Props) => {
+const FoodPanel: React.FC<Props> = ({ food, mealName }: Props) => {
   const dispatch = useAppDispatch();
-  const [numServings, setNumServings] = useState("");
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newFood: FoodData = {
+      ...food,
+      quantity: Number(e.target.value),
+    };
+    dispatch(changeFoodCount({ mealName: mealName, food: newFood }));
+  };
 
   return (
     <div className="panel-block columns">
@@ -25,14 +33,21 @@ const FoodPanel: React.FC<Props> = ({ food }: Props) => {
           min="0"
           max="20"
           className="input is-small mr-3"
-          value={numServings}
-          onChange={(e) => setNumServings(e.target.value)}
+          value={food.quantity}
+          onChange={(e) => handleInputChange(e)}
         />
         {food.serving}
       </div>
       <a
         className="column button"
-        onClick={() => dispatch(removeBreakfastFood(food))}
+        onClick={() =>
+          dispatch(
+            removeFoodFromMeal({
+              mealName: mealName,
+              food: food,
+            })
+          )
+        }
       >
         Remove
       </a>
