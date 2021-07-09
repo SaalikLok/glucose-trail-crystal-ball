@@ -38,8 +38,10 @@ const FoodPanel: React.FC<Props> = ({ food, mealName }: Props) => {
         />
         {food.serving}
       </div>
-      <a
-        className="column button"
+      <div className="column">
+
+      <button
+        className="delete is-align-self-center"
         onClick={() =>
           dispatch(
             removeFoodFromMeal({
@@ -49,8 +51,8 @@ const FoodPanel: React.FC<Props> = ({ food, mealName }: Props) => {
           )
         }
       >
-        Remove
-      </a>
+      </button>
+      </div>
     </div>
   );
 };
