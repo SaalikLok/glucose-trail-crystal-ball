@@ -15,7 +15,23 @@ const CrystalBallApp = () => {
           <RoutineBuilder />
         </div>
       </div>
-          <Calculator />
+      <Calculator />
+      <div className="container has-text-centered mb-6 mt-6">
+        <p className="is-size-7">
+          &copy; Glucose Trail 2021 ~ All Rights Reserved.
+        </p>
+        <p className="is-size-7">
+          Built by{" "}
+          <a href="http://saaliklok.com" target="_blank">
+            Saalik Lokhandwala
+          </a>
+          .{" "}
+          <a href="http://github.com/saaliklok/glucose-trail-crystal-ball">
+            Open Source
+          </a>
+          .
+        </p>
+      </div>
     </div>
   );
 };
