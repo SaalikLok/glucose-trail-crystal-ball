@@ -7,7 +7,7 @@ type Meal = {
   foods: FoodData[];
 };
 
-type MealsState = {
+export type MealsState = {
   meals: Meal[];
 };
 
